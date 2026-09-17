@@ -19,7 +19,7 @@
   justify-content: center;
   overflow: hidden;
   background: #f3f1eb;
-  padding-top: 48px;
+  padding-top: clamp(16px, 4vw, 48px);
 }
 
 /* Main Stage */
@@ -196,7 +196,10 @@
   gap: calc(20px + 24px * var(--grow));
   align-items: center;
   overflow: hidden;
-  transition: border-radius 0.2s ease;
+  transition:
+    border-radius 0.2s ease,
+    padding 0.2s ease,
+    gap 0.2s ease;
 }
 
 /* Left content */
@@ -208,12 +211,14 @@
   justify-content: center;
   padding-left: 8px;
   padding-right: 8px;
+  min-width: 0;
 }
 
 .badge-row {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .badge {
@@ -228,6 +233,7 @@
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .new-pill {
@@ -285,6 +291,7 @@
   border-radius: 20px;
   padding: calc(18px + 10px * var(--grow));
   height: 100%;
+  min-width: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -600,6 +607,7 @@
 .email-meta {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .email-meta strong {
@@ -619,6 +627,7 @@
   color: #111827;
   min-height: 90px;
   margin: 0;
+  word-break: break-word;
 }
 
 .cursor {
@@ -655,7 +664,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 20px 72px;
+  padding: 20px clamp(16px, 8vw, 72px);
 }
 
 .notes-bars {
@@ -925,6 +934,7 @@
   gap: 16px;
   font-size: 13.5px;
   color: #64748b;
+  flex-wrap: wrap;
 }
 
 .consult-details span {
@@ -942,11 +952,13 @@
   font-size: 13px;
   font-weight: 600;
   color: #0f172a;
+  gap: 10px;
 }
 
 .toggle-switch {
   width: 42px;
   height: 24px;
+  flex-shrink: 0;
   background: #cbd5e1;
   border-radius: 999px;
   padding: 2px;
@@ -1011,6 +1023,7 @@
   background: #f1f5f9;
   padding: 4px 8px;
   border-radius: 6px;
+  white-space: nowrap;
 }
 
 .select-row {
@@ -1066,6 +1079,7 @@
   font-size: 13px;
   color: #64748b;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .consult-meta span {
@@ -1145,9 +1159,9 @@
   }
 }
 
-/* ===================== */
-/* Responsive            */
-/* ===================== */
+/* ============================================================ */
+/* Responsive — Tablet                                           */
+/* ============================================================ */
 
 @media (max-width: 900px) {
   .scroll-stage {
@@ -1159,6 +1173,8 @@
     --small-h: min(600px, 82vh);
     --full-w: calc(100vw - 24px);
     --full-h: calc(100vh - 24px);
+    padding: calc(56px + 24px * var(--grow)) calc(14px + 12px * var(--grow))
+      calc(14px + 18px * var(--grow));
   }
 
   .scroll-pin {
@@ -1169,8 +1185,9 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     align-items: start;
-    padding: calc(16px + 16px * var(--grow));
-    gap: 16px;
+    padding: clamp(14px, 3vw, 28px);
+    gap: clamp(12px, 2.5vw, 20px);
+    overflow-y: auto;
   }
 
   .demo-left {
@@ -1180,7 +1197,7 @@
   }
 
   .demo-left h1 {
-    font-size: calc(18px + 10px * var(--grow));
+    font-size: clamp(18px, 3.6vw, 26px);
     line-height: 1.25;
     margin-top: 8px;
     margin-bottom: 6px;
@@ -1193,36 +1210,315 @@
   }
 
   .demo-icons {
-    top: calc(12px + 12px * var(--grow));
+    top: calc(12px + 10px * var(--grow));
   }
 
   .demo-icons button {
-    width: calc(38px + 8px * var(--grow));
-    height: calc(38px + 8px * var(--grow));
+    width: calc(38px + 6px * var(--grow));
+    height: calc(38px + 6px * var(--grow));
+  }
+
+  .demo-right {
+    padding: clamp(10px, 2.5vw, 18px);
   }
 
   .calendar-ui {
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .cal-right {
+    padding-left: 0;
+  }
+
+  .notes-ui {
+    padding: 18px clamp(14px, 5vw, 40px);
+  }
+
+  .payment-card-step {
+    max-width: 300px;
+    padding: 20px;
   }
 }
-@media (max-width: 600px) {
-  /* Further reduce paddings and font sizes for very small screens */
+
+/* ============================================================ */
+/* Responsive — Large phones                                     */
+/* ============================================================ */
+
+@media (max-width: 640px) {
+  .scroll-stage {
+    height: 560vh;
+  }
+
+  .scroll-pin {
+    padding-top: 8px;
+  }
+
   .demo-wrapper {
-    padding: 20px;
+    --small-w: 94vw;
+    --small-h: min(560px, 78vh);
+    --full-w: calc(100vw - 16px);
+    --full-h: calc(100vh - 16px);
+    padding: calc(50px + 18px * var(--grow)) calc(10px + 8px * var(--grow))
+      calc(10px + 14px * var(--grow));
+    border-radius: calc(26px - 8px * var(--grow));
   }
-  .demo-left h1 {
-    font-size: calc(17px + 12px * var(--grow));
+
+  .demo-close {
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
   }
-  .calendar-ui {
-    padding: 20px;
+
+  .demo-icons {
+    top: 10px;
+    gap: 8px;
   }
-  .notes-ui {
-    padding: 6px 20px;
-  }
-  /* Adjust button sizes if necessary */
+
   .demo-icons button {
-    width: calc(38px + 8px * var(--grow));
-    height: calc(38px + 8px * var(--grow));
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+  }
+
+  .demo-card {
+    padding: 14px;
+    gap: 10px;
+    border-radius: 18px;
+  }
+
+  .demo-left {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .demo-left h1 {
+    font-size: clamp(16px, 5vw, 20px);
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .badge {
+    padding: 5px 11px;
+    font-size: 12px;
+  }
+
+  .demo-right {
+    padding: 8px 4px;
+  }
+
+  /* Calendar */
+  .calendar-ui {
+    padding: 16px;
+    gap: 16px;
+    border-radius: 18px;
+  }
+
+  .cal-header h3 {
+    font-size: 14px;
+  }
+
+  .cal-nav {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .days {
+    gap: 5px;
+  }
+
+  .days span {
+    font-size: 12px;
+  }
+
+  .weekdays span {
+    font-size: 10px;
+  }
+
+  .cal-day-info strong {
+    font-size: 14.5px;
+  }
+
+  .time-btn {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+
+  .cal-shapes {
+    display: none;
+  }
+
+  /* Assistant */
+  .email-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  .email-body {
+    font-size: 16px;
+    min-height: 70px;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  /* Notes */
+  .notes-ui {
+    padding: 14px 10px;
+    border-radius: 18px;
+  }
+
+  .notes-bars {
+    display: none;
+  }
+
+  .note-card {
+    padding: 16px;
+    gap: 16px;
+    border-radius: 16px;
+  }
+
+  .note-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+  }
+
+  .note-title-row {
+    font-size: 13px;
+  }
+
+  .note-label {
+    font-size: 11.5px;
+  }
+
+  /* Payment */
+  .payment-card-step {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    gap: 12px;
+  }
+
+  .consult-price {
+    font-size: 28px;
+  }
+
+  .pay-shapes {
+    display: none;
+  }
+}
+
+/* ============================================================ */
+/* Responsive — Small phones                                     */
+/* ============================================================ */
+
+@media (max-width: 420px) {
+  .scroll-stage {
+    height: 600vh;
+  }
+
+  .demo-wrapper {
+    --small-w: 96vw;
+    --small-h: min(520px, 74vh);
+    --full-w: calc(100vw - 10px);
+    --full-h: calc(100vh - 10px);
+    padding: calc(46px + 14px * var(--grow)) calc(8px + 4px * var(--grow))
+      calc(8px + 10px * var(--grow));
+    border-radius: calc(20px - 6px * var(--grow));
+  }
+
+  .demo-icons {
+    gap: 6px;
+  }
+
+  .demo-icons button {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+  }
+
+  .demo-card {
+    padding: 10px;
+    gap: 8px;
+    border-radius: 14px;
+  }
+
+  .demo-left h1 {
+    font-size: 15px;
+  }
+
+  .badge {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+
+  .new-pill {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .calendar-ui {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .days {
+    gap: 4px;
+  }
+
+  .days span {
+    font-size: 11px;
+  }
+
+  .cal-header h3 {
+    font-size: 13px;
+  }
+
+  .email-card {
+    padding: 12px 14px;
+  }
+
+  .email-body {
+    font-size: 14.5px;
+    min-height: 60px;
+  }
+
+  .note-card {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .note-row {
+    gap: 10px;
+  }
+
+  .note-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+  }
+
+  .payment-card-step {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .payment-card-step h3 {
+    font-size: 16px;
+  }
+
+  .consult-price {
+    font-size: 24px;
   }
 }
