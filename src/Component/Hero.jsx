@@ -11,7 +11,7 @@ export default function Hero() {
             meetings, handled.
           </h1>
 
-          <p>
+          <p className="top-p">
             From AI-powered scheduling to automated meeting recaps and
             follow-ups, get the busywork done with fewer tools and less effort.
           </p>

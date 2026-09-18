@@ -1522,3 +1522,215 @@
     font-size: 24px;
   }
 }
+/* ============================================================
+   Perfect Mobile UI
+   ============================================================ */
+
+@media (max-width: 640px) {
+  /* Right panel */
+  .demo-right {
+    width: 100%;
+    min-width: 0;
+    padding: 6px 0;
+    overflow: hidden;
+  }
+
+  /* ================= Email Card ================= */
+
+  .assistant-ui {
+    width: 100%;
+    max-width: 100%;
+    min-height: 280px;
+    height: auto;
+    padding: 20px 12px;
+    border-radius: 18px;
+  }
+
+  .email-card {
+    width: 100%;
+    max-width: 340px;
+    padding: 16px;
+    border-radius: 15px;
+  }
+
+  .email-header {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .email-body {
+    font-size: 15px;
+    line-height: 1.5;
+    min-height: auto;
+  }
+
+  /* ================= Notes ================= */
+
+  .notes-ui {
+    width: 100%;
+    min-height: 280px;
+    height: auto;
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .note-card {
+    width: 100%;
+    max-width: 360px;
+    padding: 15px;
+    gap: 15px;
+    border-radius: 16px;
+  }
+
+  .note-row {
+    width: 100%;
+    gap: 11px;
+  }
+
+  .note-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+  }
+
+  .note-content {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .note-title-row {
+    font-size: 13px;
+    line-height: 1.35;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+  }
+
+  .note-label {
+    font-size: 11.5px;
+    line-height: 1.4;
+    margin-bottom: 9px;
+  }
+
+  .note-lines {
+    padding-left: 10px;
+    gap: 6px;
+  }
+
+  .note-lines span {
+    height: 5px;
+  }
+
+  /* ================= Payment ================= */
+
+  .payment-ui {
+    width: 100%;
+    max-width: 100%;
+    min-height: 280px;
+    height: auto;
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .payment-card-step {
+    width: 100%;
+    max-width: 340px;
+    padding: 16px;
+    border-radius: 15px;
+    gap: 12px;
+  }
+
+  .payment-card-step h3 {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .consult-details {
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .consult-meta {
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .consult-price {
+    font-size: 28px;
+  }
+}
+
+/* ============================================================
+   Very Small Phones
+   ============================================================ */
+
+@media (max-width: 420px) {
+  .demo-right {
+    padding: 4px 0;
+  }
+
+  /* Email */
+  .assistant-ui {
+    min-height: 260px;
+    padding: 14px 8px;
+  }
+
+  .email-card {
+    max-width: 310px;
+    padding: 14px;
+  }
+
+  .email-body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Notes */
+  .notes-ui {
+    min-height: 260px;
+    padding: 10px;
+  }
+
+  .note-card {
+    max-width: 310px;
+    padding: 13px;
+    gap: 12px;
+  }
+
+  .note-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+  }
+
+  .note-title-row {
+    font-size: 12px;
+  }
+
+  .note-label {
+    font-size: 11px;
+  }
+
+  /* Payment */
+  .payment-ui {
+    min-height: 260px;
+    padding: 10px;
+  }
+
+  .payment-card-step {
+    max-width: 310px;
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .payment-card-step h3 {
+    font-size: 15px;
+  }
+
+  .consult-details {
+    font-size: 11.5px;
+  }
+
+  .consult-price {
+    font-size: 24px;
+  }
+}
