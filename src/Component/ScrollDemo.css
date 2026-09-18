@@ -210,8 +210,10 @@
   height: 100%;
   justify-content: center;
   padding-left: 8px;
-  padding-right: 8px;
+  padding-right: 24px;
   min-width: 0;
+  background: transparent;
+  border-right: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .badge-row {
@@ -1194,6 +1196,10 @@
     justify-content: flex-start;
     padding-left: 4px;
     padding-right: 4px;
+    padding-bottom: 16px;
+    margin-bottom: 12px;
+    border-right: none;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   }
 
   .demo-left h1 {
@@ -1293,6 +1299,9 @@
   .demo-left {
     padding-left: 2px;
     padding-right: 2px;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
   }
 
   .demo-left h1 {
@@ -1456,6 +1465,11 @@
 
   .demo-left h1 {
     font-size: 15px;
+  }
+
+  .demo-left {
+    padding-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .badge {

@@ -1,14 +1,14 @@
 import "./App.css";
 import Navbar from "./Component/Navbar";
 import Hero from "./Component/Hero";
-// import ScrollDemo from "./Component/ScrollDemo";
+import StepsSection from "./Component/StepsSection";
 
 function App() {
   return (
     <>
       <Navbar />
       <Hero />
-      {/* <ScrollDemo /> */}
+      <StepsSection />
     </>
   );
 }
