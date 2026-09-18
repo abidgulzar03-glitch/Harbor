@@ -1,21 +1,22 @@
+/* =========================
+   RESET
+========================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =======================
-   NAVBAR
-======================= */
+/* =========================
+   STATIC NAVBAR
+========================= */
 
-.navbar {
-  /* position: sticky; */
-  top: 0;
+.navbar-static {
   width: 100%;
   height: 81px;
   background: #fff;
-
-  z-index: 10000;
+  z-index: 1000;
 }
 
 .navbar-container {
@@ -26,11 +27,13 @@
   padding: 0 60px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  transition: all 0.35s ease;
 }
 
-/* =======================
+/* =========================
    LOGO
-======================= */
+========================= */
 
 .navbar-logo {
   display: flex;
@@ -40,7 +43,7 @@
   color: #0b1f3a;
   font-size: 30px;
   font-weight: 700;
-  letter-spacing: -1.2px;
+  letter-spacing: -1px;
 }
 
 .calendly-icon {
@@ -56,14 +59,14 @@
   font-weight: 700;
 }
 
-/* =======================
-   NAVIGATION
-======================= */
+/* =========================
+   NAV LINKS
+========================= */
 
 .navbar-links {
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 24px;
 }
 
 .navbar-item {
@@ -86,9 +89,7 @@
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  transition:
-    background 0.25s ease,
-    color 0.25s ease;
+  transition: 0.25s;
 }
 
 .navbar-link:hover,
@@ -98,39 +99,38 @@
 }
 
 .chevron {
-  transition: transform 0.2s ease;
+  transition: transform 0.2s;
 }
 
 .chevron.open {
   transform: rotate(180deg);
 }
 
-/* =======================
+/* =========================
    DROPDOWN
-======================= */
+========================= */
 
 .navbar-dropdown {
   position: absolute;
-  top: 58px;
+  top: 56px;
   left: 0;
   min-width: 220px;
   padding: 10px;
   background: #fff;
-  border: 1px solid #e8e8e8;
-  border-radius: 14px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
-  z-index: 10001;
+  z-index: 200;
 }
 
 .navbar-dropdown a {
   padding: 12px;
-  color: #0b1f3a;
   text-decoration: none;
+  color: #0b1f3a;
+  border-radius: 10px;
   font-size: 14px;
-  font-weight: 500;
-  border-radius: 8px;
   transition: 0.2s;
 }
 
@@ -138,9 +138,9 @@
   background: #f3f4f6;
 }
 
-/* =======================
-   RIGHT ACTIONS
-======================= */
+/* =========================
+   ACTIONS
+========================= */
 
 .navbar-actions {
   margin-left: auto;
@@ -148,8 +148,6 @@
   align-items: center;
   gap: 12px;
 }
-
-/* Login */
 
 .login-btn {
   height: 46px;
@@ -159,10 +157,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
   color: #0b1f3a;
   font-size: 14px;
   font-weight: 500;
-  text-decoration: none;
   transition: 0.25s;
 }
 
@@ -171,22 +169,20 @@
   color: #fff;
 }
 
-/* Book Demo */
-
 .nav-demo-btn {
   height: 46px;
   padding: 0 22px;
+  border-radius: 12px;
   background: #0b1f3a;
   border: 2px solid #0b1f3a;
-  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
   color: #fff;
   font-size: 14px;
   font-weight: 600;
-  text-decoration: none;
-  transition: all 0.25s ease;
+  transition: 0.25s;
 }
 
 .nav-demo-btn:hover {
@@ -194,14 +190,81 @@
   border-color: #16345a;
 }
 
-/* =======================
-   MOBILE
-======================= */
+/* =========================
+   FLOATING NAVBAR
+========================= */
 
-.mobile-menu-btn {
-  display: none;
+.navbar-floating {
+  position: fixed;
+  top: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(94% - 30px);
+  max-width: 1480px;
+  z-index: 9999;
+  animation: slideDown 0.35s ease;
+
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 22px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
 }
 
+.navbar-floating .navbar-container {
+  height: 75px;
+  padding: 0 28px;
+}
+
+.navbar-floating .navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #0b1f3a;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.navbar-floating .calendly-icon {
+  width: 30px;
+  height: 30px;
+  border-width: 3px;
+  font-size: 15px;
+}
+
+.navbar-floating .navbar-link,
+.navbar-floating .navbar-dropdown-btn {
+  height: 38px;
+  font-size: 13px;
+}
+
+.login-btn {
+  height: 46px;
+  padding: 0 18px;
+  border: 2px solid #0b1f3a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #0b1f3a;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.25s;
+}
+
+.login-btn:hover {
+  background: #0b1f3a;
+  color: #fff;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+.mobile-menu-btn,
 .mobile-navbar {
   display: none;
 }
@@ -213,24 +276,27 @@
 }
 
 @media (max-width: 800px) {
-  .navbar {
+  .navbar-static {
     height: 76px;
   }
 
+  .navbar-floating {
+    display: none !important;
+  }
+
   .navbar-container {
-    height: 76px;
     padding: 0 20px;
   }
 
   .navbar-logo {
-    font-size: 25px;
+    font-size: 24px;
   }
 
   .calendly-icon {
     width: 32px;
     height: 32px;
-    font-size: 16px;
     border-width: 3px;
+    font-size: 16px;
   }
 
   .navbar-links,
@@ -282,7 +348,7 @@
     flex-direction: column;
     transform: translateX(100%);
     transition: 0.3s;
-    z-index: 9999;
+    z-index: 9998;
   }
 
   .mobile-navbar.active {
@@ -332,5 +398,30 @@
   .mobile-actions .login-btn,
   .mobile-actions .nav-demo-btn {
     width: 100%;
+  }
+
+  .navbar-floating {
+    top: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .navbar-floating .navbar-container {
+    height: 58px;
+    padding: 0 18px;
+  }
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 }

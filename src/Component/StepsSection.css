@@ -72,17 +72,16 @@
 /* ---------- Cards ---------- */
 
 .steps {
-  margin-top: 132px;
+  margin-top: 100px;
   display: flex;
   gap: 20px;
   align-items: stretch;
-  min-height: 380px;
 }
 
 .step {
   position: relative;
   flex: 1;
-  min-height: 140px; /* was 180px */
+  height: 570px; /* All cards same height */
   padding: 16px;
   border-radius: 28px;
   background: #fff;
@@ -93,6 +92,7 @@
 
   transition:
     flex 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.45s ease,
     transform 0.45s ease,
     box-shadow 0.45s ease;
 }
@@ -100,7 +100,9 @@
 .step:hover,
 .step--active {
   flex: 2.2;
-  min-height: 420px; /* expanded height */
+  height: 570px; /* Expanded height */
+  transform: translateY(-4px);
+  box-shadow: 0 28px 60px rgba(15, 23, 42, 0.12);
 }
 
 /* Green blob */
@@ -130,13 +132,6 @@
 .step > * {
   position: relative;
   z-index: 2;
-}
-
-.step:hover,
-.step--active {
-  flex: 2.2;
-  transform: translateY(-4px);
-  box-shadow: 0 28px 60px rgba(15, 23, 42, 0.12);
 }
 
 .step:hover::before,
@@ -201,10 +196,12 @@
   transform: translateY(8px);
 }
 
+.step:hover .step-desc,
 .step--active .step-desc {
   opacity: 0;
 }
 
+.step:hover .step-desc-long,
 .step--active .step-desc-long {
   opacity: 1;
   transform: translateY(0);
@@ -213,7 +210,7 @@
 /* ---------- Checklist ---------- */
 
 .step-checklist {
-  margin-top: 32px;
+  margin-top: 24px; /* slightly reduced */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -223,6 +220,7 @@
   transition: 0.35s 0.12s;
 }
 
+.step:hover .step-checklist,
 .step--active .step-checklist {
   opacity: 1;
   transform: translateY(0);
@@ -258,6 +256,7 @@
   pointer-events: none;
 }
 
+.step:hover .step-mark,
 .step--active .step-mark {
   opacity: 0;
 }
@@ -265,7 +264,7 @@
 /* ---------- Mock UI ---------- */
 
 .step-scene {
-  margin-top: 50px;
+  margin-top: 28px; /* reduced from 50px to tighten bottom space */
   border-radius: 22px;
   padding: 10px;
   background: linear-gradient(160deg, var(--g1), var(--g2) 55%, var(--g3));
@@ -275,6 +274,7 @@
   transition: 0.45s 0.12s;
 }
 
+.step:hover .step-scene,
 .step--active .step-scene {
   opacity: 1;
   transform: translateY(0) scale(1);
@@ -642,12 +642,12 @@
 
   .step {
     flex: 1 1 calc(50% - 9px);
-    min-height: 130px;
+    min-height: 105px;
   }
 
   .step--active {
     flex: 1 1 100%;
-    min-height: 240px;
+    min-height: 200px;
   }
 }
 
@@ -662,7 +662,7 @@
 
   .step {
     flex: 1 1 100%;
-    min-height: 220px;
+    min-height: 180px;
   }
 
   .step-title {
