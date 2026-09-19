@@ -373,7 +373,6 @@
 
 .cl-tab {
   padding-bottom: 12px;
-  border-bottom: 1px solid #e5e7eb;
   color: #6b7280;
 }
 
@@ -385,7 +384,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -436,7 +435,7 @@
   animation: cl-fill linear both;
 }
 
-/* ---------- KEYFRAMES ---------- */
+
 
 @keyframes cl-rise {
   from {
