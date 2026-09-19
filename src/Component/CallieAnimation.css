@@ -1,0 +1,517 @@
+/* =====================================================
+   Callie Animation – Responsive Layout
+   Panel 400px, card 276px (same proportions as the video)
+   ===================================================== */
+
+/* :where() keeps the reset at zero specificity so class rules still win */
+:where(#callie-section, #callie-section *) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#callie-section {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 72px 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  /* background: #f6f6f4; */
+  border-radius: 32px;
+  color: #15181d;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+
+/* ---------- LEFT PANEL ---------- */
+
+#callie-visual {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 55% at 20% 62%, #17b3a3 0%, rgba(23, 179, 163, 0) 70%),
+    radial-gradient(90% 40% at 100% 66%, #d9ee55 0%, rgba(217, 238, 85, 0) 70%),
+    linear-gradient(
+      180deg,
+      #b6c9ee 0%,
+      #cfe0f0 30%,
+      #bfe6ea 46%,
+      #33bfa6 60%,
+      #0b4f57 78%,
+      #06182a 100%
+    );
+}
+
+.cl-stripes {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.55) 0 1px,
+    transparent 1px 7px
+  );
+  -webkit-mask: linear-gradient(
+    90deg,
+    #000 0,
+    #000 16%,
+    transparent 24%,
+    transparent 76%,
+    #000 84%,
+    #000 100%
+  );
+  mask: linear-gradient(
+    90deg,
+    #000 0,
+    #000 16%,
+    transparent 24%,
+    transparent 76%,
+    #000 84%,
+    #000 100%
+  );
+}
+
+#callie-card-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 0.6s,
+    transform 0.6s;
+}
+
+#callie-card-stage.cl-out {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* ---------- CARD ---------- */
+
+.cl-card {
+  position: relative;
+  width: 276px;
+  max-width: 88%;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 10px 30px rgba(10, 30, 60, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  overflow: hidden;
+  animation: cl-rise 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.cl-card.cl-tall {
+  padding-top: 0;
+  animation-name: cl-riseTall;
+}
+
+.cl-from {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.cl-name {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1.1;
+}
+
+.cl-sub {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 3px;
+  font-size: 8.5px;
+  color: #6b7280;
+}
+
+.cl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 5px 1px 3px;
+  border: 1px solid #d5d8de;
+  border-radius: 999px;
+  background: #fff;
+  color: #374151;
+}
+
+.cl-chip i {
+  font-style: normal;
+  color: #9ca3af;
+}
+
+.cl-logoBig {
+  display: flex;
+}
+
+.cl-peek {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 26px;
+  margin: -14px 0 10px;
+  padding: 8px 0;
+  overflow: hidden;
+  border-bottom: 1px solid #e5e7eb;
+  opacity: 0.55;
+  filter: blur(0.4px);
+  transform: translateY(-10px);
+}
+
+.cl-ghost {
+  margin: 2px 0 14px;
+}
+
+.cl-ghost b {
+  display: block;
+  height: 7px;
+  margin-bottom: 6px;
+  border-radius: 4px;
+  background: #dfe3ea;
+}
+
+.cl-msg {
+  margin: 0 0 12px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: #1f2430;
+}
+
+.cl-msg.cl-tight {
+  margin-bottom: 4px;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.cl-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 34px;
+  border: 0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: default;
+  transition: all 0.45s ease;
+}
+
+.cl-purple {
+  background: linear-gradient(180deg, #8f78e6, #7a60d4);
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(122, 96, 212, 0.35);
+}
+
+.cl-lime {
+  height: 36px;
+  margin-top: 14px;
+  background: linear-gradient(180deg, #cdea78, #a9d96a);
+  color: #16210c;
+}
+
+.cl-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cl-olive {
+  flex: 1.05;
+  background: linear-gradient(180deg, #b7dd48, #9fca35);
+  color: #1f2b0d;
+}
+
+.cl-gray {
+  flex: 1;
+  background: #c9ccd2;
+  color: #4b5563;
+}
+
+.cl-olive.cl-done {
+  flex: 1;
+  background: linear-gradient(90deg, #bfe08a, #9fd57b);
+  color: #1e3a12;
+}
+
+.cl-gray.cl-gone {
+  flex: 0;
+  width: 0;
+  margin-left: -10px;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* ---------- TIME SLOTS ---------- */
+
+.cl-days {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.cl-day {
+  width: 106px;
+  text-align: center;
+}
+
+.cl-dname {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.cl-ddate {
+  margin: 2px 0 8px;
+  font-size: 6.5px;
+  color: #9ca3af;
+}
+
+.cl-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  background: #c9d7f2;
+  color: #26355a;
+  font-size: 9.5px;
+  font-weight: 600;
+  transition: all 0.4s;
+}
+
+.cl-slot.cl-sel {
+  background: #5a54b5;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(90, 84, 181, 0.4);
+}
+
+/* ---------- REVEAL ---------- */
+
+.cl-reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.5s ease,
+    opacity 0.5s ease;
+}
+
+.cl-reveal > div {
+  overflow: hidden;
+}
+
+.cl-reveal.cl-on {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+/* ---------- RIGHT CONTENT ---------- */
+
+#callie-copy {
+  width: 100%;
+  max-width: 500px;
+}
+
+.cl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cl-badge em {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #ececec;
+  font-style: normal;
+  font-size: 10px;
+}
+
+#callie-heading {
+  margin: 18px 0 28px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+#callie-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cl-tab {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #6b7280;
+}
+
+.cl-tab.cl-active {
+  color: #15181d;
+}
+
+.cl-thead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.cl-arrow {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-left: auto;
+  border-radius: 6px;
+  background: #eceeef;
+  font-size: 11px;
+}
+
+.cl-tbody {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s ease;
+}
+
+.cl-tbody > div {
+  overflow: hidden;
+}
+
+.cl-tab.cl-active .cl-tbody {
+  grid-template-rows: 1fr;
+}
+
+.cl-tbody p {
+  margin: 10px 0 0 26px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.cl-track {
+  height: 2px;
+  margin-top: 12px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.cl-bar {
+  width: 100%;
+  height: 100%;
+  background: #8fb23a;
+  transform-origin: left;
+  animation: cl-fill linear both;
+}
+
+/* ---------- KEYFRAMES ---------- */
+
+@keyframes cl-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cl-riseTall {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes cl-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- TABLET ---------- */
+
+@media (max-width: 992px) {
+  #callie-section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+    padding: 56px 24px;
+  }
+
+  #callie-copy {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 600px) {
+  #callie-section {
+    padding: 40px 16px;
+    gap: 36px;
+    border-radius: 24px;
+  }
+
+  #callie-visual {
+    max-width: 360px;
+    border-radius: 22px;
+  }
+
+  .cl-card {
+    width: 260px;
+  }
+
+  #callie-heading {
+    font-size: 34px;
+  }
+
+  .cl-thead {
+    font-size: 14px;
+  }
+
+  .cl-tbody p {
+    margin-left: 22px;
+    font-size: 13px;
+  }
+}

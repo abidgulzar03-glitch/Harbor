@@ -2,15 +2,17 @@ import "./App.css";
 import Navbar from "./Component/Navbar";
 import Hero from "./Component/Hero";
 import StepsSection from "./Component/StepsSection";
-import SchedulingSection from "./Component/SchedulingSection";
-
+import CalendlyFeatureScroll from "./Component/CalendlyFeatureScroll";
+import CallieAnimation from "./Component/CallieAnimation";
 function App() {
   return (
     <>
       <Navbar />
       <Hero />
       <StepsSection />
-      <SchedulingSection />
+
+      <CalendlyFeatureScroll />
+      <CallieAnimation />
     </>
   );
 }
