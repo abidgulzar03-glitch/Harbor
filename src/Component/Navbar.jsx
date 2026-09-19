@@ -33,11 +33,24 @@ export default function Navbar() {
   const [showFloating, setShowFloating] = useState(false);
   const navRef = useRef(null);
 
+  /* Floating navbar when .hero-2 appears */
   useEffect(() => {
-    const handleScroll = () => setShowFloating(window.scrollY > 80);
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    const section = document.querySelector(".hero-2");
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowFloating(entry.isIntersecting);
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "-80px 0px 0px 0px",
+      },
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -46,6 +59,7 @@ export default function Navbar() {
         setOpenMenu(null);
       }
     };
+
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
@@ -61,7 +75,6 @@ export default function Navbar() {
         <span>Harbor</span>
       </a>
 
-      {/* Desktop */}
       <nav className="navbar-links">
         <div className="navbar-item">
           <button
@@ -105,7 +118,6 @@ export default function Navbar() {
         </a>
       </div>
 
-      {/* Mobile Hamburger */}
       <button
         className={`mobile-menu-btn ${mobileOpen ? "active" : ""}`}
         onClick={() => setMobileOpen(!mobileOpen)}
@@ -125,7 +137,6 @@ export default function Navbar() {
         <header className="navbar-floating">{NavContent}</header>
       )}
 
-      {/* Mobile Menu */}
       <div className={`mobile-navbar ${mobileOpen ? "active" : ""}`}>
         <button
           className="mobile-nav-dropdown-btn"

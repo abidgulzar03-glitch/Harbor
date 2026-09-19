@@ -56,7 +56,7 @@ export default function Hero() {
 
           <p className="hero-subfooter">
             <a href="/">Sign up with email</a>
-            <span className="dot">•</span>
+            <span className="dot-hero">•</span>
             No credit card required
           </p>
         </div>
