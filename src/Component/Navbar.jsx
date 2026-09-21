@@ -33,7 +33,7 @@ export default function Navbar() {
   const [showFloating, setShowFloating] = useState(false);
   const navRef = useRef(null);
 
-  /* Floating navbar when .hero-2 appears */
+  // Floating navbar appears only when .hero-2 is visible
   useEffect(() => {
     const section = document.querySelector(".hero-2");
     if (!section) return;
@@ -44,7 +44,6 @@ export default function Navbar() {
       },
       {
         threshold: 0.15,
-        rootMargin: "-80px 0px 0px 0px",
       },
     );
 
@@ -53,6 +52,7 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
+  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClick = (e) => {
       if (navRef.current && !navRef.current.contains(e.target)) {
@@ -68,6 +68,11 @@ export default function Navbar() {
     setOpenMenu((prev) => (prev === menu ? null : menu));
   };
 
+  const closeMobile = () => {
+    setMobileOpen(false);
+    setOpenMenu(null);
+  };
+
   const NavContent = (
     <div className="navbar-container" ref={navRef}>
       <a href="#home" className="navbar-logo">
@@ -75,6 +80,7 @@ export default function Navbar() {
         <span>Harbor</span>
       </a>
 
+      {/* Desktop */}
       <nav className="navbar-links">
         <div className="navbar-item">
           <button
@@ -101,9 +107,11 @@ export default function Navbar() {
         <a href="#integrations" className="navbar-link">
           Integrations
         </a>
+
         <a href="#pricing" className="navbar-link">
           Pricing
         </a>
+
         <a href="#resources" className="navbar-link">
           Resources
         </a>
@@ -113,11 +121,13 @@ export default function Navbar() {
         <a href="#login" className="login-btn">
           Log In
         </a>
+
         <a href="#demo" className="nav-demo-btn">
           Book a Demo
         </a>
       </div>
 
+      {/* Mobile Button */}
       <button
         className={`mobile-menu-btn ${mobileOpen ? "active" : ""}`}
         onClick={() => setMobileOpen(!mobileOpen)}
@@ -131,12 +141,15 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Main Navbar */}
       <header className="navbar-static">{NavContent}</header>
 
+      {/* Floating Navbar */}
       {showFloating && (
         <header className="navbar-floating">{NavContent}</header>
       )}
 
+      {/* Mobile Menu */}
       <div className={`mobile-navbar ${mobileOpen ? "active" : ""}`}>
         <button
           className="mobile-nav-dropdown-btn"
@@ -148,28 +161,43 @@ export default function Navbar() {
 
         {openMenu === "mobilePlatform" && (
           <div className="mobile-dropdown">
-            <a href="#loops">The Loops</a>
-            <a href="#compliance">Compliance</a>
-            <a href="#portals">Portals</a>
-            <a href="#operations">Operations</a>
+            <a href="#loops" onClick={closeMobile}>
+              The Loops
+            </a>
+            <a href="#compliance" onClick={closeMobile}>
+              Compliance
+            </a>
+            <a href="#portals" onClick={closeMobile}>
+              Portals
+            </a>
+            <a href="#operations" onClick={closeMobile}>
+              Operations
+            </a>
           </div>
         )}
 
-        <a href="#integrations" className="mobile-nav-link">
+        <a
+          href="#integrations"
+          className="mobile-nav-link"
+          onClick={closeMobile}
+        >
           Integrations
         </a>
-        <a href="#pricing" className="mobile-nav-link">
+
+        <a href="#pricing" className="mobile-nav-link" onClick={closeMobile}>
           Pricing
         </a>
-        <a href="#resources" className="mobile-nav-link">
+
+        <a href="#resources" className="mobile-nav-link" onClick={closeMobile}>
           Resources
         </a>
 
         <div className="mobile-actions">
-          <a href="#login" className="login-btn">
+          <a href="#login" className="login-btn" onClick={closeMobile}>
             Log In
           </a>
-          <a href="#demo" className="nav-demo-btn">
+
+          <a href="#demo" className="nav-demo-btn" onClick={closeMobile}>
             Book a Demo
           </a>
         </div>

@@ -1,0 +1,333 @@
+.ais-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 70px 0 30px;
+}
+
+.ais-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  align-items: flex-end;
+}
+
+.ais-track.no-anim {
+  transition: none;
+}
+
+/* ================= CARD ================= */
+
+.ais-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 580px;
+  height: 500px;
+
+  opacity: 0.45;
+  transform: scale(0.92);
+  transform-origin: center bottom;
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease;
+}
+
+.ais-card.is-active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 5;
+}
+
+/* ================= BG BOX ================= */
+
+.ais-bgbox {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 76%;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.ais-theme-1 .ais-bgbox {
+  background:
+    radial-gradient(circle at 8% 95%, #f7e46e 0, transparent 42%),
+    radial-gradient(circle at 85% 85%, #f5b5c3 0, transparent 50%),
+    linear-gradient(180deg, #b6d0f5 0%, #dde3f4 100%);
+}
+
+.ais-theme-2 .ais-bgbox {
+  background:
+    radial-gradient(circle at 10% 95%, #f4bfa2 0, transparent 45%),
+    radial-gradient(circle at 90% 90%, #b99be0 0, transparent 50%),
+    linear-gradient(180deg, #24358f 0%, #5f72d3 55%, #a9a6e3 100%);
+}
+
+.ais-theme-3 .ais-bgbox {
+  background:
+    radial-gradient(circle at 8% 95%, #a58fea 0, transparent 40%),
+    radial-gradient(circle at 92% 92%, #b6dc9a 0, transparent 40%),
+    linear-gradient(180deg, #b4cff6 0%, #f3c8cd 60%, #f0a6a8 100%);
+}
+
+.ais-theme-4 .ais-bgbox {
+  background:
+    radial-gradient(circle at 60% 30%, #d8f2f7 0, transparent 45%),
+    linear-gradient(180deg, #9fd6ec 0%, #7cc4dc 50%, #4b8fc6 100%);
+}
+
+/* ================= GRAIN ================= */
+
+.ais-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ================= ANIMATIONS ================= */
+
+.ais-anim {
+  position: absolute;
+  inset: 30% 0 auto;
+  height: 40%;
+  overflow: hidden;
+}
+
+/* triangles */
+
+.ais-triangles {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='115'%3E%3Cpolygon points='0,0 80,57 0,115' fill='%2378d9d1'/%3E%3Cpolygon points='160,0 80,57 160,115' fill='%23f2b3b6' fill-opacity='.75'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  animation: trianglesMove 8s linear infinite;
+}
+
+@keyframes trianglesMove {
+  from {
+    background-position: 0 center;
+  }
+  to {
+    background-position: 160px center;
+  }
+}
+
+/* stripes */
+
+.ais-stripes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.ais-stripes span {
+  display: block;
+  height: 9px;
+  width: 300%;
+  margin-left: -100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--c) 0 var(--w),
+    transparent var(--w) calc(var(--w) * 2)
+  );
+  animation: stripeMove var(--s) ease-in-out infinite alternate;
+}
+
+@keyframes stripeMove {
+  from {
+    transform: translateX(var(--x));
+  }
+  to {
+    transform: translateX(calc(var(--x) - 120px));
+  }
+}
+
+/* bars */
+
+.ais-bars {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.ais-bars span {
+  width: 3px;
+  height: var(--h);
+  background: var(--bar);
+  border-radius: 3px;
+  animation: wave 1.5s ease-in-out infinite;
+  animation-delay: var(--d);
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    height: 20%;
+  }
+  50% {
+    height: var(--h);
+  }
+}
+
+/* ================= PERSON ================= */
+
+.ais-girl {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 110%;
+  object-fit: contain;
+  z-index: 2;
+  clip-path: inset(-40% 0 0 0 round 0 0 22px 22px);
+}
+
+/* ================= FLOATING LABEL ================= */
+/* ========= CONNECTED FLOATING LABEL ========= */
+
+.ais-label {
+  position: absolute;
+  left: 50%;
+  top: 72%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  z-index: 20;
+  white-space: nowrap;
+  filter: drop-shadow(0 16px 28px rgba(15, 23, 42, 0.18));
+}
+
+.ais-pill {
+  height: 58px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  color: #0f172a;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Left section with connected icon */
+.ais-pill-left {
+  padding: 0 18px 0 10px;
+  border-radius: 18px 0 0 18px;
+}
+
+.ais-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  color: #10213a;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+/* Right connected pill */
+.ais-pill-right {
+  padding: 0 22px;
+  border-left: 1px solid #eceff3;
+  border-radius: 0 18px 18px 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  color: #25324a;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .ais-label {
+    top: 74%;
+  }
+
+  .ais-pill {
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .ais-pill-left {
+    padding: 0 10px 0 6px;
+    border-radius: 12px 0 0 12px;
+  }
+
+  .ais-pill-right {
+    padding: 0 12px;
+    border-radius: 0 12px 12px 0;
+  }
+
+  .ais-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    margin-right: 6px;
+    font-size: 11px;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .ais-wrapper {
+    padding: 40px 0 16px;
+  }
+
+  .ais-track {
+    gap: 16px;
+  }
+
+  .ais-card {
+    width: 240px;
+    height: 250px;
+  }
+
+  .ais-bgbox {
+    border-radius: 16px;
+  }
+
+  .ais-label {
+    top: 74%;
+  }
+
+  .ais-pill {
+    height: 38px;
+    font-size: 12px;
+  }
+
+  .ais-pill-left {
+    padding: 0 10px 0 8px;
+    border-radius: 12px 0 0 12px;
+  }
+
+  .ais-pill-right {
+    padding: 0 12px;
+    border-radius: 0 12px 12px 0;
+  }
+
+  .ais-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 6px;
+    border-radius: 7px;
+    font-size: 11px;
+  }
+}
+
+/* ================= REDUCED MOTION ================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .ais-track {
+    transition-duration: 0.01s;
+  }
+
+  .ais-triangles,
+  .ais-stripes span,
+  .ais-bars span {
+    animation: none;
+  }
+}

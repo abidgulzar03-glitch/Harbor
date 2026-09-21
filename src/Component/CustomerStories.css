@@ -1,0 +1,374 @@
+.cs-section {
+  --cs-radius: 32px;
+  --cs-ink: #0b2343;
+  position: relative;
+  padding: 72px 0 140px;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.18) 18%,
+      transparent 102%
+    ),
+    linear-gradient(
+      180deg,
+      #3a7bd5 0%,
+      #6b8dd6 25%,
+      #a18cd1 50%,
+      #fbc2eb 75%,
+      rgba(255, 229, 236, 0) 100%
+    );
+  overflow: hidden;
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+  color: #fff;
+}
+
+/* ---------- Header ---------- */
+
+.cs-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.cs-eyebrow {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 18px;
+}
+
+.cs-heading {
+  margin: 0 auto;
+  font-size: clamp(36px, 5vw, 50px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+
+/* ---------- Stage ---------- */
+
+.cs-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1120px;
+  margin: 0 auto;
+  gap: 8px;
+}
+
+/* ---------- Side Peek Cards ---------- */
+
+.cs-peek {
+  flex: 0 0 auto;
+  width: 98px;
+  height: 290px;
+  border: 13px solid #fff;
+  border-radius: 30px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.18);
+  transition: 0.35s ease;
+}
+
+.cs-peek:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+.cs-peek-far {
+  width: 48px;
+  height: 160px;
+  opacity: 0.55;
+}
+
+.cs-peek-near {
+  opacity: 0.92;
+}
+
+/* ---------- Main Card ---------- */
+
+.cs-card {
+  position: relative;
+  z-index: 3;
+  width: min(780px, 92vw);
+  min-height: 520px;
+  background: #fff;
+  border: 8px solid #fff;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(16, 24, 40, 0.18);
+}
+
+.cs-card-face {
+  display: grid;
+  grid-template-columns: 48% 52%;
+  min-height: 504px;
+}
+
+/* animation */
+
+.cs-card-left,
+.cs-card-right {
+  animation: slideIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cs-card-left {
+  animation-delay: 0.08s;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(42px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ---------- Left ---------- */
+
+.cs-card-left {
+  padding: 38px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+}
+
+.cs-stat {
+  margin: 0;
+  max-width: 240px;
+  font-family: Inter, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  color: #0b2343;
+}
+
+.cs-quote {
+  margin: 0;
+  max-width: 300px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 25px;
+  line-height: 1.2;
+  color: #0b2343;
+}
+
+.cs-attribution {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.cs-name {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #f3f4f6;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4b5563;
+}
+
+.cs-title {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #f3f4f6;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #4b5563;
+  max-width: 285px;
+}
+
+/* ---------- Right ---------- */
+
+.cs-card-right {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.cs-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cs-photo-scrim {
+  position: absolute;
+  inset: auto 0 0;
+  height: 38%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+}
+
+.cs-logo {
+  position: absolute;
+  left: 24px;
+  bottom: 22px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ---------- Pagination ---------- */
+
+.cs-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.cs-dot {
+  width: 6px;
+  height: 6px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.cs-dot:hover {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.cs-track {
+  width: 46px;
+  height: 6px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.cs-track-fill {
+  width: 100%;
+  height: 100%;
+  background: #4c5eff;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: progress linear forwards;
+}
+
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 860px) {
+  .cs-card {
+    width: 92vw;
+  }
+
+  .cs-card-face {
+    grid-template-columns: 46% 54%;
+  }
+
+  .cs-stat {
+    font-size: 28px;
+  }
+
+  .cs-quote {
+    font-size: 22px;
+  }
+
+  .cs-peek-far {
+    display: none;
+  }
+
+  .cs-peek-near {
+    width: 58px;
+    height: 180px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 620px) {
+  .cs-header {
+    margin-bottom: 40px;
+  }
+
+  .cs-heading {
+    font-size: 32px;
+  }
+
+  .cs-peek {
+    display: none;
+  }
+
+  .cs-card {
+    width: 94vw;
+    min-height: 360px;
+    border-radius: 24px;
+  }
+
+  .cs-card-face {
+    grid-template-columns: 48% 52%;
+    min-height: 344px;
+  }
+
+  .cs-card-left {
+    padding: 20px 16px;
+  }
+
+  .cs-stat {
+    font-size: 20px;
+    max-width: 140px;
+  }
+
+  .cs-quote {
+    font-size: 16px;
+    max-width: 150px;
+  }
+
+  .cs-name {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  .cs-title {
+    font-size: 10px;
+    padding: 6px 10px;
+    max-width: 150px;
+  }
+
+  .cs-logo {
+    left: 14px;
+    bottom: 12px;
+    font-size: 12px;
+  }
+}
+
+/* ---------- Reduced Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-card-left,
+  .cs-card-right,
+  .cs-track-fill,
+  .cs-peek {
+    animation: none !important;
+    transition: none !important;
+  }
+}

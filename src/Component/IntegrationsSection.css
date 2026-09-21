@@ -1,0 +1,175 @@
+/* ===== Calendly Integrations Section ===== */
+
+.integrations {
+  width: 100%;
+  background: #f4f3ef;
+  padding: 120px 24px;
+}
+
+.integrations-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.8px;
+  color: #0f172a;
+  margin-bottom: 28px;
+}
+
+.integrations h2 {
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -2.8px;
+  font-weight: 500;
+  color: #0b1f3a;
+  margin: 0;
+}
+
+.subtitle {
+  max-width: 600px;
+  margin: 28px auto 48px;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #667085;
+  font-weight: 100;
+}
+
+.integration-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #0b1f3a;
+  font-size: 17px;
+  font-weight: 400;
+  transition: 0.25s ease;
+}
+.integration-btn:hover {
+  color: #0b1f3a9b;
+}
+.integration-btn span {
+  font-size: 22px;
+  transition: transform 0.25s ease;
+}
+
+.integration-btn:hover span {
+  color: #0b1f3a92;
+}
+
+/* =========================
+   Tablet (≤ 992px)
+========================= */
+@media (max-width: 992px) {
+  .integrations {
+    padding: 88px 32px;
+  }
+
+  .integrations-container {
+    max-width: 720px;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 1.8px;
+    margin-bottom: 20px;
+  }
+
+  .integrations h2 {
+    font-size: 56px;
+    line-height: 0.98;
+    letter-spacing: -2px;
+  }
+
+  .subtitle {
+    font-size: 22px;
+    line-height: 1.5;
+    margin: 22px auto 40px;
+  }
+
+  .integration-btn {
+    font-size: 22px;
+  }
+
+  .integration-btn span {
+    font-size: 24px;
+  }
+}
+
+/* =========================
+   Mobile (≤ 768px)
+========================= */
+@media (max-width: 768px) {
+  .integrations {
+    padding: 64px 20px;
+  }
+
+  .integrations-container {
+    max-width: 100%;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 1.6px;
+    margin-bottom: 16px;
+  }
+
+  .integrations h2 {
+    font-size: 40px;
+    line-height: 1.02;
+    letter-spacing: -1.8px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+    line-height: 1.55;
+    margin: 20px auto 32px;
+    max-width: 320px;
+  }
+
+  .integration-btn {
+    font-size: 18px;
+    font-weight: 600;
+    gap: 8px;
+  }
+
+  .integration-btn span {
+    font-size: 20px;
+  }
+}
+
+/* =========================
+   Small Mobile (≤ 480px)
+========================= */
+@media (max-width: 480px) {
+  .integrations {
+    padding: 56px 18px;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+  }
+
+  .integrations h2 {
+    font-size: 34px;
+    line-height: 1.05;
+    letter-spacing: -1.4px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    max-width: 290px;
+    margin-bottom: 28px;
+  }
+
+  .integration-btn {
+    font-size: 17px;
+  }
+
+  .integration-btn span {
+    font-size: 18px;
+  }
+}

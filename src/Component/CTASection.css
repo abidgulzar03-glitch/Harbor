@@ -1,0 +1,138 @@
+/* ===========================
+   CTA SECTION
+=========================== */
+
+.cta-section {
+  background: #f5f4ef;
+  padding: 110px 20px 120px;
+}
+
+.cta-container {
+  width: 100%;
+  max-width: 840px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-badge {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+.cta-title {
+  margin: 0;
+  color: #041e42;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 0.96;
+  letter-spacing: -2.5px;
+  font-weight: 600;
+}
+
+.cta-text {
+  max-width: 640px;
+  margin: 24px auto 36px;
+  color: #667085;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  height: 56px;
+  padding: 0 30px;
+  background: #111827;
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.cta-button:hover {
+  background: #0a2d63;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(10, 45, 99, 0.22);
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 80px 24px 90px;
+  }
+
+  .cta-container {
+    max-width: 560px;
+  }
+
+  .cta-title {
+    font-size: 46px;
+    line-height: 1;
+    letter-spacing: -1.8px;
+  }
+
+  .cta-text {
+    font-size: 15px;
+    margin: 20px auto 32px;
+  }
+
+  .cta-button {
+    min-width: 170px;
+    height: 52px;
+    font-size: 15px;
+  }
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 480px) {
+  .cta-section {
+    padding: 60px 20px 72px;
+  }
+
+  .cta-container {
+    max-width: 100%;
+  }
+
+  .cta-badge {
+    font-size: 10px;
+    letter-spacing: 1.8px;
+    margin-bottom: 16px;
+  }
+
+  .cta-title {
+    font-size: 34px;
+    line-height: 1.05;
+    letter-spacing: -1.2px;
+  }
+
+  .cta-text {
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 18px auto 28px;
+    max-width: 100%;
+  }
+
+  .cta-button {
+    width: 100%;
+    max-width: 240px;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 14px;
+    margin: 0 auto;
+  }
+}

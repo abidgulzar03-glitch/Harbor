@@ -5,6 +5,11 @@ import StepsSection from "./Component/StepsSection";
 import CalendlyFeatureScroll from "./Component/CalendlyFeatureScroll";
 import CallieAnimation from "./Component/CallieAnimation";
 import NotetakerShowcase from "./Component/NotetakerShowcase";
+import PaymentsShowcase from "./Component/PaymentsShowcase.";
+import CustomerStories from "./Component/CustomerStories";
+import IntegrationsSection from "./Component/IntegrationsSection";
+import IntegrationsIcons from "./Component/IntegrationsIcons";
+import CTASection from "./Component/CTASection";
 
 function App() {
   return (
@@ -15,6 +20,11 @@ function App() {
       <CalendlyFeatureScroll />
       <CallieAnimation />
       <NotetakerShowcase />
+      <PaymentsShowcase />
+      <CustomerStories />
+      <IntegrationsSection />
+      <IntegrationsIcons />
+      <CTASection />
     </>
   );
 }
