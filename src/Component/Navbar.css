@@ -107,35 +107,87 @@
 }
 
 /* =========================
-   DROPDOWN
+   MEGA DROPDOWN (Platform)
 ========================= */
 
-.navbar-dropdown {
+.navbar-dropdown-mega {
   position: absolute;
-  top: 56px;
+  top: 61px;
   left: 0;
-  min-width: 220px;
-  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 19px 12px;
   background: #fff;
   border: 1px solid #ececec;
-  border-radius: 16px;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
-  display: flex;
-  flex-direction: column;
+  border-radius: 20px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.379);
+  padding: 19px;
+  width: 600px;
   z-index: 200;
+  animation: dropdownIn 0.18s ease;
 }
 
-.navbar-dropdown a {
-  padding: 12px;
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 14px;
   text-decoration: none;
   color: #0b1f3a;
-  border-radius: 10px;
-  font-size: 14px;
   transition: 0.2s;
 }
 
-.navbar-dropdown a:hover {
-  background: #f3f4f6;
+.dropdown-item:hover {
+  background: #f1f4f9;
+}
+
+.dropdown-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e7edf6;
+  color: #071227;
+  stroke-width: 2.6;
+}
+
+.dropdown-icon svg {
+  stroke-width: 2.6;
+}
+
+.dropdown-item-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-item-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0b1f3a;
+}
+
+.dropdown-item-sub {
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: #64748b;
+  margin-top: 3px;
 }
 
 /* =========================
@@ -346,6 +398,7 @@
     background: #fff;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
     transform: translateX(100%);
     transition: 0.3s;
     z-index: 9998;
@@ -375,17 +428,24 @@
   .mobile-dropdown {
     display: flex;
     flex-direction: column;
-    padding-left: 14px;
+    padding-left: 6px;
     background: #f8fafc;
     border-radius: 8px;
     margin: 6px 0 10px;
   }
 
   .mobile-dropdown a {
-    padding: 12px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
     text-decoration: none;
-    color: #475569;
-    font-size: 15px;
+    color: #0b1f3a;
+    border-radius: 10px;
+  }
+
+  .mobile-dropdown a:hover {
+    background: #eef2f7;
   }
 
   .mobile-actions {

@@ -1,0 +1,546 @@
+/* ========================================
+   FOOTER
+======================================== */
+
+.calendly-footer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 50px;
+  padding: 72px 48px 28px;
+
+  background: #0b1c2c;
+  color: #a8b3c0;
+
+  border-radius: 20px;
+
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+
+  box-sizing: border-box;
+}
+
+.calendly-footer *,
+.calendly-footer *::before,
+.calendly-footer *::after {
+  box-sizing: border-box;
+}
+
+/* ========================================
+   FOOTER TOP
+======================================== */
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 310px 1fr;
+  gap: 250px;
+  margin-bottom: 36px;
+}
+
+/* ========================================
+   LEFT SECTION
+======================================== */
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+}
+
+/* Slogan */
+.slogan {
+  max-width: 400px;
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+/* ========================================
+   LOGO
+======================================== */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: auto;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: #0069ff;
+
+  color: #ffffff;
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.logo-text {
+  color: #ffffff;
+
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* ========================================
+   FOOTER BUTTONS
+======================================== */
+
+.footer-buttons {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 57px;
+  margin-bottom: -24px;
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 120px;
+
+  padding: 11px 20px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Book a Demo */
+
+.demo-btn {
+  background: #0069ff;
+  border: 1px solid #0069ff;
+
+  color: #ffffff;
+}
+
+.demo-btn:hover {
+  background: #0056d6b9;
+  border-color: #0056d6;
+
+  color: #ffffff;
+}
+
+/* Login */
+
+.login-btn-2 {
+  background: transparent;
+  border: 1px solid #536577;
+
+  color: #ffffff;
+}
+
+.login-btn-2:hover {
+  background: #ffffffd3;
+  border-color: #ffffff;
+
+  color: #0b1c2c;
+}
+
+/* ========================================
+   FOOTER LINKS
+======================================== */
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 156px;
+}
+
+.link-column h4 {
+  margin: 0 0 16px;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.link-column ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.link-column li {
+  margin-bottom: 10px;
+}
+
+.link-column a {
+  color: #a8b3c0;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.link-column a:hover {
+  color: #ffffff;
+}
+
+/* ========================================
+   EMAIL
+======================================== */
+
+.brand-email {
+  display: inline-block;
+  width: fit-content;
+
+  margin-top: 16px;
+
+  color: #4d9fff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-decoration: underline;
+
+  transition: color 0.2s ease;
+}
+
+.brand-email:hover {
+  color: #7ebaff;
+}
+
+/* ========================================
+   DIVIDER
+======================================== */
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  margin: 6px 19px 41px;
+  background: #1e2f42;
+  margin-top: 59px;
+}
+
+/* ========================================
+   FOOTER BOTTOM
+======================================== */
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-top: 10px;
+
+  color: #ffffff;
+
+  font-size: 13px;
+}
+
+.bottom-left {
+  color: #8ea1b5;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  letter-spacing: 0.2px;
+}
+
+.bottom-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 38px;
+}
+
+.bottom-links a {
+  color: #ffffff;
+
+  text-decoration: none;
+
+  transition: opacity 0.2s ease;
+}
+
+.bottom-links a:hover {
+  opacity: 0.8;
+}
+
+.copyright {
+  color: #f4f7fb;
+
+  font-size: 13px;
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1024px) {
+  .calendly-footer {
+    padding: 56px 36px 24px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .footer-left {
+    min-height: auto;
+  }
+
+  .logo {
+    margin-top: 28px;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-wrap: wrap;
+    row-gap: 16px;
+  }
+}
+
+/* ========================================
+   SMALL TABLET
+======================================== */
+
+@media (max-width: 850px) {
+  .footer-top {
+    gap: 36px;
+  }
+
+  .footer-links {
+    gap: 24px;
+  }
+
+  .slogan {
+    font-size: 40px;
+  }
+
+  .logo-text {
+    font-size: 28px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+  .calendly-footer {
+    width: 100%;
+
+    margin: -152px auto 0;
+
+    padding: 48px 24px 24px;
+
+    border-radius: 0;
+  }
+
+  /* Top */
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .footer-left {
+    min-height: auto;
+  }
+
+  /* Slogan */
+
+  .slogan {
+    max-width: 100%;
+
+    font-size: 36px;
+    line-height: 1.08;
+    letter-spacing: -0.8px;
+  }
+
+  /* Logo */
+
+  .logo {
+    margin-top: 28px;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+
+    font-size: 20px;
+  }
+
+  .logo-text {
+    font-size: 26px;
+  }
+
+  /* Buttons */
+
+  .footer-buttons {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 20px;
+  }
+
+  .footer-btn {
+    min-width: 110px;
+
+    padding: 10px 16px;
+
+    font-size: 13px;
+  }
+
+  /* Links */
+
+  .footer-links {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+  .link-column h4 {
+    margin-bottom: 12px;
+  }
+
+  .link-column li {
+    margin-bottom: 8px;
+  }
+
+  /* Divider */
+
+  .footer-divider {
+    margin-bottom: 24px;
+  }
+
+  /* Bottom */
+
+  .footer-bottom {
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    /* gap: 18px; */
+
+    margin: 0;
+
+    /* padding-top: 20px; */
+
+    text-align: center;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .bottom-left {
+    width: 100%;
+
+    text-align: center;
+
+    line-height: 1.6;
+  }
+
+  .bottom-links {
+    justify-content: center;
+
+    width: 100%;
+
+    gap: 10px 18px;
+  }
+
+  .bottom-links a {
+    color: #d6e1ec;
+
+    font-size: 12px;
+  }
+
+  .copyright {
+    width: 100%;
+
+    color: #8ea1b5;
+
+    font-size: 12px;
+    line-height: 1.5;
+
+    text-align: center;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+  .calendly-footer {
+    padding: 42px 20px 22px;
+    margin-top: 27px;
+  }
+
+  .slogan {
+    font-size: 32px;
+  }
+
+  .logo-text {
+    font-size: 24px;
+  }
+
+  .footer-buttons {
+    width: 100%;
+  }
+
+  .footer-btn {
+    flex: 1;
+    min-width: 0;
+    margin-top: 20px;
+    padding: 11px 14px;
+  }
+
+  .footer-links {
+    gap: 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 29px;
+  }
+
+  .bottom-left {
+    font-size: 11px;
+  }
+}
