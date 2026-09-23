@@ -14,6 +14,7 @@ import IntegrationsIcons from "./Component/IntegrationsIcons";
 import CTASection from "./Component/CTASection";
 import Footer from "./Component/Footer";
 
+
 import TheLoop from "./Pages/Platform/TheLoop";
 
 function Home() {
