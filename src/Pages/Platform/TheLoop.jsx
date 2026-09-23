@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./TheLoop.css";
-// import HowItWorks from "./WorkflowSection";
+import HowItWorks from "./WorkflowSection";
 
 function CheckIcon() {
   return (
@@ -70,6 +70,120 @@ function PhoneIcon() {
     >
       <rect x="6" y="2" width="12" height="20" rx="2" />
       <line x1="11" y1="18" x2="13" y2="18" />
+    </svg>
+  );
+}
+
+function MonitorIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <line x1="8" y1="21" x2="16" y2="21" />
+      <line x1="12" y1="17" x2="12" y2="21" />
+    </svg>
+  );
+}
+
+function ListIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="8" y1="6" x2="21" y2="6" />
+      <line x1="8" y1="12" x2="21" y2="12" />
+      <line x1="8" y1="18" x2="21" y2="18" />
+      <line x1="3" y1="6" x2="3.01" y2="6" />
+      <line x1="3" y1="12" x2="3.01" y2="12" />
+      <line x1="3" y1="18" x2="3.01" y2="18" />
+    </svg>
+  );
+}
+
+function GearIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </svg>
+  );
+}
+
+function ChartIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="18" y1="20" x2="18" y2="10" />
+      <line x1="12" y1="20" x2="12" y2="4" />
+      <line x1="6" y1="20" x2="6" y2="14" />
+    </svg>
+  );
+}
+
+function LocationIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+
+function LinkIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
     </svg>
   );
 }
@@ -144,9 +258,87 @@ const platformFeatures = [
   },
 ];
 
+const moduleCards = [
+  {
+    title: "Workspace",
+    icon: <MonitorIcon />,
+    stat: "4 essential modules",
+    quote: "Everything starts from one clean workspace.",
+    author: "Dashboard · Load Board · Pipeline · Container 360",
+    items: ["Dashboard", "Load Board", "Pipeline", "Container 360"],
+  },
+  {
+    title: "Records",
+    icon: <ListIcon />,
+    stat: "4 record modules",
+    quote: "Customers, carriers and approvals in one place.",
+    author: "Records Management",
+    items: ["Customers", "Carriers", "Approvals", "Credit Requests"],
+  },
+  {
+    title: "Operations",
+    icon: <GearIcon />,
+    stat: "8 operational modules",
+    quote: "Manage every shipment from booking to delivery.",
+    author: "Operations Suite",
+    items: [
+      "Shipments board",
+      "Tasks & exceptions",
+      "Tracking",
+      "Rate board",
+      "Arrival notices",
+      "Delivery orders",
+      "Appointments",
+      "Auto Pilot",
+    ],
+  },
+  {
+    title: "Finance",
+    icon: <ChartIcon />,
+    stat: "8 finance modules",
+    quote: "Invoices, receivables and complete company P&L.",
+    author: "Finance Suite",
+    items: [
+      "Invoices",
+      "Receivables",
+      "Payables",
+      "Advance Ledger",
+      "Debit & Credit Notes",
+      "Commissions",
+      "Operating Expenses",
+      "Company P&L",
+    ],
+  },
+  {
+    title: "Administration",
+    icon: <LocationIcon />,
+    stat: "6 admin modules",
+    quote: "Control users, reports and integrations effortlessly.",
+    author: "Administration Panel",
+    items: [
+      "Reports",
+      "Audit Log",
+      "Users & Roles",
+      "Company Profile",
+      "Integrations",
+      "Portal Control",
+    ],
+  },
+  {
+    title: "Platform",
+    icon: <LinkIcon />,
+    stat: "5 connected sections",
+    quote:
+      "Operations, Compliance, Finance, Portals and Reports stay connected.",
+    author: "Entire Platform",
+    items: ["Operations", "Compliance", "Finance", "Portals", "Reports"],
+  },
+];
+
 function TheLoop() {
   const platformRef = useRef(null);
   const [platformInView, setPlatformInView] = useState(false);
+  const [activeModule, setActiveModule] = useState(2); // Operations by default
 
   useEffect(() => {
     const node = platformRef.current;
@@ -278,7 +470,7 @@ function TheLoop() {
           <br />
           Two of them refuse.
         </h2>
-        {/* <HowItWorks /> */}
+        <HowItWorks />
       </section>
 
       {/* ========================================
@@ -449,6 +641,84 @@ function TheLoop() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+   
+      <section className="module-showcase">
+        <p className="module-label">EVERY MODULE</p>
+        <h2 className="module-heading">
+          Thirty modules, Five
+          <br />
+          sections of one sidebar
+        </h2>
+        <p className="module-subtitle">
+          A section vanishes when a user has no module inside it.
+        </p>
+        <div className="module-layout">
+          {/* LEFT SIDE */}
+          <div className="module-side">
+            {moduleCards.slice(0, 3).map((c, i) => (
+              <button
+                key={c.title}
+                className={`module-mini ${activeModule === i ? "active" : ""}`}
+                onMouseEnter={() => setActiveModule(i)}
+              >
+                <span className="module-mini-icon">{c.icon}</span>
+                <span className="module-mini-label">{c.title}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* CENTER CARD */}
+          <div className="module-card">
+            <div className="module-left">
+              <h3>{moduleCards[activeModule].stat}</h3>
+              <blockquote>“{moduleCards[activeModule].quote}”</blockquote>
+
+              <div className="module-suite">
+                <span className="module-suite-label">
+                  {moduleCards[activeModule].author.toUpperCase()}
+                </span>
+                <div className="module-suite-pill">
+                  {moduleCards[activeModule].items.slice(0, 3).join(" · ")}
+                </div>
+              </div>
+            </div>
+
+            <div className="module-right">
+              <h4>{moduleCards[activeModule].title}</h4>
+              <div className="module-chips">
+                {moduleCards[activeModule].items.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE */}
+          <div className="module-side">
+            {moduleCards.slice(3, 6).map((c, i) => (
+              <button
+                key={c.title}
+                className={`module-mini ${activeModule === i + 3 ? "active" : ""}`}
+                onMouseEnter={() => setActiveModule(i + 3)}
+              >
+                <span className="module-mini-icon">{c.icon}</span>
+                <span className="module-mini-label">{c.title}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* DOTS */}
+        <div className="module-dots">
+          {moduleCards.map((_, i) => (
+            <span
+              key={i}
+              className={activeModule === i ? "active" : ""}
+              onMouseEnter={() => setActiveModule(i)}
+            />
+          ))}
         </div>
       </section>
     </div>

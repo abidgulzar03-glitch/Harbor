@@ -14,7 +14,7 @@ import IntegrationsIcons from "./Component/IntegrationsIcons";
 import CTASection from "./Component/CTASection";
 import Footer from "./Component/Footer";
 
-// import TheLoop from "./Pages/Patform/TheLoop";
+import TheLoop from "./Pages/Platform/TheLoop";
 
 function Home() {
   return (
@@ -54,7 +54,7 @@ function App() {
           <Route path="/" element={<Home />} />
 
           {/* The Loops */}
-          {/* <Route path="/the-loops" element={<TheLoop />} /> */}
+          <Route path="/the-loops" element={<TheLoop />} />
         </Routes>
       </Layout>
     </BrowserRouter>
