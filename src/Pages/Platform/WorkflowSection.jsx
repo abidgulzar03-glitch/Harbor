@@ -58,14 +58,14 @@ export default function WorkflowSection() {
   const GAP = 60;
   const STEP = CARD_WIDTH + GAP;
 
-  /* Screen resize */
+  /* Responsive */
   useEffect(() => {
     const resize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
   }, []);
 
-  /* Desktop sticky horizontal scroll */
+  /* Desktop sticky horizontal */
   useEffect(() => {
     if (isMobile) return;
 
@@ -89,8 +89,7 @@ export default function WorkflowSection() {
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }
-);
+  });
 
   /* Mobile auto slider */
   useEffect(() => {
@@ -103,28 +102,48 @@ export default function WorkflowSection() {
 
     const interval = setInterval(() => {
       const card = container.children[index];
+
       if (card) {
-        card.scrollIntoView({
+        container.scrollTo({
+          left: card.offsetLeft - 20,
           behavior: "smooth",
-          inline: "center",
-          block: "nearest",
         });
       }
 
       setActiveIndex(index);
       index = (index + 1) % cards.length;
-    }, 2000);
+    }, 2500);
 
     return () => clearInterval(interval);
   }, [isMobile]);
+
+  /* Update active card while swiping */
+  const handleMobileScroll = () => {
+    if (!isMobile) return;
+
+    const container = mobileRef.current;
+    if (!container) return;
+
+    const cardWidth = container.children[0]?.clientWidth || 1;
+    const gap = 16;
+    const index = Math.round(container.scrollLeft / (cardWidth + gap));
+    setActiveIndex(Math.min(index, cards.length - 1));
+  };
 
   return (
     <section className="wf-section" ref={sectionRef}>
       <div className="wf-sticky">
         <div
           ref={mobileRef}
+          onScroll={handleMobileScroll}
           className="wf-track"
-          style={isMobile ? {} : { transform: `translateX(-${translateX}px)` }}
+          style={
+            isMobile
+              ? {}
+              : {
+                  transform: `translateX(-${translateX}px)`,
+                }
+          }
         >
           {cards.map((card, index) => (
             <div
@@ -133,6 +152,7 @@ export default function WorkflowSection() {
             >
               <div className="card-top">
                 <span className="number">{card.id}</span>
+
                 {card.badge && <span className="badge">{card.badge}</span>}
               </div>
 
