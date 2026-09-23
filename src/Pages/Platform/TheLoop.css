@@ -1334,28 +1334,7 @@
 
 @media (max-width: 768px) {
   .module-showcase {
-    position: relative;
     padding: 56px 20px 48px;
-    overflow: hidden;
-    background: transparent;
-  }
-
-  /* Fixed background image */
-  .module-showcase::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-
-    background:
-      linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
-      url("/Pages-imge-3.jpg") center center / cover no-repeat;
-  }
-
-  /* Content scrolls normally */
-  .module-showcase > * {
-    position: relative;
-    z-index: 2;
   }
 
   .module-heading {
@@ -1363,7 +1342,6 @@
     line-height: 1.15;
     margin-bottom: 10px;
     padding: 0;
-    font-weight: 400;
   }
 
   .module-subtitle {
@@ -1372,45 +1350,81 @@
     padding: 0;
   }
 
+  /* Stack layout */
   .module-layout {
     display: flex;
     flex-direction: column;
     gap: 18px;
+    max-width: 100%;
   }
 
+  /* Center card first */
   .module-card {
     order: 1;
     width: 100%;
+    max-width: 100%;
     grid-template-columns: 1fr;
     border-radius: 22px;
+    min-height: auto;
   }
 
+  .module-left {
+    padding: 20px;
+  }
+
+  .module-right {
+    margin: 0 8px 8px;
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .module-left h3 {
+    font-size: 20px;
+  }
+
+  .module-left blockquote {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .module-right h4 {
+    font-size: 18px;
+  }
+
+  /* 6 mini cards */
+  /* Smaller mini cards */
   .module-side {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 10px;
     width: 100%;
-  }
-
-  .module-side:first-child {
-    order: 2;
-  }
-  .module-side:last-child {
-    order: 3;
   }
 
   .module-mini {
     width: 100%;
-    height: 92px;
-    border-radius: 18px;
-    padding: 12px 8px;
+    height: 72px; /* smaller */
+    border-radius: 14px;
+    padding: 8px 6px;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .module-mini-icon svg {
+    width: 18px;
+    height: 18px;
   }
 
   .module-mini-label {
     writing-mode: horizontal-tb;
     transform: none;
-    font-size: 11px;
+    font-size: 9px;
+    line-height: 1.1;
     text-align: center;
+    font-weight: 600;
+  }
+
+  .module-dots {
+    margin-top: 20px;
   }
 }
 /* =========================================================
