@@ -1,0 +1,490 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* =========================================================
+   UNIVERSAL RESET
+========================================================= */
+
+.email-lock-section,
+.email-lock-section *,
+.email-lock-section *::before,
+.email-lock-section *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.email-lock-section {
+  width: 100%;
+  padding: 70px clamp(32px, 8vw, 120px);
+
+  background: transparent;
+
+  color: #17140f;
+
+  font-family: "Inter", Arial, "Helvetica Neue", sans-serif;
+}
+
+.email-lock-container {
+  width: 100%;
+
+  padding: 42px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 55px;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(244, 241, 233, 0.372)
+  );
+
+  border-radius: 0;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 30px 80px rgba(23, 20, 15, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================================
+   LEFT COPY
+========================================================= */
+
+.email-lock-copy {
+  width: 100%;
+}
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.email-lock-badge {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 8px;
+
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(248, 113, 113, 0.2);
+
+  background: rgba(239, 68, 68, 0.08);
+
+  color: #f87171;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.04em;
+}
+
+.email-lock-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.email-lock-title {
+  margin: 24px 0 26px;
+
+  max-width: 560px;
+
+  color: #17140f;
+
+  font-size: clamp(34px, 4vw, 54px);
+
+  font-weight: 500;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.045em;
+}
+
+.email-lock-title span {
+  color: #6b6656;
+  font-weight: 400;
+}
+
+/* =========================================================
+   PRIMARY TEXT
+========================================================= */
+
+.email-lock-primary-text {
+  max-width: 520px;
+
+  margin: 0 0 22px;
+
+  padding-left: 16px;
+
+  border-left: 2px solid rgba(239, 68, 68, 0.65);
+
+  color: #33302a;
+
+  font-size: 11px;
+
+  line-height: 1.75;
+}
+
+/* =========================================================
+   SECONDARY TEXT
+========================================================= */
+
+.email-lock-secondary-text {
+  max-width: 520px;
+
+  margin: 0;
+
+  padding-left: 16px;
+
+  border-left: 2px solid #d8d3c3;
+
+  color: #6b6656;
+
+  font-size: 11px;
+
+  line-height: 1.75;
+}
+
+/* =========================================================
+   CONSOLE
+========================================================= */
+
+.email-lock-console-wrapper {
+  width: 100%;
+
+  transition: 0.5s;
+}
+.email-lock-console-wrapper:hover {
+  transform: translateY(-4px);
+}
+.email-lock-console {
+  width: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid #d8d3c3;
+
+  border-radius: 14px;
+
+  background: #fbfaf5;
+
+  box-shadow: 0 25px 60px rgba(23, 20, 15, 0.1);
+}
+
+/* =========================================================
+   CONSOLE HEADER
+========================================================= */
+
+.email-lock-console-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 17px 20px;
+
+  border-bottom: 1px solid #d8d3c3;
+
+  background: rgba(23, 20, 15, 0.04);
+}
+
+.email-lock-console-title {
+  display: flex;
+
+  align-items: center;
+  gap: 9px;
+
+  color: #33302a;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.email-lock-status-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+}
+
+.email-lock-reference {
+  color: #6b6656;
+
+  font-family: monospace;
+
+  font-size: 10px;
+}
+
+/* =========================================================
+   DATA
+========================================================= */
+
+.email-lock-data {
+  padding: 22px;
+}
+
+.email-lock-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  min-height: 48px;
+
+  padding: 8px 0;
+
+  border-bottom: 1px solid #e6e2d4;
+
+  font-size: 12px;
+}
+
+.email-lock-row:last-child {
+  border-bottom: none;
+}
+
+.email-lock-row > span {
+  color: #6b6656;
+}
+
+.email-lock-row strong {
+  color: #17140f;
+
+  font-family: monospace;
+
+  font-size: 11px;
+
+  text-align: right;
+
+  letter-spacing: 0.02em;
+}
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.email-lock-row b {
+  padding: 6px 9px;
+
+  border-radius: 5px;
+
+  font-family: monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.04em;
+
+  white-space: nowrap;
+}
+
+.email-lock-danger {
+  color: #f87171;
+
+  background: rgba(239, 68, 68, 0.09);
+
+  border: 1px solid rgba(239, 68, 68, 0.28);
+}
+
+.email-lock-warning {
+  color: #fbbf24;
+
+  background: rgba(245, 158, 11, 0.08);
+
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+/* =========================================================
+   ALERT
+========================================================= */
+
+.email-lock-alert {
+  margin: 2px 22px 22px;
+
+  padding: 16px;
+
+  border: 1px solid rgba(239, 68, 68, 0.28);
+
+  border-radius: 9px;
+
+  background: rgba(239, 68, 68, 0.06);
+
+  text-align: center;
+}
+
+.email-lock-alert-title {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  margin-bottom: 6px;
+
+  color: #f87171;
+
+  font-family: monospace;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+}
+
+.email-lock-alert-title svg {
+  width: 15px;
+  height: 15px;
+}
+
+.email-lock-alert p {
+  margin: 0;
+
+  color: #9f2b21;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.email-lock-console-footer {
+  padding: 11px 20px;
+
+  border-top: 1px solid #d8d3c3;
+
+  background: rgba(23, 20, 15, 0.03);
+
+  color: #6b6656;
+
+  font-size: 10px;
+
+  text-align: center;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .email-lock-container {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+
+    padding: 35px;
+  }
+
+  .email-lock-title {
+    max-width: 700px;
+  }
+
+  .email-lock-primary-text,
+  .email-lock-secondary-text {
+    max-width: 700px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .email-lock-section {
+    padding: 45px 18px;
+  }
+
+  .email-lock-container {
+    padding: 25px 18px;
+
+    gap: 35px;
+
+    border-radius: 0;
+  }
+
+  .email-lock-title {
+    margin-top: 20px;
+
+    font-size: 32px;
+  }
+
+  .email-lock-primary-text {
+    font-size: 13px;
+  }
+
+  .email-lock-secondary-text {
+    font-size: 12px;
+  }
+
+  .email-lock-console-header {
+    padding: 15px;
+  }
+
+  .email-lock-data {
+    padding: 16px;
+  }
+
+  .email-lock-row {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    padding: 12px 0;
+  }
+
+  .email-lock-row strong {
+    text-align: left;
+  }
+
+  .email-lock-alert {
+    margin: 2px 16px 16px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+  .email-lock-title {
+    font-size: 28px;
+  }
+
+  .email-lock-container {
+    padding: 22px 15px;
+  }
+
+  .email-lock-console-title {
+    font-size: 9px;
+  }
+
+  .email-lock-reference {
+    font-size: 9px;
+  }
+}

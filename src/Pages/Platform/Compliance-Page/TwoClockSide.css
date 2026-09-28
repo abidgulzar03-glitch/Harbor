@@ -1,0 +1,207 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+.twoClockSide-wrap {
+  --twoClockSide-ink: #1b2027;
+  --twoClockSide-ink-dim: #5b6472;
+  --twoClockSide-ink-faint: #89919c;
+  --twoClockSide-panel: #ffffff;
+  --twoClockSide-panel-line: #e7e2d7;
+  --twoClockSide-base: #f4f0e7;
+  --twoClockSide-amber: #e06a3c;
+  --twoClockSide-amber-dim: #f3d3c0;
+  --twoClockSide-amber-glow: rgba(224, 106, 60, 0.12);
+
+  font-family: "Archivo", system-ui, sans-serif;
+  background: var(--twoClockSide-base);
+  color: var(--twoClockSide-ink);
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.twoClockSide-inner {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 64px clamp(24px, 5vw, 80px) 96px;
+}
+
+.twoClockSide-wrap::before,
+.twoClockSide-wrap::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--twoClockSide-panel-line);
+  pointer-events: none;
+}
+.twoClockSide-wrap::before {
+  width: 520px;
+  height: 520px;
+  top: -280px;
+  right: -180px;
+}
+.twoClockSide-wrap::after {
+  width: 360px;
+  height: 360px;
+  bottom: -220px;
+  left: -140px;
+}
+
+.twoClockSide-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--twoClockSide-panel);
+  border: 1px solid var(--twoClockSide-panel-line);
+  border-radius: 999px;
+  padding: 6px 14px 6px 10px;
+
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: var(--twoClockSide-ink-dim);
+  box-shadow: 0 1px 2px rgba(27, 32, 39, 0.04);
+}
+.twoClockSide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--twoClockSide-amber);
+  box-shadow: 0 0 0 3px var(--twoClockSide-amber-glow);
+}
+
+.twoClockSide-hero {
+  position: relative;
+  margin-top: 28px;
+  max-width: 720px;
+}
+.twoClockSide-hero h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.12;
+  font-weight: 500;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+.twoClockSide-lede {
+  color: var(--twoClockSide-ink-dim);
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 50ch;
+  margin: 0;
+}
+
+.twoClockSide-panels {
+  position: relative;
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 720px) {
+  .twoClockSide-panels {
+    grid-template-columns: 1fr;
+  }
+}
+
+.twoClockSide-panel {
+  background: var(--twoClockSide-panel);
+  border: 1px solid var(--twoClockSide-panel-line);
+  border-radius: 18px;
+  box-shadow: 0 2px 10px rgba(27, 32, 39, 0.05);
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.twoClockSide-dial-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.twoClockSide-dial-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.twoClockSide-unit {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  color: var(--twoClockSide-amber);
+  letter-spacing: 0.04em;
+}
+.twoClockSide-title {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--twoClockSide-ink);
+}
+.twoClockSide-sub {
+  color: var(--twoClockSide-ink-faint);
+  font-size: 13px;
+}
+
+.twoClockSide-panel p {
+  margin: 0;
+  color: var(--twoClockSide-ink-dim);
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 44ch;
+}
+
+.twoClockSide-tag {
+  align-self: flex-start;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  color: var(--twoClockSide-amber);
+  border: 1px solid var(--twoClockSide-amber-dim);
+  background: var(--twoClockSide-amber-glow);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.twoClockSide-foot {
+  position: relative;
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 1px solid var(--twoClockSide-panel-line);
+  padding-top: 32px;
+  max-width: 640px;
+}
+.twoClockSide-foot p {
+  margin: 0;
+  color: var(--twoClockSide-ink-dim);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.twoClockSide-foot a {
+  color: var(--twoClockSide-amber);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+}
+.twoClockSide-foot a:hover {
+  text-decoration: underline;
+}
+.twoClockSide-foot a svg {
+  transition: transform 0.15s ease;
+}
+.twoClockSide-foot a:hover svg {
+  transform: translateX(3px);
+}
+
+.twoClockSide-wrap :focus-visible {
+  outline: 2px solid var(--twoClockSide-amber);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .twoClockSide-foot a svg {
+    transition: none;
+  }
+}

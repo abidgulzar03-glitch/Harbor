@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+.cp-hero,
+.cp-container {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+.cp-hero {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 57px 24px;
+  position: relative;
+  overflow: hidden;
+
+  background: url("/Complaince-hero-img.jpg") center/cover no-repeat;
+  background-attachment: fixed;
+}
+
+.cp-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 18% 92%,
+      rgba(255, 255, 255, 0.22),
+      transparent 36%
+    ),
+    radial-gradient(
+      circle at 88% 10%,
+      rgba(89, 255, 214, 0.15),
+      transparent 28%
+    );
+}
+
+.cp-container {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  text-align: center;
+}
+
+.cp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 5px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px);
+}
+
+.cp-badge-icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d8ef9b;
+  color: #153b71;
+}
+
+.cp-badge-icon svg {
+  width: 8px;
+  height: 8px;
+}
+
+.cp-badge-text {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.cp-title {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.cp-subtitle {
+  max-width: 500px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .cp-hero {
+    min-height: 82vh;
+    padding: 70px 20px;
+    background-attachment: scroll;
+  }
+
+  .cp-badge {
+    margin-bottom: 22px;
+  }
+
+  .cp-badge-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .cp-badge-text {
+    font-size: 18px;
+  }
+
+  .cp-title {
+    font-size: 46px;
+    margin-bottom: 18px;
+  }
+
+  .cp-subtitle {
+    font-size: 15px;
+  }
+}

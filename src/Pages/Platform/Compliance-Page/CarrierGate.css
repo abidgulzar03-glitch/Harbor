@@ -1,0 +1,643 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+.cg-root {
+  --ink: #ffffff;
+  --paper: #ffffff;
+  --line: rgba(255, 255, 255, 0.16);
+
+  --amber: #ffffff;
+  --ok: #31d35f;
+  --miss: #ff6b6b;
+
+  --mono: "Courier New", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: "Poppins", Arial, "Helvetica Neue", sans-serif;
+
+  width: 100%;
+  min-height: 100%;
+
+  background: linear-gradient(135deg, #061827 0%, #082b42 45%, #0b3d55 100%);
+
+  color: #ffffff;
+  font-family: var(--sans);
+
+  padding: 56px 20px 80px;
+}
+
+.cg-root * {
+  box-sizing: border-box;
+}
+
+.cg-wrap {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   SMALL GLASS STAMP
+========================================================= */
+
+.cg-stamp-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  margin: 0 auto;
+
+  padding: 5px 9px;
+
+  background: rgba(255, 255, 255, 0.13);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.cg-stamp {
+  color: #ffffff;
+
+  font-family: var(--mono);
+
+  font-size: 11px;
+  line-height: 1;
+
+  letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.cg-root h1 {
+  margin: 13px 0 19px;
+
+  color: #ffffff;
+
+  font-size: clamp(30px, 4vw, 52px);
+
+  font-weight: 600;
+
+  line-height: 1.05;
+
+  text-align: center;
+
+  letter-spacing: -0.01em;
+}
+
+/* =========================================================
+   LEDE
+========================================================= */
+
+.cg-lede {
+  max-width: 560px;
+
+  margin: 0 auto 48px;
+
+  color: rgba(255, 255, 255, 0.85);
+
+  font-size: 16px;
+
+  line-height: 1.55;
+
+  text-align: center;
+}
+
+.cg-lede b {
+  color: #ffffff;
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   REQUIREMENTS STRIP
+========================================================= */
+
+.cg-req-strip {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  width: 100%;
+
+  margin-bottom: 36px;
+
+  border: 1px solid var(--line);
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border-radius: 4px;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   REQUIREMENT CARD
+========================================================= */
+
+.cg-req {
+  padding: 22px 18px;
+
+  border-right: 1px solid var(--line);
+
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cg-req:last-child {
+  border-right: none;
+}
+
+/* =========================================================
+   REQUIREMENT TAG
+========================================================= */
+
+.cg-req .cg-tag {
+  margin-bottom: 14px;
+
+  color: #ffffff;
+
+  font-family: var(--mono);
+
+  font-size: 11px;
+
+  letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   REQUIREMENT TITLE
+========================================================= */
+
+.cg-req h3 {
+  margin: 0 0 8px;
+
+  color: #ffffff;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  line-height: 1.3;
+}
+
+/* =========================================================
+   REQUIREMENT TEXT
+========================================================= */
+
+.cg-req p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   LOWER SECTION
+========================================================= */
+
+.cg-lower {
+  display: grid;
+
+  grid-template-columns: 1.1fr 0.9fr;
+
+  width: 100%;
+
+  border: 1px solid var(--line);
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border-radius: 4px;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   REQUIREMENT FIVE
+========================================================= */
+
+.cg-req-five {
+  padding: 40px 36px;
+
+  border-right: 1px solid var(--line);
+
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================================
+   REQUIREMENT FIVE TAG
+========================================================= */
+
+.cg-req-five .cg-tag {
+  margin-bottom: 18px;
+
+  color: #ffffff;
+
+  font-family: var(--mono);
+
+  font-size: 11px;
+
+  letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   REQUIREMENT FIVE HEADING
+========================================================= */
+
+.cg-req-five h2 {
+  margin: 0 0 20px;
+
+  color: #ffffff;
+
+  font-size: clamp(24px, 3vw, 32px);
+
+  font-weight: 700;
+
+  line-height: 1.15;
+}
+
+/* =========================================================
+   REQUIREMENT FIVE TEXT
+========================================================= */
+
+.cg-req-five p {
+  max-width: 44ch;
+
+  margin: 0 0 14px;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 14.5px;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   REFUSE BADGE
+========================================================= */
+
+.cg-refuse {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 16px;
+
+  padding: 10px 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  color: #ffffff;
+
+  font-family: var(--mono);
+
+  font-size: 12.5px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* =========================================================
+   RECORD
+========================================================= */
+
+.cg-record {
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 30px 32px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   RECORD HEADER
+========================================================= */
+
+.cg-record-head {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: baseline;
+
+  padding-bottom: 14px;
+
+  margin-bottom: 14px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.cg-record-head .cg-k {
+  color: #ffffff;
+
+  font-family: var(--mono);
+
+  font-size: 11px;
+
+  letter-spacing: 0.08em;
+}
+
+.cg-record-head .cg-v {
+  color: rgba(255, 255, 255, 0.75);
+
+  font-family: var(--mono);
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   ID LINE
+========================================================= */
+
+.cg-id-line {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 6px;
+}
+
+.cg-id-line .cg-name {
+  color: #ffffff;
+
+  font-size: 17px;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   STATUS BADGE
+========================================================= */
+
+.cg-status-badge {
+  align-self: flex-start;
+
+  margin-bottom: 20px;
+
+  padding: 3px 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  color: #ffffff;
+
+  font-family: var(--mono);
+
+  font-size: 11px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   LEDGER
+========================================================= */
+
+.cg-ledger {
+  border-top: 1px solid var(--line);
+}
+
+.cg-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 11px 0;
+
+  border-bottom: 1px solid var(--line);
+
+  color: #ffffff;
+
+  font-size: 13.5px;
+}
+
+.cg-row .cg-lab {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.cg-row .cg-stat {
+  font-family: var(--mono);
+
+  font-size: 12px;
+}
+
+.cg-stat.cg-ok {
+  color: #31d35f;
+}
+
+.cg-stat.cg-miss {
+  color: #ff6b6b;
+}
+
+/* =========================================================
+   NOT USABLE
+========================================================= */
+
+.cg-not-usable {
+  margin-top: 22px;
+
+  padding: 14px 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cg-not-usable .cg-h {
+  margin-bottom: 6px;
+
+  color: #ffffff;
+
+  font-family: var(--mono);
+
+  font-size: 12px;
+}
+
+.cg-not-usable p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  font-size: 12.5px;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   FOOT LINE
+========================================================= */
+
+.cg-footline {
+  margin-top: 18px;
+
+  color: rgba(255, 255, 255, 0.58);
+
+  font-family: var(--mono);
+
+  font-size: 11px;
+
+  text-align: right;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .cg-root {
+    padding: 48px 18px 70px;
+  }
+
+  .cg-req-five {
+    padding: 32px 26px;
+  }
+
+  .cg-record {
+    padding: 26px 24px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+  .cg-root {
+    padding: 42px 16px 60px;
+  }
+
+  .cg-req-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cg-req {
+    padding: 18px 16px;
+  }
+
+  .cg-req:nth-child(2) {
+    border-right: none;
+  }
+
+  .cg-req:nth-child(4) {
+    border-right: none;
+  }
+
+  .cg-req:nth-child(1),
+  .cg-req:nth-child(2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cg-lower {
+    grid-template-columns: 1fr;
+  }
+
+  .cg-req-five {
+    border-right: none;
+
+    border-bottom: 1px solid var(--line);
+
+    padding: 30px 24px;
+  }
+
+  .cg-record {
+    padding: 26px 24px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .cg-root {
+    padding: 36px 12px 50px;
+  }
+
+  .cg-root h1 {
+    font-size: 30px;
+
+    margin-top: 12px;
+  }
+
+  .cg-lede {
+    margin-bottom: 34px;
+
+    font-size: 14px;
+  }
+
+  .cg-req-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .cg-req {
+    border-right: none !important;
+
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cg-req:last-child {
+    border-bottom: none;
+  }
+
+  .cg-req-five {
+    padding: 26px 20px;
+  }
+
+  .cg-req-five h2 {
+    font-size: 25px;
+  }
+
+  .cg-record {
+    padding: 24px 20px;
+  }
+
+  .cg-record-head {
+    gap: 10px;
+  }
+
+  .cg-id-line {
+    gap: 10px;
+  }
+
+  .cg-row {
+    font-size: 12.5px;
+  }
+
+  .cg-footline {
+    font-size: 10px;
+  }
+
+  .cg-stamp-row {
+    padding: 3px 7px;
+  }
+
+  .cg-stamp {
+    font-size: 10px;
+  }
+}

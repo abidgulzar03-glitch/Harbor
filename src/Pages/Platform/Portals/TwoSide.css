@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.cap-section {
+  font-family: "Poppins", sans-serif;
+  background: #fdfaf3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  padding: 0 64px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* LEFT */
+
+.cap-left {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding: 80px 0;
+  scrollbar-width: none;
+}
+
+.cap-left::-webkit-scrollbar {
+  display: none;
+}
+
+.cap-sticky-head {
+  position: sticky;
+  top: 0;
+  background: #fdfaf3;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5e1d6;
+  z-index: 20;
+}
+
+.cap-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+.cap-headline {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 34px;
+  line-height: 1.2;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.cap-sub {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.cap-features {
+  padding-bottom: 120px;
+}
+
+.cap-feature {
+  padding: 38px 0;
+  border-bottom: 1px solid #e5e1d6;
+  opacity: 0.25;
+  transform: translateY(30px);
+  transition: all 0.45s ease;
+}
+
+.cap-feature.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cap-feature-side {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.cap-feature.is-active .cap-feature-side {
+  color: #2563eb;
+}
+
+.cap-feature-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cap-feature-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cap-feature-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.cap-feature-desc {
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* RIGHT */
+
+.cap-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cap-sticky-card {
+  position: sticky;
+  top: 80px;
+}
+
+.cap-visual {
+  width: 440px;
+  aspect-ratio: 1/1.05;
+  border-radius: 26px;
+  overflow: hidden;
+  position: relative;
+  background: rgb(248, 246, 241); /* Warm off-white */
+}
+
+.cap-chip {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  padding: 5px 12px 5px 5px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cap-chip-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fbcfe8;
+}
+
+.cap-chip-customer {
+  background: #2563eb;
+}
+.cap-chip-carrier {
+  background: #ea580c;
+}
+
+.cap-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 78%;
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.22);
+  animation: cardIn 0.45s ease;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -44%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.cap-card-icon {
+  width: 38px;
+  height: 38px;
+  margin-bottom: 12px;
+}
+
+.cap-card-side {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.cap-card-title {
+  font-size: 21px;
+  margin: 8px 0;
+}
+
+.cap-card-desc {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.cap-card-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.cap-card-badge {
+  background: #ede9fe;
+  color: #6d28d9;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.cap-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-left: 2px solid #dbeafe;
+  padding-left: 10px;
+}
+
+.cap-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.cap-bubble {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .cap-section {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 56px 24px;
+    gap: 40px;
+  }
+
+  .cap-left,
+  .cap-right {
+    height: auto;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .cap-sticky-head,
+  .cap-sticky-card {
+    position: static;
+  }
+
+  .cap-visual {
+    width: 100%;
+    max-width: 360px;
+    margin: auto;
+  }
+}

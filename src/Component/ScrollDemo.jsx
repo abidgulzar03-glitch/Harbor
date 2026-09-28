@@ -1,46 +1,45 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import {
-  Calendar,
-  Sparkles,
-  BookOpen,
-  Wallet,
+  Truck,
+  Bell,
+  ShieldAlert,
+  FileWarning,
   X,
-  Clock,
-  Video,
+  AlertCircle,
 } from "lucide-react";
 import "./ScrollDemo.css";
 
-const TABS = ["schedule", "assistant", "notes", "payment"];
+const TABS = ["detention", "advances", "compliance", "documents"];
 
 const TITLES = {
-  schedule: "Scheduling",
-  assistant: "Assistant",
-  notes: "Notes",
-  payment: "Payments",
+  detention: "Detention",
+  advances: "Advances",
+  compliance: "Compliance",
+  documents: "Documents",
 };
 
 const COPY = {
-  schedule: {
-    badge: "Scheduling",
-    h1: "Book meetings with the world's #1 scheduling tool",
-    p: "Giving you complete control and total customization. Beautiful booking pages with powerful scheduling.",
+  detention: {
+    badge: "Detention Tracking",
+    h1: "Stop losing money to detention and demurrage",
+    p: "Track every free day on every container automatically, so nothing slips past the last free day unnoticed.",
   },
-  assistant: {
-    badge: "Callie Beta",
-    h1: "Introducing your 24/7 AI scheduling assistant",
-    p: "Add Callie to any email thread to coordinate scheduling on your behalf without switching tools or sacrificing control.",
+  advances: {
+    badge: "Quick Pay",
+    h1: "Catch advance shorts before they cost you",
+    p: "See exactly which wires are short, why, and who has to release them — before it becomes a dispute.",
   },
-  notes: {
-    badge: "Notetaker",
+  compliance: {
+    badge: "Carrier Compliance",
     isNew: true,
-    h1: "Actionable, shareable recaps for every meeting",
-    p: "Finish the day knowing every meeting was captured, next steps were tracked, and follow-ups were handled.",
+    h1: "Automatic holds the moment compliance lapses",
+    p: "Expired insurance or missing paperwork puts a carrier on hold instantly, so dispatch never ships on a lapsed policy.",
   },
-  payment: {
-    badge: "Payments",
+  documents: {
+    badge: "Proof of Delivery",
     isNew: true,
-    h1: "Flexible, built-in payment tools",
-    p: "Charge upfront for meetings, sell packages, and send invoices with payment features that make it easy to get paid.",
+    h1: "Never chase down a missing POD again",
+    p: "Flag missing paperwork the moment a load delivers, so invoices don't stall waiting on a signature.",
   },
 };
 
@@ -49,46 +48,9 @@ const PANEL_END = 0.94;
 
 const clamp = (v, min = 0, max = 1) => Math.min(Math.max(v, min), max);
 
-const EMAIL_BODY_TEXT =
-  "Callie, can you help us find 30 minutes this week? Mornings only, please";
-
-function TypingText({ text, speed = 55, className }) {
-  const [shown, setShown] = useState("");
-
-  useEffect(() => {
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    if (reduceMotion) {
-      const id = setTimeout(() => setShown(text), 0);
-      return () => clearTimeout(id);
-    }
-
-    let i = 0;
-    const id = setInterval(() => {
-      i += 1;
-      setShown(text.slice(0, i));
-      if (i >= text.length) clearInterval(id);
-    }, speed);
-
-    return () => clearInterval(id);
-  }, [text, speed]);
-
-  return (
-    <p className={className}>
-      {shown}
-      <span className="cursor" aria-hidden="true">
-        |
-      </span>
-    </p>
-  );
-}
-
 export default function ScrollDemo() {
   const stageRef = useRef(null);
   const [progress, setProgress] = useState(0);
-  const [payStep, setPayStep] = useState(0);
 
   useEffect(() => {
     let frame = null;
@@ -119,14 +81,6 @@ export default function ScrollDemo() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, []);
-
-  // Multi-step animation cycle for the Payment card
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPayStep((prev) => (prev + 1) % 3);
-    }, 3200);
-    return () => clearInterval(interval);
   }, []);
 
   const grow =
@@ -187,7 +141,7 @@ export default function ScrollDemo() {
           {/* Tab icons */}
           <div className="demo-icons">
             {TABS.map((name, i) => {
-              const Icon = [Calendar, Sparkles, BookOpen, Wallet][i];
+              const Icon = [Truck, Bell, ShieldAlert, FileWarning][i];
               return (
                 <button
                   key={name}
@@ -206,10 +160,7 @@ export default function ScrollDemo() {
             {/* Left content */}
             <div className="demo-left">
               <span className="badge-row">
-                <span className="badge">
-                  {tab === "payment" && <Wallet size={14} className="mr-1" />}
-                  {copy.badge}
-                </span>
+                <span className="badge">{copy.badge}</span>
                 {copy.isNew && <span className="new-pill">New</span>}
               </span>
 
@@ -222,244 +173,78 @@ export default function ScrollDemo() {
 
             {/* Right panel */}
             <div className="demo-right">
-              {/* ===== SCHEDULE ===== */}
-              {tab === "schedule" && (
-                <div key="schedule" className="calendar-ui fade">
-                  <div className="cal-shapes">
-                    <span className="shape shape-1"></span>
-                    <span className="shape shape-2"></span>
-                    <span className="shape shape-3"></span>
-                    <span className="shape shape-4"></span>
-                  </div>
-
-                  <div className="cal-left">
-                    <div className="cal-header">
-                      <button className="cal-nav" aria-label="Previous month">
-                        ‹
-                      </button>
-                      <h3>July 2026</h3>
-                      <button className="cal-nav" aria-label="Next month">
-                        ›
-                      </button>
+              {/* ===== DETENTION ===== */}
+              {tab === "detention" && (
+                <div key="detention" className="detention-ui fade">
+                  <div className="exception-card">
+                    <div className="exception-title">MSMU 461 5308</div>
+                    <span className="pill pill-danger">
+                      <AlertCircle size={12} /> Last free day passed
+                    </span>
+                    <div className="detention-bar">
+                      <span className="fill" />
+                      <span className="fill" />
+                      <span className="fill" />
+                      <span className="fill" />
+                      <span className="fill" />
+                      <span className="fill danger" />
                     </div>
-
-                    <div className="weekdays">
-                      {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map(
-                        (d) => (
-                          <span key={d}>{d}</span>
-                        ),
-                      )}
-                    </div>
-
-                    <div className="days">
-                      <span className="pad"></span>
-                      <span className="pad"></span>
-                      <span className="pad"></span>
-
-                      {Array.from({ length: 31 }).map((_, i) => (
-                        <span
-                          key={i}
-                          className={i + 1 === 14 ? "selected" : ""}
-                        >
-                          {i + 1}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="cal-right">
-                    <div className="cal-day-info">
-                      <strong>Thursday</strong>
-                      <span>July 14, 2026</span>
-                    </div>
-
-                    <div className="times">
-                      <button className="time-btn">12:30 PM</button>
-                      <button className="time-btn">2:30 PM</button>
-                      <button className="time-btn booked">✓ Booked</button>
+                    <div className="detention-meta">
+                      <span>Five free days used</span>
+                      <strong>$275.00 / day</strong>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* ===== ASSISTANT ===== */}
-              {tab === "assistant" && (
-                <div key="assistant" className="assistant-ui fade">
-                  <div className="assistant-bg">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-
-                  <div className="email-card">
-                    <div className="email-header">
-                      <div className="avatar">DM</div>
-                      <div className="email-meta">
-                        <strong>Dominic Mills</strong>
-                        <span>To Callie, Tori Mathers</span>
-                      </div>
+              {/* ===== ADVANCES ===== */}
+              {tab === "advances" && (
+                <div key="advances" className="advances-ui fade">
+                  <div className="exception-card exception-card-dark">
+                    <span className="pill pill-gold">
+                      <AlertCircle size={12} /> Advance short
+                    </span>
+                    <div className="advance-amount">$1,240.00</div>
+                    <div className="advance-reason">
+                      Short of the wire on file
                     </div>
-
-                    <TypingText
-                      key="assistant-email-typing"
-                      text={EMAIL_BODY_TEXT}
-                      speed={28}
-                      className="email-body"
-                    />
-                  </div>
-                </div>
-              )}
-
-              {/* ===== NOTES ===== */}
-              {tab === "notes" && (
-                <div key="notes" className="notes-ui fade">
-                  <div
-                    className="notes-bars notes-bars-left"
-                    aria-hidden="true"
-                  >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <div
-                    className="notes-bars notes-bars-right"
-                    aria-hidden="true"
-                  >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-
-                  <div className="note-card">
-                    <div className="note-row">
-                      <div className="note-avatar note-avatar-a">
-                        <img src="/hero-1.jpg" alt="JD" />
-                      </div>
-                      <div className="note-content">
-                        <div className="note-title-row">
-                          Q2 Hiring Review
-                          <svg
-                            viewBox="0 0 24 24"
-                            width="13"
-                            height="13"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="m18 2 4 4-14 14H4v-4Z" />
-                          </svg>
-                        </div>
-                        <div className="note-label">Recap</div>
-                        <div className="note-lines">
-                          <span style={{ width: "92%" }}></span>
-                          <span style={{ width: "78%" }}></span>
-                          <span style={{ width: "62%" }}></span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="note-row">
-                      <div className="note-avatar note-avatar-b">
-                        <img src="/hero-2.jpg" alt="JD" />
-                      </div>
-                      <div className="note-content">
-                        <div className="note-label">
-                          Action Items <span className="note-count">4</span>
-                        </div>
-                        <div className="note-lines">
-                          <span style={{ width: "85%" }}></span>
-                          <span style={{ width: "70%" }}></span>
-                        </div>
-                      </div>
+                    <div className="advance-note">
+                      Only the owner can release it.
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* ===== PAYMENT ===== */}
-              {tab === "payment" && (
-                <div key="payment" className="payment-ui fade">
-                  <div className="pay-shapes">
-                    <span className="pay-shape pay-shape-1"></span>
-                    <span className="pay-shape pay-shape-2"></span>
+              {/* ===== COMPLIANCE ===== */}
+              {tab === "compliance" && (
+                <div key="compliance" className="compliance-ui fade">
+                  <div className="exception-card">
+                    <div className="exception-title">Bay State Cartage</div>
+                    <div className="exception-subtitle">MC 738214</div>
+                    <span className="pill pill-danger">
+                      <AlertCircle size={12} /> Held
+                    </span>
+                    <div className="compliance-reason">
+                      Insurance expired. Dispatch paperwork will not generate.
+                    </div>
                   </div>
+                </div>
+              )}
 
-                  {/* STEP 0: Initial Consultation Toggle Card */}
-                  {payStep === 0 && (
-                    <div key="step-0" className="payment-card-step fade-step">
-                      <h3>Consultation</h3>
-                      <div className="consult-details">
-                        <span>
-                          <Clock size={15} /> 45 min
-                        </span>
-                        <span>
-                          <Video size={15} /> Zoom
-                        </span>
-                      </div>
-                      <div className="toggle-row">
-                        <span>Require payment to book</span>
-                        <div className="toggle-switch active">
-                          <div className="toggle-knob"></div>
-                        </div>
-                      </div>
+              {/* ===== DOCUMENTS ===== */}
+              {tab === "documents" && (
+                <div key="documents" className="documents-ui fade">
+                  <div className="exception-card">
+                    <div className="exception-title">Load #48219</div>
+                    <div className="exception-subtitle">Bay State Cartage</div>
+                    <span className="pill pill-danger">
+                      <AlertCircle size={12} /> POD missing
+                    </span>
+                    <div className="compliance-reason">
+                      Delivered 2 days ago. Invoice can't be sent until the
+                      proof of delivery is uploaded.
                     </div>
-                  )}
-
-                  {/* STEP 1: Amount & Processor Settings */}
-                  {payStep === 1 && (
-                    <div key="step-1" className="payment-card-step fade-step">
-                      <div className="field-group">
-                        <label>Amount to collect</label>
-                        <div className="input-row">
-                          <span className="currency-symbol">$</span>
-                          <input type="text" value="100" readOnly />
-                          <div className="select-badge">USD ▾</div>
-                        </div>
-                      </div>
-                      <div className="field-group">
-                        <label>Payment processor</label>
-                        <div className="select-row">
-                          <span>Stripe</span>
-                          <span>▾</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* STEP 2: Payment Summary View */}
-                  {payStep === 2 && (
-                    <div
-                      key="step-2"
-                      className="payment-card-step fade-step consult-card-step"
-                    >
-                      <div className="avatar-circle">
-                        <img
-                          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
-                          alt="Damian Ellis"
-                        />
-                      </div>
-                      <h3>Consultation</h3>
-                      <div className="consult-price">$100</div>
-                      <div className="consult-powered">Powered by stripe</div>
-                      <div className="consult-meta">
-                        <span>
-                          <Clock size={15} /> 45 min
-                        </span>
-                        <span>
-                          <Video size={15} /> Zoom
-                        </span>
-                      </div>
-                    </div>
-                  )}
+                  </div>
                 </div>
               )}
             </div>

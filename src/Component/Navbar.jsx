@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
+/* ---------- Icons ---------- */
+
 function ChevronIcon({ open }) {
   return (
     <svg
@@ -28,8 +30,6 @@ function HarborIcon() {
   );
 }
 
-/* ---- Mega-menu item icons ---- */
-
 function LoopIcon() {
   return (
     <svg
@@ -39,8 +39,6 @@ function LoopIcon() {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
     >
       <circle cx="12" cy="12" r="8" />
       <circle cx="12" cy="12" r="3" />
@@ -57,30 +55,8 @@ function ComplianceIcon() {
       fill="none"
       stroke="currentColor"
       strokeWidth="2.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
     >
       <path d="M20 6 9 17l-5-5" />
-    </svg>
-  );
-}
-
-function PortalsIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M17 2 21 6 17 10" />
-      <path d="M3 6h18" />
-      <path d="M7 22 3 18 7 14" />
-      <path d="M21 18H3" />
     </svg>
   );
 }
@@ -94,13 +70,9 @@ function OperationsIcon() {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
     >
       <rect x="4" y="3" width="16" height="18" rx="2" />
-      <path d="M8 8h8" />
-      <path d="M8 12h8" />
-      <path d="M8 16h5" />
+      <path d="M8 8h8M8 12h8M8 16h5" />
     </svg>
   );
 }
@@ -114,11 +86,27 @@ function FinanceIcon() {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
     >
       <path d="M12 2v20" />
       <path d="M17 6.5c0-1.9-2.2-3.5-5-3.5s-5 1.4-5 3.2c0 1.9 1.9 2.6 5 3.3s5 1.4 5 3.3c0 1.8-2.2 3.2-5 3.2s-5-1.6-5-3.5" />
+    </svg>
+  );
+}
+
+function PortalsIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path d="M17 2 21 6 17 10" />
+      <path d="M3 6h18" />
+      <path d="M7 22 3 18 7 14" />
+      <path d="M21 18H3" />
     </svg>
   );
 }
@@ -132,17 +120,13 @@ function ReportsIcon() {
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
     >
       <rect x="3" y="3" width="6" height="6" rx="1" />
       <rect x="9.5" y="3" width="6" height="6" rx="1" />
       <rect x="16" y="3" width="5" height="6" rx="1" />
-
       <rect x="3" y="10" width="6" height="6" rx="1" />
       <rect x="9.5" y="10" width="6" height="6" rx="1" />
       <rect x="16" y="10" width="5" height="6" rx="1" />
-
       <rect x="3" y="17" width="6" height="4" rx="1" />
       <rect x="9.5" y="17" width="6" height="4" rx="1" />
       <rect x="16" y="17" width="5" height="4" rx="1" />
@@ -150,12 +134,12 @@ function ReportsIcon() {
   );
 }
 
-/* ---- Platform menu ---- */
+/* ---------- Platform Menu ---------- */
 
 const platformItems = [
   {
     href: "/the-loops",
-    title: "The loop",
+    title: "The Loop",
     sub: "Arrival notice to cash, end to end.",
     icon: <LoopIcon />,
     isRoute: true,
@@ -168,11 +152,11 @@ const platformItems = [
     isRoute: false,
   },
   {
-    href: "#compliance",
+    href: "/compliance", // NEW PAGE
     title: "Compliance",
     sub: "Authority, insurance, W9, signature.",
     icon: <ComplianceIcon />,
-    isRoute: false,
+    isRoute: true,
   },
   {
     href: "#finance",
@@ -182,11 +166,11 @@ const platformItems = [
     isRoute: false,
   },
   {
-    href: "#portals",
+    href: "/portals",
     title: "Portals",
     sub: "Self-serve outside, staff approve inside.",
     icon: <PortalsIcon />,
-    isRoute: false,
+    isRoute: true,
   },
   {
     href: "#reports",
@@ -204,23 +188,21 @@ export default function Navbar() {
 
   const navRef = useRef(null);
 
-  /* ---- Floating navbar ---- */
-
   useEffect(() => {
     const section = document.querySelector(".hero-2");
 
-    if (!section) return;
-
     const handleScroll = () => {
-      setShowFloating(section.getBoundingClientRect().top <= 0);
+      if (section) {
+        setShowFloating(section.getBoundingClientRect().top <= 0);
+      } else {
+        // pages without a .hero-2 (e.g. TheLoop, Compliance) still get the
+        // floating navbar once the user has scrolled a bit
+        setShowFloating(window.scrollY > 80);
+      }
     };
 
     handleScroll();
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
 
     return () => {
@@ -228,8 +210,6 @@ export default function Navbar() {
       window.removeEventListener("resize", handleScroll);
     };
   }, []);
-
-  /* ---- Close dropdown outside ---- */
 
   useEffect(() => {
     const handleClick = (e) => {
@@ -239,10 +219,7 @@ export default function Navbar() {
     };
 
     document.addEventListener("mousedown", handleClick);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClick);
-    };
+    return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
   const toggleMenu = (menu) => {
@@ -254,8 +231,6 @@ export default function Navbar() {
     setOpenMenu(null);
   };
 
-  /* ---- Platform item renderer ---- */
-
   const renderPlatformItem = (item) => {
     const content = (
       <>
@@ -263,57 +238,50 @@ export default function Navbar() {
 
         <span className="dropdown-item-text">
           <span className="dropdown-item-title">{item.title}</span>
-
           <span className="dropdown-item-sub">{item.sub}</span>
         </span>
       </>
     );
 
-    if (item.isRoute) {
-      return (
-        <Link
-          key={item.href}
-          to={item.href}
-          className="dropdown-item"
-          onClick={() => setOpenMenu(null)}
-        >
-          {content}
-        </Link>
-      );
-    }
-
-    return (
+    return item.isRoute ? (
+      <Link
+        key={item.href}
+        to={item.href}
+        className="dropdown-item"
+        onClick={() => {
+          setOpenMenu(null);
+          closeMobile();
+        }}
+      >
+        {content}
+      </Link>
+    ) : (
       <a
         key={item.href}
         href={item.href}
         className="dropdown-item"
-        onClick={() => setOpenMenu(null)}
+        onClick={() => {
+          setOpenMenu(null);
+          closeMobile();
+        }}
       >
         {content}
       </a>
     );
   };
 
-  /* ---- Navbar content ---- */
-
   const NavContent = (
     <div className="navbar-container" ref={navRef}>
-      {/* Logo */}
-
       <Link to="/" className="navbar-logo" onClick={closeMobile}>
         <HarborIcon />
         <span>Harbor</span>
       </Link>
 
-      {/* Desktop */}
-
       <nav className="navbar-links">
         <div className="navbar-item">
           <button
             type="button"
-            className={`navbar-link navbar-dropdown-btn ${
-              openMenu === "platform" ? "active" : ""
-            }`}
+            className={`navbar-link navbar-dropdown-btn ${openMenu === "platform" ? "active" : ""}`}
             onClick={() => toggleMenu("platform")}
           >
             Platform
@@ -330,36 +298,27 @@ export default function Navbar() {
         <a href="#integrations" className="navbar-link">
           Integrations
         </a>
-
         <a href="#pricing" className="navbar-link">
           Pricing
         </a>
-
         <a href="#resources" className="navbar-link">
           Resources
         </a>
       </nav>
 
-      {/* Actions */}
-
       <div className="navbar-actions">
         <a href="#login" className="login-btn">
           Log In
         </a>
-
         <a href="#demo" className="nav-demo-btn">
           Book a Demo
         </a>
       </div>
 
-      {/* Mobile Button */}
-
       <button
         type="button"
         className={`mobile-menu-btn ${mobileOpen ? "active" : ""}`}
         onClick={() => setMobileOpen((prev) => !prev)}
-        aria-label="Toggle navigation"
-        aria-expanded={mobileOpen}
       >
         <span />
         <span />
@@ -370,17 +329,11 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Main Navbar */}
-
       <header className="navbar-static">{NavContent}</header>
-
-      {/* Floating Navbar */}
 
       {showFloating && (
         <header className="navbar-floating">{NavContent}</header>
       )}
-
-      {/* Mobile Menu */}
 
       <div className={`mobile-navbar ${mobileOpen ? "active" : ""}`}>
         <button
@@ -394,33 +347,7 @@ export default function Navbar() {
 
         {openMenu === "mobilePlatform" && (
           <div className="mobile-dropdown">
-            {platformItems.map((item) => {
-              const content = (
-                <>
-                  <span className="dropdown-icon">{item.icon}</span>
-
-                  <span className="dropdown-item-text">
-                    <span className="dropdown-item-title">{item.title}</span>
-
-                    <span className="dropdown-item-sub">{item.sub}</span>
-                  </span>
-                </>
-              );
-
-              if (item.isRoute) {
-                return (
-                  <Link key={item.href} to={item.href} onClick={closeMobile}>
-                    {content}
-                  </Link>
-                );
-              }
-
-              return (
-                <a key={item.href} href={item.href} onClick={closeMobile}>
-                  {content}
-                </a>
-              );
-            })}
+            {platformItems.map(renderPlatformItem)}
           </div>
         )}
 
@@ -431,11 +358,9 @@ export default function Navbar() {
         >
           Integrations
         </a>
-
         <a href="#pricing" className="mobile-nav-link" onClick={closeMobile}>
           Pricing
         </a>
-
         <a href="#resources" className="mobile-nav-link" onClick={closeMobile}>
           Resources
         </a>
@@ -444,7 +369,6 @@ export default function Navbar() {
           <a href="#login" className="login-btn" onClick={closeMobile}>
             Log In
           </a>
-
           <a href="#demo" className="nav-demo-btn" onClick={closeMobile}>
             Book a Demo
           </a>

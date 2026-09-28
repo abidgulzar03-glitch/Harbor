@@ -1,0 +1,913 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+.carrier-section,
+.carrier-section * {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.carrier-section {
+  margin: 0;
+  padding: 90px 0 110px;
+  /* ...rest unchanged... */
+}
+
+.carrier-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 90px 0 110px;
+
+  overflow: hidden;
+
+  background: #081421;
+
+  isolation: isolate;
+}
+
+/* =========================================================
+   VIDEO BACKGROUND
+   IMPORTANT:
+   absolute = only this section
+   fixed = entire website
+========================================================= */
+
+.carrier-bg-video {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center center;
+
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* =========================================================
+   VIDEO DARK OVERLAY
+========================================================= */
+
+.carrier-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  background: linear-gradient(
+    135deg,
+    rgba(8, 20, 33, 0.86) 0%,
+    rgba(8, 20, 33, 0.68) 45%,
+    rgba(8, 20, 33, 0.82) 100%
+  );
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   CONTENT WRAPPER
+========================================================= */
+
+.carrier-sticky {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.carrier-header {
+  width: 100%;
+  max-width: 760px;
+
+  margin: 0 auto 46px;
+
+  padding: 0 20px;
+
+  text-align: center;
+}
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.carrier-label {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 34px;
+
+  padding: 8px 18px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  margin-bottom: 18px;
+}
+
+/* =========================================================
+   HEADER TITLE
+========================================================= */
+
+.carrier-header h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(36px, 5vw, 58px);
+
+  font-weight: 700;
+
+  line-height: 0.96;
+
+  letter-spacing: -0.06em;
+}
+
+/* =========================================================
+   HEADER DESCRIPTION
+========================================================= */
+
+.carrier-header p {
+  width: 100%;
+  max-width: 560px;
+
+  margin: 28px auto 0;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  line-height: 1.8;
+}
+
+/* =========================================================
+   CAROUSEL VIEWPORT
+========================================================= */
+
+.carrier-track-viewport {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  padding: 20px 0 30px;
+}
+
+/* =========================================================
+   CAROUSEL TRACK
+========================================================= */
+
+.carrier-track {
+  display: flex;
+
+  align-items: center;
+
+  gap: 24px;
+
+  width: max-content;
+
+  will-change: transform;
+}
+
+/* =========================================================
+   CARD BASE
+========================================================= */
+
+.lookup-card,
+.info-card {
+  width: 280px;
+  height: 380px;
+
+  flex: 0 0 280px;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.45s ease,
+    opacity 0.45s ease,
+    filter 0.45s ease;
+}
+
+/* =========================================================
+   ACTIVE CARD
+========================================================= */
+
+.active {
+  opacity: 1;
+
+  transform: scale(1);
+
+  filter: none;
+
+  z-index: 5;
+}
+
+/* =========================================================
+   INACTIVE CARDS
+========================================================= */
+
+.dim {
+  opacity: 0.22;
+
+  transform: scale(0.86);
+
+  filter: blur(0.4px) grayscale(0.15);
+
+  z-index: 1;
+}
+
+/* =========================================================
+   LOOKUP CARD
+========================================================= */
+
+.lookup-card {
+  padding: 8px;
+
+  background: linear-gradient(180deg, #d8eaff 0%, #b8efec 55%, #0e585d 100%);
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================================
+   LOOKUP INNER
+========================================================= */
+
+.lookup-inner {
+  display: flex;
+
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 16px;
+
+  border-radius: 14px;
+
+  background: #f8fbff;
+}
+
+/* =========================================================
+   LOOKUP TOP
+========================================================= */
+
+.lookup-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid #e8eef5;
+
+  color: #4d647b;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   LOOKUP ROW
+========================================================= */
+
+.lookup-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 7px 0;
+
+  border-bottom: 1px solid #eef3f7;
+
+  font-size: 11px;
+}
+
+/* =========================================================
+   LOOKUP LABEL
+========================================================= */
+
+.lookup-row span {
+  color: #667085;
+
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   LOOKUP VALUE
+========================================================= */
+
+.lookup-row strong {
+  color: #072447;
+
+  font-weight: 700;
+
+  text-align: right;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.ok {
+  color: #059669;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+.warn {
+  color: #d97706;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   VERIFIED BADGE
+========================================================= */
+
+.verified {
+  margin: 12px 0 8px;
+
+  padding: 10px;
+
+  border-radius: 10px;
+
+  background: #e9fff3;
+
+  color: #047857;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.02em;
+}
+
+/* =========================================================
+   LOOKUP FOOTNOTE
+========================================================= */
+
+.lookup-inner small {
+  display: block;
+
+  margin-top: auto;
+
+  color: #98a2b3;
+
+  font-size: 9px;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   INFORMATION CARD
+========================================================= */
+
+.info-card {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 16px;
+
+  background: linear-gradient(180deg, #dcebfa 0%, #c9f2f0 55%, #a6e7de 100%);
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+}
+
+/* =========================================================
+   INNER WHITE CARD
+========================================================= */
+
+.info-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 8px;
+
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  z-index: 0;
+}
+
+/* =========================================================
+   CARD CONTENT ABOVE WHITE LAYER
+========================================================= */
+
+.info-card > * {
+  position: relative;
+
+  z-index: 2;
+}
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  font-size: 17px;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   ICON COLORS
+========================================================= */
+
+.blue {
+  background: #e8f1ff;
+}
+
+.green {
+  background: #e7f8ee;
+}
+
+.purple {
+  background: #f1ebff;
+}
+
+.orange {
+  background: #fff1e8;
+}
+
+.cyan {
+  background: #e8f9ff;
+}
+
+/* =========================================================
+   CARD NUMBER
+========================================================= */
+
+.number {
+  position: absolute;
+
+  top: 16px;
+  right: 16px;
+
+  color: #0f6bff;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.info-card h3 {
+  margin: 18px 0 8px;
+
+  color: #072447;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+/* =========================================================
+   CARD DESCRIPTION
+========================================================= */
+
+.info-card p {
+  margin: 0;
+
+  color: #667085;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   CARD TAG
+========================================================= */
+
+.tag {
+  display: inline-flex;
+
+  align-items: center;
+
+  width: fit-content;
+
+  margin-top: auto;
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  background: #eef3f8;
+
+  color: #64748b;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+  .carrier-section {
+    padding: 80px 0 100px;
+  }
+
+  .carrier-header {
+    max-width: 700px;
+
+    margin-bottom: 40px;
+  }
+
+  .carrier-header h2 {
+    font-size: clamp(38px, 6vw, 52px);
+  }
+
+  .carrier-track {
+    gap: 20px;
+  }
+
+  .lookup-card,
+  .info-card {
+    width: 270px;
+    height: 370px;
+
+    flex-basis: 270px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .carrier-section {
+    min-height: auto;
+
+    padding: 70px 0 80px;
+  }
+
+  /*
+    Video remains absolute.
+    It cannot escape this section.
+  */
+
+  .carrier-bg-video {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  .carrier-overlay {
+    position: absolute;
+
+    inset: 0;
+  }
+
+  /* -------------------------
+     HEADER
+  ------------------------- */
+
+  .carrier-header {
+    max-width: 650px;
+
+    padding: 0 22px;
+
+    margin-bottom: 32px;
+  }
+
+  .carrier-label {
+    padding: 7px 15px;
+
+    margin-bottom: 16px;
+
+    font-size: 10px;
+  }
+
+  .carrier-header h2 {
+    font-size: 38px;
+
+    line-height: 1;
+
+    letter-spacing: -0.05em;
+  }
+
+  .carrier-header p {
+    max-width: 500px;
+
+    margin-top: 22px;
+
+    font-size: 13.5px;
+
+    line-height: 1.7;
+  }
+
+  /* -------------------------
+     MOBILE TRACK
+  ------------------------- */
+
+  .carrier-track-viewport {
+    overflow: hidden;
+
+    padding: 12px 0 24px;
+  }
+
+  .carrier-track {
+    width: 100%;
+
+    gap: 16px;
+
+    padding: 0 20px 12px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    transform: none !important;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .carrier-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* -------------------------
+     MOBILE CARDS
+  ------------------------- */
+
+  .lookup-card,
+  .info-card {
+    width: 260px;
+    height: 340px;
+
+    flex: 0 0 260px;
+
+    scroll-snap-align: center;
+
+    opacity: 1 !important;
+
+    transform: none !important;
+
+    filter: none !important;
+  }
+
+  /* -------------------------
+     MOBILE CARD CONTENT
+  ------------------------- */
+
+  .lookup-inner {
+    padding: 15px;
+  }
+
+  .info-card {
+    padding: 15px;
+  }
+
+  .info-card h3 {
+    margin-top: 16px;
+
+    font-size: 17px;
+  }
+
+  .info-card p {
+    font-size: 11.5px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .carrier-section {
+    padding: 60px 0 70px;
+  }
+
+  .carrier-header {
+    padding: 0 18px;
+
+    margin-bottom: 26px;
+  }
+
+  .carrier-label {
+    padding: 7px 14px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.14em;
+  }
+
+  .carrier-header h2 {
+    font-size: 32px;
+
+    line-height: 1.02;
+  }
+
+  .carrier-header p {
+    margin-top: 20px;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+  /* -------------------------
+     SMALL MOBILE TRACK
+  ------------------------- */
+
+  .carrier-track {
+    gap: 14px;
+
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  /* -------------------------
+     SMALL MOBILE CARDS
+  ------------------------- */
+
+  .lookup-card,
+  .info-card {
+    width: 250px;
+    height: 330px;
+
+    flex: 0 0 250px;
+  }
+
+  /* -------------------------
+     LOOKUP CARD
+  ------------------------- */
+
+  .lookup-inner {
+    padding: 14px;
+  }
+
+  .lookup-top {
+    font-size: 9px;
+  }
+
+  .lookup-row {
+    padding: 6px 0;
+
+    font-size: 10px;
+  }
+
+  .lookup-row strong {
+    font-size: 10px;
+  }
+
+  .verified {
+    margin-top: 10px;
+
+    padding: 9px;
+
+    font-size: 8px;
+  }
+
+  .lookup-inner small {
+    font-size: 8px;
+  }
+
+  /* -------------------------
+     INFO CARD
+  ------------------------- */
+
+  .info-card {
+    padding: 14px;
+  }
+
+  .info-card::before {
+    inset: 7px;
+  }
+
+  .icon {
+    width: 36px;
+    height: 36px;
+
+    font-size: 16px;
+  }
+
+  .number {
+    top: 15px;
+    right: 15px;
+
+    font-size: 11px;
+  }
+
+  .info-card h3 {
+    margin: 16px 0 7px;
+
+    font-size: 17px;
+  }
+
+  .info-card p {
+    font-size: 11px;
+
+    line-height: 1.55;
+  }
+
+  .tag {
+    padding: 5px 10px;
+
+    font-size: 9px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 360px) {
+  .carrier-header h2 {
+    font-size: 29px;
+  }
+
+  .carrier-header p {
+    font-size: 12px;
+  }
+
+  .lookup-card,
+  .info-card {
+    width: 235px;
+    height: 320px;
+
+    flex-basis: 235px;
+  }
+
+  .carrier-track {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}

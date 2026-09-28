@@ -46,62 +46,99 @@ const cards = [
   },
 ];
 
+const CARD_WIDTH = 360;
+const GAP = 60;
+const STEP = CARD_WIDTH + GAP;
+
 export default function WorkflowSection() {
   const sectionRef = useRef(null);
   const mobileRef = useRef(null);
 
   const [translateX, setTranslateX] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 768);
 
-  const CARD_WIDTH = 360;
-  const GAP = 60;
-  const STEP = CARD_WIDTH + GAP;
-
-  /* Responsive */
+  /* =========================
+     RESPONSIVE
+  ========================= */
   useEffect(() => {
-    const resize = () => setIsMobile(window.innerWidth <= 768);
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
-  /* Desktop sticky horizontal */
+  /* =========================
+     DESKTOP HORIZONTAL SCROLL
+  ========================= */
   useEffect(() => {
     if (isMobile) return;
 
+    let ticking = false;
+
     const handleScroll = () => {
-      const section = sectionRef.current;
-      if (!section) return;
+      if (ticking) return;
 
-      const rect = section.getBoundingClientRect();
-      const total = section.offsetHeight - window.innerHeight;
-      const current = Math.min(Math.max(-rect.top, 0), total);
+      window.requestAnimationFrame(() => {
+        const section = sectionRef.current;
 
-      const progress = total > 0 ? current / total : 0;
-      const maxMove = (cards.length - 1) * STEP;
-      const move = progress * maxMove;
+        if (!section) {
+          ticking = false;
+          return;
+        }
 
-      setTranslateX(move);
-      setActiveIndex(Math.round(move / STEP));
+        const rect = section.getBoundingClientRect();
+
+        const totalScroll = section.offsetHeight - window.innerHeight;
+
+        const currentScroll = Math.min(Math.max(-rect.top, 0), totalScroll);
+
+        const progress = totalScroll > 0 ? currentScroll / totalScroll : 0;
+
+        const maxMove = (cards.length - 1) * STEP;
+
+        const move = progress * maxMove;
+
+        setTranslateX(move);
+        setActiveIndex(Math.min(cards.length - 1, Math.round(move / STEP)));
+
+        ticking = false;
+      });
+
+      ticking = true;
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  });
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
-  /* Mobile auto slider */
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isMobile]);
+
+  /* =========================
+     MOBILE AUTO SLIDER
+  ========================= */
   useEffect(() => {
     if (!isMobile) return;
 
     const container = mobileRef.current;
+
     if (!container) return;
 
     let index = 0;
 
     const interval = setInterval(() => {
-      const card = container.children[index];
+      const cardsElements = container.children;
+      const card = cardsElements[index];
 
       if (card) {
         container.scrollTo({
@@ -111,42 +148,55 @@ export default function WorkflowSection() {
       }
 
       setActiveIndex(index);
+
       index = (index + 1) % cards.length;
     }, 2500);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+    };
   }, [isMobile]);
 
-  /* Update active card while swiping */
+  /* =========================
+     MOBILE SWIPE
+  ========================= */
   const handleMobileScroll = () => {
     if (!isMobile) return;
 
     const container = mobileRef.current;
+
     if (!container) return;
 
-    const cardWidth = container.children[0]?.clientWidth || 1;
+    const firstCard = container.children[0];
+
+    if (!firstCard) return;
+
+    const cardWidth = firstCard.getBoundingClientRect().width;
+
     const gap = 16;
+
     const index = Math.round(container.scrollLeft / (cardWidth + gap));
-    setActiveIndex(Math.min(index, cards.length - 1));
+
+    setActiveIndex(Math.min(Math.max(index, 0), cards.length - 1));
   };
 
   return (
-    <section className="wf-section" ref={sectionRef}>
+    <section ref={sectionRef} className="wf-section">
       <div className="wf-sticky">
         <div
           ref={mobileRef}
-          onScroll={handleMobileScroll}
           className="wf-track"
+          onScroll={handleMobileScroll}
           style={
             isMobile
-              ? {}
+              ? undefined
               : {
-                  transform: `translateX(-${translateX}px)`,
+                  transform: `translate3d(-${translateX}px, 0, 0)`,
                 }
           }
         >
           {cards.map((card, index) => (
-            <div
+            <article
               key={card.id}
               className={`wf-card ${index === activeIndex ? "active" : ""}`}
             >
@@ -157,8 +207,9 @@ export default function WorkflowSection() {
               </div>
 
               <h3>{card.title}</h3>
+
               <p>{card.text}</p>
-            </div>
+            </article>
           ))}
         </div>
       </div>

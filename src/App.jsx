@@ -14,8 +14,9 @@ import IntegrationsIcons from "./Component/IntegrationsIcons";
 import CTASection from "./Component/CTASection";
 import Footer from "./Component/Footer";
 
-
 import TheLoop from "./Pages/Platform/TheLoop";
+import Compliance from "./Pages/Platform/Compliance-Page/Compliance";
+import Portals from "./Pages/Platform/Portals/Portals";
 
 function Home() {
   return (
@@ -56,6 +57,10 @@ function App() {
 
           {/* The Loops */}
           <Route path="/the-loops" element={<TheLoop />} />
+
+          {/* Compliance */}
+          <Route path="/compliance" element={<Compliance />} />
+          <Route path="/portals" element={<Portals />} />
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -1,185 +1,142 @@
-.hero {
-  background: #ffffff;
-  padding: 0px 30px 60px;
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap");
+
+#landing-hero,
+#landing-hero * {
+  font-family: "General Sans", sans-serif;
 }
 
-.hero-card {
-  width: 100%;
-  max-width: 1720px;
-  margin: 0 auto;
-  background: #f3f1eb;
-  border-radius: 40px;
-  box-sizing: border-box;
+#landing-hero {
+  background: #fff;
+  padding: 0;
+}
 
-  min-height: 760px;
+.landing-hero__card {
+  width: 100%;
+}
+
+.landing-hero__content {
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  padding: 80px 20px;
+  justify-content: center;
   text-align: center;
-}
-
-.hero-content {
-  max-width: 900px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 0 30px 60px;
   box-sizing: border-box;
+
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.68)),
+    url("/Home-hero-img-2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.hero-content h1 {
-  font-size: 62px;
+.landing-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 6px;
+  margin-bottom: 24px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.landing-hero__check {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #0f6bff;
+  color: #fff;
+  font-size: 11px;
   font-weight: 700;
+}
+
+.landing-hero__title {
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 55px;
+  font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.04em;
-  color: #0f1f33;
 }
 
-.hero-content .top-p {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.3;
-  color: #6b7280;
+.landing-hero__subtitle {
   max-width: 560px;
-  width: 100%;
-  margin: 0 auto 30px;
-  text-wrap: balance;
+  margin: 0 0 32px;
+  color: #fff;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
-.hero-buttons {
+.landing-hero__actions {
   display: flex;
   gap: 14px;
-  margin-bottom: 20px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.signup-btn {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 13px 23px;
+.landing-btn {
   border: 0;
   border-radius: 14px;
-  background: #0f1f33;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
+  padding: 13px 23px;
+  font-size: 14px;
   cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease;
+  transition: 0.25s ease;
 }
 
-.signup-btn:hover {
-  background: #16283fd1;
-}
-
-.icon-badge {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  background: #fff;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-
-.hero-subfooter {
-  font-size: 11px;
-  font-weight: 300;
-  color: #6b7280;
+.landing-btn--primary {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 4px;
-  margin: 0 auto;
+  gap: 8px;
+  background: #0f1f33;
+  color: #fff;
 }
 
-.hero-subfooter a {
-  font-size: 13px;
-  color: #374151;
-  text-decoration: underline;
-  text-underline-offset: 1px;
+.landing-btn--primary:hover {
+  background: #162b46;
 }
 
-.hero-subfooter a:hover {
-  color: #0f1f33;
+.landing-btn--secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
 }
 
-.hero-subfooter .dot-hero {
-  font-size: 11px;
-  color: #9ca3af;
-  line-height: 1;
+.landing-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
 }
 
-.hero-subfooter .no-card {
-  font-size: 11px;
-}
-
-.hero-content p {
+.landing-btn__arrow {
   font-size: 14px;
-  font-weight: 300;
 }
 
 @media (max-width: 700px) {
-  .hero {
-    padding: 0px 16px 40px;
+  .landing-hero__content {
+    padding: 0 20px 48px;
+    background-attachment: scroll;
   }
 
-  .hero-card {
-    padding: 48px 20px;
-    min-height: auto;
-    border-radius: 28px;
-  }
-
-  .hero-content {
-    margin-top: 44px;
-  }
-
-  .hero-content h1 {
+  .landing-hero__title {
     font-size: 32px;
-    margin-top: 0;
   }
 
-  .hero-content .top-p {
-    font-size: 14px;
-    line-height: 1.5;
-    max-width: 320px;
-    margin: 20px auto 0;
+  .landing-hero__subtitle {
+    font-size: 15px;
   }
 
-  .hero-content p {
-    font-size: 14px;
-    max-width: 90%;
-  }
-
-  .hero-buttons {
-    margin-top: 28px;
-    margin-bottom: 0;
-  }
-
-  .signup-btn {
-    font-size: 14px;
-    padding: 13px 20px;
-  }
-
-  .hero-subfooter {
-    margin-top: 19px;
-  }
-
-  .hero-subfooter,
-  .hero-subfooter a {
-    font-size: 11px;
-  }
-
-  .hero-subfooter .dot {
-    font-size: 10px;
-  }
-
-  .hero-subfooter .no-card {
-    font-size: 10px;
+  .landing-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
