@@ -21,14 +21,13 @@ export default function StepsSection() {
   return (
     <section className="hero-2">
       <div className="hero-card-2">
-        <div className="eyebrow">AI meeting management</div>
-        <h1>Built for people whose work runs on meetings</h1>
+        <div className="eyebrow">The closed loop</div>
+        <h1>Keyed once. The rest is the system’s job</h1>
         <p className="lede">
-          Meetings move you forward, but the work around them can slow you down.
-          This handles the tasks before, during, and after — so you have more
-          space for what matters.
+          Most brokerages key the same container four times. Every re-key loses
+          a charge.
         </p>
-        <button className="cta">Start for free</button>
+        <button className="cta">Book a Demo</button>
 
         <div className="steps">
           {STEPS.map((step) => (

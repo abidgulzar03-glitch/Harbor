@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.strip {
+  background: #f6f3eb;
+  font-family: "Inter", sans-serif;
+  padding: 110px 0;
+  overflow: hidden;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.strip__head {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.strip__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border: 1px solid #e4ddd0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  color: #0f2948;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.strip__eyebrow .dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #1f6fb3;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+}
+
+.strip__head h2 {
+  margin-top: 24px;
+  color: #0d2748;
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 0.96;
+  letter-spacing: -2px;
+  font-weight: 500;
+}
+
+.strip__head p {
+  margin: 18px auto 0;
+  max-width: 420px;
+  color: #5a6d84;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================
+   SLIDER
+========================= */
+
+.strip__marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 56px;
+}
+
+.strip__track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: stripSlide 22s linear infinite;
+}
+
+.strip__marquee:hover .strip__track {
+  animation-play-state: paused;
+}
+
+@keyframes stripSlide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
+}
+
+/* =========================
+   CARD
+========================= */
+
+.strip__item {
+  width: 230px;
+  min-width: 230px;
+  background: #fff;
+  border: 1px solid #ece8de;
+  border-radius: 17px;
+  padding: 22px;
+}
+
+.strip__pill {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.live {
+  background: rgba(29, 118, 191, 0.12);
+  color: #1d76bf;
+}
+.critical {
+  background: rgba(207, 76, 41, 0.14);
+  color: #c44726;
+}
+.blocked {
+  background: rgba(196, 83, 38, 0.14);
+  color: #c45326;
+}
+.warning {
+  background: rgba(176, 128, 15, 0.16);
+  color: #9a6d00;
+}
+.overdue {
+  background: rgba(209, 84, 42, 0.14);
+  color: #d1542a;
+}
+
+.strip__item h3 {
+  font-size: 36px;
+  line-height: 1;
+  color: #0d2748;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.strip__item h4 {
+  font-size: 14px;
+  color: #0d2748;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.strip__item p {
+  font-size: 12px;
+  color: #607188;
+  line-height: 1.5;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+  .strip {
+    padding: 72px 0;
+  }
+
+  .strip__head {
+    padding: 0 22px;
+  }
+
+  .strip__eyebrow {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  .strip__head h2 {
+    font-size: 34px;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .strip__head p {
+    font-size: 13px;
+    max-width: 300px;
+  }
+
+  .strip__marquee {
+    margin-top: 40px;
+  }
+
+  .strip__track {
+    gap: 14px;
+    animation-duration: 18s;
+  }
+
+  .strip__item {
+    width: 180px;
+    min-width: 180px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .strip__pill {
+    font-size: 8px;
+    padding: 4px 7px;
+    margin-bottom: 12px;
+  }
+
+  .strip__item h3 {
+    font-size: 30px;
+  }
+
+  .strip__item h4 {
+    font-size: 13px;
+  }
+
+  .strip__item p {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .strip {
+    padding: 60px 0;
+  }
+
+  .strip__head {
+    padding: 0 18px;
+  }
+
+  .strip__head h2 {
+    font-size: 28px;
+  }
+
+  .strip__head p {
+    font-size: 12px;
+    max-width: 260px;
+  }
+
+  .strip__track {
+    gap: 12px;
+    animation-duration: 16s;
+  }
+
+  .strip__item {
+    width: 160px;
+    min-width: 160px;
+    padding: 14px;
+  }
+
+  .strip__item h3 {
+    font-size: 26px;
+  }
+
+  .strip__item h4 {
+    font-size: 12px;
+  }
+
+  .strip__item p {
+    font-size: 10px;
+  }
+
+  .strip__pill {
+    font-size: 7px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .strip__track {
+    animation: none;
+  }
+}

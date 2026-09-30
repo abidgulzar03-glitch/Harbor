@@ -144,12 +144,13 @@ const platformItems = [
     icon: <LoopIcon />,
     isRoute: true,
   },
+
   {
-    href: "#operations",
+    href: "/operations",
     title: "Operations",
     sub: "The board and the eight exceptions.",
     icon: <OperationsIcon />,
-    isRoute: false,
+    isRoute: true,
   },
   {
     href: "/compliance", // NEW PAGE
@@ -159,11 +160,11 @@ const platformItems = [
     isRoute: true,
   },
   {
-    href: "#finance",
+    href: "/finance",
     title: "Finance",
     sub: "Charges, aging, the advance ledger.",
     icon: <FinanceIcon />,
-    isRoute: false,
+    isRoute: true,
   },
   {
     href: "/portals",
@@ -173,11 +174,11 @@ const platformItems = [
     isRoute: true,
   },
   {
-    href: "#reports",
+    href: "/reports",
     title: "Reports",
     sub: "The five questions, answered daily.",
     icon: <ReportsIcon />,
-    isRoute: false,
+    isRoute: true,
   },
 ];
 
@@ -295,9 +296,16 @@ export default function Navbar() {
           )}
         </div>
 
-        <a href="#integrations" className="navbar-link">
+        <Link
+          to="/integrations"
+          className="navbar-link"
+          onClick={() => {
+            setOpenMenu(null);
+            closeMobile();
+          }}
+        >
           Integrations
-        </a>
+        </Link>
         <a href="#pricing" className="navbar-link">
           Pricing
         </a>

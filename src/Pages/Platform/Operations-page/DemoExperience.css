@@ -1,0 +1,511 @@
+/* =========================================================
+   DEMO EXPERIENCE SECTION
+   Imported by DemoExperience.jsx
+========================================================= */
+
+.demo-experience-section {
+  padding: 100px 24px;
+  text-align: center;
+  margin-bottom: 140px;
+  background: linear-gradient(
+    180deg,
+    #fffdf9 0%,
+    #fef9f1 20%,
+    #fdf6ec 55%,
+    rgba(250, 241, 229, 0.45) 82%,
+    transparent 100%
+  );
+  font-family:
+    "Sora",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+.demo-exp-label {
+  margin: 0 0 16px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: #0f2a4a;
+}
+
+.demo-exp-heading {
+  margin: 0 0 20px;
+  color: #0f2a4a;
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.demo-exp-subtitle {
+  max-width: 520px;
+  margin: 0 auto 56px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #4a5568;
+}
+
+/* GRID */
+
+.demo-exp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px clamp(40px, 8vw, 105px);
+  max-width: 1100px;
+  margin: 0 auto 48px;
+  text-align: left;
+}
+
+.demo-exp-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ICON + TITLE */
+
+.demo-exp-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.demo-exp-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.demo-exp-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.demo-exp-icon-blue {
+  background: #e5eefc;
+  color: #2563eb;
+}
+
+.demo-exp-icon-purple {
+  background: #f1e9fc;
+  color: #8b3fe8;
+}
+
+.demo-exp-icon-teal {
+  background: #e1f5f0;
+  color: #12a389;
+}
+
+.demo-exp-icon-orange {
+  background: #fdece0;
+  color: #e8792f;
+}
+
+.demo-exp-col-label {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #0f2a4a;
+}
+
+/* CARD
+   Flex column + flex: 1 so cards in the same row match height.
+   The CTA and footer use margin-top: auto to sit at the bottom,
+   which replaces the old hard-coded 53px / 147px offsets. */
+
+.demo-exp-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 300px;
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(15, 42, 74, 0.06);
+}
+
+.demo-exp-card-blue {
+  border-color: #bcd6fb;
+}
+
+.demo-exp-card-purple {
+  border-color: #d9c3f7;
+}
+
+.demo-exp-card-teal {
+  border-color: #a9e2d6;
+}
+
+.demo-exp-card-orange {
+  border-color: #f8cba4;
+}
+
+.demo-exp-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.demo-exp-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f2a4a;
+}
+
+.demo-exp-badge-live {
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #f1e9fc;
+  color: #8b3fe8;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* FIELDS (pre-call) */
+
+.demo-exp-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.demo-exp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.demo-exp-field-label {
+  font-size: 12px;
+  color: #8a94a3;
+}
+
+.demo-exp-field-value {
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #f4f6f9;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f2a4a;
+}
+
+.demo-exp-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: auto;
+  padding: 11px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.demo-exp-cta-btn:hover {
+  background: #1d4fc4;
+}
+
+.demo-exp-cta-btn:focus-visible,
+.demo-exp-btn-solid:focus-visible,
+.demo-exp-link:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+/* LIVE LOAD */
+
+.demo-exp-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.demo-exp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.demo-exp-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.demo-exp-row-label {
+  font-size: 11px;
+  color: #8a94a3;
+}
+
+.demo-exp-row-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f2a4a;
+}
+
+.demo-exp-check {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #12a389;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demo-exp-check svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* PROGRESS */
+
+.demo-exp-progress-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.demo-exp-progress-label {
+  font-size: 12px;
+  color: #8a94a3;
+}
+
+.demo-exp-progress-bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: #eee0fa;
+  overflow: hidden;
+}
+
+.demo-exp-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: #8b3fe8;
+}
+
+.demo-exp-progress-pct {
+  align-self: flex-end;
+  font-size: 11px;
+  color: #8a94a3;
+}
+
+/* GATE CHECKS */
+
+.demo-exp-checks-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 11px;
+  color: #8a94a3;
+}
+
+.demo-exp-checks-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-top: 1px solid #eef2f4;
+  font-size: 13px;
+  color: #0f2a4a;
+}
+
+.demo-exp-result {
+  flex-shrink: 0;
+}
+
+.demo-exp-result-pass {
+  color: #12a389;
+  font-weight: 600;
+}
+
+.demo-exp-result-fail {
+  color: #e0453c;
+  font-weight: 600;
+}
+
+.demo-exp-warning {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fdecea;
+  color: #e0453c;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.demo-exp-warning svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* FILES */
+
+.demo-exp-files {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.demo-exp-file {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #0f2a4a;
+}
+
+.demo-exp-file-icon {
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: #fdece0;
+  color: #e8792f;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.demo-exp-file-name {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.demo-exp-file svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #8a94a3;
+}
+
+.demo-exp-footer-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: auto;
+  padding: 8px;
+  border-radius: 8px;
+  background: #fdece0;
+  color: #e8792f;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.demo-exp-footer-pill svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* CAPTION */
+
+.demo-exp-caption {
+  margin: 14px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5568;
+}
+
+/* ACTIONS */
+
+.demo-exp-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.demo-exp-btn-solid {
+  padding: 12px 26px;
+  border-radius: 14px;
+  background: #0f2a4a;
+  color: #fff;
+  font-weight: 400;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.demo-exp-btn-solid:hover {
+  background: rgba(15, 42, 74, 0.76);
+}
+
+.demo-exp-link {
+  color: #0f2a4a;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.demo-exp-link:hover {
+  color: rgba(15, 42, 74, 0.69);
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .demo-experience-section {
+    padding: 72px 20px;
+    margin-bottom: 80px;
+  }
+
+  .demo-exp-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .demo-exp-subtitle {
+    margin-bottom: 40px;
+  }
+
+  .demo-exp-card {
+    min-height: 0;
+  }
+
+  .demo-exp-col-label {
+    font-size: 18px;
+  }
+
+  .demo-exp-actions {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .demo-exp-btn-solid {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}

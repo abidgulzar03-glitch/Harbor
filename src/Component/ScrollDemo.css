@@ -18,7 +18,6 @@
   align-items: flex-start;
   justify-content: center;
   overflow: hidden;
-  /* background: #f3f1eb; */
 }
 
 /* Main Stage */
@@ -28,8 +27,8 @@
 
   --small-w: min(1100px, 80vw);
   --small-h: min(680px, 82vh);
-  --full-w: 100vw;
-  --full-h: 100vh;
+  --full-w: 96vw;
+  --full-h: 95vh;
 
   position: relative;
   width: calc(var(--small-w) + (var(--full-w) - var(--small-w)) * var(--grow));
@@ -41,34 +40,84 @@
 
   border-radius: calc(36px - 36px * var(--grow));
   overflow: hidden;
-
-  background: linear-gradient(135deg, #ffffff 0%, #eeeeeb 50%, #e4e4df 100%);
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border-radius: 30px;
+  background: #ffffff;
   transition:
     width 0.15s linear,
     height 0.15s linear,
     padding 0.15s linear,
-    border-radius 0.15s linear,
-    background 0.25s linear;
+    border-radius 0.15s linear;
 }
 
-/* Soft Glow */
-.demo-wrapper::before {
-  content: "";
+/* ===================== */
+/* Scroll-changing BG    */
+/* ===================== */
+
+.demo-bgs {
   position: absolute;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
+}
+
+.demo-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+
   background:
-    radial-gradient(
-      circle at 50% 25%,
-      rgba(255, 255, 255, calc(0.28 + 0.22 * var(--grow))),
-      transparent 55%
-    ),
-    radial-gradient(
-      circle at 20% 80%,
-      rgba(170, 210, 255, calc(0.18 + 0.18 * var(--grow))),
-      transparent 45%
-    );
-  opacity: calc(0.7 + 0.3 * var(--grow));
+    radial-gradient(55% 60% at 22% 38%, var(--c1) 0%, transparent 70%),
+    radial-gradient(45% 50% at 6% 68%, var(--c2) 0%, transparent 70%),
+    radial-gradient(60% 55% at 58% 98%, var(--c3) 0%, transparent 70%),
+    radial-gradient(50% 55% at 88% 28%, var(--c4) 0%, transparent 70%),
+    linear-gradient(135deg, var(--base1) 0%, var(--base2) 100%);
+}
+
+.demo-bg.is-active {
+  opacity: 1;
+}
+
+/* Detention – blue → mint (matches screenshot) */
+.bg-detention {
+  --c1: #3f8fe8;
+  --c2: #a6dcfb;
+  --c3: #7fd8cc;
+  --c4: #a9dcf4;
+  --base1: #eef7fc;
+  --base2: #dff3ee;
+}
+
+/* Advances – amber → peach */
+.bg-advances {
+  --c1: #f4b23e;
+  --c2: #fbd9a0;
+  --c3: #f6a88c;
+  --c4: #fde3b5;
+  --base1: #fff8ec;
+  --base2: #fdeedf;
+}
+
+/* Compliance – violet → pink */
+.bg-compliance {
+  --c1: #8a6cf0;
+  --c2: #cbbcfb;
+  --c3: #f2a6d5;
+  --c4: #d6c9fc;
+  --base1: #f6f1ff;
+  --base2: #fbebf5;
+}
+
+/* Documents – emerald → aqua */
+.bg-documents {
+  --c1: #2fb880;
+  --c2: #a6e9c5;
+  --c3: #8fd6e2;
+  --c4: #c7f1d7;
+  --base1: #eefaf4;
+  --base2: #e0f5f3;
 }
 
 /* Close button */
@@ -135,11 +184,12 @@
   height: calc(44px + 12px * var(--grow));
   display: grid;
   place-items: center;
-  border: 0;
+  border: 3px solid #ffffff;
   border-radius: calc(13px + 4px * var(--grow));
 
-  background: #eef2f6;
-  color: #1e293b;
+  background: #eef0f3;
+  color: #64748b;
+  box-shadow: 0 4px 14px rgba(11, 27, 51, 0.08);
   cursor: pointer;
   transition:
     background 0.25s linear,
@@ -151,7 +201,7 @@
 }
 
 .demo-icons button:hover {
-  transform: translateY(-3px);
+  transform: translateY(-1px);
   filter: brightness(1.07);
 }
 
@@ -161,19 +211,56 @@
 }
 
 .demo-icons .active {
-  background: #0f172a;
-  color: #fff;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(11, 27, 51, 0.12);
+
+  /* default: detention */
+  background:
+    radial-gradient(55% 60% at 22% 38%, #3f8fe8 0%, transparent 70%),
+    radial-gradient(45% 50% at 6% 68%, #a6dcfb 0%, transparent 70%),
+    radial-gradient(60% 55% at 58% 98%, #7fd8cc 0%, transparent 70%),
+    radial-gradient(50% 55% at 88% 28%, #a9dcf4 0%, transparent 70%),
+    linear-gradient(135deg, #eef7fc 0%, #dff3ee 100%);
+
+  .demo-wrapper[data-tab="advances"] & {
+    color: #0a1a2f;
+    background:
+      radial-gradient(55% 60% at 22% 38%, #f4b23e 0%, transparent 70%),
+      radial-gradient(45% 50% at 6% 68%, #fbd9a0 0%, transparent 70%),
+      radial-gradient(60% 55% at 58% 98%, #f6a88c 0%, transparent 70%),
+      radial-gradient(50% 55% at 88% 28%, #fde3b5 0%, transparent 70%),
+      linear-gradient(135deg, #fff8ec 0%, #fdeedf 100%);
+  }
+
+  .demo-wrapper[data-tab="compliance"] & {
+    background:
+      radial-gradient(55% 60% at 22% 38%, #8a6cf0 0%, transparent 70%),
+      radial-gradient(45% 50% at 6% 68%, #cbbcfb 0%, transparent 70%),
+      radial-gradient(60% 55% at 58% 98%, #f2a6d5 0%, transparent 70%),
+      radial-gradient(50% 55% at 88% 28%, #d6c9fc 0%, transparent 70%),
+      linear-gradient(135deg, #f6f1ff 0%, #fbebf5 100%);
+  }
+
+  .demo-wrapper[data-tab="documents"] & {
+    background:
+      radial-gradient(55% 60% at 22% 38%, #2fb880 0%, transparent 70%),
+      radial-gradient(45% 50% at 6% 68%, #a6e9c5 0%, transparent 70%),
+      radial-gradient(60% 55% at 58% 98%, #8fd6e2 0%, transparent 70%),
+      radial-gradient(50% 55% at 88% 28%, #c7f1d7 0%, transparent 70%),
+      linear-gradient(135deg, #eefaf4 0%, #e0f5f3 100%);
+  }
 }
 
 /* Main Card */
 .demo-card {
   position: relative;
+  z-index: 1;
   height: 100%;
   max-width: 980px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: #fcfaf5;
+  border: 1px solid rgba(11, 27, 51, 0.06);
+  box-shadow: 0 12px 40px rgba(11, 27, 51, 0.08);
   border-radius: calc(20px + 12px * var(--grow));
   padding: calc(20px + 28px * var(--grow));
   display: grid;
@@ -195,7 +282,7 @@
   height: 100%;
   justify-content: center;
   padding-left: 8px;
-  padding-right: 24px;
+  padding-right: 1px;
   min-width: 0;
   background: transparent;
 }
@@ -211,7 +298,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 14px;
+  /* padding: 6px 14px; */
   border-radius: 999px;
   background: #eef5ff;
   color: #2563eb;
@@ -235,9 +322,9 @@
 }
 
 .demo-left h1 {
-  margin-top: 16px;
+  margin-top: 10px;
   margin-bottom: 14px;
-  font-size: calc(22px + 16px * var(--grow));
+  font-size: calc(20px + 15px * var(--grow));
   font-weight: 500;
   line-height: 1.25;
   letter-spacing: -0.025em;
@@ -247,12 +334,12 @@
 }
 
 .demo-left p {
-  font-size: calc(14px + 2px * var(--grow));
+  font-size: calc(12px + 2px * var(--grow));
   line-height: 1.6;
   color: #64748b;
   max-width: 400px;
   width: 100%;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .demo-left a {
@@ -850,7 +937,7 @@
 }
 
 /* ===================== */
-/* Payment UI (Updated)  */
+/* Payment UI            */
 /* ===================== */
 
 .payment-ui {
@@ -895,7 +982,6 @@
   bottom: 14%;
 }
 
-/* Multi-Step Payment Cards */
 .payment-card-step {
   position: relative;
   z-index: 2;
@@ -965,7 +1051,6 @@
   transition: transform 0.25s ease;
 }
 
-/* Input Fields Step */
 .field-group {
   display: flex;
   flex-direction: column;
@@ -1026,7 +1111,6 @@
   background: #fafafa;
 }
 
-/* Summary Card Step */
 .consult-card-step {
   text-align: center;
   align-items: center;
@@ -1075,10 +1159,7 @@
   gap: 6px;
 }
 
-/* ============================================================ */
-/* Exception Card UI — Detention / Advances / Compliance /       */
-/* Payments (freight-ops style, from reference screenshot)       */
-/* ============================================================ */
+
 
 .detention-ui,
 .advances-ui,
@@ -1095,10 +1176,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* bg color removed — tab tint no longer shown behind the card */
   background: transparent;
 }
-
 .exception-card {
   position: relative;
   z-index: 2;
@@ -1113,12 +1192,10 @@
   gap: 12px;
   animation: slideInFromRight 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-
 .exception-card-dark {
   background: linear-gradient(160deg, #0f2647 0%, #14335e 100%);
   color: #ffffff;
 }
-
 .exception-title {
   font-size: 16px;
   font-weight: 700;
@@ -1129,13 +1206,11 @@
 .exception-card-dark .exception-title {
   color: #ffffff;
 }
-
 .exception-subtitle {
   font-size: 12.5px;
   color: #64748b;
   margin-top: -6px;
 }
-
 /* Pills */
 .pill {
   display: inline-flex;
@@ -1148,30 +1223,25 @@
   font-weight: 700;
   line-height: 1.3;
 }
-
 .pill-danger {
   background: #fde3e3;
   color: #b42318;
 }
-
 .pill-gold {
   background: #f6e7c9;
   color: #7a5311;
 }
-
 /* Detention progress bar */
 .detention-bar {
   display: flex;
   gap: 5px;
 }
-
 .detention-bar .fill {
   flex: 1;
   height: 6px;
   border-radius: 999px;
   background: #e2e8f0;
 }
-
 .detention-bar .fill.danger {
   background: #dc2626;
 }
@@ -1424,6 +1494,7 @@
     width: 36px;
     height: 36px;
     border-radius: 11px;
+    border-width: 2px;
   }
 
   .demo-card {
@@ -1563,7 +1634,7 @@
     display: none;
   }
 
-  /* Exception cards (Detention / Advances / Compliance / Documents) */
+  /* Exception cards */
   .detention-ui,
   .advances-ui,
   .compliance-ui,
@@ -1733,12 +1804,12 @@
     font-size: 12.5px;
   }
 }
+
 /* ============================================================
    Perfect Mobile UI
    ============================================================ */
 
 @media (max-width: 640px) {
-  /* Right panel */
   .demo-right {
     width: 100%;
     min-width: 0;
@@ -1746,8 +1817,7 @@
     overflow: hidden;
   }
 
-  /* ================= Email Card ================= */
-
+  /* Email Card */
   .assistant-ui {
     width: 100%;
     max-width: 100%;
@@ -1775,8 +1845,7 @@
     min-height: auto;
   }
 
-  /* ================= Notes ================= */
-
+  /* Notes */
   .notes-ui {
     width: 100%;
     min-height: 280px;
@@ -1831,8 +1900,7 @@
     height: 5px;
   }
 
-  /* ================= Payment ================= */
-
+  /* Payment */
   .payment-ui {
     width: 100%;
     max-width: 100%;
@@ -1879,7 +1947,6 @@
     padding: 4px 0;
   }
 
-  /* Email */
   .assistant-ui {
     min-height: 260px;
     padding: 14px 8px;
@@ -1895,7 +1962,6 @@
     line-height: 1.5;
   }
 
-  /* Notes */
   .notes-ui {
     min-height: 260px;
     padding: 10px;
@@ -1921,7 +1987,6 @@
     font-size: 11px;
   }
 
-  /* Payment */
   .payment-ui {
     min-height: 260px;
     padding: 10px;

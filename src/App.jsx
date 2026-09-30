@@ -14,9 +14,12 @@ import IntegrationsIcons from "./Component/IntegrationsIcons";
 import CTASection from "./Component/CTASection";
 import Footer from "./Component/Footer";
 
-import TheLoop from "./Pages/Platform/TheLoop";
+import TheLoop from "./Pages/Platform/Platform/TheLoop";
 import Compliance from "./Pages/Platform/Compliance-Page/Compliance";
+import Operations from "./Pages/Platform/Operations-page/Operations";
 import Portals from "./Pages/Platform/Portals/Portals";
+import Finance from "./Pages/Platform/Finance-page/Finance";
+import Reports from "./Pages/Platform/Reports-page/Reports";
 
 function Home() {
   return (
@@ -39,32 +42,27 @@ function Layout({ children }) {
   return (
     <>
       <Navbar />
-
       <main>{children}</main>
-
       <Footer />
     </>
   );
 }
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
-          {/* Home */}
           <Route path="/" element={<Home />} />
 
-          {/* The Loops */}
           <Route path="/the-loops" element={<TheLoop />} />
-
-          {/* Compliance */}
+          <Route path="/operations" element={<Operations />} />
           <Route path="/compliance" element={<Compliance />} />
+          <Route path="/finance" element={<Finance />} />
           <Route path="/portals" element={<Portals />} />
+          <Route path="/reports" element={<Reports />} />
         </Routes>
       </Layout>
     </BrowserRouter>
   );
 }
-
-export default App;

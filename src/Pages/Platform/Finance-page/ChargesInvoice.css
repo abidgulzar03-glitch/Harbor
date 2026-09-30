@@ -1,0 +1,357 @@
+/* ChargesInvoice.css */
+
+.charges-invoice {
+  padding: 80px 24px;
+  background: #f5f1e8;
+  color: #000000;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.charges-invoice__container {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* ========== LEFT ========== */
+
+.charges-invoice__content {
+  max-width: 420px;
+}
+
+.charges-invoice__eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #000000;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 4px 10px;
+  margin-bottom: 16px;
+}
+
+.charges-invoice__content h2 {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin: 0 0 20px;
+}
+
+.charges-invoice__subtitle {
+  margin: 0 0 24px;
+  max-width: 400px;
+}
+
+.charges-invoice__subtitle p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #000000;
+  opacity: 0.7;
+  margin: 0 0 12px;
+}
+
+.charges-invoice__subtitle p:last-child {
+  margin-bottom: 0;
+}
+
+.charges-invoice__divider {
+  height: 1px;
+  background: #e4ddd0;
+  margin-bottom: 28px;
+}
+
+/* Features */
+
+.charges-invoice__features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.charges-invoice__feature {
+  background: #ffffff;
+  border: 1px solid #e8e0d4;
+  border-radius: 12px;
+  padding: 16px 18px;
+  min-height: 88px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.charges-invoice__feature--active {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.charges-invoice__feature-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 6px;
+}
+
+.charges-invoice__icon {
+  font-size: 13px;
+  color: #000000;
+  width: 18px;
+  text-align: center;
+}
+
+.charges-invoice__feature p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #000000;
+  padding-left: 28px;
+  opacity: 0.75;
+}
+
+/* ========== RIGHT ========== */
+
+.charges-invoice__visual {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.charges-invoice__blob {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 24px;
+  background: #f0e6d82f;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px 40px;
+}
+
+/* Card */
+
+.invoice-main-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.02),
+    0 16px 36px -10px rgba(60, 40, 20, 0.12);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+
+.invoice-main-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid #f0ebe3;
+  gap: 12px;
+}
+
+.invoice-main-card__titles {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr 0.9fr;
+  gap: 8px;
+  width: 100%;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.invoice-main-card__filter {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #000000;
+  background: #ffffff;
+  border: 1px solid #e0d8cc;
+  border-radius: 8px;
+  padding: 5px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.invoice-main-card__chevron {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Rows */
+
+.invoice-main-card__rows {
+  padding: 6px 8px 8px;
+}
+
+.invoice-main-card__row {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr 0.9fr;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #000000;
+  transition: background 0.15s ease;
+}
+
+.invoice-main-card__name {
+  font-weight: 400;
+}
+
+.invoice-main-card__amount {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.invoice-main-card__party {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Badge – bottom center of card */
+
+.invoice-main-card__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #000000;
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 9px 16px;
+  margin: 6px auto 14px;
+  width: fit-content;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.invoice-main-card__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Tablet */
+@media (max-width: 920px) {
+  .charges-invoice {
+    padding: 64px 20px;
+  }
+
+  .charges-invoice__container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .charges-invoice__content {
+    max-width: 100%;
+  }
+
+  .charges-invoice__content h2 {
+    font-size: 34px;
+  }
+
+  .charges-invoice__blob {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .charges-invoice {
+    padding: 48px 16px;
+  }
+
+  .charges-invoice__content h2 {
+    font-size: 28px;
+  }
+
+  .charges-invoice__subtitle p {
+    font-size: 12.5px;
+  }
+
+  .charges-invoice__feature {
+    min-height: 80px;
+    padding: 14px 16px;
+  }
+
+  .charges-invoice__feature-title {
+    font-size: 12.5px;
+  }
+
+  .charges-invoice__feature p {
+    font-size: 12px;
+  }
+
+  .charges-invoice__blob {
+    padding: 24px 16px 32px;
+    border-radius: 20px;
+  }
+
+  .invoice-main-card__header {
+    padding: 12px 12px 10px;
+  }
+
+  .invoice-main-card__titles,
+  .invoice-main-card__row {
+    grid-template-columns: 1.3fr 0.85fr 0.85fr;
+    font-size: 12px;
+  }
+
+  .invoice-main-card__filter {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .invoice-main-card__badge {
+    font-size: 11.5px;
+    padding: 8px 14px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+  .charges-invoice__content h2 {
+    font-size: 24px;
+  }
+
+  .invoice-main-card__titles,
+  .invoice-main-card__row {
+    grid-template-columns: 1.2fr 0.9fr 0.8fr;
+    gap: 4px;
+    font-size: 11px;
+  }
+
+  .invoice-main-card__party {
+    font-size: 10.5px;
+  }
+}

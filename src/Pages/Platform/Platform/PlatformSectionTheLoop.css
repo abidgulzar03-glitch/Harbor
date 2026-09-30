@@ -1,0 +1,395 @@
+.platform-section {
+  width: 100%;
+  padding: 100px 0 120px;
+  background: #ffffff;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
+.platform-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 70px;
+  align-items: start;
+  box-sizing: border-box;
+}
+
+.platform-animate {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.platform-in-view .platform-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .platform-animate {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.platform-left {
+  position: relative;
+  min-width: 0;
+}
+
+.platform-sticky {
+  position: sticky;
+  top: 100px;
+  background: #ffffff;
+  z-index: 2;
+  padding-bottom: 20px;
+}
+
+.platform-heading {
+  margin: 0;
+  color: #111827;
+  font-family: "Lora", Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.6px;
+  max-width: 440px;
+}
+
+.platform-features {
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.platform-feature:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.platform-feature-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #eef2ff;
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.platform-feature-muted .platform-feature-icon {
+  background: #f3f4f6;
+  color: #b8bcc4;
+}
+
+.platform-feature-content {
+  min-width: 0;
+}
+
+.platform-feature-title {
+  margin: 0 0 4px;
+  color: #111827;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.platform-feature-desc {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 400;
+  max-width: 380px;
+}
+
+.platform-feature-muted .platform-feature-title,
+.platform-feature-muted .platform-feature-desc {
+  color: #b8bcc4;
+}
+
+.platform-right {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.platform-card-group {
+  width: 100%;
+  max-width: 420px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 20px;
+  background: #eef2ff;
+}
+
+.platform-card {
+  background: #ffffff;
+  border-radius: 13px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 16px 30px rgba(17, 24, 39, 0.06),
+    0 3px 8px rgba(17, 24, 39, 0.04);
+}
+
+.platform-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 13px;
+}
+
+.platform-card-title {
+  color: #111827;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.platform-card-tag {
+  flex-shrink: 0;
+  color: #4f46e5;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.platform-card-tag-muted {
+  color: #9ca3af;
+  text-align: right;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.platform-card-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.platform-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.platform-row-label {
+  color: #6b7280;
+  font-size: 9.5px;
+  font-weight: 400;
+}
+
+.platform-row-value {
+  color: #111827;
+  font-size: 9.5px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.platform-card-divider {
+  height: 1px;
+  background: #eef0f3;
+  margin: 13px 0;
+}
+
+.platform-container-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 13px;
+}
+
+.platform-container-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.platform-container-number {
+  color: #111827;
+  font-size: 9.5px;
+  font-weight: 600;
+}
+
+.platform-pill {
+  flex-shrink: 0;
+  padding: 3px 7px;
+  border-radius: 5px;
+  font-size: 8px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.platform-pill-amber {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.platform-pill-blue {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.platform-pill-green {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.platform-callout {
+  border-radius: 9px;
+  padding: 10px 12px;
+  margin-bottom: 9px;
+}
+
+.platform-callout-blue {
+  background: #eff6ff;
+}
+
+.platform-callout-red {
+  background: #fef2f2;
+}
+
+.platform-callout-title {
+  margin: 0 0 2px;
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+.platform-callout-blue .platform-callout-title {
+  color: #2563eb;
+}
+
+.platform-callout-red .platform-callout-title {
+  color: #dc2626;
+}
+
+.platform-callout-desc {
+  margin: 0;
+  font-size: 8.5px;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+.platform-headroom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #eef0f3;
+  border-radius: 9px;
+  padding: 10px 12px;
+  margin-bottom: 9px;
+  box-shadow: 0 3px 8px rgba(17, 24, 39, 0.04);
+}
+
+.platform-headroom-label {
+  color: #111827;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.platform-headroom-value {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+.platform-card-caption {
+  margin: 0;
+  color: #9ca3af;
+  font-size: 8.5px;
+  line-height: 1.4;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1020px) {
+  .platform-container {
+    padding: 0 32px;
+    gap: 50px;
+  }
+
+  .platform-heading {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .platform-section {
+    padding: 80px 0 90px;
+  }
+
+  .platform-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .platform-sticky,
+  .platform-right {
+    position: static;
+  }
+
+  .platform-heading {
+    font-size: 30px;
+    max-width: 100%;
+  }
+
+  .platform-card-group {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .platform-section {
+    padding: 65px 0 70px;
+  }
+
+  .platform-container {
+    padding: 0 18px;
+  }
+
+  .platform-heading {
+    font-size: 26px;
+  }
+
+  .platform-card-group {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .platform-card {
+    padding: 13px;
+  }
+}

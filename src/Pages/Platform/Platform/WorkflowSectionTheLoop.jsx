@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "./WorkflowSection.css";
+import "./WorkflowSectionTheLoop.css";
 
 const cards = [
   {
@@ -50,7 +50,7 @@ const CARD_WIDTH = 360;
 const GAP = 60;
 const STEP = CARD_WIDTH + GAP;
 
-export default function WorkflowSection() {
+export default function WorkflowSectionTheLoop() {
   const sectionRef = useRef(null);
   const mobileRef = useRef(null);
 
@@ -58,24 +58,14 @@ export default function WorkflowSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 768);
 
-  /* =========================
-     RESPONSIVE
-  ========================= */
+  /* RESPONSIVE */
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  /* =========================
-     DESKTOP HORIZONTAL SCROLL
-  ========================= */
+  /* DESKTOP HORIZONTAL SCROLL */
   useEffect(() => {
     if (isMobile) return;
 
@@ -93,15 +83,10 @@ export default function WorkflowSection() {
         }
 
         const rect = section.getBoundingClientRect();
-
         const totalScroll = section.offsetHeight - window.innerHeight;
-
         const currentScroll = Math.min(Math.max(-rect.top, 0), totalScroll);
-
         const progress = totalScroll > 0 ? currentScroll / totalScroll : 0;
-
         const maxMove = (cards.length - 1) * STEP;
-
         const move = progress * maxMove;
 
         setTranslateX(move);
@@ -114,67 +99,45 @@ export default function WorkflowSection() {
     };
 
     handleScroll();
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [isMobile]);
 
-  /* =========================
-     MOBILE AUTO SLIDER
-  ========================= */
+  /* MOBILE AUTO SLIDER */
   useEffect(() => {
     if (!isMobile) return;
 
     const container = mobileRef.current;
-
     if (!container) return;
 
     let index = 0;
 
     const interval = setInterval(() => {
-      const cardsElements = container.children;
-      const card = cardsElements[index];
+      const card = container.children[index];
 
       if (card) {
-        container.scrollTo({
-          left: card.offsetLeft - 20,
-          behavior: "smooth",
-        });
+        container.scrollTo({ left: card.offsetLeft - 20, behavior: "smooth" });
       }
 
       setActiveIndex(index);
-
       index = (index + 1) % cards.length;
     }, 2500);
 
-    return () => {
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, [isMobile]);
 
-  /* =========================
-     MOBILE SWIPE
-  ========================= */
+  /* MOBILE SWIPE */
   const handleMobileScroll = () => {
     if (!isMobile) return;
 
     const container = mobileRef.current;
-
     if (!container) return;
 
     const firstCard = container.children[0];
-
     if (!firstCard) return;
 
     const cardWidth = firstCard.getBoundingClientRect().width;
-
     const gap = 16;
-
     const index = Math.round(container.scrollLeft / (cardWidth + gap));
 
     setActiveIndex(Math.min(Math.max(index, 0), cards.length - 1));
@@ -190,9 +153,7 @@ export default function WorkflowSection() {
           style={
             isMobile
               ? undefined
-              : {
-                  transform: `translate3d(-${translateX}px, 0, 0)`,
-                }
+              : { transform: `translate3d(-${translateX}px, 0, 0)` }
           }
         >
           {cards.map((card, index) => (
@@ -202,12 +163,10 @@ export default function WorkflowSection() {
             >
               <div className="card-top">
                 <span className="number">{card.id}</span>
-
                 {card.badge && <span className="badge">{card.badge}</span>}
               </div>
 
               <h3>{card.title}</h3>
-
               <p>{card.text}</p>
             </article>
           ))}

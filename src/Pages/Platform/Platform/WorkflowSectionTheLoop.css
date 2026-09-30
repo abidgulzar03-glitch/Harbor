@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
-* {
-  box-sizing: border-box;
-}
-
 .wf-section {
   font-family: "Inter", sans-serif;
   height: 500vh;
@@ -76,9 +72,7 @@
   line-height: 1.6;
 }
 
-/* ===========================
-   MOBILE
-=========================== */
+/* ---------- Mobile ---------- */
 
 @media (max-width: 768px) {
   .wf-section {

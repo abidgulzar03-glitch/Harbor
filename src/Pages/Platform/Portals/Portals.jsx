@@ -3,6 +3,7 @@ import TwoSide from "./TwoSide";
 import TwoCards from "./TwoCards";
 import HowItWorks from "./HowItWorks";
 import PortalControl from "./PortalControl";
+import Boundaries from "./Boundaries";
 export default function Portals() {
   return (
     <>
@@ -51,6 +52,7 @@ export default function Portals() {
       <TwoCards />
       <HowItWorks />
       <PortalControl />
+      <Boundaries />
     </>
   );
 }

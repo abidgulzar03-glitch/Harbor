@@ -1,0 +1,14 @@
+/* Page wrapper only. Each section owns its own CSS file. */
+.the-loop {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Previously a global `* { box-sizing }` inside the workflow CSS. */
+.the-loop,
+.the-loop *,
+.the-loop *::before,
+.the-loop *::after {
+  box-sizing: border-box;
+}

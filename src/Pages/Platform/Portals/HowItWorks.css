@@ -75,13 +75,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    160deg,
-    #dfe3ff 0%,
-    #a7b3f5 35%,
-    #3a4f9e 75%,
-    #16204a 100%
-  );
+  background: #dde8f4;
   box-shadow: 0 16px 30px rgba(15, 23, 42, 0.15);
 }
 

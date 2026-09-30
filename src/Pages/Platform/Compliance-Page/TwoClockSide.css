@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
-
 .twoClockSide-wrap {
   --twoClockSide-ink: #1b2027;
   --twoClockSide-ink-dim: #5b6472;
@@ -11,12 +10,15 @@
   --twoClockSide-amber-dim: #f3d3c0;
   --twoClockSide-amber-glow: rgba(224, 106, 60, 0.12);
 
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* grows with content */
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-top: 120px;
   font-family: "Archivo", system-ui, sans-serif;
   background: var(--twoClockSide-base);
   color: var(--twoClockSide-ink);
-  position: relative;
-  width: 100%;
-  height: auto;
 }
 
 .twoClockSide-inner {

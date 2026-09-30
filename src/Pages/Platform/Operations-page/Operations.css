@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.operations-page {
+  font-family: "Inter", sans-serif;
+  background: #f6f3eb;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.op-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 56px 40px 70px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+
+  overflow: hidden;
+
+  background-image: url("/Operation-img-1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.op-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.78) 0%,
+    rgba(7, 16, 29, 0.62) 45%,
+    rgba(5, 11, 20, 0.7) 100%
+  );
+  z-index: 1;
+}
+
+.op-badge,
+.op-hero h1,
+.op-hero p,
+.op-btn {
+  position: relative;
+  z-index: 2;
+}
+
+/* Badge */
+
+.op-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 60px;
+  margin-bottom: 32px;
+
+  padding: 4px 10px 4px 6px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(14px);
+}
+
+.op-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  color: #08264a;
+}
+
+.op-icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.op-label {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Heading */
+
+.op-hero h1 {
+  max-width: 1080px;
+  color: #fff;
+  font-size: clamp(58px, 7vw, 100px);
+  line-height: 0.92;
+  letter-spacing: -4px;
+  font-weight: 500;
+}
+
+/* Text */
+
+.op-hero p {
+  margin-top: 30px;
+  max-width: 470px;
+
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1024px) {
+  .op-hero {
+    padding: 48px 28px 60px;
+    background-position: center;
+  }
+
+  .op-hero h1 {
+    font-size: 68px;
+    letter-spacing: -3px;
+  }
+
+  .op-hero p {
+    max-width: 520px;
+    font-size: 15px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .op-hero {
+    min-height: 100svh;
+    padding: 28px 22px 44px;
+    justify-content: center;
+
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .op-badge {
+    margin-top: 0;
+    margin-bottom: 24px;
+    transform: scale(0.96);
+  }
+
+  .op-label {
+    font-size: 12px;
+  }
+
+  .op-hero h1 {
+    max-width: 100%;
+    font-size: 48px;
+    line-height: 0.98;
+    letter-spacing: -2px;
+  }
+
+  .op-hero p {
+    margin-top: 22px;
+    max-width: 320px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .op-btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 16px 22px;
+    border-radius: 14px;
+  }
+}
+
+/* Small phones */
+
+@media (max-width: 480px) {
+  .op-hero {
+    padding: 22px 18px 40px;
+  }
+
+  .op-hero h1 {
+    font-size: 40px;
+    letter-spacing: -1.6px;
+  }
+
+  .op-hero p {
+    max-width: 290px;
+    font-size: 13.5px;
+  }
+
+  .op-badge {
+    padding: 3px 8px 3px 5px;
+  }
+}

@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+.bd-section {
+  --bd-ink: #1c1c24;
+  --bd-ink-dim: #4a4a55;
+  --bd-accent: #9b8cf2;
+  --bd-card-bg: #ffffff;
+
+  position: relative;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.35) 40%,
+      rgba(0, 0, 0, 0.65) 100%
+    ),
+    url("./boundaries-img-1.jpg") center center / cover no-repeat;
+  background-attachment: fixed;
+  padding: 88px 32px 120px;
+  overflow: hidden;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  margin-bottom: 180px;
+}
+
+.bd-inner {
+  position: relative;
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.bd-eyebrow {
+  margin: 0 0 14px;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.bd-heading {
+  margin: 0 0 60px;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+/* Cards */
+
+.bd-cards {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  padding-top: 22px;
+}
+
+.bd-card {
+  background: var(--bd-card-bg);
+  border-radius: 20px;
+  box-shadow: 0 18px 45px rgba(37, 28, 78, 0.18);
+  padding: 22px;
+  width: 240px;
+  min-height: 262px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  transition: transform 0.35s ease;
+}
+
+.bd-card-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #ece9f2;
+}
+
+.bd-logo-mark {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  color: #17233d;
+}
+
+.bd-logo-mark svg {
+  width: 10px;
+  height: 10px;
+}
+
+.bd-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.bd-logo-name {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--bd-ink);
+}
+
+.bd-logo-sub {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bd-ink-dim);
+}
+
+.bd-card-body {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.bd-quote {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #4b5563;
+  letter-spacing: -0.01em;
+}
+
+.bd-stat-label {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #374151;
+}
+
+.bd-stat-value {
+  margin: 0;
+  font-size: 54px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--bd-accent);
+}
+
+.bd-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--bd-ink);
+  text-decoration: none;
+}
+
+.bd-card-link-icon {
+  transition: transform 0.25s ease;
+}
+
+.bd-card-link:hover .bd-card-link-icon {
+  transform: translateX(4px);
+}
+
+.bd-card-link-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Tablet */
+
+@media (max-width: 860px) {
+  .bd-section {
+    background-attachment: scroll;
+    padding: 72px 24px 90px;
+  }
+
+  .bd-heading {
+    font-size: 42px;
+  }
+
+  .bd-cards {
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .bd-card {
+    width: 100%;
+    max-width: 320px;
+    min-height: 240px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 560px) {
+  .bd-section {
+    padding: 60px 20px 80px;
+  }
+
+  .bd-heading {
+    font-size: 34px;
+    line-height: 1.1;
+  }
+
+  .bd-cards {
+    gap: 16px;
+  }
+
+  .bd-card {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .bd-stat-value {
+    font-size: 46px;
+  }
+
+  .bd-quote {
+    font-size: 16px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .bd-card,
+  .bd-card-link-icon {
+    transition: none !important;
+  }
+
+  .bd-card:hover {
+    transform: none;
+  }
+}

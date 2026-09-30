@@ -124,18 +124,29 @@ export default function ScrollDemo() {
       <div className="scroll-pin">
         <section
           className="demo-wrapper"
+          data-tab={tab}
           style={{
             "--grow": grow,
             "--color": colorProgress,
           }}
         >
+          {/* Background layers – one per tab, crossfaded on scroll */}
+          <div className="demo-bgs" aria-hidden="true">
+            {TABS.map((name) => (
+              <span
+                key={name}
+                className={`demo-bg bg-${name}${tab === name ? " is-active" : ""}`}
+              />
+            ))}
+          </div>
+
           {/* Close button */}
           <button
             className="demo-close"
             onClick={handleClose}
             aria-label="Close demo"
           >
-            <X size={18} />
+            <X size={19} />
           </button>
 
           {/* Tab icons */}
@@ -173,7 +184,6 @@ export default function ScrollDemo() {
 
             {/* Right panel */}
             <div className="demo-right">
-              {/* ===== DETENTION ===== */}
               {tab === "detention" && (
                 <div key="detention" className="detention-ui fade">
                   <div className="exception-card">
@@ -197,7 +207,6 @@ export default function ScrollDemo() {
                 </div>
               )}
 
-              {/* ===== ADVANCES ===== */}
               {tab === "advances" && (
                 <div key="advances" className="advances-ui fade">
                   <div className="exception-card exception-card-dark">
@@ -215,7 +224,6 @@ export default function ScrollDemo() {
                 </div>
               )}
 
-              {/* ===== COMPLIANCE ===== */}
               {tab === "compliance" && (
                 <div key="compliance" className="compliance-ui fade">
                   <div className="exception-card">
@@ -231,7 +239,6 @@ export default function ScrollDemo() {
                 </div>
               )}
 
-              {/* ===== DOCUMENTS ===== */}
               {tab === "documents" && (
                 <div key="documents" className="documents-ui fade">
                   <div className="exception-card">

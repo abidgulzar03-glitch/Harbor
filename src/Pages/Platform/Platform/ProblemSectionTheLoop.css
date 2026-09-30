@@ -1,0 +1,283 @@
+.scheduling-section {
+  width: 100%;
+  padding: 90px 0 110px;
+  background: transparent;
+}
+
+.scheduling-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 440px;
+  gap: 60px;
+  align-items: start;
+  box-sizing: border-box;
+}
+
+.scheduling-left {
+  position: relative;
+  min-width: 0;
+  padding-right: 10px;
+}
+
+.scheduling-sticky {
+  position: sticky;
+  top: 100px;
+  padding-bottom: 36px;
+  background: #ffffff;
+  z-index: 2;
+}
+
+.scheduling-label {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 6px 14px;
+  background: #eef2ff;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #4f46e5;
+  text-transform: uppercase;
+}
+
+.scheduling-heading {
+  margin: 0;
+  color: #111827;
+  font-family: "Lora", Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.6px;
+}
+
+.scheduling-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 8px;
+}
+
+.scheduling-feature {
+  padding: 26px 0;
+  border-top: 1px solid #e5e7eb;
+}
+
+.scheduling-feature:first-child {
+  border-top: none;
+  padding-top: 12px;
+}
+
+.feature-content {
+  min-width: 0;
+}
+
+.feature-title {
+  margin: 0 0 6px;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+.feature-desc {
+  margin: 0;
+  color: #6b7280dc;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.feature-subfeatures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.sub-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  border-radius: 7px;
+  background: #f8fafc;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.scheduling-right {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.calendar-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  background: transparent;
+  box-shadow:
+    0 25px 50px rgba(11, 28, 44, 0.15),
+    0 8px 20px rgba(11, 28, 44, 0.08);
+}
+
+.scheduling-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1100px) {
+  .scheduling-container {
+    grid-template-columns: minmax(0, 1fr) 400px;
+    gap: 48px;
+  }
+
+  .calendar-card {
+    max-width: 400px;
+  }
+
+  .scheduling-image {
+    max-height: 440px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .scheduling-container {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 40px;
+    padding: 0 32px;
+  }
+
+  .scheduling-heading {
+    font-size: 34px;
+  }
+
+  .calendar-card {
+    max-width: 360px;
+  }
+
+  .scheduling-image {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 900px) {
+  .scheduling-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .scheduling-sticky,
+  .scheduling-right {
+    position: static;
+  }
+
+  .scheduling-heading {
+    font-size: 30px;
+  }
+
+  .calendar-card {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .scheduling-image {
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scheduling-section {
+    padding: 65px 0 80px;
+  }
+
+  .scheduling-container {
+    padding: 0 22px;
+    gap: 40px;
+  }
+
+  .scheduling-heading {
+    font-size: 28px;
+  }
+
+  .feature-title {
+    font-size: 17px;
+  }
+
+  .feature-desc {
+    font-size: 14px;
+  }
+
+  .calendar-card {
+    max-width: 360px;
+  }
+
+  .scheduling-image {
+    max-height: 360px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scheduling-section {
+    padding: 55px 0 70px;
+  }
+
+  .scheduling-container {
+    padding: 0 18px;
+  }
+
+  .scheduling-heading {
+    font-size: 25px;
+  }
+
+  .scheduling-label {
+    font-size: 11px;
+  }
+
+  .feature-title {
+    font-size: 16px;
+  }
+
+  .feature-desc {
+    font-size: 14px;
+  }
+
+  .calendar-card {
+    max-width: 100%;
+  }
+
+  .scheduling-image {
+    max-height: 320px;
+  }
+}
+
+@media (max-width: 360px) {
+  .scheduling-heading {
+    font-size: 23px;
+  }
+
+  .feature-title {
+    font-size: 15px;
+  }
+
+  .feature-desc {
+    font-size: 13px;
+  }
+}

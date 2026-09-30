@@ -1,142 +1,425 @@
 @import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap");
 
+/* =========================================================
+   HERO FONT
+========================================================= */
+
 #landing-hero,
 #landing-hero * {
   font-family: "General Sans", sans-serif;
 }
 
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
 #landing-hero {
-  background: #fff;
-  padding: 0;
+  width: 100%;
+  background: #fcfaf5;
+  padding: 0 26px 0;
+  box-sizing: border-box;
 }
+
+/* =========================================================
+   HERO CARD
+========================================================= */
 
 .landing-hero__card {
   width: 100%;
+  box-sizing: border-box;
 }
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
 
 .landing-hero__content {
   width: 100%;
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   text-align: center;
-  padding: 0 30px 60px;
+
   box-sizing: border-box;
 
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.68)),
-    url("/Home-hero-img-2.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  padding: 110px 30px 60px;
+
+  border-radius: 30px;
+
+  background: #f5f3ee;
 }
+
+/* =========================================================
+   BADGE
+========================================================= */
 
 .landing-hero__badge {
   display: inline-flex;
   align-items: center;
+
   gap: 8px;
-  padding: 6px 14px 6px 6px;
-  margin-bottom: 24px;
+
+  padding: 2px 12px 4px 4px;
+  margin-bottom: 28px;
+
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(12px);
-  color: #fff;
-  font-size: 12px;
+
+  background: rgba(11, 27, 51, 0.05);
+  border: 1px solid rgba(11, 27, 51, 0.12);
+
+  color: #0b1b33;
+
+  font-size: 11px;
   font-weight: 400;
+
+  text-transform: uppercase;
+
+  box-sizing: border-box;
 }
+
+/* Badge Check */
 
 .landing-hero__check {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+
+  flex-shrink: 0;
+
   display: grid;
   place-items: center;
+
+  border-radius: 50%;
+
   background: #0f6bff;
   color: #fff;
-  font-size: 11px;
+
+  font-size: 8px;
   font-weight: 700;
+
+  line-height: 1;
 }
+
+/* =========================================================
+   TITLE
+========================================================= */
 
 .landing-hero__title {
-  margin: 0 0 28px;
-  color: rgba(255, 255, 255, 0.96);
-  font-size: 55px;
+  margin: 0 0 30px;
+
+  color: #0b1b33;
+
+  font-size: clamp(40px, 4vw, 88px);
   font-weight: 500;
+
   line-height: 1.1;
-  letter-spacing: -0.04em;
+
+  letter-spacing: -0.045em;
+
+  box-sizing: border-box;
 }
 
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
 .landing-hero__subtitle {
-  max-width: 560px;
-  margin: 0 0 32px;
-  color: #fff;
-  font-size: 17px;
+  max-width: 680px;
+
+  margin: 0 0 40px;
+
+  color: #5b6472;
+
+  font-size: clamp(13px, 1vw, 17px);
+  font-weight: 300;
+
   line-height: 1.6;
+
+  box-sizing: border-box;
 }
+
+/* =========================================================
+   BUTTON ACTIONS
+========================================================= */
 
 .landing-hero__actions {
   display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+
+  gap: 22px;
+
+  flex-wrap: wrap;
+
+  width: 100%;
 }
+
+/* =========================================================
+   COMMON BUTTON
+========================================================= */
 
 .landing-btn {
-  border: 0;
-  border-radius: 14px;
-  padding: 13px 23px;
+  width: 150px;
+  height: 42px;
+
+  flex: 0 0 150px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border-radius: 12px;
+
+  padding: 0 15px;
+
+  font-family: "General Sans", sans-serif;
+
   font-size: 14px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: -0.01em;
+
   cursor: pointer;
-  transition: 0.25s ease;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
 .landing-btn--primary {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #0f1f33;
+  gap: 6px;
+
+  background: #0a1a2f;
   color: #fff;
+
+  border: 1px solid #0a1a2f;
 }
 
 .landing-btn--primary:hover {
-  background: #162b46;
+  background: #152f51f1;
+  border-color: #162b46;
 }
 
+/* =========================================================
+   ARROW
+========================================================= */
+
+.landing-btn__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  line-height: 1;
+
+  margin-top: -1px;
+}
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
+
 .landing-btn--secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(8px);
+  background: transparent;
+
+  color: #0b1b33;
+
+  border: 1px solid rgba(11, 27, 51, 0.25);
 }
 
 .landing-btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(231, 233, 235, 0.06);
+
+  border-color: rgba(11, 27, 51, 0.35);
 }
 
-.landing-btn__arrow {
-  font-size: 14px;
+/* =========================================================
+   OLD ICON SUPPORT
+   Kept in case you use this class elsewhere
+========================================================= */
+
+.landing-btn__icon {
+  width: 44px;
+  height: 44px;
+
+  border-radius: 10px;
+
+  background: #fff;
+
+  display: grid;
+  place-items: center;
 }
 
-@media (max-width: 700px) {
+.landing-btn__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* =========================================================
+   NOTE
+========================================================= */
+
+.landing-hero__note {
+  margin-top: 20px;
+
+  font-size: 13px;
+
+  color: #5b6472;
+}
+
+.landing-hero__note a {
+  color: #5b6472;
+
+  text-decoration: underline;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  #landing-hero {
+    padding: 0 18px 0;
+  }
+
   .landing-hero__content {
-    padding: 0 20px 48px;
-    background-attachment: scroll;
+    padding: 100px 25px 55px;
   }
 
   .landing-hero__title {
-    font-size: 32px;
+    font-size: clamp(42px, 6vw, 64px);
   }
 
   .landing-hero__subtitle {
+    max-width: 620px;
+
     font-size: 15px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+  #landing-hero {
+    padding: 12px 12px 0;
+  }
+
+  .landing-hero__content {
+    min-height: calc(100vh - 12px);
+
+    padding: 80px 20px 48px;
+
+    border-radius: 28px;
+  }
+
+  /* Badge */
+
+  .landing-hero__badge {
+    margin-bottom: 22px;
+
+    font-size: 10px;
+  }
+
+  /* Title */
+
+  .landing-hero__title {
+    margin-bottom: 24px;
+
+    font-size: 40px;
+
+    line-height: 1.08;
+
+    letter-spacing: -0.04em;
+  }
+
+  /* Subtitle */
+
+  .landing-hero__subtitle {
+    max-width: 500px;
+
+    margin-bottom: 32px;
+
+    font-size: 15px;
+
+    line-height: 1.55;
+  }
+
+  /* Buttons */
+
+  .landing-hero__actions {
+    width: 100%;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
   }
 
   .landing-btn {
-    width: 100%;
-    justify-content: center;
+    width: 150px;
+    height: 42px;
+
+    flex: 0 0 150px;
+
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+  .landing-hero__content {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .landing-hero__title {
+    font-size: 34px;
+  }
+
+  .landing-hero__subtitle {
+    font-size: 14px;
+  }
+
+  .landing-hero__actions {
+    gap: 10px;
+  }
+
+  .landing-btn {
+    width: 145px;
+    height: 42px;
+
+    flex-basis: 145px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 340px) {
+  .landing-hero__title {
+    font-size: 31px;
+  }
+
+  .landing-btn {
+    width: 140px;
+    flex-basis: 140px;
   }
 }

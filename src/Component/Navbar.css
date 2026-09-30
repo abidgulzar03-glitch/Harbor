@@ -14,7 +14,7 @@
 
 .navbar-static {
   width: 100%;
-  height: 81px;
+  height: 75px;
   background: #fff;
   z-index: 1000;
 }
@@ -42,7 +42,7 @@
   text-decoration: none;
   color: #0b1f3a;
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -1px;
 }
 
