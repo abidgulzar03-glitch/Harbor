@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Component/Navbar";
+
 import Hero from "./Component/Hero";
 import StepsSection from "./Component/StepsSection";
 import CalendlyFeatureScroll from "./Component/CalendlyFeatureScroll";
@@ -25,6 +26,7 @@ function Home() {
   return (
     <>
       <Hero />
+
       <StepsSection />
       <CalendlyFeatureScroll />
       <CallieAnimation />
@@ -54,7 +56,6 @@ export default function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-
           <Route path="/the-loops" element={<TheLoop />} />
           <Route path="/operations" element={<Operations />} />
           <Route path="/compliance" element={<Compliance />} />

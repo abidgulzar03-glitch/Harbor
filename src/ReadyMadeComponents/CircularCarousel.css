@@ -1,0 +1,509 @@
+/* =========================================================
+   CIRCULAR CAROUSEL
+========================================================= */
+
+.circular-carousel {
+  --carousel-radius: 380px;
+  --card-width: 255px;
+  --card-height: 225px;
+
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+  padding: 70px 24px 55px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(134, 200, 210, 0.12),
+      transparent 34%
+    ),
+    #f7f8f5;
+
+  color: #102b2b;
+
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.circular-carousel__header {
+  position: relative;
+  z-index: 5;
+
+  width: min(100%, 650px);
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.circular-carousel__eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  margin-bottom: 14px;
+
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: #438b8c;
+}
+
+.circular-carousel__header h2 {
+  margin: 0;
+
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 0.98;
+
+  font-weight: 700;
+  letter-spacing: -0.055em;
+
+  color: #102b2b;
+}
+
+.circular-carousel__header p {
+  width: min(100%, 470px);
+
+  margin: 17px auto 0;
+
+  font-size: 13px;
+  line-height: 1.65;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+
+  color: #687777;
+}
+
+/* =========================================================
+   VIEWPORT
+========================================================= */
+
+.circular-carousel__viewport {
+  position: relative;
+
+  width: 100%;
+  height: 420px;
+
+  margin-top: 18px;
+
+  perspective: 1250px;
+
+  cursor: grab;
+
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.circular-carousel__viewport.is-dragging {
+  cursor: grabbing;
+}
+
+/* =========================================================
+   3D SCENE
+========================================================= */
+
+.circular-carousel__scene {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 1px;
+  height: 1px;
+
+  transform-style: preserve-3d;
+
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  will-change: transform;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.circular-carousel__card {
+  position: absolute;
+
+  top: calc(var(--card-height) / -2);
+  left: calc(var(--card-width) / -2);
+
+  width: var(--card-width);
+  height: var(--card-height);
+
+  padding: 21px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(31, 75, 75, 0.09);
+  border-radius: 22px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(235, 243, 241, 0.96)
+  );
+
+  box-shadow:
+    0 18px 50px rgba(22, 53, 53, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  cursor: pointer;
+
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+/* =========================================================
+   ACTIVE / HOVER
+========================================================= */
+
+.circular-carousel__card:hover,
+.circular-carousel__card.is-active {
+  border-color: rgba(67, 139, 140, 0.3);
+
+  background: linear-gradient(145deg, #ffffff, #e6f1ef);
+
+  box-shadow:
+    0 25px 65px rgba(22, 53, 53, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.circular-carousel__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 30px;
+}
+
+.circular-carousel__number {
+  font-size: 23px;
+  line-height: 1;
+
+  font-weight: 700;
+  letter-spacing: -0.04em;
+
+  color: #438b8c;
+}
+
+.circular-carousel__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  background: #ffe5df;
+  color: #c94d32;
+
+  font-size: 9px;
+  line-height: 1;
+
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.circular-carousel__content {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.circular-carousel__content h3 {
+  width: 100%;
+
+  margin: 0 0 10px;
+
+  font-size: 21px;
+  line-height: 1.12;
+
+  font-weight: 700;
+  letter-spacing: -0.035em;
+
+  color: #173535;
+}
+
+.circular-carousel__content p {
+  width: 100%;
+
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.58;
+
+  font-weight: 400;
+  letter-spacing: -0.005em;
+
+  color: #617474;
+}
+
+/* =========================================================
+   CARD FOOTER
+========================================================= */
+
+.circular-carousel__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 12px;
+
+  border-top: 1px solid rgba(40, 80, 80, 0.09);
+
+  font-size: 9px;
+  line-height: 1;
+
+  font-weight: 700;
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  color: #789090;
+}
+
+.circular-carousel__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  background: #dcebea;
+  color: #326f70;
+
+  font-size: 12px;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.circular-carousel__card:hover .circular-carousel__arrow {
+  transform: translate(2px, -2px);
+
+  background: #c8e1df;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+  .circular-carousel {
+    --carousel-radius: 340px;
+    --card-width: 270px;
+    --card-height: 230px;
+
+    padding-top: 60px;
+  }
+
+  .circular-carousel__viewport {
+    height: 390px;
+    perspective: 1100px;
+  }
+
+  .circular-carousel__content h3 {
+    font-size: 20px;
+  }
+
+  .circular-carousel__content p {
+    font-size: 11.5px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .circular-carousel {
+    --carousel-radius: 285px;
+    --card-width: 245px;
+    --card-height: 215px;
+
+    min-height: auto;
+
+    padding: 55px 16px 40px;
+  }
+
+  .circular-carousel__header h2 {
+    font-size: clamp(32px, 9vw, 46px);
+  }
+
+  .circular-carousel__header p {
+    margin-top: 13px;
+
+    font-size: 11.5px;
+    line-height: 1.6;
+  }
+
+  .circular-carousel__viewport {
+    height: 350px;
+
+    margin-top: 12px;
+
+    perspective: 950px;
+  }
+
+  .circular-carousel__card {
+    padding: 17px;
+
+    border-radius: 19px;
+  }
+
+  .circular-carousel__number {
+    font-size: 21px;
+  }
+
+  .circular-carousel__badge {
+    padding: 5px 8px;
+
+    font-size: 8px;
+  }
+
+  .circular-carousel__content h3 {
+    margin-bottom: 7px;
+
+    font-size: 18px;
+    line-height: 1.12;
+  }
+
+  .circular-carousel__content p {
+    font-size: 10.5px;
+    line-height: 1.52;
+  }
+
+  .circular-carousel__footer {
+    padding-top: 10px;
+
+    font-size: 7.5px;
+  }
+
+  .circular-carousel__arrow {
+    width: 22px;
+    height: 22px;
+
+    font-size: 10px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .circular-carousel {
+    --carousel-radius: 245px;
+    --card-width: 220px;
+    --card-height: 195px;
+
+    padding: 48px 12px 32px;
+  }
+
+  .circular-carousel__header h2 {
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  .circular-carousel__header p {
+    max-width: 300px;
+
+    font-size: 10.5px;
+    line-height: 1.55;
+  }
+
+  .circular-carousel__viewport {
+    height: 315px;
+
+    margin-top: 7px;
+  }
+
+  .circular-carousel__card {
+    padding: 15px;
+
+    border-radius: 17px;
+  }
+
+  .circular-carousel__number {
+    font-size: 19px;
+  }
+
+  .circular-carousel__badge {
+    padding: 4px 7px;
+
+    font-size: 7px;
+  }
+
+  .circular-carousel__content h3 {
+    margin-bottom: 6px;
+
+    font-size: 16px;
+  }
+
+  .circular-carousel__content p {
+    font-size: 9.5px;
+    line-height: 1.48;
+  }
+
+  .circular-carousel__footer {
+    padding-top: 8px;
+
+    font-size: 6.5px;
+  }
+
+  .circular-carousel__arrow {
+    width: 20px;
+    height: 20px;
+
+    font-size: 9px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .circular-carousel__scene,
+  .circular-carousel__card,
+  .circular-carousel__arrow {
+    transition: none;
+  }
+}

@@ -1,16 +1,26 @@
 import "./HowItWorksTheLoop.css";
-import WorkflowSectionTheLoop from "./WorkflowSectionTheLoop";
+import CircularCarousel from "../../../ReadyMadeComponents/CircularCarousel";
 
 export default function HowItWorksTheLoop() {
   return (
-    <section className="how-it-works-section">
-      <p className="how-it-works-label">The sequence</p>
-      <h2 className="how-it-works-heading">
-        Eight steps.
-        <br />
-        Two of them refuse.
-      </h2>
-      <WorkflowSectionTheLoop />
-    </section>
+    <>
+      {/* The carousel fills its parent, so the parent must have a height */}
+      <section
+        style={{
+          width: "100%",
+          height: "640px",
+          background: "#000",
+          color: "#fff",
+          position: "relative",
+        }}
+      >
+        <CircularCarousel
+          preset="cylinder"
+          intro="rise"
+          autoplay="drift"
+          captions
+        />
+      </section>
+    </>
   );
 }
