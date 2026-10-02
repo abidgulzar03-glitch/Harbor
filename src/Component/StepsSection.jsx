@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import StepCard from "./StepCard";
 import STEPS from "./StepsData";
 import "../Component/StepsSection.css";
+
 export default function StepsSection() {
   const [activeId, setActiveId] = useState(null);
   const canHoverRef = useRef(true);
@@ -11,10 +12,12 @@ export default function StepsSection() {
   }, []);
 
   const handleEnter = (id) => canHoverRef.current && setActiveId(id);
+
   const handleLeave = (id) =>
     canHoverRef.current && setActiveId((cur) => (cur === id ? null : cur));
+
   const handleTap = (id) => {
-    if (canHoverRef.current) return; // desktop uses hover, not click
+    if (canHoverRef.current) return;
     setActiveId((cur) => (cur === id ? null : id));
   };
 
@@ -22,12 +25,15 @@ export default function StepsSection() {
     <section className="hero-2">
       <div className="hero-card-2">
         <div className="eyebrow">The closed loop</div>
-        <h1>Keyed once. The rest is the system’s job</h1>
+
+        <h1>Keyed once. The rest is the system’s job.</h1>
+
         <p className="lede">
           Most brokerages key the same container four times. Every re-key loses
           a charge.
         </p>
-        <button className="cta">Book a Demo</button>
+
+        {/* <button className="cta">Book a Demo</button> */}
 
         <div className="steps">
           {STEPS.map((step) => (

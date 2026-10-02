@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./PaymentsShowcase.css";
 
-/* ---------------------------------------------------------- */
-/*  Small inline icons (no external icon library required)     */
-/* ---------------------------------------------------------- */
-
 const Icon = {
   Register: (p) => (
     <svg
@@ -177,7 +173,8 @@ const Icon = {
 /*  Card mockups shown inside the visual panel                 */
 /* ---------------------------------------------------------- */
 
-function BookingCard() {
+/* 1 · Operations */
+function OperationsCard() {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     const t = setTimeout(() => setOpen(true), 1100);
@@ -187,39 +184,157 @@ function BookingCard() {
   return (
     <div className="mock-card booking-card">
       <div className="booking-head">
-        <div className="avatar">DM</div>
+        <div className="avatar">O</div>
         <div>
-          <div className="booking-name">Dominic Mills</div>
-          <div className="booking-title">Consultation</div>
+          <div className="booking-name">Operations</div>
+          <div className="booking-title">Drayage desk</div>
         </div>
       </div>
       <div className="booking-meta">
         <span>
-          <Icon.Clock className="mi" /> 45 min
+          <Icon.Clock className="mi" /> Screen 1
         </span>
         <span>
-          <Icon.Camera className="mi" /> Zoom
+          <Icon.Camera className="mi" /> Screen 2
         </span>
         <span>
-          <Icon.Dollar className="mi" /> 100
+          <Icon.Dollar className="mi" /> Screen 3
         </span>
       </div>
       <div className="processor-row">
-        <span className="processor-label">Payment Processor</span>
+        <span className="processor-label">Operations</span>
         <div className={`processor-select ${open ? "open" : ""}`}>
           <span>{open ? "" : ""}</span>
           <Icon.Chevron className="mi chevron" />
         </div>
       </div>
       <div className={`processor-options ${open ? "show" : ""}`}>
-        <div className="processor-option">PayPal</div>
-        <div className="processor-option active">Stripe</div>
+        <div className="processor-option">Drayage desk</div>
+        <div className="processor-option active">Three screens</div>
       </div>
     </div>
   );
 }
 
-function PackagesCard() {
+/* 2 · Compliance */
+function ComplianceCard() {
+  const [n, setN] = useState(1);
+  useEffect(() => {
+    const iv = setInterval(() => setN((c) => (c >= 5 ? c : c + 1)), 350);
+    return () => clearInterval(iv);
+  }, []);
+
+  const items = [
+    { name: "MC and DOT authority", meta: "Authority" },
+    { name: "Insurance BIPD and cargo", meta: "Insurance" },
+    { name: "W9 on file", meta: "W9" },
+    { name: "Reviewer signature", meta: "Reviewer" },
+    { name: "Re-check at thirty days", meta: "Freshness clock" },
+  ];
+
+  return (
+    <div className="mock-card packages-card">
+      {items.map((it, i) => (
+        <div
+          className={`package-row${i === 0 ? "" : " reveal"} ${n > i ? "show" : ""}`}
+          key={it.name}
+        >
+          <span className="package-icon heart">
+            {i === items.length - 1 ? (
+              <Icon.Clock className="mi" />
+            ) : (
+              <Icon.Doc className="mi" />
+            )}
+          </span>
+          <div>
+            <div className="package-name">{it.name}</div>
+            <div className="package-meta">{it.meta}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* 3 · Reports */
+function ReportsCard() {
+  const [extra, setExtra] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setExtra(true), 1400);
+    return () => clearTimeout(t);
+  }, []);
+
+  const rows = [
+    { label: "Concentration", qty: 1, price: "Date range" },
+    { label: "Collections", qty: 2, price: "Date range" },
+    { label: "Margin by lane", qty: 3, price: "Date range" },
+    { label: "Demurrage watch", qty: 4, price: "Date range" },
+  ];
+  if (extra) rows.push({ label: "Carrier risk", qty: 5, price: "Date range" });
+
+  return (
+    <div className="mock-card invoice-card">
+      <div className="invoice-table">
+        <div className="invoice-row invoice-head">
+          <span>Report</span>
+          <span>Tab</span>
+          <span>Range</span>
+        </div>
+        {rows.map((r, i) => (
+          <div
+            className={`invoice-row ${i === rows.length - 1 && extra ? "row-in" : ""}`}
+            key={r.label}
+          >
+            <span>{r.label}</span>
+            <span>{r.qty}</span>
+            <span>{r.price}</span>
+          </div>
+        ))}
+      </div>
+      <div className="invoice-total">
+        <span>Reports</span>
+        <span className="total-amount" key={rows.length}>
+          Nine tabs
+        </span>
+      </div>
+      <button className="invoice-add" type="button">
+        <Icon.Plus className="mi" /> One date range
+      </button>
+      <button className="invoice-send" type="button">
+        <Icon.Send className="mi" /> Reports →
+      </button>
+    </div>
+  );
+}
+
+/* Shared "link" style card (Integrations + Finance) */
+function LinkCard({ title, sub, url, button }) {
+  return (
+    <div className="mock-card link-card">
+      <div className="link-title">{title}</div>
+      <div className="link-sub">{sub}</div>
+      <div className="link-url">{url}</div>
+      <button className="copy-btn" type="button">
+        <Icon.Link className="mi" /> {button}
+      </button>
+    </div>
+  );
+}
+
+/* 4 · Integrations */
+function IntegrationsCard() {
+  return (
+    <LinkCard
+      title="Server-side only."
+      sub="Every call audited."
+      url="FMCSA QCMobile, DAT, Truckstop, Samsara, Project44"
+      button="Integrations →"
+    />
+  );
+}
+
+/* 5 · Portals */
+function PortalsCard() {
   const [showSecond, setShowSecond] = useState(false);
   useEffect(() => {
     const t = setTimeout(() => setShowSecond(true), 900);
@@ -233,8 +348,8 @@ function PackagesCard() {
           <Icon.Heart className="mi" />
         </span>
         <div>
-          <div className="package-name">Coaching Package</div>
-          <div className="package-meta">10 sessions &middot; $950.00</div>
+          <div className="package-name">Self-serve outside</div>
+          <div className="package-meta">Portals</div>
         </div>
       </div>
       <div className={`package-row reveal ${showSecond ? "show" : ""}`}>
@@ -242,76 +357,23 @@ function PackagesCard() {
           <Icon.Sparkle className="mi" />
         </span>
         <div>
-          <div className="package-name">Yoga Session Package</div>
-          <div className="package-meta">8 sessions &middot; $350.00</div>
+          <div className="package-name">Everything submitted</div>
+          <div className="package-meta">Is a proposal</div>
         </div>
       </div>
     </div>
   );
 }
 
-function InvoiceCard() {
-  const [extra, setExtra] = useState(false);
-  useEffect(() => {
-    const t = setTimeout(() => setExtra(true), 1400);
-    return () => clearTimeout(t);
-  }, []);
-
-  const rows = [
-    { label: "Standard Package", qty: 1, price: 1450 },
-    { label: "Retainer Fee", qty: 1, price: 250 },
-  ];
-  if (extra) rows.push({ label: "Additional Revisions", qty: 1, price: 405 });
-  const total = rows.reduce((sum, r) => sum + r.price, 0);
-
+/* 6 · Finance */
+function FinanceCard() {
   return (
-    <div className="mock-card invoice-card">
-      <div className="invoice-table">
-        <div className="invoice-row invoice-head">
-          <span>Description</span>
-          <span>Qty</span>
-          <span>Price</span>
-        </div>
-        {rows.map((r, i) => (
-          <div
-            className={`invoice-row ${i === rows.length - 1 && extra ? "row-in" : ""}`}
-            key={r.label}
-          >
-            <span>{r.label}</span>
-            <span>{r.qty}</span>
-            <span>
-              ${r.price.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-              <Icon.Trash className="mi trash" />
-            </span>
-          </div>
-        ))}
-      </div>
-      <div className="invoice-total">
-        <span>Amount Due</span>
-        <span className="total-amount" key={total}>
-          ${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-        </span>
-      </div>
-      <button className="invoice-add" type="button">
-        <Icon.Plus className="mi" /> Add line item
-      </button>
-      <button className="invoice-send" type="button">
-        <Icon.Send className="mi" /> Send invoice
-      </button>
-    </div>
-  );
-}
-
-function LinkCard() {
-  return (
-    <div className="mock-card link-card">
-      <div className="link-title">Your link is ready!</div>
-      <div className="link-sub">Share your payment link to start selling.</div>
-      <div className="link-url">calendly.com/jane-smith-calendly/p...</div>
-      <button className="copy-btn" type="button">
-        <Icon.Link className="mi" /> Copy Link
-      </button>
-    </div>
+    <LinkCard
+      title="Finance"
+      sub="Charges become invoices by construction."
+      url="Charge → Invoice"
+      button="Finance →"
+    />
   );
 }
 
@@ -321,40 +383,52 @@ function LinkCard() {
 
 const SLIDES = [
   {
-    key: "upfront",
-    icon: Icon.Register,
-    title: "Upfront meeting payments",
-    description:
-      "Collect payment when clients book with you, so you can get paid sooner and reduce no-shows.",
-    gradient: "grad-blue",
-    Card: BookingCard,
-  },
-  {
-    key: "packages",
+    key: "operations",
     icon: Icon.Box,
-    title: "Meeting packages",
-    description:
-      "Sell multi-session bundles clients can purchase once and schedule over time \u2014 ideal for ongoing client work like coaching and consulting.",
+    title: "Operations",
+    description: "The three screens a drayage desk lives in.",
+    gradient: "grad-blue",
+    Card: OperationsCard,
+  },
+  {
+    key: "compliance",
+    icon: Icon.Clock,
+    title: "Compliance",
+    description: "Authority, insurance and W9 on a freshness clock.",
     gradient: "grad-purple",
-    Card: PackagesCard,
+    Card: ComplianceCard,
   },
   {
-    key: "invoices",
+    key: "reports",
     icon: Icon.Doc,
-    title: "Invoices",
-    description:
-      "Send professional branded invoices for post-meeting billing, installments, or project-based work, with built-in tracking and reminders.",
+    title: "Reports",
+    description: "Nine tabs, one date range.",
     gradient: "grad-teal",
-    Card: InvoiceCard,
+    Card: ReportsCard,
   },
   {
-    key: "links",
+    key: "integrations",
     icon: Icon.Link,
-    title: "Payment links",
-    description:
-      "Share payment links to quickly request payment for anything, anytime \u2014 from one-off services to follow-up fees.",
+    title: "Integrations",
+    description: "Server-side only. Every call audited.",
     gradient: "grad-indigo",
-    Card: LinkCard,
+    Card: IntegrationsCard,
+  },
+  {
+    key: "portals",
+    icon: Icon.Send,
+    title: "Portals",
+    description: "Self-serve outside. Everything submitted is a proposal.",
+    gradient: "grad-blue",
+    Card: PortalsCard,
+  },
+  {
+    key: "finance",
+    icon: Icon.Dollar,
+    title: "Finance",
+    description: "Charges become invoices by construction.",
+    gradient: "grad-purple",
+    Card: FinanceCard,
   },
 ];
 
@@ -369,14 +443,30 @@ export default function PaymentsShowcase() {
   const [cycle, setCycle] = useState(0);
   const [paused, setPaused] = useState(false);
   const timerRef = useRef(null);
+  const remainingRef = useRef(AUTOPLAY_MS); // time left on the current slide
+  const startedRef = useRef(0);
+  const lastActiveRef = useRef(0);
 
   useEffect(() => {
+    // new slide -> full time again
+    if (lastActiveRef.current !== active) {
+      lastActiveRef.current = active;
+      remainingRef.current = AUTOPLAY_MS;
+    }
     if (paused) return undefined;
+    startedRef.current = Date.now();
     timerRef.current = setTimeout(() => {
       setActive((a) => (a + 1) % SLIDES.length);
       setCycle((c) => c + 1);
-    }, AUTOPLAY_MS);
-    return () => clearTimeout(timerRef.current);
+    }, remainingRef.current);
+    return () => {
+      clearTimeout(timerRef.current);
+      // remember how much time is left so hover-pause resumes correctly
+      remainingRef.current = Math.max(
+        0,
+        remainingRef.current - (Date.now() - startedRef.current),
+      );
+    };
   }, [active, paused]);
 
   const goTo = (i) => {
@@ -405,18 +495,18 @@ export default function PaymentsShowcase() {
 
       <div className="content-panel">
         <div className="eyebrow-row">
-          <span className="badge">
-            <Icon.Register className="badge-icon" />
-            Payments
-          </span>
-          <span className="new-pill">New</span>
+          <span className="badge">The platform</span>
         </div>
 
         <h2 className="headline">
-          Flexible payment options
+          Thirty-three modules.
           <br />
-          that fit your business
+          Not seven subscriptions.
         </h2>
+        <p className="headline-sub">
+          One system on one database, so nothing is re-keyed and nothing
+          disagrees with itself.
+        </p>
 
         <ul className="feature-list">
           {SLIDES.map((slide, i) => {
@@ -427,6 +517,13 @@ export default function PaymentsShowcase() {
                 key={slide.key}
                 className={isActive ? "feature-item active" : "feature-item"}
                 onClick={() => goTo(i)}
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    goTo(i);
+                  }
+                }}
               >
                 <div className="feature-row">
                   <SlideIcon className="feature-icon" />
@@ -439,11 +536,15 @@ export default function PaymentsShowcase() {
                 </div>
 
                 <div className="progress-track">
-                  {isActive && !paused && (
-                    <div className="progress-fill" key={cycle} />
-                  )}
-                  {isActive && paused && (
-                    <div className="progress-fill paused" />
+                  {isActive && (
+                    <div
+                      className="progress-fill"
+                      key={cycle}
+                      style={{
+                        animationDuration: `${AUTOPLAY_MS}ms`,
+                        animationPlayState: paused ? "paused" : "running",
+                      }}
+                    />
                   )}
                 </div>
               </li>

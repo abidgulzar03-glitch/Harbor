@@ -3,77 +3,61 @@ import "./CustomerStories.css";
 
 const STORIES = [
   {
-    stat: "75 hours saved monthly",
+    stat: "Server-side only.",
     quote:
-      "Calendly helps us protect our team’s time and make every support interaction count.",
-    name: "Marques Stewart",
-    title: "Managing Director of Technology at Achievement First",
-    logoText: "Achievement First",
-    image: "/cterimg-1.jpg",
-    thumb: "/cterimg-1.jpg",
+      "No credential reaches the client bundle. Every outbound call is written to the audit log, and simulated data is always labelled simulated.",
+    name: "Audited",
+    title: "Nothing is switched on by default.",
+    logoText: "Audited",
+    image: "/story-1.svg",
+    thumb: "/story-1.svg",
   },
   {
-    stat: "80% reduction in booking-related emails",
-
-    quote:
-      "We care deeply about the experience they have with us — and Calendly helps us start it off right.",
-
-    name: "Akira Bradley",
-
-    title: "Co-Founder at Barking with the Bradley's",
-
-    logoText: "Barking with the Bradley's",
-
-    image: "/cterimg-2.jpg",
-
-    thumb: "/cterimg-2.jpg",
+    stat: "FMCSA QCMobile",
+    quote: "Reads authority, insurance and safety rating by docket number.",
+    name: "Carrier data",
+    title: "Not live yet",
+    logoText: "FM",
+    image: "/story-2.svg",
+    thumb: "/story-2.svg",
   },
   {
-    stat: "3 to 5 hours saved per week",
-
-    quote: "Notetaker organizes the chaos of dialogue into clarity.",
-
-    name: "Lizzie Lewis",
-
-    title: "Founder at Kitty of Angels",
-
-    logoText: "Kitty of Angels",
-
-    image: "/cterimg-3.jpg",
-
-    thumb: "/cterimg-3.jpg",
+    stat: "DAT",
+    quote: "Posts a load and returns the lane’s rate history.",
+    name: "Load boards",
+    title: "Not live yet",
+    logoText: "DAT",
+    image: "/story-3.svg",
+    thumb: "/story-3.svg",
   },
   {
-    stat: "$1,200 annual savings",
-
-    quote:
-      "I use Calendly every single day. Without it, I honestly couldn’t run my business.",
-
-    name: "Pua Pakele",
-
-    title: "Founder at RBL Media",
-
-    logoText: "RBL Media",
-
-    image: "/cterimg-4.jpg",
-
-    thumb: "/cterimg-4.jpg",
+    stat: "Samsara",
+    quote: "Pulls tractor positions against the load’s stops.",
+    name: "Tracking",
+    title: "Not live yet",
+    logoText: "SA",
+    image: "/story-4.svg",
+    thumb: "/story-4.svg",
   },
   {
-    stat: "100% attendance rate",
-
+    stat: "Project44",
+    quote: "Watches vessel and container milestones for the free-day clock.",
+    name: "Ocean tracking",
+    title: "Not live yet",
+    logoText: "P44",
+    image: "/story-5.svg",
+    thumb: "/story-5.svg",
+  },
+  {
+    stat: "Also in the directory",
     quote:
-      "Adding a booking fee didn’t just reduce no-shows — it changed the tone of my consultations.",
-
-    name: "Elizabeth Saunders",
-
-    title: "Founder at Real Life E",
-
-    logoText: "Real Life E",
-
-    image: "/cterimg-5.jpg",
-
-    thumb: "/cterimg-5.jpg",
+      "Truckstop, Loadmatch, Ferry booking, SAFER, Highway, RMIS, Motive, Geotab, Google Maps, PC Miler, DocuSign, Twilio SMS, QuickBooks, Stripe.",
+    name: "The whole directory →",
+    title: "Not live yet",
+    logoText: "Directory",
+    /* swap for your crane photo, e.g. "/crane.jpg" */
+    image: "/story-6.svg",
+    thumb: "/story-6.svg",
   },
 ];
 
@@ -85,6 +69,9 @@ export default function CustomerStories() {
   const [progressKey, setProgressKey] = useState(0);
 
   const timerRef = useRef(null);
+  const remainingRef = useRef(SLIDE_DURATION); // time left on current card
+  const startedRef = useRef(0);
+  const lastIndexRef = useRef(0);
   const count = STORIES.length;
 
   const goTo = useCallback((next) => {
@@ -93,12 +80,24 @@ export default function CustomerStories() {
   }, []);
 
   useEffect(() => {
+    // new card -> full time again
+    if (lastIndexRef.current !== index) {
+      lastIndexRef.current = index;
+      remainingRef.current = SLIDE_DURATION;
+    }
     if (paused) return undefined;
-    clearTimeout(timerRef.current);
+    startedRef.current = Date.now();
     timerRef.current = setTimeout(() => {
       goTo((index + 1) % count);
-    }, SLIDE_DURATION);
-    return () => clearTimeout(timerRef.current);
+    }, remainingRef.current);
+    return () => {
+      clearTimeout(timerRef.current);
+      // remember what is left so hover-pause resumes in step with the bar
+      remainingRef.current = Math.max(
+        0,
+        remainingRef.current - (Date.now() - startedRef.current),
+      );
+    };
   }, [index, paused, goTo, count]);
 
   const handleDotClick = (i) => {
@@ -117,10 +116,12 @@ export default function CustomerStories() {
       onMouseLeave={() => setPaused(false)}
     >
       <div className="cs-header">
-        <span className="cs-eyebrow">Customer stories</span>
-        <h2 className="cs-heading">
-          Discover how businesses grow with Calendly
-        </h2>
+        <span className="cs-eyebrow">Phase ten</span>
+        <h2 className="cs-heading">Nothing is switched on by default.</h2>
+        <p className="cs-note">
+          <span className="cs-note-pill">Not live yet</span>
+          This is the directory, not a claim that a connection exists today.
+        </p>
       </div>
 
       <div className="cs-stage">
@@ -130,14 +131,14 @@ export default function CustomerStories() {
           className="cs-peek cs-peek-far cs-peek-left"
           style={{ backgroundImage: `url(${STORIES[peekIndex(-2)].thumb})` }}
           onClick={() => goTo(peekIndex(-2))}
-          aria-label={`Show ${STORIES[peekIndex(-2)].name}'s story`}
+          aria-label={`Show ${STORIES[peekIndex(-2)].stat}`}
         />
         <button
           type="button"
           className="cs-peek cs-peek-near cs-peek-left"
           style={{ backgroundImage: `url(${STORIES[peekIndex(-1)].thumb})` }}
           onClick={() => goTo(peekIndex(-1))}
-          aria-label={`Show ${STORIES[peekIndex(-1)].name}'s story`}
+          aria-label={`Show ${STORIES[peekIndex(-1)].stat}`}
         />
 
         {/* Main card */}
@@ -147,7 +148,7 @@ export default function CustomerStories() {
           <div className="cs-card-face" key={index}>
             <div className="cs-card-left">
               <h3 className="cs-stat">{current.stat}</h3>
-              <blockquote className="cs-quote">“{current.quote}”</blockquote>
+              <blockquote className="cs-quote">{current.quote}</blockquote>
               <div className="cs-attribution">
                 <p className="cs-name">{current.name}</p>
                 <p className="cs-title">{current.title}</p>
@@ -157,7 +158,7 @@ export default function CustomerStories() {
               <img
                 className="cs-photo"
                 src={current.image}
-                alt={current.name}
+                alt={current.stat}
               />
               <div className="cs-photo-scrim" />
               <span className="cs-logo">{current.logoText}</span>
@@ -170,21 +171,21 @@ export default function CustomerStories() {
           className="cs-peek cs-peek-near cs-peek-right"
           style={{ backgroundImage: `url(${STORIES[peekIndex(1)].thumb})` }}
           onClick={() => goTo(peekIndex(1))}
-          aria-label={`Show ${STORIES[peekIndex(1)].name}'s story`}
+          aria-label={`Show ${STORIES[peekIndex(1)].stat}`}
         />
         <button
           type="button"
           className="cs-peek cs-peek-far cs-peek-right"
           style={{ backgroundImage: `url(${STORIES[peekIndex(2)].thumb})` }}
           onClick={() => goTo(peekIndex(2))}
-          aria-label={`Show ${STORIES[peekIndex(2)].name}'s story`}
+          aria-label={`Show ${STORIES[peekIndex(2)].stat}`}
         />
       </div>
 
       <div className="cs-pagination">
         {STORIES.map((s, i) =>
           i === index ? (
-            <span className="cs-track" key={s.name}>
+            <span className="cs-track" key={s.stat}>
               <span
                 className="cs-track-fill"
                 key={progressKey}
@@ -196,11 +197,11 @@ export default function CustomerStories() {
             </span>
           ) : (
             <button
-              key={s.name}
+              key={s.stat}
               type="button"
               className="cs-dot"
               onClick={() => handleDotClick(i)}
-              aria-label={`Go to ${s.name}'s story`}
+              aria-label={`Go to ${s.stat}`}
             />
           ),
         )}

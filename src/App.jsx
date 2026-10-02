@@ -2,8 +2,8 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Component/Navbar";
-
-import Hero from "./Component/Hero";
+import NewHero from "./ReadyMadeComponents/NewHero";
+// import Hero from "./Component/Hero";
 import StepsSection from "./Component/StepsSection";
 import CalendlyFeatureScroll from "./Component/CalendlyFeatureScroll";
 import CallieAnimation from "./Component/CallieAnimation";
@@ -11,8 +11,9 @@ import NotetakerShowcase from "./Component/NotetakerShowcase";
 import PaymentsShowcase from "./Component/PaymentsShowcase";
 import CustomerStories from "./Component/CustomerStories";
 import IntegrationsSection from "./Component/IntegrationsSection";
-import IntegrationsIcons from "./Component/IntegrationsIcons";
-import CTASection from "./Component/CTASection";
+import AutoImageSlider from "./Component/AutoImageSlider";
+import FaqAccordion from "./Component/Fsqs";
+import BookDemoNew from "./Component/BoookDemoNew";
 import Footer from "./Component/Footer";
 
 import TheLoop from "./Pages/Platform/Platform/TheLoop";
@@ -25,8 +26,7 @@ import Reports from "./Pages/Platform/Reports-page/Reports";
 function Home() {
   return (
     <>
-      <Hero />
-
+      <NewHero />
       <StepsSection />
       <CalendlyFeatureScroll />
       <CallieAnimation />
@@ -34,8 +34,9 @@ function Home() {
       <PaymentsShowcase />
       <CustomerStories />
       <IntegrationsSection />
-      <IntegrationsIcons />
-      <CTASection />
+      <AutoImageSlider />
+      <FaqAccordion />
+      <BookDemoNew/>
     </>
   );
 }

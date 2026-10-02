@@ -100,7 +100,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-family);
-  background-color: var(--color-bg-main);
+  /* background-color: var(--color-bg-main); */
   color: var(--color-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -116,9 +116,9 @@ body {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  background: var(--color-bg-card);
+  /* background: var(--color-bg-card); */
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
+  /* box-shadow: var(--shadow-card); */
   overflow: hidden;
 }
 

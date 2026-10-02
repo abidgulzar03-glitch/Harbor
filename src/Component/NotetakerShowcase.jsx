@@ -1,76 +1,74 @@
 import { useEffect, useRef, useState } from "react";
 import "./NotetakerShowcase.css";
 
-/* ------------------------------------------------------------------ *
- *  All copy lives here. Replace any string (or pass your own object
- *  through the `content` prop). Icons: list | edit | grid | spark.
- *  Optional: scenes.load.photo = "/your-image.jpg" for the player card.
- * ------------------------------------------------------------------ */
 const defaultContent = {
-  brand: "Notetaker",
-  badge: "New",
-  heading: "Actionable recaps for every meeting",
-  cardLabel: "Animated preview of Notetaker",
+  brand: "Exceptions",
+  badge: "8",
+  heading: "Not a prettier list of loads.",
+  cardLabel: "Animated preview of the exceptions the risk model watches",
   tabs: [
     {
       icon: "list",
-      title: "Clear summaries with next steps",
-      body: "End every call with meeting summaries and next steps, so nothing falls through the cracks.",
+      title: "Exceptions the risk model watches",
+      body: "Eight in total. Three refuse the next action outright. Five surface and wait for a person.",
     },
     {
       icon: "edit",
-      title: "Pre-drafted follow-up emails",
-      body: "Follow up faster with a ready-to-share recap and action items. Password-protect recaps or auto-share with attendees.",
+      title: "Hard block",
+      body: "SSL or customs hold. Last free day passed. Negative margin. Each one refuses the next action outright.",
     },
     {
       icon: "grid",
-      title: "Works with your tools",
-      body: "Add Notetaker to Zoom, Google Meet, and Teams meetings \u2014 even ones booked outside Calendly. Sync recaps to your CRM.",
+      title: "Warning",
+      body: "Last free day approaching. Carrier needed, clock running. Running past ETA. Receivable overdue. Empty return outstanding.",
     },
     {
       icon: "spark",
-      title: "Instant meeting recall",
-      body: "See a contact's full meeting history in one place. Ask Callie about any recap and get answers instantly.",
+      title: "One tractor, one box, one clock.",
+      body: "The clock is the part software keeps forgetting.",
     },
   ],
   scenes: {
     load: {
-      photo: "./Note-3.jpg",
-      chip: "Emily",
-      title: "Product Demo",
-      subtitle: "with Jessica Barnes and 2 guests",
-      sections: ["Summary", "Action Items", "Discussion"],
-      count: "3",
+      photo: "./Pages-imge-3.jpg",
+      chip: "One tractor, one box, one clock.",
+      title: "8 exceptions",
+      subtitle: "the risk model watches",
+      sections: ["Hard block", "Warning", "Waits for a person"],
+      count: "5",
     },
     mail: {
-      title: "Share recap via email",
-      highlight: "Next steps from today's meeting",
-      sections: ["Summary", "Action Items"],
-      options: ["Include video link", "Restrict with passcode"],
-      button: "Send Email",
-      sent: "Email Sent",
+      title: "Hard block",
+      highlight: "Refuses the next action outright",
+      sections: ["SSL or customs hold", "Last free day passed"],
+      options: ["Negative margin", "Refuses the next action"],
+      button: "Hard block",
+      sent: "Blocked",
     },
     list: {
-      title: "Recaps",
-      selectAll: "Select All",
+      title: "Warning",
+      selectAll: "Surface and wait for a person",
       rows: [
-        { title: "Product Demo", meta: "9:00 am \u00b7 24 min 38 sec" },
-        { title: "Michelle and Jenna", meta: "10:45 am \u00b7 38 min 12 sec" },
-        { title: "Quick Coffee Chat", meta: "2:00 pm \u00b7 17 min 52 sec" },
+        { title: "Running past ETA", meta: "Warning" },
+        { title: "Receivable overdue", meta: "Warning" },
+        { title: "Empty return outstanding", meta: "Warning" },
       ],
-      button: "Download",
-      popTitle: "Integrations",
+      button: "Waits for a person",
+      popTitle: "Also a warning",
       apps: [
-        { name: "Salesforce", letter: "S", color: "#00a1e0" },
-        { name: "Hubspot", letter: "H", color: "#ff7a59" },
-        { name: "Zapier", letter: "Z", color: "#e8492a" },
+        { name: "Last free day approaching", letter: "L", color: "#00a1e0" },
+        {
+          name: "Carrier needed, clock running",
+          letter: "C",
+          color: "#ff7a59",
+        },
       ],
     },
     ask: {
-      prompt: "What concerns did Emily have?",
-      answerTitle: "Calendly Notetaker",
+      prompt: "Why does the clock matter?",
+      answerTitle: "Risk model",
       answer:
-        "Emily's concerned that the pricing of Quotient's software might be too high. She emphasized",
+        "One tractor, one box, one clock. The clock is the part software keeps forgetting.",
     },
   },
 };
@@ -82,11 +80,10 @@ const FADE_MS = 350;
 
 /* ---------------------------- small helpers ---------------------------- */
 const PATHS = {
-  list: "M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01",
-  edit: "M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z",
-  grid: "M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z",
-  spark:
-    "M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z",
+  // list: "M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01",
+
+  // grid: "M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z",
+
   up: "M7 17L17 7M8 7h9v9",
   scissors:
     "M6 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12",
@@ -524,7 +521,6 @@ export default function NotetakerShowcase({
               <Icon n="edit" size={14} />
             </span>
             {content.brand}
-            <span className="nts-new">{content.badge}</span>
           </div>
           <h2 className="nts-h">{content.heading}</h2>
         </div>

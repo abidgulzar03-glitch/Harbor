@@ -1,5 +1,5 @@
 import "./Hero.css";
-import ScrollDemo from "./ScrollDemo";
+// import ScrollDemo from "./ScrollDemo";
 
 export default function LandingHero() {
   return (
@@ -30,7 +30,7 @@ export default function LandingHero() {
               See how it works
             </button>
           </div>
-          <ScrollDemo />
+          {/* <ScrollDemo /> */}
         </div>
       </div>
     </section>

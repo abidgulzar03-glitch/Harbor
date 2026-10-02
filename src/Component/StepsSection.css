@@ -1,46 +1,61 @@
 .hero-2 {
-  background: #fff;
+  /* background: #fff; */
   padding: 44px 24px;
 }
 .hero-card-2 {
   max-width: 1240px;
   margin: auto;
-  background: linear-gradient(
-    to bottom,
-    rgba(245, 243, 238, 0.15) 0%,
-    #f5f3ee 45%,
-    #f5f3ee 100%
-  );
+
   border-radius: 36px;
   padding: 44px 10px;
   text-align: center;
   overflow: hidden;
 }
 .eyebrow {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  width: fit-content;
+
+  margin: 0 auto 18px;
+
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  /* background: #e9eef2; */
+  color: #31506d;
   text-transform: uppercase;
-  color: #5b6472;
-  margin-bottom: 18px;
+  font-size: 11px;
+  line-height: 1;
+
+  font-weight: 600;
+  letter-spacing: 0.2px;
+
+  text-align: center;
 }
 
 .hero-card-2 h1 {
-  max-width: 720px;
+  max-width: 472px;
   margin: auto;
-  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-size: clamp(44px, 4vw, 72px);
   line-height: 1.1;
-  letter-spacing: -0.04em;
+  line-height: 0.97;
   color: #0f172a;
+  letter-spacing: -3.2px;
+
+  font-weight: 500;
 }
 
 .lede {
-  max-width: 560px;
-  margin: 20px auto 0;
-  font-size: 17px;
-  line-height: 1.7;
-  color: #64748b;
+  max-width: 233px;
+
+  margin: 25px auto 0;
+
+  color: #5e6470;
+
+  font-size: 11px;
+
+  line-height: 1.65;
+
+  font-weight: 400;
 }
 
 .cta {
@@ -71,7 +86,7 @@
 .step {
   position: relative;
   flex: 1;
-  height: 570px;
+  height: 480px;
   padding: 16px;
   border-radius: 28px;
   background: #fff;
@@ -90,7 +105,7 @@
 .step:hover,
 .step--active {
   flex: 2.2;
-  height: 570px; /* Expanded height */
+  height: 480px; /* Expanded height */
   transform: translateY(-4px);
   box-shadow: 0 28px 60px rgba(15, 23, 42, 0.12);
 }
@@ -157,10 +172,10 @@
 }
 
 .step-title {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 500;
   color: #0f172a;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .step-desc-wrap {
@@ -173,9 +188,9 @@
   position: absolute;
   inset: 0;
   margin: 0;
-  font-size: 14px;
+  font-size: 10px;
   line-height: 1.7;
-  color: #64748b;
+  color: #64748be4;
   transition: 0.3s;
 }
 
@@ -216,8 +231,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 500;
   color: #0f172a;
 }
 
@@ -246,10 +261,10 @@
 }
 
 .step-scene {
-  margin-top: 28px;
+  margin-top: 85px;
   border-radius: 22px;
   padding: 10px;
-  background: linear-gradient(160deg, var(--g1), var(--g2) 55%, var(--g3));
+  background: cadetblue;
 
   opacity: 0;
   transform: translateY(14px) scale(0.98);
@@ -262,64 +277,102 @@
   transform: translateY(0) scale(1);
 }
 
+/* =========================================================
+   MOCK CARD — SAME SIZE / SPACING / TYPOGRAPHY
+========================================================= */
+
 .mock-card {
+  width: 100%;
   background: #fff;
   border-radius: 18px;
   padding: 18px;
+  margin: 0;
+  box-sizing: border-box;
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
 }
 
+/* Header */
 .mock-head {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
+  margin: 0 0 14px;
+  padding: 0;
 }
 
+/* Avatar */
 .mock-avatar {
   width: 34px;
   height: 34px;
+  min-width: 34px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: #fff;
-  font-weight: 700;
-  background: #4338ca;
+  color: #31506d;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  background: #e8eef4;
 }
 
+/* Name */
 .mock-name {
+  margin: 0;
+  padding: 0;
   font-size: 13px;
-  font-weight: 700;
+  line-height: 1.3;
+  font-weight: 600;
   color: #0f172a;
 }
 
+/* Meta */
 .mock-meta {
-  font-size: 12px;
+  margin: 3px 0 0;
+  padding: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 400;
   color: #64748b;
 }
 
+/* Message */
 .mock-msg {
-  font-size: 13px;
+  margin: 0 0 14px;
+  padding: 0;
+  font-size: 12px;
   line-height: 1.6;
+  font-weight: 400;
   color: #334155;
-  margin-bottom: 14px;
 }
 
+/* Chips */
 .mock-chips {
   display: flex;
+  align-items: center;
   gap: 8px;
   flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
 
+/* Individual chip */
 .mock-chip {
-  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 7px 12px;
+  margin: 0;
   border-radius: 999px;
   background: #eef2ff;
   color: #4338ca;
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 1;
   font-weight: 600;
+  white-space: nowrap;
 }
 
+/* Selected chip */
 .mock-chip--selected {
   background: #4338ca;
   color: #fff;
@@ -603,6 +656,9 @@
 .mock-email-body p:last-child {
   margin-bottom: 0;
 }
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media (max-width: 992px) {
   .hero-card-2 {
@@ -612,10 +668,12 @@
 
   .steps {
     flex-wrap: wrap;
+    gap: 16px;
   }
 
   .step {
-    flex: 1 1 calc(50% - 9px);
+    flex: 1 1 calc(50% - 8px);
+    min-width: 0;
     min-height: 105px;
   }
 
@@ -623,7 +681,22 @@
     flex: 1 1 100%;
     min-height: 200px;
   }
+
+  .step-scene {
+    width: 100%;
+  }
+
+  .mock-card {
+    width: 100%;
+    padding: 18px;
+  }
 }
+
+/* =========================================================
+   MOBILE
+   Mock card is ALWAYS visible
+   No touch required
+========================================================= */
 
 @media (max-width: 600px) {
   .hero-2 {
@@ -631,15 +704,216 @@
   }
 
   .hero-card-2 {
-    padding: 42px 20px;
+    width: 100%;
+    padding: 42px 16px;
+    border-radius: 24px;
   }
 
+  .hero-card-2 h1 {
+    max-width: 90%;
+    font-size: clamp(25px, 5vw, 44px);
+    letter-spacing: 0px;
+  }
+
+  .lede {
+    max-width: 217px;
+    margin-top: 20px;
+  }
+
+  .cta {
+    margin-top: 28px;
+  }
+
+  /* Cards become one column */
+  .steps {
+    width: 100%;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
+  }
+
+  /* Normal mobile card */
   .step {
-    flex: 1 1 100%;
-    min-height: 180px;
+    width: 100%;
+    flex: none;
+    height: auto;
+    min-height: 250px;
+    padding: 16px;
+    border-radius: 22px;
+
+    /* Prevent hover-like transform on touch */
+    transform: none !important;
+
+    /* Disable desktop flex expansion */
+    transition:
+      height 0.35s ease,
+      box-shadow 0.35s ease;
   }
 
+  /*
+    IMPORTANT:
+    Don't let :hover expand the card on mobile.
+  */
+  .step:hover {
+    flex: none;
+    height: auto;
+    min-height: 250px;
+    transform: none !important;
+    box-shadow: none;
+  }
+
+  /*
+    Active/tapped card also stays the same size.
+  */
+  .step--active {
+    flex: none;
+    height: auto;
+    min-height: 250px;
+    transform: none !important;
+    box-shadow: none;
+  }
+
+  /* Title */
   .step-title {
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  /* Description */
+  .step-desc-wrap {
+    min-height: 42px;
+  }
+
+  .step-desc,
+  .step-desc-long {
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  /*
+    Always show the full description on mobile
+  */
+  .step-desc {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .step-desc-long {
+    display: none;
+  }
+
+  /*
+    Always show checklist on mobile
+  */
+  .step-checklist {
+    margin-top: 18px;
+    gap: 8px;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .check-item {
+    gap: 8px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .check-icon {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    font-size: 9px;
+  }
+
+  /*
+    Mock scene always visible on mobile
+  */
+  .step-scene,
+  .step:hover .step-scene,
+  .step--active .step-scene {
+    width: 100%;
+    margin-top: 24px;
+    padding: 8px;
+    border-radius: 18px;
+
+    opacity: 1 !important;
+    transform: none !important;
+
+    background: #eef3f7;
+  }
+
+  /* =======================================================
+     MOCK CARD MOBILE
+  ======================================================= */
+
+  .mock-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    padding: 16px;
+    margin: 0;
+
+    border-radius: 16px;
+
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .mock-head {
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .mock-avatar {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    font-size: 9px;
+  }
+
+  .mock-name {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .mock-meta {
+    font-size: 10px;
+    line-height: 1.4;
+
+    /* Prevent overflow */
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .mock-msg {
+    width: 100%;
+    margin-bottom: 12px;
+
+    font-size: 11px;
+    line-height: 1.55;
+
+    overflow-wrap: anywhere;
+  }
+
+  .mock-chips {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .mock-chip {
+    max-width: 100%;
+    min-height: 28px;
+
+    padding: 6px 10px;
+
+    font-size: 10px;
+    line-height: 1.2;
+
+    white-space: normal;
+    text-align: center;
   }
 }

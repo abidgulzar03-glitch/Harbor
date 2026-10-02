@@ -63,11 +63,11 @@
 .circular-carousel__header h2 {
   margin: 0;
 
-  font-size: clamp(38px, 5vw, 58px);
+  font-size: clamp(33px, 4vw, 54px);
   line-height: 0.98;
 
-  font-weight: 700;
-  letter-spacing: -0.055em;
+  font-weight: 600;
+  letter-spacing: -0.01.0em;
 
   color: #102b2b;
 }

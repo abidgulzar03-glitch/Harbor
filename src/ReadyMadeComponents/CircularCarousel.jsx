@@ -79,7 +79,7 @@ export default function CircularCarousel() {
         setRotation(-nextIndex * angle);
         return nextIndex;
       });
-    }, 3500);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function CircularCarousel() {
     return () => {
       clearInterval(autoTimer.current);
     };
-  }, [angle, total]);
+  }, []);
 
   const handlePointerDown = (event) => {
     pauseAuto();
@@ -161,7 +161,7 @@ export default function CircularCarousel() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [activeIndex, total]);
+  }, []);
 
   return (
     <section className="circular-carousel">

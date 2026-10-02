@@ -1,130 +1,133 @@
-// Each step's full config lives here — swap copy, icons, colors, and the
-// mock UI content per step without touching any component code.
 const STEPS = [
   {
-    id: "book",
-    title: "Book",
-    shortDesc: "Book the meeting and get paid with zero back-and-forth.",
-    longDesc:
-      "A client emails asking to meet. Share a booking link or ask your assistant to find times that work for everyone.",
+    id: "arrival-notice",
+    title: "Arrival notice in",
+    shortDesc: "Containers pulled, loads raised.",
+    longDesc: "Containers pulled, loads raised.",
+
     checklist: [
       {
-        icon: "◆",
-        color: "#d9f99d",
-        text: "Callie replies with times to meet",
+        icon: "01",
+        color: "#e8eef4",
+        text: "Containers pulled, loads raised.",
       },
-      { icon: "⏳", color: "#c7d2fe", text: "Client picks Tuesday at 2 p.m." },
-      { icon: "▭", color: "#99f6e4", text: "Client pays $150 deposit upfront" },
     ],
-    gradient: ["#7c9cf0", "#3fb6a8", "#7fd88f"],
+
+    gradient: ["#dce8f2", "#eef3f7", "#d9e5ef"],
+
     mock: {
-      avatar: { icon: "◆", color: "#d9f99d" },
-      name: "Callie",
-      meta: "to me, Dominic Mills ▾",
-      message:
-        "Happy to set up a call for you with Dominic. Here are a few times you're both available.",
+      avatar: {
+        icon: "01",
+        color: "#e8eef4",
+        textColor: "#31506d",
+      },
+      name: "Arrival notice in",
+      meta: "Containers pulled, loads raised.",
+      message: "Containers pulled, loads raised.",
+
       chips: [
-        { label: "10:00 AM" },
-        { label: "2:30 PM" },
-        { label: "3:00 PM" },
+        { label: "Arrival notice" },
+        { label: "Container pulled" },
+        { label: "Load raised" },
       ],
     },
   },
+
   {
-    id: "prep",
-    title: "Prep",
-    shortDesc: "Never walk into a meeting cold.",
-    longDesc:
-      "Before the meeting, get all of the info you need in one place. Callie reviews your client's contact history and helps you show up prepared.",
+    id: "load-created",
+    title: "Load created",
+    shortDesc: "One box or forty, one booking.",
+    longDesc: "One box or forty, one booking.",
+
     checklist: [
       {
-        icon: "👤",
-        color: "#fdba74",
-        text: "Contact details automatically update",
+        icon: "02",
+        color: "#e8eef4",
+        text: "One box or forty, one booking.",
       },
-      {
-        icon: "👤",
-        color: "#fdba74",
-        text: "Your client interactions are in one place",
-      },
-      { icon: "◆", color: "#d9f99d", text: "Callie helps you prep" },
     ],
-    gradient: ["#fb923c", "#fcd34d", "#bef264"],
+
+    gradient: ["#e2edf5", "#edf4f8", "#dce9f2"],
+
     mock: {
-      type: "search",
-      heading: "Get answers instantly",
-      suggestedLabel: "Suggested:",
-      suggestions: [
-        "What's Acme Co.'s budget?",
-        "Who are the main stakeholders for this?",
+      avatar: {
+        icon: "02",
+        color: "#e8eef4",
+        textColor: "#31506d",
+      },
+      name: "Load created",
+      meta: "One box or forty, one booking.",
+      message: "One box or forty, one booking.",
+
+      chips: [
+        { label: "One box" },
+        { label: "Forty boxes" },
+        { label: "One booking" },
       ],
-      placeholder: "Help me prep for my next meeting",
     },
   },
+
   {
-    id: "capture",
-    title: "Capture",
-    shortDesc: "Never miss a detail from the conversation.",
-    longDesc:
-      "While you run the meeting, Notetaker captures the conversation. The recap and action items are delivered right after the call.",
+    id: "posted-boards",
+    title: "Posted to the boards",
+    shortDesc: "Posted once, never twice.",
+    longDesc: "Posted once, never twice.",
+
     checklist: [
-      { icon: "🔇", color: "#c4b5fd", text: "Notetaker joins and takes notes" },
       {
-        icon: "🔇",
-        color: "#c4b5fd",
-        text: "You get a ready-to-share recap",
-      },
-      {
-        icon: "👤",
-        color: "#fdba74",
-        text: "Recap is stored in contact profile",
+        icon: "03",
+        color: "#e8eef4",
+        text: "Posted once, never twice.",
       },
     ],
-    gradient: ["#a78bfa", "#fcd34d", "#fdba74"],
+
+    gradient: ["#dce8f2", "#edf3f7", "#d8e5ef"],
+
     mock: {
-      type: "video",
-      participants: [
-        {
-          name: "Maria",
-          initial: "M",
-          color: "#cbd5e1",
-          img: "./hero-1.jpg",
-        },
-        {
-          name: "Erin",
-          initial: "E",
-          color: "#94a3b8",
-          img: "./hero-2.jpg",
-        },
-      ],
-      pillLabel: "Recording",
+      avatar: {
+        icon: "03",
+        color: "#e8eef4",
+        textColor: "#31506d",
+      },
+      name: "Posted to the boards",
+      meta: "Posted once, never twice.",
+      message: "Posted once, never twice.",
+
+      chips: [{ label: "Posted once" }, { label: "Never twice" }],
     },
   },
+
   {
-    id: "follow-up",
-    title: "Follow up",
-    shortDesc: "Work moves forward after the meeting ends.",
-    longDesc:
-      "The recap goes out, action items are tracked, and the next step is already on the calendar.",
+    id: "rates-return",
+    title: "Rates return",
+    shortDesc: "You pick the carrier.",
+    longDesc: "You pick the carrier.",
+
     checklist: [
-      { icon: "◆", color: "#fef3c7", text: "Recap emailed to everyone" },
       {
-        icon: "⏳",
-        color: "#fed7aa",
-        text: "Action items assigned automatically",
+        icon: "04",
+        color: "#e8eef4",
+        text: "You pick the carrier.",
       },
-      { icon: "▭", color: "#fbcfe8", text: "Next call suggested and booked" },
     ],
-    gradient: ["#fbbf24", "#fb923c", "#f472b6"],
+
+    gradient: ["#dce8f2", "#eef3f7", "#d9e5ef"],
+
     mock: {
-      type: "email",
-      to: "Dominic Mills",
-      toInitial: "D",
-      cc: "callie@calendly.com",
-      ccIcon: "◆",
-      ccColor: "#d9f99d",
-      message:
-        "Thanks again for your time today.\n\nCallie, can you help schedule a meeting with Dominic next week?",
+      avatar: {
+        icon: "04",
+        color: "#e8eef4",
+        textColor: "#31506d",
+      },
+      name: "Rates return",
+      meta: "You pick the carrier.",
+      message: "You pick the carrier.",
+
+      chips: [
+        { label: "Rates returned" },
+        { label: "Carrier options" },
+        { label: "Pick carrier" },
+      ],
     },
   },
 ];

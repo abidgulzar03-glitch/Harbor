@@ -1,308 +1,263 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import "./CalendlyFeatureScroll.css";
+
+/* ================= LEFT: FEATURES ================= */
+
+const Icon = ({ children }) => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    {children}
+  </svg>
+);
 
 const features = [
   {
     id: 0,
     icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-        <line x1="16" y1="2" x2="16" y2="6" />
-        <line x1="8" y1="2" x2="8" y2="6" />
-        <line x1="3" y1="10" x2="21" y2="10" />
-      </svg>
+      <Icon>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </Icon>
     ),
-    title: "Full control over your calendar",
-    description:
-      "Connect your calendars, set your hours, and control exactly when you’re available to meet.",
+    title: "The last free day",
+    description: "A date in a column. Somebody notices the morning after.",
   },
   {
     id: 1,
     icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-        <polyline points="14 2 14 8 20 8" />
-        <line x1="16" y1="13" x2="8" y2="13" />
-        <line x1="16" y1="17" x2="8" y2="17" />
-        <polyline points="10 9 9 9 8 9" />
-      </svg>
+      <Icon>
+        <rect x="3" y="4" width="18" height="16" rx="2" />
+        <path d="M7 8h10M7 12h7M7 16h5" />
+      </Icon>
     ),
-    title: "Meeting templates for every scenario",
-    description:
-      "From one-on-one calls to multi-host meetings, pre-built event types make scheduling easy for everyone.",
+    title: "The advance you wired",
+    description: "A note in an email thread. Month-end finds out.",
   },
   {
     id: 2,
     icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-        <polyline points="22,6 12,13 2,6" />
-      </svg>
+      <Icon>
+        <path d="M4 5h16M4 12h16M4 19h16" />
+        <circle cx="8" cy="5" r="1.5" />
+        <circle cx="14" cy="12" r="1.5" />
+        <circle cx="10" cy="19" r="1.5" />
+      </Icon>
     ),
-    title: "Automated email & text workflows",
-    description:
-      "Reduce no-shows with personalized email and text reminders, and let invitees reschedule when needed without the back-and-forth.",
+    title: "The accessorial",
+    description: "Two hours' detention, typed into the remarks column.",
   },
   {
     id: 3,
     icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-        <line x1="8" y1="21" x2="16" y2="21" />
-        <line x1="12" y1="17" x2="12" y2="21" />
-      </svg>
+      <Icon>
+        <path d="M5 20V10M12 20V4M19 20v-7" />
+      </Icon>
     ),
-    title: "Website embeds and routing forms",
+    title: "The ageing report",
     description:
-      "Let visitors schedule right from your website. Add routing forms to qualify leads and match them with the right team member.",
-  },
-  {
-    id: 4,
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <line x1="2" y1="12" x2="22" y2="12" />
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-      </svg>
-    ),
-    title: "Scheduling whenever, wherever",
-    description:
-      "Access Calendly from the mobile app or browser extension, or use it with your favorite AI tool, LinkedIn, or 150+ other integrations.",
-  },
-  {
-    id: 5,
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
-    title: "Tools for teams of all sizes",
-    description:
-      "Grow your business with scheduling that scales. Add teammates, set permissions, and manage access without switching tools.",
+      "A pivot table rebuilt every Monday. Calls go to the loudest account.",
   },
 ];
 
-const CardContent = ({ activeIndex }) => {
-  const contents = [
-    // 0 - Availability
-    <div className="card-inner">
-      <h3>Availability</h3>
-      <div className="setting-row">
-        <div className="select-box">0</div>
-        <span>Meetings per day</span>
-      </div>
-      <div className="setting-row">
-        <div className="select-box">15 min</div>
-        <span>Meeting Buffer Time</span>
-        <div className="toggle"></div>
-      </div>
-      <div className="schedule-label">Schedule: Custom ▾</div>
-      <div className="schedule">
-        <div className="day">
-          <span className="dot-s">M</span> 9:00am – 5:00pm
-        </div>
-        <div className="day">
-          <span className="dot-s">T</span> 9:00am – 5:00pm
-        </div>
-        <div className="day">
-          <span className="dot-s">W</span> 9:00am – 5:00pm
-        </div>
-      </div>
-    </div>,
+/* ================= RIGHT: PANELS ================= */
 
-    // 1 - New Meeting
-    <div className="card-inner center">
-      <button className="new-meeting-btn">+ New Meeting</button>
-    </div>,
+const panels = [
+  <>
+    <h3>The clock runs itself</h3>
+    <p className="muted lead">Approaching warns. Passed is a hard exception.</p>
 
-    // 2 - Workflow
-    <div className="card-inner">
-      <div className="workflow-label">Workflow</div>
-      <div className="email-box">
-        <div className="email-icon">✉</div>
-        <h3>Send email reminder</h3>
-        <p className="muted">24 hours before event starts</p>
-      </div>
-      <button className="secondary-btn">Send email to invitees</button>
-    </div>,
-
-    // 3 - Get a demo
-    <div className="card-inner">
-      <div className="integration-logos">
-        <div className="int-logo">☁</div>
-        <div className="int-logo orange">hub</div>
-        <div className="int-logo purple">|||</div>
-      </div>
-      <h3>Get a demo</h3>
-      <input className="demo-input" placeholder="Work email" />
-      <input className="demo-input" placeholder="Company Size" />
-    </div>,
-
-    // 4 - Integrations Network
-    <div className="card-inner center">
-      <div className="network">
-        <div className="center-c">©</div>
-        <div className="node node-1">31</div>
-        <div className="node node-2">in</div>
-        <div className="node node-3">📹</div>
-        <div className="node node-4">☁</div>
-        <div className="node node-5">⚡</div>
-      </div>
-    </div>,
-
-    // 5 - Admin Management
-    <div className="card-inner">
-      <h3>Admin Management</h3>
-      <div className="user-list">
-        <div className="user-row">
-          <div className="avatar">DM</div>
-          <span className="name">Dominic Mills</span>
-          <span className="badge admin">Admin</span>
-          <div className="toggle on"></div>
-        </div>
-        <div className="user-row">
-          <div className="avatar">EK</div>
-          <span className="name">Emily Kim</span>
-          <span className="badge member">Member</span>
-          <div className="toggle on"></div>
-        </div>
-        <div className="user-row">
-          <div className="avatar">LH</div>
-          <span className="name">Lars Hansen</span>
-          <span className="badge viewer">Viewer</span>
-          <div className="toggle"></div>
-        </div>
-      </div>
-    </div>,
-  ];
-
-  return (
-    <div className="card-content" key={activeIndex}>
-      {contents[activeIndex]}
+    <div className="setting-row">
+      <div className="select-box">Approaching</div>
+      <span>Warning</span>
     </div>
-  );
-};
+    <div className="setting-row">
+      <div className="select-box">Passed</div>
+      <span>Hard exception</span>
+    </div>
+
+    <div className="schedule-label">Demurrage rebills onto the load.</div>
+    <div className="schedule">
+      <div className="day">
+        <span className="dot">✓</span>Approaching warning
+      </div>
+      <div className="day">
+        <span className="dot">!</span>Hard exception
+      </div>
+      <div className="day">
+        <span className="dot">↻</span>Rebill to load
+      </div>
+    </div>
+  </>,
+
+  <>
+    <h3>One record per advance</h3>
+    <div className="email-box">
+      <div className="email-icon">◆</div>
+      <p className="muted">
+        The box is not released until principal and fee land in full.
+      </p>
+    </div>
+    <div className="setting-row">
+      <div className="select-box">Reference</div>
+      <span>Recorded</span>
+    </div>
+    <div className="setting-row">
+      <div className="select-box">Amount</div>
+      <span>Recorded</span>
+    </div>
+    <div className="setting-row">
+      <div className="select-box">Date</div>
+      <span>Recorded</span>
+    </div>
+  </>,
+
+  <>
+    <h3>Every charge is billed</h3>
+    <div className="email-box">
+      <div className="email-icon">✓</div>
+      <p className="muted">A charge carries the party it is billed to.</p>
+    </div>
+    <div className="setting-row">
+      <div className="select-box">Charge</div>
+      <span>Party assigned</span>
+    </div>
+    <div className="setting-row">
+      <div className="select-box">Invoice</div>
+      <span>Charge included</span>
+    </div>
+    <button type="button" className="secondary-btn">
+      Invoice builder reads the charges
+    </button>
+  </>,
+
+  <>
+    <h3>Ageing, computed once</h3>
+    <div className="user-list">
+      {[
+        ["0", "Current", "Open", "member"],
+        ["1", "1–30", "Ageing", "member"],
+        ["3", "31–60", "Ageing", "viewer"],
+        ["6", "60+", "Priority", "admin"],
+      ].map(([n, name, label, tone]) => (
+        <div className="user-row" key={name}>
+          <div className="avatar">{n}</div>
+          <span className="name">{name}</span>
+          <span className={`row-badge ${tone}`}>{label}</span>
+        </div>
+      ))}
+    </div>
+    <button type="button" className="secondary-btn">
+      Worklist ordered by what is worth ringing about
+    </button>
+  </>,
+];
+
+/* ================= MAIN ================= */
+
+const AUTO_MS = 2800;
+const SCROLL_PAUSE_MS = 6000;
+const HOVER_RESUME_MS = 1500;
 
 export default function CalendlyFeatureScroll() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+
   const featureRefs = useRef([]);
-  const intervalRef = useRef(null);
+  const resumeTimer = useRef(null);
+  const hasScrolled = useRef(false);
 
-  // Auto Animation
-  useEffect(() => {
-    if (isPaused) return;
-
-    intervalRef.current = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % features.length);
-    }, 2800); // Change every 2.8 seconds
-
-    return () => clearInterval(intervalRef.current);
-  }, [isPaused]);
-
-  // Optional: Still support scroll (you can remove this if you only want auto)
-  useEffect(() => {
-    const observers = [];
-
-    featureRefs.current.forEach((el, index) => {
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveIndex(index);
-            // Pause auto animation when user scrolls
-            setIsPaused(true);
-            // Resume after 6 seconds of no interaction
-            setTimeout(() => setIsPaused(false), 6000);
-          }
-        },
-        {
-          root: null,
-          rootMargin: "-40% 0px -40% 0px",
-          threshold: 0,
-        },
-      );
-
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach((obs) => obs.disconnect());
+  const pauseFor = useCallback((ms) => {
+    clearTimeout(resumeTimer.current);
+    setIsPaused(true);
+    if (ms) {
+      resumeTimer.current = setTimeout(() => setIsPaused(false), ms);
+    }
   }, []);
 
+  /* autoplay */
+  useEffect(() => {
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (isPaused || reduce) return;
+
+    const id = setInterval(
+      () => setActiveIndex((p) => (p + 1) % features.length),
+      AUTO_MS,
+    );
+    return () => clearInterval(id);
+  }, [isPaused]);
+
+  /* scroll sync (single observer, ignores initial load) */
+  useEffect(() => {
+    const onScroll = () => (hasScrolled.current = true);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || !hasScrolled.current) return;
+          setActiveIndex(Number(entry.target.dataset.index));
+          pauseFor(SCROLL_PAUSE_MS);
+        });
+      },
+      { rootMargin: "-40% 0px -40% 0px", threshold: 0 },
+    );
+
+    featureRefs.current.forEach((el) => el && observer.observe(el));
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer.disconnect();
+      clearTimeout(resumeTimer.current);
+    };
+  }, [pauseFor]);
+
   return (
-    <div className="calendly-section">
-      <div className="content">
-        {/* LEFT SIDE */}
-        <div className="left-side">
+    <section className="cfs">
+      <div className="cfs-content">
+        {/* LEFT */}
+        <div className="cfs-left">
           <div className="sticky-header">
-            <div className="badge">
-              <span>📅</span> Scheduling
+            <div className="eyebrow">
+              <span />
+              The alternative
             </div>
-            <h1>
-              A better way to book your
-              <br />
-              meetings
-            </h1>
+
+            <h1>A spreadsheet leaks quietly. A general TMS leaks elsewhere.</h1>
+          </div>
+
+          <div className="features-subtitle">
+            <span className="features-subtitle-label">
+              {/* Four places it slips */}
+            </span>
+            <p>
+              A general TMS invoices and chases what is outstanding — two of the
+              four below. The other two only exist because there is a container
+              on a chassis.
+            </p>
           </div>
 
           <div className="features-list">
             {features.map((feature, index) => (
               <div
                 key={feature.id}
+                data-index={index}
                 ref={(el) => (featureRefs.current[index] = el)}
                 className={`feature-item ${activeIndex === index ? "active" : ""}`}
                 onMouseEnter={() => {
                   setActiveIndex(index);
-                  setIsPaused(true);
+                  pauseFor(0);
                 }}
-                onMouseLeave={() => setIsPaused(false)}
+                onMouseLeave={() => pauseFor(HOVER_RESUME_MS)}
               >
                 <div className="feature-header">
                   <div className="feature-icon">{feature.icon}</div>
@@ -314,13 +269,25 @@ export default function CalendlyFeatureScroll() {
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
-        <div className="right-side">
+        {/* RIGHT */}
+        <div className="cfs-right">
           <div className="blue-card">
-            <CardContent activeIndex={activeIndex} />
+            <div className="what-harbor">What Harbor does instead</div>
+
+            <div className="card-stage">
+              {panels.map((panel, i) => (
+                <div
+                  key={i}
+                  className={`panel ${activeIndex === i ? "is-active" : ""}`}
+                  aria-hidden={activeIndex !== i}
+                >
+                  {panel}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

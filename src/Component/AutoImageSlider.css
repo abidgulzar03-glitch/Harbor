@@ -1,333 +1,593 @@
-.ais-wrapper {
+/* =========================================================
+   RESET
+========================================================= */
+
+.auto-image-slider,
+.auto-image-slider *,
+.auto-image-slider *::before,
+.auto-image-slider *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.auto-image-slider {
   width: 100%;
-  overflow: hidden;
+  overflow: clip;
+
+  background: #f6f4ee;
+  color: #092746;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.auto-image-heading {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  padding: 110px 24px 50px;
+
+  text-align: center;
+}
+
+.auto-image-eyebrow {
+  display: inline-block;
+  margin-bottom: 20px;
+
+  color: #0f172a;
+
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.auto-image-heading h2 {
+  margin: 0;
+
+  color: #041e42;
+
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -2.5px;
+}
+
+.auto-image-subtitle {
+  max-width: 640px;
+  margin: 24px auto 36px;
+
+  color: #667085;
+
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   SCROLL
+========================================================= */
+
+.auto-image-scroll {
   position: relative;
-  padding: 70px 0 30px;
+
+  width: 100%;
+  height: 700vh;
 }
 
-.ais-track {
+/* =========================================================
+   STICKY VIEW
+========================================================= */
+
+.auto-image-sticky {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+
   display: flex;
-  gap: 24px;
-  width: max-content;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
 }
 
-.ais-track.no-anim {
+/* =========================================================
+   CARD STACK
+========================================================= */
+
+.auto-image-stack {
+  position: relative;
+
+  width: 320px;
+  height: 400px;
+
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+/* =========================================================
+   ALL CARDS
+========================================================= */
+
+.auto-image-card {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid #5fa8ff;
+  border-radius: 20px;
+
+  background: #3b84de;
+  color: #ffffff;
+
+  transform-origin: center center;
+
+  backface-visibility: hidden;
+  will-change: transform;
+
   transition: none;
 }
 
-/* ================= CARD ================= */
+/* =========================================================
+   IMAGE
+========================================================= */
 
-.ais-card {
-  position: relative;
-  flex: 0 0 auto;
-  width: 580px;
-  height: 500px;
+.auto-image-card img {
+  display: block;
 
-  opacity: 0.45;
-  transform: scale(0.92);
-  transform-origin: center bottom;
-  transition:
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.6s ease;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  user-select: none;
+  pointer-events: none;
+
+  -webkit-user-drag: none;
 }
 
-.ais-card.is-active {
-  opacity: 1;
-  transform: scale(1);
-  z-index: 5;
-}
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
 
-/* ================= BG BOX ================= */
+.auto-image-card::after {
+  content: "";
 
-.ais-bgbox {
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 76%;
-  border-radius: 24px;
-  overflow: hidden;
-}
-
-.ais-theme-1 .ais-bgbox {
-  background:
-    radial-gradient(circle at 8% 95%, #f7e46e 0, transparent 42%),
-    radial-gradient(circle at 85% 85%, #f5b5c3 0, transparent 50%),
-    linear-gradient(180deg, #b6d0f5 0%, #dde3f4 100%);
-}
-
-.ais-theme-2 .ais-bgbox {
-  background:
-    radial-gradient(circle at 10% 95%, #f4bfa2 0, transparent 45%),
-    radial-gradient(circle at 90% 90%, #b99be0 0, transparent 50%),
-    linear-gradient(180deg, #24358f 0%, #5f72d3 55%, #a9a6e3 100%);
-}
-
-.ais-theme-3 .ais-bgbox {
-  background:
-    radial-gradient(circle at 8% 95%, #a58fea 0, transparent 40%),
-    radial-gradient(circle at 92% 92%, #b6dc9a 0, transparent 40%),
-    linear-gradient(180deg, #b4cff6 0%, #f3c8cd 60%, #f0a6a8 100%);
-}
-
-.ais-theme-4 .ais-bgbox {
-  background:
-    radial-gradient(circle at 60% 30%, #d8f2f7 0, transparent 45%),
-    linear-gradient(180deg, #9fd6ec 0%, #7cc4dc 50%, #4b8fc6 100%);
-}
-
-/* ================= GRAIN ================= */
-
-.ais-grain {
   position: absolute;
   inset: 0;
-  opacity: 0.2;
-  mix-blend-mode: soft-light;
+
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 40%,
+    rgba(0, 0, 0, 0.16) 100%
+  );
 }
 
-/* ================= ANIMATIONS ================= */
+/* =========================================================
+   PLAN CARDS
+   SAME BACKGROUND + SAME FONT COLOR
+========================================================= */
 
-.ais-anim {
-  position: absolute;
-  inset: 30% 0 auto;
-  height: 40%;
-  overflow: hidden;
+.auto-image-card--plan,
+.auto-image-card--plan.is-dark {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.035) 0 1px,
+      transparent 1px 7px
+    ),
+    #3b84de;
+
+  border-color: #5fa8ff;
+  color: #ffffff;
 }
 
-/* triangles */
+/* Remove overlay from text cards */
 
-.ais-triangles {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='115'%3E%3Cpolygon points='0,0 80,57 0,115' fill='%2378d9d1'/%3E%3Cpolygon points='160,0 80,57 160,115' fill='%23f2b3b6' fill-opacity='.75'/%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  animation: trianglesMove 8s linear infinite;
+.auto-image-card--plan::after,
+.auto-image-card--plan.is-dark::after {
+  display: none;
 }
 
-@keyframes trianglesMove {
-  from {
-    background-position: 0 center;
-  }
-  to {
-    background-position: 160px center;
-  }
-}
+/* =========================================================
+   PLAN CONTENT
+========================================================= */
 
-/* stripes */
+.auto-image-plan {
+  position: relative;
 
-.ais-stripes {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 4px;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 22px 20px 18px;
+
+  color: #ffffff;
 }
 
-.ais-stripes span {
-  display: block;
-  height: 9px;
-  width: 300%;
-  margin-left: -100%;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--c) 0 var(--w),
-    transparent var(--w) calc(var(--w) * 2)
-  );
-  animation: stripeMove var(--s) ease-in-out infinite alternate;
+/* =========================================================
+   ICON
+========================================================= */
+
+.auto-image-plan-icon {
+  display: grid;
+  place-items: center;
+
+  width: 34px;
+  height: 34px;
+
+  margin-bottom: 14px;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
 }
 
-@keyframes stripeMove {
-  from {
-    transform: translateX(var(--x));
-  }
-  to {
-    transform: translateX(calc(var(--x) - 120px));
-  }
-}
+/* =========================================================
+   BADGE
+========================================================= */
 
-/* bars */
-
-.ais-bars {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 10px;
-}
-
-.ais-bars span {
-  width: 3px;
-  height: var(--h);
-  background: var(--bar);
-  border-radius: 3px;
-  animation: wave 1.5s ease-in-out infinite;
-  animation-delay: var(--d);
-}
-
-@keyframes wave {
-  0%,
-  100% {
-    height: 20%;
-  }
-  50% {
-    height: var(--h);
-  }
-}
-
-/* ================= PERSON ================= */
-
-.ais-girl {
+.auto-image-plan-badge {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 110%;
-  object-fit: contain;
-  z-index: 2;
-  clip-path: inset(-40% 0 0 0 round 0 0 22px 22px);
+
+  top: 19px;
+  right: 18px;
+
+  padding: 6px 11px;
+
+  border-radius: 999px;
+
+  background: #ffffff;
+  color: #092746;
+
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
 }
 
-/* ================= FLOATING LABEL ================= */
-/* ========= CONNECTED FLOATING LABEL ========= */
+/* =========================================================
+   PLAN NAME
+========================================================= */
 
-.ais-label {
-  position: absolute;
-  left: 50%;
-  top: 72%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  gap: 0;
-  z-index: 20;
-  white-space: nowrap;
-  filter: drop-shadow(0 16px 28px rgba(15, 23, 42, 0.18));
+.auto-image-plan-name {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.4px;
 }
 
-.ais-pill {
-  height: 58px;
-  display: flex;
-  align-items: center;
-  background: #fff;
-  color: #0f172a;
-  font-size: 18px;
-  font-weight: 600;
+/* =========================================================
+   PLAN TAG
+========================================================= */
+
+.auto-image-plan-tag {
+  margin: 5px 0 0;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 12px;
+  line-height: 1.4;
 }
 
-/* Left section with connected icon */
-.ais-pill-left {
-  padding: 0 18px 0 10px;
-  border-radius: 18px 0 0 18px;
+/* =========================================================
+   PRICE
+========================================================= */
+
+.auto-image-plan-price {
+  margin: 14px 0 0;
+
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-.ais-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
+/* =========================================================
+   CTA
+========================================================= */
+
+.auto-image-plan-cta {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 12px;
-  color: #10213a;
-  font-size: 17px;
-  flex-shrink: 0;
+  gap: 8px;
+
+  width: 100%;
+  height: 39px;
+
+  margin-top: 11px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: #ffffff;
+  color: #092746;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-decoration: none;
 }
 
-/* Right connected pill */
-.ais-pill-right {
-  padding: 0 22px;
-  border-left: 1px solid #eceff3;
-  border-radius: 0 18px 18px 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 500;
-  color: #25324a;
+.auto-image-plan-cta:hover {
+  background: #f3f7fb;
 }
 
-/* Mobile */
+/* =========================================================
+   LABEL
+========================================================= */
+
+.auto-image-plan-label {
+  margin: 15px 0 8px;
+
+  color: rgba(255, 255, 255, 0.62);
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   LIST
+========================================================= */
+
+.auto-image-plan-list {
+  display: grid;
+  gap: 7px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.auto-image-plan-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 11.5px;
+  line-height: 1.25;
+}
+
+/* =========================================================
+   CHECK
+========================================================= */
+
+.auto-image-plan-check {
+  display: grid;
+  place-items: center;
+
+  flex: none;
+
+  width: 15px;
+  height: 15px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.auto-image-foot {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 22px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px 20px;
+
+  margin: 0;
+  padding: 0 20px;
+
+  color: #3d4f62;
+
+  font-size: 10px;
+  text-align: center;
+}
+
+.auto-image-foot a {
+  color: #0b5fa5;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.auto-image-plan-cta:focus-visible,
+.auto-image-foot a:focus-visible {
+  outline: 2px solid #1f6fb8;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1200px) {
+  .auto-image-stack {
+    width: 340px;
+    height: 430px;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .auto-image-heading {
+    padding: 85px 24px 40px;
+  }
+
+  .auto-image-heading h2 {
+    font-size: clamp(42px, 8vw, 66px);
+    letter-spacing: -3px;
+  }
+
+  .auto-image-stack {
+    width: 290px;
+    height: 360px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media (max-width: 600px) {
-  .ais-label {
-    top: 74%;
+  .auto-image-heading {
+    padding: 70px 20px 30px;
   }
 
-  .ais-pill {
-    height: 40px;
-    font-size: 12px;
+  .auto-image-heading h2 {
+    font-size: clamp(38px, 11vw, 56px);
+    letter-spacing: -2.5px;
   }
 
-  .ais-pill-left {
-    padding: 0 10px 0 6px;
-    border-radius: 12px 0 0 12px;
+  .auto-image-subtitle {
+    font-size: 13px;
   }
 
-  .ais-pill-right {
-    padding: 0 12px;
-    border-radius: 0 12px 12px 0;
+  .auto-image-stack {
+    width: min(280px, calc(100vw - 60px));
+    height: min(350px, calc((100vw - 60px) * 1.15));
   }
 
-  .ais-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 8px;
-    margin-right: 6px;
+  .auto-image-card {
+    border-radius: 17px;
+  }
+
+  .auto-image-plan {
+    padding: 20px 18px 16px;
+  }
+
+  .auto-image-plan-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 12px;
+  }
+
+  .auto-image-plan-name {
+    font-size: 19px;
+  }
+
+  .auto-image-plan-tag {
+    font-size: 11.5px;
+  }
+
+  .auto-image-plan-price {
+    margin-top: 12px;
+    font-size: 15px;
+  }
+
+  .auto-image-plan-cta {
+    height: 37px;
+    margin-top: 10px;
+    font-size: 11.5px;
+  }
+
+  .auto-image-plan-label {
+    margin-top: 13px;
+  }
+
+  .auto-image-plan-list {
+    gap: 6px;
+  }
+
+  .auto-image-plan-list li {
     font-size: 11px;
   }
 }
 
-/* ================= MOBILE ================= */
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
-@media (max-width: 600px) {
-  .ais-wrapper {
-    padding: 40px 0 16px;
+@media (max-width: 420px) {
+  .auto-image-heading h2 {
+    font-size: 38px;
   }
 
-  .ais-track {
-    gap: 16px;
+  .auto-image-stack {
+    width: calc(100vw - 70px);
+    height: min(330px, calc((100vw - 70px) * 1.15));
   }
 
-  .ais-card {
-    width: 240px;
-    height: 250px;
+  .auto-image-plan {
+    padding: 18px 16px 14px;
   }
 
-  .ais-bgbox {
-    border-radius: 16px;
+  .auto-image-plan-badge {
+    top: 16px;
+    right: 16px;
+
+    padding: 5px 9px;
+
+    font-size: 9px;
   }
 
-  .ais-label {
-    top: 74%;
+  .auto-image-plan-name {
+    font-size: 18px;
   }
 
-  .ais-pill {
-    height: 38px;
-    font-size: 12px;
+  .auto-image-plan-tag,
+  .auto-image-plan-list li {
+    font-size: 10.5px;
   }
 
-  .ais-pill-left {
-    padding: 0 10px 0 8px;
-    border-radius: 12px 0 0 12px;
+  .auto-image-plan-list {
+    gap: 5px;
   }
 
-  .ais-pill-right {
-    padding: 0 12px;
-    border-radius: 0 12px 12px 0;
-  }
-
-  .ais-icon {
-    width: 22px;
-    height: 22px;
-    margin-right: 6px;
-    border-radius: 7px;
-    font-size: 11px;
-  }
-}
-
-/* ================= REDUCED MOTION ================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .ais-track {
-    transition-duration: 0.01s;
-  }
-
-  .ais-triangles,
-  .ais-stripes span,
-  .ais-bars span {
-    animation: none;
+  .auto-image-plan-check {
+    width: 14px;
+    height: 14px;
   }
 }

@@ -1,175 +1,595 @@
-/* ===== Calendly Integrations Section ===== */
+/* =========================================================
+   RESET
+========================================================= */
 
-.integrations {
-  width: 100%;
-  background: #f4f3ef;
-  padding: 120px 24px;
+.integrations-section,
+.integrations-section *,
+.integrations-section *::before,
+.integrations-section *::after {
+  box-sizing: border-box;
 }
 
+/* =========================================================
+   MAIN SECTION
+========================================================= */
+
+.integrations-section {
+  width: 100%;
+  overflow: hidden;
+  padding: 120px 0;
+  background: #f6f4ee;
+  color: #0b2948;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
 .integrations-container {
-  max-width: 1100px;
+  width: 100%;
+  max-width: 1240px;
   margin: 0 auto;
+  padding: 0;
+}
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.integrations-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  margin: 0 auto;
+
+  padding: 8px 14px;
+
+  text-transform: uppercase;
+
+  color: #0b2948;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 1px;
   text-align: center;
 }
 
-.eyebrow {
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 1.8px;
-  color: #0f172a;
-  margin-bottom: 28px;
+/* =========================================================
+   REMOVE EYEBROW ICON
+========================================================= */
+
+.integrations-eyebrow-icon {
+  display: none;
 }
 
-.integrations h2 {
-  font-size: clamp(42px, 5vw, 72px);
+/* =========================================================
+   TITLE
+========================================================= */
+
+.integrations-title {
+  width: 100%;
+  max-width: 900px;
+
+  margin: 28px auto 0;
+
+  color: #092746;
+
+  font-size: clamp(50px, 5vw, 80px);
+  font-weight: 500;
+
   line-height: 0.95;
-  letter-spacing: -2.8px;
-  font-weight: 500;
-  color: #0b1f3a;
+  letter-spacing: -4px;
+
+  text-align: center;
+}
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.integrations-subtitle {
+  width: 100%;
+  max-width: 650px;
+
+  margin: 28px auto 0;
+
+  color: #49657f;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.6;
+
+  text-align: center;
+}
+
+/* =========================================================
+   MARQUEE WRAPPER
+========================================================= */
+
+.integrations-marquee {
+  position: relative;
+
+  width: 100%;
+
+  margin-top: 68px;
+
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* =========================================================
+   MARQUEE TRACK
+========================================================= */
+
+.integrations-marquee-track {
+  display: flex;
+  flex-wrap: nowrap;
+
+  width: max-content;
+
+  transform: translate3d(0, 0, 0);
+
+  will-change: transform;
+
+  animation: integrations-smooth-scroll 42s linear infinite;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  perspective: 1000px;
+}
+
+/* =========================================================
+   MARQUEE GROUP
+========================================================= */
+
+.integrations-marquee-group {
+  display: flex;
+  align-items: stretch;
+
+  flex-shrink: 0;
+
+  gap: 16px;
+
+  padding-right: 16px;
+}
+
+/* =========================================================
+   INFINITE RIGHT → LEFT ANIMATION
+========================================================= */
+
+@keyframes integrations-smooth-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.integration-card {
+  display: flex;
+  flex-direction: column;
+
+  width: 288px;
+  min-width: 288px;
+  min-height: 220px;
+
+  padding: 22px;
+
+  border: 1px solid #dfe7ed;
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 4px 14px rgba(20, 55, 80, 0.045),
+    0 1px 3px rgba(20, 55, 80, 0.035);
+
+  transform: translateZ(0);
+
+  backface-visibility: hidden;
+
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.integration-card:hover {
+  transform: translate3d(0, -5px, 0);
+
+  border-color: #ccd9e3;
+
+  box-shadow:
+    0 16px 35px rgba(20, 55, 80, 0.09),
+    0 4px 8px rgba(20, 55, 80, 0.04);
+}
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.integration-card-header {
+  width: 100%;
+}
+
+.integration-card-info {
+  width: 100%;
+  min-width: 0;
+}
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.integration-card-title-row {
+  display: flex;
+  align-items: center;
+}
+
+.integration-card-title-row h3 {
   margin: 0;
+
+  color: #092746;
+
+  font-size: 14px;
+  font-weight: 5000;
+
+  line-height: 1.25;
+  letter-spacing: -0.3px;
 }
 
-.subtitle {
-  max-width: 600px;
-  margin: 28px auto 48px;
-  font-size: 18px;
-  line-height: 1.2;
-  color: #667085;
-  font-weight: 100;
+/* =========================================================
+   CARD DESCRIPTION
+========================================================= */
+
+.integration-card-description {
+  max-width: 250px;
+
+  margin: 10px 0 0;
+
+  color: #60758a;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.5;
 }
 
-.integration-btn {
+/* =========================================================
+   CARD TAGS
+========================================================= */
+
+.integration-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: auto;
+  padding-top: 25px;
+}
+
+/* =========================================================
+   TAG
+========================================================= */
+
+.integration-card-tag {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: #0b1f3a;
-  font-size: 17px;
+  justify-content: center;
+
+  min-height: 29px;
+
+  padding: 6px 8px;
+
+  border: 1px solid #dce5ed;
+  border-radius: 999px;
+
+  background: #edf2f6;
+
+  color: #173a58;
+
+  font-size: 9px;
   font-weight: 400;
-  transition: 0.25s ease;
-}
-.integration-btn:hover {
-  color: #0b1f3a9b;
-}
-.integration-btn span {
-  font-size: 22px;
-  transition: transform 0.25s ease;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
 }
 
-.integration-btn:hover span {
-  color: #0b1f3a92;
+/* =========================================================
+   TAG HOVER
+========================================================= */
+
+.integration-card-tag:hover {
+  border-color: #ccd9e3;
+  background: #e4ebf1;
 }
 
-/* =========================
-   Tablet (≤ 992px)
-========================= */
-@media (max-width: 992px) {
-  .integrations {
-    padding: 88px 32px;
+/* =========================================================
+   MARQUEE FADE
+========================================================= */
+
+.integrations-marquee::before,
+.integrations-marquee::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 100px;
+
+  z-index: 20;
+
+  pointer-events: none;
+}
+
+/* LEFT FADE */
+
+.integrations-marquee::before {
+  left: 0;
+
+  background: linear-gradient(
+    to right,
+    #f6f4ee 0%,
+    rgba(246, 244, 238, 0.92) 30%,
+    rgba(246, 244, 238, 0) 100%
+  );
+}
+
+/* RIGHT FADE */
+
+.integrations-marquee::after {
+  right: 0;
+
+  background: linear-gradient(
+    to left,
+    #f6f4ee 0%,
+    rgba(246, 244, 238, 0.92) 30%,
+    rgba(246, 244, 238, 0) 100%
+  );
+}
+
+/* =========================================================
+   PAUSE ON HOVER
+========================================================= */
+
+.integrations-marquee:hover .integrations-marquee-track {
+  animation-play-state: paused;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1150px) {
+  .integrations-section {
+    padding: 105px 0;
   }
 
   .integrations-container {
-    max-width: 720px;
+    padding: 0 28px;
   }
 
-  .eyebrow {
-    font-size: 13px;
-    letter-spacing: 1.8px;
-    margin-bottom: 20px;
+  .integrations-title {
+    font-size: clamp(50px, 7vw, 76px);
   }
 
-  .integrations h2 {
-    font-size: 56px;
-    line-height: 0.98;
-    letter-spacing: -2px;
-  }
-
-  .subtitle {
-    font-size: 22px;
-    line-height: 1.5;
-    margin: 22px auto 40px;
-  }
-
-  .integration-btn {
-    font-size: 22px;
-  }
-
-  .integration-btn span {
-    font-size: 24px;
+  .integration-card {
+    width: 280px;
+    min-width: 280px;
   }
 }
 
-/* =========================
-   Mobile (≤ 768px)
-========================= */
-@media (max-width: 768px) {
-  .integrations {
-    padding: 64px 20px;
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .integrations-section {
+    padding: 90px 0;
   }
 
   .integrations-container {
-    max-width: 100%;
+    padding: 0 24px;
   }
 
-  .eyebrow {
-    font-size: 11px;
-    letter-spacing: 1.6px;
-    margin-bottom: 16px;
+  .integrations-title {
+    font-size: clamp(48px, 9vw, 70px);
+    letter-spacing: -3px;
   }
 
-  .integrations h2 {
-    font-size: 40px;
-    line-height: 1.02;
-    letter-spacing: -1.8px;
-  }
-
-  .subtitle {
+  .integrations-subtitle {
     font-size: 17px;
-    line-height: 1.55;
-    margin: 20px auto 32px;
-    max-width: 320px;
   }
 
-  .integration-btn {
-    font-size: 18px;
-    font-weight: 600;
-    gap: 8px;
+  .integrations-marquee {
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    margin-top: 55px;
   }
 
-  .integration-btn span {
-    font-size: 20px;
+  .integrations-marquee-track {
+    animation-duration: 38s;
+  }
+
+  .integration-card {
+    width: 270px;
+    min-width: 270px;
   }
 }
 
-/* =========================
-   Small Mobile (≤ 480px)
-========================= */
-@media (max-width: 480px) {
-  .integrations {
-    padding: 56px 18px;
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .integrations-section {
+    padding: 72px 0;
   }
 
-  .eyebrow {
+  .integrations-container {
+    padding: 0 16px;
+  }
+
+  .integrations-eyebrow {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+
+  .integrations-title {
+    margin-top: 22px;
+
+    font-size: clamp(42px, 10vw, 58px);
+
+    line-height: 0.97;
+    letter-spacing: -2.5px;
+  }
+
+  .integrations-subtitle {
+    margin-top: 21px;
+
+    font-size: 10px;
+    line-height: 1.55;
+  }
+
+  .integrations-marquee {
+    width: calc(100% + 32px);
+
+    margin-left: -16px;
+    margin-top: 42px;
+  }
+
+  .integrations-marquee-track {
+    animation-duration: 32s;
+  }
+
+  .integrations-marquee-group {
+    gap: 12px;
+    padding-right: 12px;
+  }
+
+  .integration-card {
+    width: 250px;
+    min-width: 250px;
+    min-height: 210px;
+
+    padding: 17px;
+
+    border-radius: 16px;
+  }
+
+  .integration-card-title-row h3 {
+    font-size: 15px;
+  }
+
+  .integration-card-description {
+    margin-top: 5px;
+
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .integration-card-tags {
+    gap: 6px;
+    padding-top: 18px;
+  }
+
+  .integration-card-tag {
+    min-height: 28px;
+
+    padding: 6px 9px;
+
     font-size: 10px;
   }
 
-  .integrations h2 {
-    font-size: 34px;
-    line-height: 1.05;
-    letter-spacing: -1.4px;
+  .integrations-marquee::before,
+  .integrations-marquee::after {
+    width: 50px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .integrations-section {
+    padding: 64px 0;
   }
 
-  .subtitle {
-    font-size: 16px;
-    max-width: 290px;
-    margin-bottom: 28px;
+  .integrations-container {
+    padding: 0 12px;
   }
 
-  .integration-btn {
-    font-size: 17px;
+  .integrations-marquee {
+    width: calc(100% + 24px);
+    margin-left: -12px;
   }
 
-  .integration-btn span {
-    font-size: 18px;
+  .integrations-marquee-track {
+    animation-duration: 29s;
+  }
+
+  .integration-card {
+    width: 240px;
+    min-width: 240px;
+    padding: 15px;
+  }
+
+  .integrations-marquee::before,
+  .integrations-marquee::after {
+    width: 35px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .integrations-marquee-track {
+    animation: none;
+    transform: none;
+  }
+
+  .integration-card {
+    transition: none;
+  }
+
+  .integration-card:hover {
+    transform: none;
   }
 }

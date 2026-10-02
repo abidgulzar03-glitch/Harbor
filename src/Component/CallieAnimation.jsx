@@ -54,21 +54,21 @@ const Typing = ({ text, chars }) => (
 
 const TABS = [
   {
-    title: "Conversational scheduling",
+    title: "Carrier: Compliance",
     icon: "at",
-    body: "Instead of managing scheduling links and calendars yourself, just add callie@calendly.com to the email thread. Say what you need and let Callie take it from there.",
+    body: "Checks MC, DOT, Insurance, W9 and Signature. Dispatch paperwork will not generate.",
     ms: 4600,
   },
   {
-    title: "Precise coordination",
+    title: "Customer: Credit",
     icon: "cal",
-    body: "Callie runs on your Calendly availability preferences, weighs conflicts and constraints, and always checks with you before making one-off updates.",
+    body: "Checks Approved, Within limit and Terms on file. Held until an approver decides, in writing.",
     ms: 5400,
   },
   {
-    title: "24/7 assistance with meeting tasks",
+    title: "Money: Advance received",
     icon: "chat",
-    body: "In Calendly, ask Callie for help with scheduling, meeting prep, recalling conversation and contact details, and more.",
+    body: "Checks SWIFT reference, Amount and Date. One reference, once. Only the owner releases a short payment.",
     ms: 4600,
   },
 ];
@@ -107,8 +107,7 @@ const Icon = ({ name }) => {
   );
 };
 
-const SAGE =
-  "Callie, can you set up some time for myself and Lars tomorrow at 9?";
+const SAGE = "One reference, once. Only the owner releases a short payment.";
 
 /* ---------- main component ---------- */
 export default function CallieAnimation() {
@@ -184,12 +183,12 @@ export default function CallieAnimation() {
               <div className="cl-from">
                 <Avatar kind="dominic" size={34} />
                 <div>
-                  <div className="cl-name">Dominic Mills</div>
+                  <div className="cl-name">Carrier</div>
                   <div className="cl-sub">
                     Cc{" "}
                     <span className="cl-chip">
                       <Logo size={11} radius={3} />
-                      Callie <i>×</i>
+                      Compliance <i>×</i>
                     </span>
                   </div>
                 </div>
@@ -201,12 +200,12 @@ export default function CallieAnimation() {
                   <b style={{ width: "72%" }} />
                 </div>
                 <p className="cl-msg">
-                  Callie, can you help us find 30 minutes this week? Mornings
-                  only, please.
+                  Every brokerage has a vetting policy. Almost none enforce it
+                  at six on a Friday.
                 </p>
               </Reveal>
               <Reveal show={aStep >= 2}>
-                <button className="cl-btn cl-purple">Send Email</button>
+                <button className="cl-btn cl-purple">Refuses</button>
               </Reveal>
             </div>
           )}
@@ -219,7 +218,7 @@ export default function CallieAnimation() {
                   Cc{" "}
                   <span className="cl-chip">
                     <Logo size={11} radius={3} />
-                    Callie <i>×</i>
+                    Compliance <i>×</i>
                   </span>
                 </div>
               </div>
@@ -228,21 +227,19 @@ export default function CallieAnimation() {
                   <Logo size={34} radius={9} />
                 </div>
                 <div>
-                  <div className="cl-name">Callie</div>
-                  <div className="cl-sub">
-                    Cc Dominic Mills, Tori Matthews ▾
-                  </div>
+                  <div className="cl-name">Compliance</div>
+                  <div className="cl-sub">To Carrier ▾</div>
                 </div>
               </div>
               <p className="cl-msg">
-                Hi Dominic, Happy to help! Here are some suggested times:
+                Dispatch paperwork will not generate without:
               </p>
               <div className="cl-days">
                 {[
-                  ["Thursday", "September 25", ["9:00 AM", "10:00 AM"]],
-                  ["Friday", "September 26", ["9:30 AM", "11:00 AM"]],
-                ].map(([d, s, slots]) => (
-                  <div className="cl-day" key={d}>
+                  ["Carrier", "Compliance", ["MC", "DOT", "Insurance"]],
+                  ["Carrier", "Compliance", ["W9", "Signature"]],
+                ].map(([d, s, slots], i) => (
+                  <div className="cl-day" key={i}>
                     <div className="cl-dname">{d}</div>
                     <div className="cl-ddate">{s}</div>
                     {slots.map((t) => (
@@ -250,7 +247,7 @@ export default function CallieAnimation() {
                         key={t}
                         className={
                           "cl-slot" +
-                          (picked && t === "9:30 AM" ? " cl-sel" : "")
+                          (picked && t === "Signature" ? " cl-sel" : "")
                         }
                       >
                         {t}
@@ -261,7 +258,7 @@ export default function CallieAnimation() {
               </div>
               <button className="cl-btn cl-lime">
                 <Logo size={14} radius={4} />
-                &nbsp;Book with Callie
+                &nbsp;Refuses
               </button>
             </div>
           )}
@@ -273,24 +270,22 @@ export default function CallieAnimation() {
                   <Logo size={34} radius={9} />
                 </div>
                 <div>
-                  <div className="cl-name">Callie</div>
-                  <div className="cl-sub">To Dominic Mills ▾</div>
+                  <div className="cl-name">Credit</div>
+                  <div className="cl-sub">To Customer ▾</div>
                 </div>
               </div>
               <Reveal show={cStep >= 1}>
                 <p className="cl-msg cl-tight">
-                  You’re available on Tuesday at 8am
+                  Approved. Within limit. Terms on file.
                 </p>
               </Reveal>
               <Reveal show={cStep >= 2}>
                 <p className="cl-msg cl-tight">
-                  but it conflicts with your workout.
+                  Otherwise, held until an approver
                 </p>
               </Reveal>
               <Reveal show={cStep >= 3}>
-                <p className="cl-msg cl-tight">
-                  Do you want to book it anyway?
-                </p>
+                <p className="cl-msg cl-tight">decides, in writing.</p>
               </Reveal>
               <Reveal show={cStep >= 4}>
                 <div className="cl-row">
@@ -299,14 +294,14 @@ export default function CallieAnimation() {
                       "cl-btn cl-olive" + (cStep >= 5 ? " cl-done" : "")
                     }
                   >
-                    {cStep >= 5 ? "✓ Confirmed" : "Confirm"}
+                    {cStep >= 5 ? "✓ Approved" : "Approved"}
                   </button>
                   <button
                     className={
                       "cl-btn cl-gray" + (cStep >= 5 ? " cl-gone" : "")
                     }
                   >
-                    Deny
+                    Blocks
                   </button>
                 </div>
               </Reveal>
@@ -318,8 +313,8 @@ export default function CallieAnimation() {
               <div className="cl-from">
                 <Avatar kind="sage" size={34} />
                 <div>
-                  <div className="cl-name">Sage Rowan</div>
-                  <div className="cl-sub">To Callie, Lars Hansen ▾</div>
+                  <div className="cl-name">Advance received</div>
+                  <div className="cl-sub">SWIFT reference, Amount, Date ▾</div>
                 </div>
               </div>
               <p className="cl-msg" style={{ minHeight: 38 }}>
@@ -333,11 +328,12 @@ export default function CallieAnimation() {
       {/* ---------- right copy ---------- */}
       <div id="callie-copy">
         <div className="cl-badge">
-          <Logo size={14} radius={4} />
-          <span>Callie</span>
-          <em>Beta</em>
+          {/* <Logo size={14} radius={4} /> */}
+          <span>Three gates</span>
         </div>
-        <h1 id="callie-heading">Meet Callie, your AI assistant</h1>
+        <h1 id="callie-heading">
+          Three doors this software will not open for you.
+        </h1>
 
         <div id="callie-tabs">
           {TABS.map((t, i) => (

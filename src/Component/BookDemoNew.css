@@ -1,0 +1,389 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* =========================================================
+   BOOK DEMO NEW
+========================================================= */
+
+.book-demo-new,
+.book-demo-new *,
+.book-demo-new *::before,
+.book-demo-new *::after {
+  box-sizing: border-box;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.book-demo-new {
+  width: 100%;
+  padding: 100px 24px;
+  background: #f6f4ee;
+  color: #0e2747;
+  margin-bottom: 70px;
+}
+
+.book-demo-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   FEATURED CARD
+========================================================= */
+
+.book-demo-featured-wrapper {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.book-demo-card {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(14, 39, 71, 0.1);
+  border-radius: 24px;
+  background: #ffffff;
+  color: #0e2747;
+  box-shadow: 0 8px 30px rgba(14, 39, 71, 0.06);
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.book-demo-card:hover {
+  border-color: rgba(14, 39, 71, 0.18);
+  box-shadow: 0 18px 45px rgba(14, 39, 71, 0.1);
+}
+
+.book-demo-card-featured {
+  display: flex;
+  flex-direction: row;
+  min-height: 420px;
+}
+
+/* =========================================================
+   FEATURED IMAGE
+========================================================= */
+
+.book-demo-card-image {
+  position: relative;
+  display: block;
+  width: 52%;
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.book-demo-card-image::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(
+    180deg,
+    rgba(14, 39, 71, 0.02),
+    rgba(14, 39, 71, 0.2)
+  );
+  pointer-events: none;
+}
+
+.book-demo-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.book-demo-card:hover .book-demo-card-image img {
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.book-demo-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 42px;
+}
+
+.book-demo-card-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  color: #68768a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.book-demo-card-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  color: #0e2747;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.book-demo-card h3 {
+  margin: 0 0 16px;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+
+.book-demo-card h3 a {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+}
+
+.book-demo-card h3 a::after {
+  position: absolute;
+  right: 0;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  content: "";
+  background: #0e2747;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.book-demo-card:hover h3 a::after {
+  transform: scaleX(1);
+}
+
+.book-demo-card p {
+  max-width: 600px;
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.book-demo-card-action {
+  margin-top: 32px;
+}
+
+.book-demo-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: #0e2747;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.book-demo-button:hover {
+  background: #183b61;
+  transform: translateY(-2px);
+}
+
+.book-demo-button svg {
+  transition: transform 0.25s ease;
+}
+
+.book-demo-button:hover svg {
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   NORMAL CARD GRID
+========================================================= */
+
+.book-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.book-demo-grid .book-demo-card {
+  min-height: 310px;
+}
+
+.book-demo-grid .book-demo-card-content {
+  padding: 30px;
+}
+
+.book-demo-grid .book-demo-card-meta {
+  margin-bottom: 20px;
+}
+
+.book-demo-grid .book-demo-card h3 {
+  font-size: 22px;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+  .book-demo-new {
+    padding: 80px 20px;
+  }
+
+  .book-demo-card-featured {
+    min-height: 380px;
+  }
+
+  .book-demo-card-image {
+    width: 48%;
+    min-height: 380px;
+  }
+
+  .book-demo-card-content {
+    padding: 32px;
+  }
+
+  .book-demo-card h3 {
+    font-size: 27px;
+  }
+
+  .book-demo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+  .book-demo-new {
+    padding: 60px 16px;
+  }
+
+  .book-demo-featured-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .book-demo-card-featured {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .book-demo-card-image {
+    width: 100%;
+    height: 280px;
+    min-height: 280px;
+  }
+
+  .book-demo-card-content {
+    padding: 26px 22px;
+  }
+
+  .book-demo-card-meta {
+    gap: 8px;
+    margin-bottom: 18px;
+    font-size: 10px;
+  }
+
+  .book-demo-card h3 {
+    margin-bottom: 13px;
+    font-size: 24px;
+    line-height: 1.18;
+  }
+
+  .book-demo-card p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .book-demo-card-action {
+    margin-top: 26px;
+  }
+
+  .book-demo-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .book-demo-grid .book-demo-card {
+    min-height: auto;
+  }
+
+  .book-demo-grid .book-demo-card-content {
+    padding: 25px 22px;
+  }
+
+  .book-demo-grid .book-demo-card h3 {
+    font-size: 21px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+  .book-demo-new {
+    padding: 45px 12px;
+  }
+
+  .book-demo-card {
+    border-radius: 18px;
+  }
+
+  .book-demo-card-image {
+    height: 230px;
+    min-height: 230px;
+  }
+
+  .book-demo-card-content {
+    padding: 22px 18px;
+  }
+
+  .book-demo-card h3 {
+    font-size: 22px;
+  }
+
+  .book-demo-card p {
+    font-size: 14px;
+  }
+
+  .book-demo-grid .book-demo-card-content {
+    padding: 22px 18px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .book-demo-card,
+  .book-demo-card-image img,
+  .book-demo-button,
+  .book-demo-button svg,
+  .book-demo-card h3 a::after {
+    transition: none;
+  }
+}
