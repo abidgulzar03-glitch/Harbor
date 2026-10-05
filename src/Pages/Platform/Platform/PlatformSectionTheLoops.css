@@ -62,7 +62,7 @@
   font-weight: 500;
   letter-spacing: -0.025em;
   text-wrap: balance;
-
+  margin-top: 160px;
   color: var(--loop-ink);
 }
 
