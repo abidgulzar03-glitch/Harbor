@@ -14,6 +14,7 @@ import FaqAccordion from "./Component/Fsqs";
 import BookDemoNew from "./Component/BoookDemoNew";
 import Footer from "./Component/Footer";
 
+
 import TheLoop from "./Pages/Platform/Platform/TheLoop";
 import Compliance from "./Pages/Platform/Compliance-Page/Compliance";
 import Operations from "./Pages/Platform/Operations-page/Operations";
@@ -34,7 +35,7 @@ function Home() {
       <IntegrationsSection />
       <AutoImageSlider />
       <FaqAccordion />
-      <BookDemoNew/>
+      <BookDemoNew />
     </>
   );
 }

@@ -6,48 +6,56 @@ const cards = [
     id: "01",
     title: "Arrival notice in",
     text: "Upload the line's PDF. One notice raises one load, or forty on the same booking.",
+    color: "#2878E8",
   },
   {
     id: "02",
     title: "Load created",
     text: "Parties, equipment, stops, charges. Flag SSL or customs and the advance shells exist before anyone forgets them.",
+    color: "#42B95A",
   },
   {
     id: "03",
     title: "Posted to the boards",
     text: "DAT, Truckstop and Loadmatch from the record itself. A retry cannot post your load twice at two rates.",
+    color: "#8A5BE8",
   },
   {
     id: "04",
     title: "Rates return",
     text: "Offers land sorted, with MC, ETA and compliance state. Nothing is auto-selected on price.",
+    color: "#35BFC0",
   },
   {
     id: "05",
     title: "Carrier compliance",
     text: "Authority, USDOT, insurance, W9 and signature. Short of five, the dispatch sheet does not generate.",
     badge: "Blocked",
+    color: "#F2B51D",
   },
   {
     id: "06",
     title: "Customer credit",
     text: "Exposure counts the loads still in the air. Past the limit an approver decides, in writing.",
     badge: "Blocked",
+    color: "#F0645A",
   },
   {
     id: "07",
     title: "Dispatched and tracked",
     text: "Eight milestones. Each sets a status, stamps a date, writes the audit event and tells the agent.",
+    color: "#16A6B6",
   },
   {
     id: "08",
     title: "Invoiced and paid",
     text: "Delivery starts both aging clocks in one transaction. An accessorial that exists is billed.",
+    color: "#7955D9",
   },
 ];
 
-const MAX_TILT = 35; // max degrees up/down
-const TILT_SPEED = 0.25; // degrees of tilt per pixel dragged
+const MAX_TILT = 35;
+const TILT_SPEED = 0.25;
 
 export default function CircularCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -94,7 +102,7 @@ export default function CircularCarousel() {
     return () => {
       clearInterval(autoTimer.current);
     };
-  }, []);
+  });
 
   const handlePointerDown = (event) => {
     pauseAuto();
@@ -110,17 +118,15 @@ export default function CircularCarousel() {
   };
 
   const handlePointerMove = (event) => {
-    // Nothing happens on hover, only while the mouse/finger is held down
     if (!isDragging) return;
 
     const deltaX = event.clientX - startX.current;
     const deltaY = event.clientY - startY.current;
 
-    // left/right spins the ring
     setRotation(startRotation.current + deltaX * 0.35);
 
-    // up/down tilts it (drag down = top of ring comes toward you)
     const nextTilt = startTilt.current - deltaY * TILT_SPEED;
+
     setTilt(Math.min(MAX_TILT, Math.max(-MAX_TILT, nextTilt)));
   };
 
@@ -145,7 +151,9 @@ export default function CircularCarousel() {
   };
 
   const handlePointerLeave = (event) => {
-    if (isDragging) handlePointerUp(event);
+    if (isDragging) {
+      handlePointerUp(event);
+    }
   };
 
   useEffect(() => {
@@ -180,10 +188,11 @@ export default function CircularCarousel() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [activeIndex]);
+  });
 
   return (
     <section className="circular-carousel">
+      {/* HEADER */}
       <div className="circular-carousel__header">
         <span className="circular-carousel__eyebrow">The sequence</span>
 
@@ -199,6 +208,7 @@ export default function CircularCarousel() {
         </p>
       </div>
 
+      {/* CAROUSEL */}
       <div
         ref={carouselRef}
         className={`circular-carousel__viewport ${
@@ -232,6 +242,8 @@ export default function CircularCarousel() {
                   isActive ? "is-active" : ""
                 }`}
                 style={{
+                  "--card-color": card.color,
+                  "--card-index": index,
                   transform: `
                     rotateY(${cardRotation}deg)
                     translateZ(var(--carousel-radius))
@@ -239,6 +251,7 @@ export default function CircularCarousel() {
                 }}
                 onClick={() => goTo(index)}
               >
+                {/* CARD TOP */}
                 <div className="circular-carousel__card-top">
                   <span className="circular-carousel__number">{card.id}</span>
 
@@ -249,12 +262,14 @@ export default function CircularCarousel() {
                   )}
                 </div>
 
+                {/* CARD CONTENT */}
                 <div className="circular-carousel__content">
                   <h3>{card.title}</h3>
 
                   <p>{card.text}</p>
                 </div>
 
+                {/* CARD FOOTER */}
                 <div className="circular-carousel__footer">
                   <span>Workflow</span>
 
