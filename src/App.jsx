@@ -1,9 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Navbar from "./Component/Navbar";
 import NewHero from "./ReadyMadeComponents/NewHero";
-// import Hero from "./Component/Hero";
 import StepsSection from "./Component/StepsSection";
 import CalendlyFeatureScroll from "./Component/CalendlyFeatureScroll";
 import CallieAnimation from "./Component/CallieAnimation";

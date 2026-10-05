@@ -1,4 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap");
+
 .scheduling-section {
+  font-family:
+    "Instrument Sans",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
   width: 100%;
   padding: 90px 0 110px;
   background: transparent;
@@ -34,23 +42,31 @@
   display: inline-block;
   margin: 0 0 14px;
   padding: 6px 14px;
-  background: #eef2ff;
-  border-radius: 999px;
-  font-size: 12px;
+  color: #31506d;
+  font-size: 11px;
+  line-height: 1;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: #4f46e5;
   text-transform: uppercase;
 }
 
 .scheduling-heading {
   margin: 0;
   color: #111827;
-  font-family: "Lora", Georgia, "Times New Roman", serif;
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
   font-size: 38px;
   font-weight: 500;
   line-height: 1.18;
   letter-spacing: -0.6px;
+}
+
+.scheduling-intro {
+  margin: 18px 0 0;
+  max-width: 520px;
+  color: #6b7280dc;
+  font-size: 11px;
+  line-height: 1.6;
+  font-weight: 300;
 }
 
 .scheduling-features {
@@ -77,7 +93,7 @@
 .feature-title {
   margin: 0 0 6px;
   color: #000000;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.3;
   letter-spacing: -0.3px;
@@ -88,6 +104,17 @@
   color: #6b7280dc;
   font-size: 15px;
   line-height: 1.5;
+  font-weight: 300;
+}
+
+.feature-risk {
+  margin: 10px 0 0;
+  padding-left: 12px;
+  border-left: 2px solid #31506d33;
+  color: #31506d;
+  font-size: 14px;
+  line-height: 1.5;
+  font-style: italic;
   font-weight: 300;
 }
 
@@ -111,6 +138,16 @@
   white-space: nowrap;
 }
 
+.scheduling-summary {
+  margin: 12px 0 0;
+  padding-top: 26px;
+  border-top: 1px solid #e5e7eb;
+  color: #111827;
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
 .scheduling-right {
   position: sticky;
   top: 100px;
@@ -123,6 +160,7 @@
 .calendar-card {
   width: 100%;
   max-width: 440px;
+  height: 480px;
   padding: 0;
   border-radius: 22px;
   overflow: hidden;
@@ -135,8 +173,7 @@
 .scheduling-image {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 480px;
+  height: 100%;
   object-fit: cover;
   border-radius: 22px;
 }
@@ -153,8 +190,8 @@
     max-width: 400px;
   }
 
-  .scheduling-image {
-    max-height: 440px;
+  .calendar-card {
+    height: 540px;
   }
 }
 
@@ -173,8 +210,8 @@
     max-width: 360px;
   }
 
-  .scheduling-image {
-    max-height: 400px;
+  .calendar-card {
+    height: 500px;
   }
 }
 
@@ -198,8 +235,8 @@
     margin: 0 auto;
   }
 
-  .scheduling-image {
-    max-height: 420px;
+  .calendar-card {
+    height: 520px;
   }
 }
 
@@ -217,6 +254,10 @@
     font-size: 28px;
   }
 
+  .scheduling-intro {
+    font-size: 15px;
+  }
+
   .feature-title {
     font-size: 17px;
   }
@@ -225,12 +266,20 @@
     font-size: 14px;
   }
 
+  .feature-risk {
+    font-size: 13px;
+  }
+
+  .scheduling-summary {
+    font-size: 16px;
+  }
+
   .calendar-card {
     max-width: 360px;
   }
 
-  .scheduling-image {
-    max-height: 360px;
+  .calendar-card {
+    height: 460px;
   }
 }
 
@@ -259,12 +308,16 @@
     font-size: 14px;
   }
 
+  .scheduling-summary {
+    font-size: 15px;
+  }
+
   .calendar-card {
     max-width: 100%;
   }
 
-  .scheduling-image {
-    max-height: 320px;
+  .calendar-card {
+    height: 400px;
   }
 }
 
@@ -273,11 +326,19 @@
     font-size: 23px;
   }
 
+  .scheduling-intro {
+    font-size: 14px;
+  }
+
   .feature-title {
     font-size: 15px;
   }
 
   .feature-desc {
     font-size: 13px;
+  }
+
+  .feature-risk {
+    font-size: 12px;
   }
 }

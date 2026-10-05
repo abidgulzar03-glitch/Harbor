@@ -2,9 +2,10 @@ import "./TheLoop.css";
 import HeroTheLoop from "./HeroTheLoop";
 import ProblemSectionTheLoop from "./ProblemSectionTheLoop";
 import HowItWorksTheLoop from "./HowItWorksTheLoop";
-import PlatformSectionTheLoop from "./PlatformSectionTheLoop";
-import ModuleShowcaseTheLoop from "./ModuleShowcaseTheLoop";
-import DemoExperienceTheLoop from "./DemoExperienceTheLoop";
+import PlatformSectionTheLoops from "./PlatformSectionTheLoops";
+import ModuleShowcaseTheLoops from "./ModuleShowcaseTheLoops";
+
+import BookDemoNew from "../../../Component/BoookDemoNew";
 
 function TheLoop() {
   return (
@@ -12,9 +13,10 @@ function TheLoop() {
       <HeroTheLoop />
       <ProblemSectionTheLoop />
       <HowItWorksTheLoop />
-      <PlatformSectionTheLoop />
-      <ModuleShowcaseTheLoop />
-      <DemoExperienceTheLoop />
+      <PlatformSectionTheLoops />
+      <ModuleShowcaseTheLoops />
+
+      <BookDemoNew />
     </div>
   );
 }

@@ -1,34 +1,46 @@
 /* =========================================================
+   GOOGLE FONTS
+========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap");
+
+/* =========================================================
    CIRCULAR CAROUSEL
 ========================================================= */
 
 .circular-carousel {
-  --carousel-radius: 380px;
-  --card-width: 255px;
-  --card-height: 225px;
+  /* Fluid sizing: everything derives from the card width */
+  --card-width: clamp(200px, 62vw, 270px);
+  --card-height: calc(var(--card-width) * 0.98);
+
+  /* radius >= card-width * 1.21 keeps 8 cards from overlapping */
+  --carousel-radius: calc(var(--card-width) * 1.4);
+
+  --cc-bg: #f7f6f2;
 
   position: relative;
   width: 100%;
+  max-width: 100%;
   min-height: 50vh;
-  padding: 70px 24px 55px;
+
+  padding: clamp(48px, 7vw, 70px) clamp(12px, 3vw, 24px) clamp(32px, 5vw, 55px);
+
+  /* clip: no sideways strip; isolation: no black behind 3D layers */
   overflow: hidden;
+  overflow: clip;
+  isolation: isolate;
+  box-sizing: border-box;
 
-  background:
-    radial-gradient(
-      circle at 50% 42%,
-      rgba(134, 200, 210, 0.12),
-      transparent 34%
-    ),
-    #f7f8f5;
-
+  background-color: var(--cc-bg);
   color: #102b2b;
 
-  font-family:
-    "Inter",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: "Instrument Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.circular-carousel,
+.circular-carousel * {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* =========================================================
@@ -51,23 +63,28 @@
 
   margin-bottom: 14px;
 
+  font-family: "Instrument Sans", sans-serif;
   font-size: 11px;
+  font-weight: 500;
   line-height: 1;
-  font-weight: 700;
+
   letter-spacing: 0.14em;
   text-transform: uppercase;
 
-  color: #438b8c;
+  color: #31506d;
 }
 
 .circular-carousel__header h2 {
   margin: 0;
 
-  font-size: clamp(33px, 4vw, 54px);
-  line-height: 0.98;
+  font-family: "Newsreader", serif;
 
-  font-weight: 600;
-  letter-spacing: -0.01.0em;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.1;
+
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 
   color: #102b2b;
 }
@@ -77,8 +94,10 @@
 
   margin: 17px auto 0;
 
-  font-size: 13px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: clamp(12px, 1.4vw, 13px);
   line-height: 1.65;
+
   font-weight: 400;
   letter-spacing: -0.01em;
 
@@ -93,17 +112,20 @@
   position: relative;
 
   width: 100%;
-  height: 420px;
+  height: calc(var(--card-height) + 130px);
 
-  margin-top: 18px;
+  margin-top: clamp(24px, 7vw, 80px);
 
-  perspective: 1250px;
+  perspective: calc(var(--carousel-radius) * 3.3);
+
+  background: transparent;
+  outline: 0;
 
   cursor: grab;
-
-  touch-action: pan-y;
+  touch-action: pan-y; /* page scrolls vertically, carousel drags horizontally */
   user-select: none;
   -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .circular-carousel__viewport.is-dragging {
@@ -128,6 +150,7 @@
   transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
 
   will-change: transform;
+  outline: 0;
 }
 
 /* =========================================================
@@ -143,50 +166,60 @@
   width: var(--card-width);
   height: var(--card-height);
 
-  padding: 21px;
+  padding: clamp(15px, 4vw, 21px);
 
   display: flex;
   flex-direction: column;
 
   box-sizing: border-box;
 
-  border: 1px solid rgba(31, 75, 75, 0.09);
-  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: clamp(18px, 3vw, 22px);
 
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.98),
-    rgba(235, 243, 241, 0.96)
-  );
+  background: #5fa8ff;
+  background-clip: padding-box;
+  color: #ffffff;
 
-  box-shadow:
-    0 18px 50px rgba(22, 53, 53, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: none;
+  outline: 0;
 
-  backface-visibility: hidden;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
   transform-style: preserve-3d;
 
   cursor: pointer;
 
   transition:
-    box-shadow 0.3s ease,
     border-color 0.3s ease,
     background 0.3s ease;
 }
 
+.circular-carousel__card:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+}
+
 /* =========================================================
    ACTIVE / HOVER
+   (hover only on devices that really hover, so taps on
+   phones don't leave a stuck border)
 ========================================================= */
 
-.circular-carousel__card:hover,
 .circular-carousel__card.is-active {
-  border-color: rgba(67, 139, 140, 0.3);
+  border-color: rgba(255, 255, 255, 0.7);
+  background: #5fa8ff;
+}
 
-  background: linear-gradient(145deg, #ffffff, #e6f1ef);
+@media (hover: hover) {
+  .circular-carousel__card:hover {
+    border-color: rgba(255, 255, 255, 0.7);
+    background: #5fa8ff;
+  }
 
-  box-shadow:
-    0 25px 65px rgba(22, 53, 53, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 1);
+  .circular-carousel__card:hover .circular-carousel__arrow {
+    transform: translate(2px, -2px);
+    background: rgba(255, 255, 255, 0.38);
+  }
 }
 
 /* =========================================================
@@ -197,18 +230,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
 
   min-height: 30px;
 }
 
 .circular-carousel__number {
-  font-size: 23px;
+  font-family: "Instrument Sans", sans-serif;
+
+  font-size: clamp(19px, 5vw, 23px);
   line-height: 1;
 
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.04em;
 
-  color: #438b8c;
+  color: #ffffff;
 }
 
 .circular-carousel__badge {
@@ -220,15 +256,19 @@
 
   border-radius: 999px;
 
-  background: #ffe5df;
+  background: #ffffff;
   color: #c94d32;
+
+  font-family: "Instrument Sans", sans-serif;
 
   font-size: 9px;
   line-height: 1;
 
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.07em;
+
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 /* =========================================================
@@ -237,6 +277,7 @@
 
 .circular-carousel__content {
   flex: 1;
+  min-height: 0;
 
   display: flex;
   flex-direction: column;
@@ -246,15 +287,17 @@
 .circular-carousel__content h3 {
   width: 100%;
 
-  margin: 0 0 10px;
+  margin: 0 0 8px;
 
-  font-size: 21px;
+  font-family: "Instrument Sans", sans-serif;
+
+  font-size: clamp(16px, 4.5vw, 21px);
   line-height: 1.12;
 
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.035em;
 
-  color: #173535;
+  color: #ffffff;
 }
 
 .circular-carousel__content p {
@@ -262,13 +305,15 @@
 
   margin: 0;
 
-  font-size: 12px;
-  line-height: 1.58;
+  font-family: "Instrument Sans", sans-serif;
+
+  font-size: clamp(11px, 3vw, 12.5px);
+  line-height: 1.5;
 
   font-weight: 400;
   letter-spacing: -0.005em;
 
-  color: #617474;
+  color: #ffffff;
 }
 
 /* =========================================================
@@ -280,19 +325,21 @@
   align-items: center;
   justify-content: space-between;
 
-  padding-top: 12px;
+  padding-top: 10px;
 
-  border-top: 1px solid rgba(40, 80, 80, 0.09);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+
+  font-family: "Instrument Sans", sans-serif;
 
   font-size: 9px;
   line-height: 1;
 
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.1em;
 
   text-transform: uppercase;
 
-  color: #789090;
+  color: #ffffff;
 }
 
 .circular-carousel__arrow {
@@ -305,9 +352,10 @@
 
   border-radius: 50%;
 
-  background: #dcebea;
-  color: #326f70;
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
 
+  font-family: "Instrument Sans", sans-serif;
   font-size: 12px;
 
   transition:
@@ -315,184 +363,51 @@
     background 0.2s ease;
 }
 
-.circular-carousel__card:hover .circular-carousel__arrow {
-  transform: translate(2px, -2px);
-
-  background: #c8e1df;
-}
-
 /* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 1100px) {
-  .circular-carousel {
-    --carousel-radius: 340px;
-    --card-width: 270px;
-    --card-height: 230px;
-
-    padding-top: 60px;
-  }
-
-  .circular-carousel__viewport {
-    height: 390px;
-    perspective: 1100px;
-  }
-
-  .circular-carousel__content h3 {
-    font-size: 20px;
-  }
-
-  .circular-carousel__content p {
-    font-size: 11.5px;
-  }
-}
-
-/* =========================================================
-   MOBILE
+   SMALL SCREENS
 ========================================================= */
 
 @media (max-width: 768px) {
   .circular-carousel {
-    --carousel-radius: 285px;
-    --card-width: 245px;
-    --card-height: 215px;
-
     min-height: auto;
-
-    padding: 55px 16px 40px;
   }
 
   .circular-carousel__header h2 {
-    font-size: clamp(32px, 9vw, 46px);
-  }
-
-  .circular-carousel__header p {
-    margin-top: 13px;
-
-    font-size: 11.5px;
-    line-height: 1.6;
+    font-size: clamp(32px, 9.5vw, 46px);
+    line-height: 1.02;
   }
 
   .circular-carousel__viewport {
-    height: 350px;
-
-    margin-top: 12px;
-
-    perspective: 950px;
-  }
-
-  .circular-carousel__card {
-    padding: 17px;
-
-    border-radius: 19px;
-  }
-
-  .circular-carousel__number {
-    font-size: 21px;
+    margin-top: 8px;
   }
 
   .circular-carousel__badge {
     padding: 5px 8px;
-
     font-size: 8px;
   }
 
-  .circular-carousel__content h3 {
-    margin-bottom: 7px;
-
-    font-size: 18px;
-    line-height: 1.12;
-  }
-
-  .circular-carousel__content p {
-    font-size: 10.5px;
-    line-height: 1.52;
-  }
-
   .circular-carousel__footer {
-    padding-top: 10px;
-
-    font-size: 7.5px;
+    font-size: 8px;
   }
 
   .circular-carousel__arrow {
     width: 22px;
     height: 22px;
-
     font-size: 10px;
   }
 }
 
 /* =========================================================
-   SMALL MOBILE
+   VERY SMALL SCREENS
 ========================================================= */
 
-@media (max-width: 480px) {
+@media (max-width: 400px) {
   .circular-carousel {
-    --carousel-radius: 245px;
-    --card-width: 220px;
-    --card-height: 195px;
-
-    padding: 48px 12px 32px;
+    --card-width: 200px;
   }
 
   .circular-carousel__header h2 {
-    font-size: 30px;
-    line-height: 1;
-  }
-
-  .circular-carousel__header p {
-    max-width: 300px;
-
-    font-size: 10.5px;
-    line-height: 1.55;
-  }
-
-  .circular-carousel__viewport {
-    height: 315px;
-
-    margin-top: 7px;
-  }
-
-  .circular-carousel__card {
-    padding: 15px;
-
-    border-radius: 17px;
-  }
-
-  .circular-carousel__number {
-    font-size: 19px;
-  }
-
-  .circular-carousel__badge {
-    padding: 4px 7px;
-
-    font-size: 7px;
-  }
-
-  .circular-carousel__content h3 {
-    margin-bottom: 6px;
-
-    font-size: 16px;
-  }
-
-  .circular-carousel__content p {
-    font-size: 9.5px;
-    line-height: 1.48;
-  }
-
-  .circular-carousel__footer {
-    padding-top: 8px;
-
-    font-size: 6.5px;
-  }
-
-  .circular-carousel__arrow {
-    width: 20px;
-    height: 20px;
-
-    font-size: 9px;
+    font-size: 32px;
   }
 }
 

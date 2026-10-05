@@ -1,0 +1,571 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap");
+
+/* =========================================================
+   MODULE SHOWCASE  (responsive)
+   Card size is driven by --ms-card-w, which scales fluidly and is
+   overridden per breakpoint. If your JS positions cards in 3D,
+   read the width with card.offsetWidth (not a hardcoded 300) and
+   recompute on resize.
+========================================================= */
+
+.module-showcase {
+  --ms-bg: #f6f3eb;
+  --ms-fg: #14213d;
+  --ms-muted: #687286;
+  --ms-accent: #286953;
+
+  /* fluid card: ~170px on small phones up to 300px on desktop */
+  --ms-card-w: clamp(170px, 14vw + 90px, 300px);
+  --ms-card-h: calc(var(--ms-card-w) * 1.3333);
+
+  --ms-edge: clamp(20px, 4vw, 64px);
+
+  /* space the header occupies; scene is pushed below it on small screens */
+  --ms-header-space: 0px;
+
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+
+  background: var(--ms-bg);
+  color: var(--ms-fg);
+
+  font-family:
+    "Instrument Sans",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow: clip;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+.module-showcase *,
+.module-showcase *::before,
+.module-showcase *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.module-showcase img {
+  max-width: 100%;
+}
+
+/* =========================================================
+   STICKY STAGE
+========================================================= */
+
+.module-showcase__stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+
+  overflow: hidden;
+  overflow: clip;
+  touch-action: pan-y;
+  isolation: isolate;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.module-showcase__header {
+  position: absolute;
+  top: var(--ms-edge);
+  left: var(--ms-edge);
+  z-index: 30;
+  width: min(760px, calc(100% - 2 * var(--ms-edge)));
+  pointer-events: none;
+}
+
+.module-showcase__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: clamp(14px, 2vw, 22px);
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ms-muted);
+}
+
+.module-showcase__title {
+  margin: 0;
+}
+
+.module-showcase__title-line {
+  margin: 0;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: clamp(2rem, 1rem + 4vw, 6rem);
+  line-height: 0.92;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--ms-fg);
+  text-wrap: balance;
+}
+
+.module-showcase__title-line--indent {
+  margin-left: clamp(24px, 6vw, 110px);
+}
+
+.module-showcase__count {
+  position: relative;
+  top: -0.75em;
+  margin-left: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.28em;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--ms-muted);
+  vertical-align: top;
+  font-variant-numeric: tabular-nums;
+}
+
+.module-showcase__subtitle {
+  width: min(390px, 100%);
+  margin: clamp(16px, 2vw, 28px) 0 0;
+  font-size: clamp(13px, 0.9vw + 9px, 15px);
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--ms-muted);
+}
+
+/* =========================================================
+   SCROLL HINT (previously referenced but undefined)
+========================================================= */
+
+.module-showcase__hint {
+  position: absolute;
+  right: var(--ms-edge);
+  bottom: clamp(18px, 3vw, 32px);
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ms-muted);
+  pointer-events: none;
+}
+
+.module-showcase__hint-line {
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+/* =========================================================
+   3D SCENE
+========================================================= */
+
+.module-showcase__scene {
+  position: absolute;
+  inset: var(--ms-header-space) 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: calc(var(--ms-card-w) * 7);
+  perspective-origin: 52% 48%;
+  pointer-events: none;
+}
+
+.module-showcase__track {
+  position: relative;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.module-showcase__card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--ms-card-w);
+  height: var(--ms-card-h);
+  overflow: hidden;
+  border-radius: 4px;
+  background: #d9ddd6;
+  box-shadow:
+    0 35px 80px rgba(20, 33, 61, 0.18),
+    0 10px 25px rgba(20, 33, 61, 0.1);
+  transform-style: preserve-3d;
+  will-change: transform;
+  pointer-events: auto;
+  cursor: pointer;
+  backface-visibility: hidden;
+}
+
+.module-showcase__card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.module-showcase__card-number {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  opacity: 0.9;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.module-showcase__card-media {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: #d8ddd7;
+  filter: brightness(0.95);
+  transition:
+    filter 0.45s ease,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.module-showcase__card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+  transform: scale(1.01);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.module-showcase__card-glyph {
+  margin: 8px 14px 0 0;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: calc(var(--ms-card-w) * 0.55);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  color: rgba(255, 255, 255, 0.12);
+  user-select: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.module-showcase__card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(0, 0, 0, 0.38) 50%,
+    rgba(0, 0, 0, 0.22) 100%
+  );
+  pointer-events: none;
+}
+
+.module-showcase__card-info {
+  position: absolute;
+  top: 50%;
+  left: 7%;
+  right: 7%;
+  transform: translateY(-50%);
+  z-index: 4;
+  text-align: center;
+  color: #ffffff;
+  overflow-wrap: anywhere;
+}
+
+.module-showcase__card-label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.module-showcase__card-info h3 {
+  margin: 0;
+  /* scales with card width rather than viewport */
+  font-size: max(13px, calc(var(--ms-card-w) * 0.062));
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.module-showcase__card-text {
+  margin: 8px 0 0;
+  font-size: calc(var(--ms-card-w) * 0.042);
+  line-height: 1.4;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.module-showcase__card-summary {
+  margin: 10px 0 0;
+  font-size: calc(var(--ms-card-w) * 0.045);
+  line-height: 1.45;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.module-showcase__card-summary + .module-showcase__card-text {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* =========================================================
+   HOVER (only on real hover devices)
+========================================================= */
+
+@media (hover: hover) {
+  .module-showcase__card:hover .module-showcase__card-media {
+    filter: brightness(1.08);
+  }
+
+  .module-showcase__card:hover .module-showcase__card-media img {
+    transform: scale(1.055);
+  }
+}
+
+/* =========================================================
+   LARGE SCREENS (cap growth so cards don't look tiny/huge)
+========================================================= */
+
+@media (min-width: 1600px) {
+  .module-showcase {
+    --ms-card-w: 340px;
+  }
+}
+
+/* =========================================================
+   LAPTOP / SMALL DESKTOP
+========================================================= */
+
+@media (max-width: 1100px) {
+  .module-showcase {
+    --ms-card-w: clamp(200px, 22vw, 260px);
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .module-showcase {
+    --ms-header-space: clamp(60px, 14vh, 120px);
+  }
+
+  .module-showcase__header {
+    width: min(650px, calc(100% - 2 * var(--ms-edge)));
+  }
+
+  .module-showcase__title-line {
+    font-size: clamp(2.3rem, 8vw, 4.5rem);
+  }
+
+  .module-showcase__scene {
+    perspective-origin: 50% 50%;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 639px) {
+  .module-showcase {
+    --ms-edge: 20px;
+    --ms-card-w: clamp(160px, 52vw, 220px);
+    --ms-header-space: 110px;
+  }
+
+  .module-showcase__header {
+    top: 28px;
+    left: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .module-showcase__eyebrow {
+    margin-bottom: 14px;
+    font-size: 9px;
+  }
+
+  .module-showcase__title-line {
+    font-size: clamp(2.05rem, 10vw, 3.3rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+  }
+
+  .module-showcase__title-line--indent {
+    margin-left: 24px;
+  }
+
+  .module-showcase__count {
+    margin-left: 7px;
+    font-size: 0.26em;
+  }
+
+  .module-showcase__subtitle {
+    width: min(290px, 100%);
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .module-showcase__scene {
+    perspective: calc(var(--ms-card-w) * 6);
+    perspective-origin: 50% 48%;
+  }
+
+  .module-showcase__card {
+    border-radius: 3px;
+    box-shadow: 0 20px 45px rgba(20, 33, 61, 0.18);
+  }
+
+  .module-showcase__card-number {
+    top: 10px;
+    left: 10px;
+    font-size: 8px;
+  }
+
+  .module-showcase__card-label {
+    font-size: 7px;
+    margin-bottom: 5px;
+  }
+
+  .module-showcase__card-info h3 {
+    font-size: 14px;
+  }
+
+  .module-showcase__card-text {
+    margin-top: 5px;
+    font-size: 9px;
+    line-height: 1.35;
+  }
+
+  .module-showcase__card-summary {
+    margin-top: 6px;
+    font-size: 10px;
+    line-height: 1.35;
+  }
+
+  /* small cards: keep the summary, hide the long module list */
+  .module-showcase__card-summary + .module-showcase__card-text {
+    display: none;
+  }
+
+  .module-showcase__hint {
+    right: 20px;
+    bottom: 22px;
+    font-size: 8px;
+  }
+
+  .module-showcase__hint-line {
+    width: 22px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+  .module-showcase {
+    --ms-card-w: 150px;
+    --ms-header-space: 100px;
+  }
+
+  .module-showcase__title-line {
+    font-size: 1.9rem;
+  }
+
+  .module-showcase__subtitle {
+    font-size: 12px;
+    max-width: 235px;
+  }
+
+  .module-showcase__card-text,
+  .module-showcase__card-summary,
+  .module-showcase__hint {
+    display: none;
+  }
+}
+
+/* =========================================================
+   SHORT / LANDSCAPE SCREENS
+   Header would otherwise collide with the cards.
+========================================================= */
+
+@media (max-height: 560px) {
+  .module-showcase {
+    --ms-card-w: clamp(130px, 26vh, 200px);
+    --ms-header-space: 0px;
+  }
+
+  .module-showcase__header {
+    top: 16px;
+    width: min(360px, 42%);
+  }
+
+  .module-showcase__eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .module-showcase__title-line {
+    font-size: clamp(1.4rem, 5vh, 2.2rem);
+  }
+
+  .module-showcase__subtitle {
+    display: none;
+  }
+
+  .module-showcase__scene {
+    padding-left: 30%;
+  }
+
+  .module-showcase__hint {
+    bottom: 12px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .module-showcase__card-media,
+  .module-showcase__card-media img {
+    transition: none;
+  }
+}

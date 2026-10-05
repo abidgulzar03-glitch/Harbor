@@ -46,14 +46,20 @@ const cards = [
   },
 ];
 
+const MAX_TILT = 35; // max degrees up/down
+const TILT_SPEED = 0.25; // degrees of tilt per pixel dragged
+
 export default function CircularCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [rotation, setRotation] = useState(0);
+  const [tilt, setTilt] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
 
   const carouselRef = useRef(null);
   const startX = useRef(0);
+  const startY = useRef(0);
   const startRotation = useRef(0);
+  const startTilt = useRef(0);
   const autoTimer = useRef(null);
 
   const total = cards.length;
@@ -96,17 +102,26 @@ export default function CircularCarousel() {
     setIsDragging(true);
 
     startX.current = event.clientX;
+    startY.current = event.clientY;
     startRotation.current = rotation;
+    startTilt.current = tilt;
 
     carouselRef.current?.setPointerCapture?.(event.pointerId);
   };
 
   const handlePointerMove = (event) => {
+    // Nothing happens on hover, only while the mouse/finger is held down
     if (!isDragging) return;
 
-    const delta = event.clientX - startX.current;
+    const deltaX = event.clientX - startX.current;
+    const deltaY = event.clientY - startY.current;
 
-    setRotation(startRotation.current + delta * 0.35);
+    // left/right spins the ring
+    setRotation(startRotation.current + deltaX * 0.35);
+
+    // up/down tilts it (drag down = top of ring comes toward you)
+    const nextTilt = startTilt.current - deltaY * TILT_SPEED;
+    setTilt(Math.min(MAX_TILT, Math.max(-MAX_TILT, nextTilt)));
   };
 
   const handlePointerUp = (event) => {
@@ -127,6 +142,10 @@ export default function CircularCarousel() {
     }
 
     resumeAuto();
+  };
+
+  const handlePointerLeave = (event) => {
+    if (isDragging) handlePointerUp(event);
   };
 
   useEffect(() => {
@@ -161,7 +180,7 @@ export default function CircularCarousel() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [activeIndex]);
 
   return (
     <section className="circular-carousel">
@@ -189,14 +208,12 @@ export default function CircularCarousel() {
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
-        onPointerLeave={(event) => {
-          if (isDragging) handlePointerUp(event);
-        }}
+        onPointerLeave={handlePointerLeave}
       >
         <div
           className="circular-carousel__scene"
           style={{
-            transform: `rotateY(${rotation}deg)`,
+            transform: `rotateX(${tilt}deg) rotateY(${rotation}deg)`,
           }}
         >
           {cards.map((card, index) => {

@@ -3,31 +3,22 @@
 ========================================================= */
 
 .loop-hero {
+  min-height: 100vh;
   position: relative;
-
   width: calc(100% - 40px);
   max-width: 1720px;
-
-  margin: 0px auto 0;
-
   overflow: hidden;
-
+  margin: 0 auto;
   text-align: center;
 
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("/Pages-imge-2.jpg");
+  background: #f6f3eb;
 
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  padding: 76px 24px 0px;
-  border-radius: 28px;
+  padding: 76px 24px 0;
 
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
+  border-radius: 35px;
+
+  font-family: "Inter", sans-serif;
+  color: #0b2341;
 
   box-sizing: border-box;
 }
@@ -43,49 +34,24 @@
 ========================================================= */
 
 .loop-hero-badge {
-  display: inline-flex;
+  width: fit-content;
 
-  align-items: center;
-  justify-content: center;
+  margin: 0 auto 18px;
 
-  gap: 6px;
+  padding: 7px 12px;
 
-  background: rgba(255, 255, 255, 0.15);
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
 
-  color: #ffffff;
+  color: #31506d;
 
   font-size: 11px;
-  font-weight: 700;
+  line-height: 1;
+  font-weight: 600;
 
-  padding: 7px 16px 7px 8px;
+  letter-spacing: 0.2px;
 
-  border-radius: 999px;
-
-  margin-bottom: 18px;
-
-  white-space: nowrap;
-}
-
-.loop-hero-badge-icon {
-  width: 17px;
-  height: 17px;
-
-  flex-shrink: 0;
-
-  border-radius: 50%;
-
-  background: #ffffff;
-
-  color: #4f7ee0;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 /* =========================================================
@@ -93,19 +59,28 @@
 ========================================================= */
 
 .loop-hero-title {
-  max-width: 800px;
+  margin: 0;
 
-  margin: 0 auto 20px;
+  color: #0b2341;
 
-  color: #ffffff;
+  font-size: clamp(44px, 4vw, 72px);
+  line-height: 0.97;
 
-  font-size: 50px;
+  letter-spacing: -3.2px;
 
   font-weight: 600;
 
-  line-height: 1.05;
+  text-wrap: balance;
+}
 
-  letter-spacing: 0.5px;
+/* =========================================================
+   TITLE ACCENT
+   Use <strong>...</strong> inside the title
+========================================================= */
+
+.loop-hero-title strong {
+  color: #5fa8ff;
+  font-weight: 500;
 }
 
 /* =========================================================
@@ -115,13 +90,13 @@
 .loop-hero-subtitle {
   max-width: 500px;
 
-  margin: 0 auto 30px;
+  margin: 34px auto 30px;
 
-  color: rgba(255, 255, 255, 0.92);
+  color: #5e6470;
 
-  font-size: 18px;
+  font-size: 11px;
 
-  font-weight: 300;
+  font-weight: 400;
 
   line-height: 1.5;
 }
@@ -158,24 +133,36 @@
   border-radius: 10px;
 
   font-size: 13px;
-
   font-weight: 600;
 
   text-decoration: none;
 
-  background: #ffffff;
+  background: #0b2341;
 
-  color: #14203a;
+  color: #ffffff;
+
+  border: 1px solid #0b2341;
+
+  cursor: pointer;
 
   transition:
     background 0.2s ease,
-    transform 0.2s ease;
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .loop-hero-btn-solid:hover {
-  background: #eef1f6;
+  background: #142f50;
+
+  border-color: #142f50;
+
+  color: #ffffff;
 
   transform: translateY(-1px);
+
+  box-shadow: 0 8px 20px rgba(11, 35, 65, 0.12);
 }
 
 /* =========================================================
@@ -189,13 +176,21 @@
 
   gap: 5px;
 
-  color: #ffffff;
+  color: #0b2341;
 
   font-size: 14px;
 
   font-weight: 600;
 
   text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.loop-hero-link:hover {
+  color: #5fa8ff;
 }
 
 .loop-hero-link .arrow {
@@ -217,7 +212,7 @@
 
   margin: 0 0 28px;
 
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(11, 35, 65, 0.12);
 }
 
 /* =========================================================
@@ -234,44 +229,62 @@
   width: 100%;
 }
 
+/* =========================================================
+   STAT
+========================================================= */
+
 .loop-hero-stat {
   min-width: 0;
-
+  margin-top: 32px;
   text-align: center;
 }
+
+/* =========================================================
+   STAT VALUE
+========================================================= */
 
 .loop-hero-stat-value {
   margin: 0 0 5px;
 
-  color: #ffffff;
+  color: #0b2341;
 
-  font-size: 22px;
+  font-size: 35px;
 
   font-weight: 700;
 
   line-height: 1.2;
 }
 
+/* =========================================================
+   STAT TITLE
+========================================================= */
+
 .loop-hero-stat-title {
   margin: 0 0 4px;
 
-  color: #ffffff;
+  color: #0b2341;
 
-  font-size: 12px;
+  font-size: 14px;
 
   font-weight: 600;
 
   line-height: 1.3;
 }
 
+/* =========================================================
+   STAT SUBTEXT
+========================================================= */
+
 .loop-hero-stat-sub {
   margin: 0;
 
-  color: rgba(255, 255, 255, 0.75);
+  color: #5e6470;
 
-  font-size: 11px;
+  font-size: 12px;
 
   line-height: 1.4;
+
+  font-weight: 400;
 }
 
 /* =========================================================
@@ -312,6 +325,8 @@
 
   .loop-hero-title {
     font-size: 40px;
+
+    letter-spacing: -2px;
   }
 
   .loop-hero-subtitle {
@@ -347,7 +362,7 @@
   .loop-hero-badge {
     font-size: 10px;
 
-    padding: 6px 13px 6px 7px;
+    padding: 6px 13px;
 
     margin-bottom: 16px;
   }
@@ -367,6 +382,10 @@
     letter-spacing: -0.5px;
 
     margin-bottom: 16px;
+  }
+
+  .loop-hero-title strong {
+    font-weight: 500;
   }
 
   .loop-hero-subtitle {
@@ -425,60 +444,298 @@
 }
 
 /* =========================================================
-   SMALL MOBILE
+   LOOP HERO — MOBILE
 ========================================================= */
 
 @media (max-width: 480px) {
   .loop-hero {
     width: calc(100% - 20px);
+    max-width: 100%;
+    min-height: 560px;
+    height: auto;
 
-    margin: 16px auto 0;
-
-    padding: 38px 18px 50px;
+    margin: -4px auto;
+    padding: 58px 24px 42px;
 
     border-radius: 20px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    text-align: center;
+  }
+
+  /* =======================================================
+     BADGE
+  ======================================================= */
+
+  .loop-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 9px;
+    line-height: 1;
+
+    padding: 6px 11px;
+    margin-bottom: 14px;
+
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* =======================================================
+     TITLE
+  ======================================================= */
+
+  .loop-hero-title {
+    width: 100%;
+    max-width: 340px;
+
+    margin: 0 auto;
+
+    font-size: clamp(26px, 7.2vw, 30px);
+    line-height: 1.08;
+    letter-spacing: -0.75px;
+
+    text-wrap: balance;
+  }
+
+  /* =======================================================
+     SUBTITLE
+  ======================================================= */
+
+  .loop-hero-subtitle {
+    width: 100%;
+    max-width: 330px;
+
+    margin: 17px auto 20px;
+
+    font-size: 12.5px;
+    line-height: 1.5;
+    letter-spacing: -0.05px;
+
+    text-wrap: balance;
+  }
+
+  /* =======================================================
+     ACTIONS
+  ======================================================= */
+
+  .loop-hero-actions {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: nowrap;
+
+    gap: 12px;
+
+    margin: 0 0 25px;
+  }
+
+  /* =======================================================
+     PRIMARY BUTTON
+  ======================================================= */
+
+  .loop-hero-btn-solid {
+    min-height: 36px;
+
+    padding: 9px 17px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+    line-height: 1;
+
+    white-space: nowrap;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  /* =======================================================
+     SECONDARY LINK
+  ======================================================= */
+
+  .loop-hero-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    font-size: 11.5px;
+    line-height: 1;
+
+    white-space: nowrap;
+
+    padding: 8px 2px;
+  }
+
+  .loop-hero-link .arrow {
+    display: inline-block;
+
+    font-size: 11px;
+
+    transition: transform 0.2s ease;
+  }
+
+  /* =======================================================
+     DIVIDER
+  ======================================================= */
+
+  .loop-hero-divider {
+    width: 100%;
+
+    margin: 0 0 22px;
+
+    opacity: 0.7;
+  }
+
+  /* =======================================================
+     STATS
+  ======================================================= */
+
+  .loop-hero-stats {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    column-gap: 18px;
+    row-gap: 25px;
+
+    margin-top: 0;
+  }
+
+  /* =======================================================
+     SINGLE STAT
+  ======================================================= */
+
+  .loop-hero-stat {
+    min-width: 0;
+
+    margin: 0;
+
+    text-align: center;
+  }
+
+  /* =======================================================
+     STAT VALUE
+  ======================================================= */
+
+  .loop-hero-stat-value {
+    margin: 0 0 4px;
+
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.4px;
+  }
+
+  /* =======================================================
+     STAT TITLE
+  ======================================================= */
+
+  .loop-hero-stat-title {
+    margin: 0 0 4px;
+
+    font-size: 10px;
+    line-height: 1.25;
+    letter-spacing: -0.05px;
+
+    text-wrap: balance;
+  }
+
+  /* =======================================================
+     STAT SUBTITLE
+  ======================================================= */
+
+  .loop-hero-stat-sub {
+    margin: 0 auto;
+
+    max-width: 135px;
+
+    font-size: 9px;
+    line-height: 1.35;
+
+    text-wrap: balance;
+  }
+}
+
+/* =========================================================
+   SMALL PHONES — 360px
+========================================================= */
+
+@media (max-width: 380px) {
+  .loop-hero {
+    width: calc(100% - 16px);
+
+    min-height: 550px;
+
+    padding: 52px 19px 36px;
+
+    border-radius: 18px;
   }
 
   .loop-hero-badge {
-    font-size: 9px;
+    font-size: 8.5px;
 
-    padding: 6px 12px 6px 7px;
+    padding: 5px 10px;
+
+    margin-bottom: 13px;
   }
 
   .loop-hero-title {
-    font-size: 27px;
-
-    line-height: 1.1;
-
-    letter-spacing: -0.6px;
+    font-size: 25px;
+    letter-spacing: -0.65px;
   }
 
   .loop-hero-subtitle {
-    font-size: 13px;
+    max-width: 300px;
 
-    line-height: 1.55;
+    margin: 16px auto 18px;
+
+    font-size: 12px;
+    line-height: 1.48;
+  }
+
+  .loop-hero-actions {
+    gap: 10px;
 
     margin-bottom: 22px;
   }
 
-  .loop-hero-actions {
-    flex-direction: column;
+  .loop-hero-btn-solid {
+    min-height: 34px;
 
-    gap: 12px;
+    padding: 8px 14px;
 
-    margin-bottom: 26px;
+    font-size: 10.5px;
   }
 
-  .loop-hero-btn-solid {
-    width: auto;
+  .loop-hero-link {
+    font-size: 11px;
+  }
 
-    padding: 9px 18px;
+  .loop-hero-divider {
+    margin-bottom: 20px;
   }
 
   .loop-hero-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 20px 10px;
+    column-gap: 12px;
+    row-gap: 22px;
   }
 
   .loop-hero-stat-value {
@@ -486,46 +743,56 @@
   }
 
   .loop-hero-stat-title {
-    font-size: 10px;
+    font-size: 9.5px;
   }
 
   .loop-hero-stat-sub {
-    font-size: 9px;
+    font-size: 8.5px;
   }
 }
 
 /* =========================================================
-   VERY SMALL PHONES
+   VERY SMALL HEIGHT DEVICES
 ========================================================= */
 
-@media (max-width: 360px) {
+@media (max-width: 480px) and (max-height: 700px) {
   .loop-hero {
-    width: calc(100% - 16px);
+    padding-top: 45px;
+    padding-bottom: 32px;
 
-    margin: 14px auto 0;
-
-    padding: 34px 15px 45px;
-
-    border-radius: 18px;
+    min-height: 520px;
   }
 
-  .loop-hero-title {
-    font-size: 24px;
+  .loop-hero-badge {
+    margin-bottom: 11px;
   }
 
   .loop-hero-subtitle {
-    font-size: 12px;
+    margin-top: 14px;
+    margin-bottom: 17px;
   }
 
-  .loop-hero-stat-value {
-    font-size: 17px;
+  .loop-hero-actions {
+    margin-bottom: 19px;
   }
 
-  .loop-hero-stat-title {
-    font-size: 9px;
+  .loop-hero-divider {
+    margin-bottom: 18px;
   }
 
-  .loop-hero-stat-sub {
-    font-size: 8px;
+  .loop-hero-stats {
+    row-gap: 18px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .loop-hero-btn-solid,
+  .loop-hero-link,
+  .loop-hero-link .arrow {
+    transition: none;
   }
 }
