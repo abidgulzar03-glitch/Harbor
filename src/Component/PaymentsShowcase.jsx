@@ -515,7 +515,7 @@ export default function PaymentsShowcase() {
             return (
               <li
                 key={slide.key}
-                className={isActive ? "feature-item active" : "feature-item"}
+                className={`feature-item${isActive ? " active" : ""}${i < active ? " done" : ""}`}
                 onClick={() => goTo(i)}
                 tabIndex={0}
                 onKeyDown={(e) => {

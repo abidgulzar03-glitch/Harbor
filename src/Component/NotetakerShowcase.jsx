@@ -529,7 +529,12 @@ export default function NotetakerShowcase({
           {content.tabs.map((t, i) => {
             const on = i === active;
             return (
-              <li key={t.title} className="nts-tab" data-active={on}>
+              <li
+                key={t.title}
+                className="nts-tab"
+                data-active={on}
+                data-done={i < active}
+              >
                 <button
                   type="button"
                   aria-expanded={on}

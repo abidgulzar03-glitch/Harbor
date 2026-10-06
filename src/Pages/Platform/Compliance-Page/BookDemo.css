@@ -8,9 +8,6 @@
 
 .demo {
   overflow-x: hidden;
-}
-
-.demo {
   background: #f7f5f0;
   color: #14213d;
   font-family:
@@ -129,7 +126,10 @@
   gap: 16px;
 }
 
+/* ---------- CARDS (live sequence) ---------- */
+
 .card {
+  position: relative;
   background: #efece5;
   border-radius: 10px;
   padding: 12px 16px;
@@ -138,6 +138,12 @@
   align-items: flex-start;
   flex-direction: column;
   height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    background-color 0.5s ease,
+    transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.5s ease;
 }
 
 .card__num {
@@ -153,6 +159,10 @@
   justify-content: center;
   margin-bottom: 8px;
   flex-shrink: 0;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease,
+    transform 0.5s ease;
 }
 
 .card p {
@@ -160,20 +170,80 @@
   font-size: 14px;
   line-height: 1.4;
   color: #14213d;
+  opacity: 0.55;
+  transition:
+    opacity 0.5s ease,
+    color 0.5s ease;
 }
 
-.card__num {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+/* active step */
+.card--active {
   background: #14213d;
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(20, 33, 61, 0.22);
+}
+
+.card--active .card__num {
+  background: #ffffff;
+  color: #14213d;
+  transform: scale(1.1);
+}
+
+.card--active p {
   color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 8px;
+  opacity: 1;
+}
+
+/* finished steps */
+.card--done p {
+  opacity: 0.8;
+}
+
+.card--done .card__num {
+  background: #2f7d5b;
+}
+
+/* progress bar along the bottom of the active card */
+.card__track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: transparent;
+}
+
+.card__bar {
+  width: 100%;
+  height: 100%;
+  background: #8fb23a;
+  transform-origin: left;
+  animation: card-fill linear both;
+}
+
+.card__bar--paused {
+  animation-play-state: paused;
+}
+
+@keyframes card-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card__num,
+  .card p {
+    transition: none;
+  }
+  .card__bar {
+    animation: none;
+    transform: scaleX(1);
+  }
 }
 
 @media (max-width: 900px) {

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import "./CalendlyFeatureScroll.css";
 
 /* ================= LEFT: FEATURES ================= */
+
 const Icon = ({ children }) => (
   <svg
     width="20"
@@ -67,10 +68,12 @@ const features = [
 ];
 
 /* ================= RIGHT: PANELS ================= */
+
 const panels = [
   <>
     <h3>The clock runs itself</h3>
     <p className="muted lead">Approaching warns. Passed is a hard exception.</p>
+
     <div className="setting-row">
       <div className="select-box">Approaching</div>
       <span>Warning</span>
@@ -79,6 +82,7 @@ const panels = [
       <div className="select-box">Passed</div>
       <span>Hard exception</span>
     </div>
+
     <div className="schedule-label">Demurrage rebills onto the load.</div>
     <div className="schedule">
       <div className="day">
@@ -92,6 +96,7 @@ const panels = [
       </div>
     </div>
   </>,
+
   <>
     <h3>One record per advance</h3>
     <div className="email-box">
@@ -113,6 +118,7 @@ const panels = [
       <span>Recorded</span>
     </div>
   </>,
+
   <>
     <h3>Every charge is billed</h3>
     <div className="email-box">
@@ -131,6 +137,7 @@ const panels = [
       Invoice builder reads the charges
     </button>
   </>,
+
   <>
     <h3>Ageing, computed once</h3>
     <div className="user-list">
@@ -154,35 +161,26 @@ const panels = [
 ];
 
 /* ================= MAIN ================= */
-const AUTO_MS = 3200;
-const SCROLL_PAUSE_MS = 6500;
-const HOVER_RESUME_MS = 1800;
+
+const AUTO_MS = 2800;
+const SCROLL_PAUSE_MS = 6000;
+const HOVER_RESUME_MS = 1500;
 
 export default function CalendlyFeatureScroll() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+
   const featureRefs = useRef([]);
   const resumeTimer = useRef(null);
   const hasScrolled = useRef(false);
-  const isHovering = useRef(false);
 
   const pauseFor = useCallback((ms) => {
     clearTimeout(resumeTimer.current);
     setIsPaused(true);
-    if (ms > 0) {
-      resumeTimer.current = setTimeout(() => {
-        if (!isHovering.current) setIsPaused(false);
-      }, ms);
+    if (ms) {
+      resumeTimer.current = setTimeout(() => setIsPaused(false), ms);
     }
   }, []);
-
-  const goTo = useCallback(
-    (index) => {
-      setActiveIndex(index);
-      pauseFor(SCROLL_PAUSE_MS);
-    },
-    [pauseFor],
-  );
 
   /* autoplay */
   useEffect(() => {
@@ -191,39 +189,27 @@ export default function CalendlyFeatureScroll() {
     ).matches;
     if (isPaused || reduce) return;
 
-    const id = setInterval(() => {
-      setActiveIndex((p) => (p + 1) % features.length);
-    }, AUTO_MS);
-
+    const id = setInterval(
+      () => setActiveIndex((p) => (p + 1) % features.length),
+      AUTO_MS,
+    );
     return () => clearInterval(id);
   }, [isPaused]);
 
-  /* scroll sync */
+  /* scroll sync (single observer, ignores initial load) */
   useEffect(() => {
-    const onScroll = () => {
-      hasScrolled.current = true;
-    };
+    const onScroll = () => (hasScrolled.current = true);
     window.addEventListener("scroll", onScroll, { passive: true });
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // pick the most visible entry
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (!visible || !hasScrolled.current) return;
-
-        const idx = Number(visible.target.dataset.index);
-        if (!Number.isNaN(idx)) {
-          setActiveIndex(idx);
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || !hasScrolled.current) return;
+          setActiveIndex(Number(entry.target.dataset.index));
           pauseFor(SCROLL_PAUSE_MS);
-        }
+        });
       },
-      {
-        rootMargin: "-35% 0px -35% 0px",
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      },
+      { rootMargin: "-40% 0px -40% 0px", threshold: 0 },
     );
 
     featureRefs.current.forEach((el) => el && observer.observe(el));
@@ -245,11 +231,14 @@ export default function CalendlyFeatureScroll() {
               <span />
               The alternative
             </div>
+
             <h1>A spreadsheet leaks quietly. A general TMS leaks elsewhere.</h1>
           </div>
 
           <div className="features-subtitle">
-            <span className="features-subtitle-label" />
+            <span className="features-subtitle-label">
+              {/* Four places it slips */}
+            </span>
             <p>
               A general TMS invoices and chases what is outstanding — two of the
               four below. The other two only exist because there is a container
@@ -257,33 +246,18 @@ export default function CalendlyFeatureScroll() {
             </p>
           </div>
 
-          <div className="features-list" role="list">
+          <div className="features-list">
             {features.map((feature, index) => (
               <div
                 key={feature.id}
                 data-index={index}
-                ref={(el) => {
-                  featureRefs.current[index] = el;
-                }}
-                role="listitem"
+                ref={(el) => (featureRefs.current[index] = el)}
                 className={`feature-item ${activeIndex === index ? "active" : ""}`}
                 onMouseEnter={() => {
-                  isHovering.current = true;
                   setActiveIndex(index);
                   pauseFor(0);
                 }}
-                onMouseLeave={() => {
-                  isHovering.current = false;
-                  pauseFor(HOVER_RESUME_MS);
-                }}
-                onClick={() => goTo(index)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    goTo(index);
-                  }
-                }}
-                tabIndex={0}
+                onMouseLeave={() => pauseFor(HOVER_RESUME_MS)}
               >
                 <div className="feature-header">
                   <div className="feature-icon">{feature.icon}</div>
@@ -307,26 +281,8 @@ export default function CalendlyFeatureScroll() {
                   className={`panel ${activeIndex === i ? "is-active" : ""}`}
                   aria-hidden={activeIndex !== i}
                 >
-                  <div className="panel-inner">{panel}</div>
+                  {panel}
                 </div>
-              ))}
-            </div>
-
-            {/* Progress dots */}
-            <div
-              className="progress"
-              role="tablist"
-              aria-label="Feature progress"
-            >
-              {features.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  className={activeIndex === i ? "on" : ""}
-                  aria-label={`Show feature ${i + 1}`}
-                  aria-selected={activeIndex === i}
-                  onClick={() => goTo(i)}
-                />
               ))}
             </div>
           </div>

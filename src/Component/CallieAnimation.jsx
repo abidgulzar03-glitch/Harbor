@@ -340,7 +340,11 @@ export default function CallieAnimation() {
             <div
               id={"callie-tab-" + i}
               key={t.title}
-              className={"cl-tab" + (tab === i ? " cl-active" : "")}
+              className={
+                "cl-tab" +
+                (tab === i ? " cl-active" : "") +
+                (i < tab ? " cl-done" : "")
+              }
             >
               <div className="cl-thead">
                 <Icon name={t.icon} />
