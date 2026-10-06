@@ -1,7 +1,7 @@
 import "./Compliance.css";
 import ComplianceSections from "./ComplianceSections";
-// import TheCheck from "./TheCheck";
-import TheChecks from "./TheChecks";
+import TheCheck from "./TheCheck";
+
 import CarrierGate from "./CarrierGate";
 import AddressSection from "./AddressSection";
 import EmailLockSection from "./EmailLockSection";
@@ -29,9 +29,8 @@ export default function Compliance() {
         </div>
       </section>
       <ComplianceSections />
-      <TheChecks />
-      {/* 
-      <TheCheck /> */}
+
+      <TheCheck />
       <CarrierGate />
       <AddressSection />
       <EmailLockSection />
