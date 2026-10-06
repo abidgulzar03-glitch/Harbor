@@ -1,8 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 * {
   box-sizing: border-box;
-  /* overflow-x: hidden; */
 }
 
 .cp-hero,
@@ -19,124 +22,375 @@
 }
 
 .cp-hero {
-  width: 100%;
-  min-height: 100vh;
+  width: calc(100% - 40px);
+  max-width: 1720px;
+  min-height: 500px;
+  margin: 0 auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 57px 24px;
+  padding: 126px 24px 80px;
+
   position: relative;
   overflow: hidden;
 
-  background: url("/Complaince-hero-img.jpg") center/cover no-repeat;
-  background-attachment: fixed;
+  text-align: center;
+
+  border-radius: 35px;
+
+  background: #f6f3eb;
 }
+
+/* =========================================================
+   BACKGROUND LIGHT EFFECT
+========================================================= */
 
 .cp-hero::before {
   content: "";
+
   position: absolute;
+
   inset: 0;
-  background:
-    radial-gradient(
-      circle at 18% 92%,
-      rgba(255, 255, 255, 0.22),
-      transparent 36%
-    ),
-    radial-gradient(
-      circle at 88% 10%,
-      rgba(89, 255, 214, 0.15),
-      transparent 28%
-    );
+
+  pointer-events: none;
 }
 
 .cp-container {
   position: relative;
+
   z-index: 2;
+
+  width: 100%;
+
   max-width: 760px;
+
   text-align: center;
 }
+
+/* =========================================================
+   BADGE
+========================================================= */
 
 .cp-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 10px 4px 5px;
-  margin-bottom: 18px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(12px);
-}
-
-.cp-badge-icon {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  background: #d8ef9b;
-  color: #153b71;
-}
-
-.cp-badge-icon svg {
-  width: 8px;
-  height: 8px;
-}
-
-.cp-badge-text {
-  color: #fff;
   font-size: 11px;
-  font-weight: 600;
+  padding: 5px 12px 5px 6px;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
+
+/* =========================================================
+   TITLE
+========================================================= */
 
 .cp-title {
   max-width: 800px;
-  margin: 0 auto 20px;
-  color: #fff;
-  font-size: 50px;
+
+  margin: 0 auto 22px;
+
+  color: #0b2341;
+
+  font-size: clamp(48px, 5vw, 76px);
+
   font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.055em;
+
+  text-wrap: balance;
 }
+
+/* =========================================================
+   TITLE ACCENT
+========================================================= */
+
+.cp-title strong {
+  color: #5fa8ff;
+  font-weight: 500;
+}
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
 
 .cp-subtitle {
-  max-width: 500px;
+  max-width: 510px;
+
   margin: 0 auto;
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.5;
+
+  color: #5e6470;
+
+  font-size: 10px;
+
+  font-weight: 400;
+
+  line-height: 1.65;
+
+  letter-spacing: -0.01em;
+
+  text-wrap: balance;
 }
 
-/* Mobile */
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+  .cp-hero {
+    width: calc(100% - 36px);
+
+    min-height: 650px;
+
+    margin-top: 18px;
+
+    padding: 90px 30px 70px;
+
+    border-radius: 28px;
+  }
+
+  .cp-title {
+    font-size: 58px;
+  }
+
+  .cp-subtitle {
+    max-width: 480px;
+  }
+}
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 900px) {
+  .cp-hero {
+    width: calc(100% - 30px);
+
+    min-height: 620px;
+
+    padding: 80px 28px 70px;
+
+    border-radius: 26px;
+  }
+
+  .cp-title {
+    font-size: 52px;
+
+    letter-spacing: -0.045em;
+  }
+
+  .cp-subtitle {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 768px) {
   .cp-hero {
-    min-height: 82vh;
-    padding: 70px 20px;
-    background-attachment: scroll;
+    width: calc(100% - 24px);
+
+    min-height: 620px;
+
+    margin: 12px auto 0;
+
+    padding: 70px 24px;
+
+    border-radius: 24px;
+
+    /* Keep light background */
+    background:
+      radial-gradient(
+        circle at 15% 90%,
+        rgba(241, 199, 206, 0.3),
+        transparent 38%
+      ),
+      radial-gradient(
+        circle at 85% 10%,
+        rgba(255, 255, 255, 0.65),
+        transparent 35%
+      ),
+      #f6f3eb;
   }
+
+  /* Container */
+
+  .cp-container {
+    max-width: 600px;
+  }
+
+  /* Badge */
+
+  .cp-badge {
+    margin-bottom: 24px;
+
+    padding: 5px 12px 5px 6px;
+  }
+
+  .cp-badge-icon {
+    width: 27px;
+
+    height: 27px;
+  }
+
+  .cp-badge-icon svg {
+    width: 12px;
+
+    height: 12px;
+  }
+
+  .cp-badge-text {
+    color: #31506d;
+
+    font-size: 13px;
+  }
+
+  /* Title */
+
+  .cp-title {
+    font-size: clamp(44px, 12vw, 58px);
+
+    line-height: 0.98;
+
+    letter-spacing: -0.05em;
+
+    margin-bottom: 20px;
+
+    color: #0b2341;
+  }
+
+  /* Subtitle */
+
+  .cp-subtitle {
+    max-width: 440px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: #5e6470;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .cp-hero {
+    width: calc(100% - 20px);
+
+    min-height: 570px;
+
+    margin: 10px auto 0;
+
+    padding: 62px 22px;
+
+    border-radius: 20px;
+
+    background:
+      radial-gradient(
+        circle at 15% 90%,
+        rgba(241, 199, 206, 0.34),
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 90% 5%,
+        rgba(255, 255, 255, 0.7),
+        transparent 32%
+      ),
+      #f6f3eb;
+  }
+
+  /* Badge */
 
   .cp-badge {
     margin-bottom: 22px;
   }
 
   .cp-badge-icon {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+
+    height: 25px;
+  }
+
+  .cp-badge-icon svg {
+    width: 11px;
+
+    height: 11px;
   }
 
   .cp-badge-text {
-    font-size: 18px;
+    color: #31506d;
+
+    font-size: 11px;
+  }
+
+  /* Title */
+
+  .cp-title {
+    font-size: 44px;
+
+    line-height: 0.96;
+
+    margin-bottom: 18px;
+
+    color: #0b2341;
+  }
+
+  /* Subtitle */
+
+  .cp-subtitle {
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: #5e6470;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+  .cp-hero {
+    width: calc(100% - 16px);
+
+    min-height: 540px;
+
+    padding: 54px 18px 45px;
+
+    border-radius: 18px;
   }
 
   .cp-title {
-    font-size: 46px;
-    margin-bottom: 18px;
+    font-size: 39px;
+
+    letter-spacing: -0.045em;
   }
 
   .cp-subtitle {
-    font-size: 15px;
+    max-width: 300px;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .cp-hero {
+    scroll-behavior: auto;
   }
 }

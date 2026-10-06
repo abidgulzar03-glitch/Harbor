@@ -772,3 +772,267 @@
     font-size: 12px;
   }
 }
+/* =========================================================
+   PROGRESS DOTS
+========================================================= */
+.progress {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.progress button {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition:
+    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.35s ease;
+}
+
+.progress button.on {
+  width: 22px;
+  background: #fff;
+}
+
+.progress button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   PANEL TRANSITIONS (slightly smoother)
+========================================================= */
+.panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.45s;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+.panel.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+  pointer-events: auto;
+}
+
+/* =========================================================
+   FEATURE ITEM – make keyboard focus nice
+========================================================= */
+.feature-item:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .feature-item,
+  .secondary-btn,
+  .feature-icon,
+  .feature-title,
+  .feature-desc,
+  .progress button {
+    transition: none !important;
+  }
+}
+/* =========================================================
+   PANEL + LIVE STAGGERED CONTENT
+========================================================= */
+.panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.98);
+  transition:
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.4s;
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+.panel.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  transition-delay: 0s;
+  pointer-events: auto;
+}
+
+/* inner wrapper so we can stagger children */
+.panel-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ---------- staggered entrance ---------- */
+.panel .panel-inner > * {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.panel.is-active .panel-inner > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* stagger delays */
+.panel.is-active .panel-inner > *:nth-child(1) {
+  transition-delay: 0.05s;
+}
+.panel.is-active .panel-inner > *:nth-child(2) {
+  transition-delay: 0.12s;
+}
+.panel.is-active .panel-inner > *:nth-child(3) {
+  transition-delay: 0.19s;
+}
+.panel.is-active .panel-inner > *:nth-child(4) {
+  transition-delay: 0.26s;
+}
+.panel.is-active .panel-inner > *:nth-child(5) {
+  transition-delay: 0.33s;
+}
+.panel.is-active .panel-inner > *:nth-child(6) {
+  transition-delay: 0.4s;
+}
+.panel.is-active .panel-inner > *:nth-child(7) {
+  transition-delay: 0.47s;
+}
+.panel.is-active .panel-inner > *:nth-child(8) {
+  transition-delay: 0.54s;
+}
+
+/* extra polish for nested items (user rows, schedule days) */
+.panel .user-row,
+.panel .day,
+.panel .setting-row {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.panel.is-active .user-row,
+.panel.is-active .day,
+.panel.is-active .setting-row {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* nested stagger */
+.panel.is-active .setting-row:nth-child(1) {
+  transition-delay: 0.18s;
+}
+.panel.is-active .setting-row:nth-child(2) {
+  transition-delay: 0.26s;
+}
+.panel.is-active .setting-row:nth-child(3) {
+  transition-delay: 0.34s;
+}
+.panel.is-active .setting-row:nth-child(4) {
+  transition-delay: 0.42s;
+}
+
+.panel.is-active .day:nth-child(1) {
+  transition-delay: 0.28s;
+}
+.panel.is-active .day:nth-child(2) {
+  transition-delay: 0.36s;
+}
+.panel.is-active .day:nth-child(3) {
+  transition-delay: 0.44s;
+}
+
+.panel.is-active .user-row:nth-child(1) {
+  transition-delay: 0.18s;
+}
+.panel.is-active .user-row:nth-child(2) {
+  transition-delay: 0.26s;
+}
+.panel.is-active .user-row:nth-child(3) {
+  transition-delay: 0.34s;
+}
+.panel.is-active .user-row:nth-child(4) {
+  transition-delay: 0.42s;
+}
+
+/* button pop */
+.panel .secondary-btn {
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  transition:
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.2s ease;
+}
+
+.panel.is-active .secondary-btn {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.48s;
+}
+
+/* email icon subtle scale */
+.panel .email-icon {
+  display: inline-block;
+  transform: scale(0.7);
+  opacity: 0;
+  transition:
+    opacity 0.4s ease,
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.panel.is-active .email-icon {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0.15s;
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .panel .panel-inner > *,
+  .panel .user-row,
+  .panel .day,
+  .panel .setting-row,
+  .panel .secondary-btn,
+  .panel .email-icon {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

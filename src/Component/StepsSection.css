@@ -1,137 +1,128 @@
+/* =========================================================
+   HERO TEXT & CONTAINER
+========================================================= */
+
 .hero-2 {
-  /* background: #fff; */
+  width: 100%;
   padding: 44px 24px;
 }
-.hero-card-2 {
-  max-width: 1240px;
-  margin: auto;
 
-  border-radius: 36px;
+.hero-card-2 {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
   padding: 44px 10px;
+  border-radius: 36px;
   text-align: center;
   overflow: hidden;
 }
+
 .eyebrow {
   width: fit-content;
-
   margin: 0 auto 18px;
-
   padding: 7px 12px;
-
-  border-radius: 999px;
-
-  /* background: #e9eef2; */
   color: #31506d;
   text-transform: uppercase;
   font-size: 11px;
   line-height: 1;
-
   font-weight: 600;
   letter-spacing: 0.2px;
-
-  text-align: center;
 }
 
 .hero-card-2 h1 {
   max-width: 472px;
-  margin: auto;
-  font-size: clamp(44px, 4vw, 72px);
-  line-height: 1.1;
-  line-height: 0.97;
+  margin: 0 auto;
   color: #0f172a;
-  letter-spacing: -3.2px;
-
+  font-size: clamp(44px, 4vw, 72px);
+  line-height: 0.97;
   font-weight: 500;
+  letter-spacing: -3.2px;
 }
 
 .lede {
-  max-width: 233px;
-
+  max-width: 260px;
   margin: 25px auto 0;
-
   color: #5e6470;
-
-  font-size: 11px;
-
+  font-size: 12px;
   line-height: 1.65;
-
-  font-weight: 400;
 }
 
-.cta {
-  margin-top: 34px;
-  border: none;
-  background: #111827;
-  color: #fff;
-  padding: 16px 30px;
-  border-radius: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
-}
+/* =========================================================
+   STEPS ROW
+========================================================= */
 
 .steps {
-  margin-top: 100px;
+  --step-h: 560px;
+  --mock-radius: 20px;
+  --mock-pad: 18px;
+  --mock-border: rgba(255, 255, 255, 0.95);
+  --mock-ring: rgba(255, 255, 255, 0.5);
+
+  width: 100%;
   display: flex;
-  gap: 20px;
   align-items: stretch;
+  gap: 20px;
+  margin-top: 100px;
 }
+
+/* =========================================================
+   STEP CARD
+========================================================= */
 
 .step {
   position: relative;
-  flex: 1;
-  height: 480px;
-  padding: 16px;
+  flex: 1 1 0;
+  min-width: 0;
+  height: var(--step-h);
+  padding: 20px 18px 18px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
   border-radius: 28px;
   background: #fff;
   overflow: hidden;
-  cursor: pointer;
   isolation: isolate;
-  border: 1px solid rgba(15, 23, 42, 0.06);
-
+  cursor: pointer;
+  text-align: left;
   transition:
     flex 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.45s ease,
     transform 0.45s ease,
     box-shadow 0.45s ease;
 }
 
-.step:hover,
+/* ONLY the active card expands – never more than one */
 .step--active {
-  flex: 2.2;
-  height: 480px; /* Expanded height */
+  flex: 2.2 1 0;
   transform: translateY(-4px);
   box-shadow: 0 28px 60px rgba(15, 23, 42, 0.12);
 }
 
-/* Green blob */
+.step:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   STEP BACKGROUND – LINEAR GRADIENT
+========================================================= */
+
 .step::before {
   content: "";
   position: absolute;
-  inset: -40%;
-  border-radius: 50%;
-  background: radial-gradient(circle, #e6f7d4 0%, transparent 60%);
-  filter: blur(30px);
-  opacity: 0.9;
-  animation: blobOne 14s ease-in-out infinite;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(
+      180deg,
+      #fff 0%,
+      rgba(255, 255, 255, 0.55) 28%,
+      rgba(255, 255, 255, 0) 62%
+    ),
+    linear-gradient(115deg, var(--g1) 0%, var(--g2) 52%, var(--g3) 100%);
+  opacity: 0.8;
+  transition: opacity 0.45s ease;
 }
 
-/* Purple blob */
-.step::after {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  border-radius: 50%;
-  background: radial-gradient(circle, #e6e1ff 0%, transparent 60%);
-  filter: blur(32px);
-  opacity: 0.85;
-  animation: blobTwo 18s ease-in-out infinite;
+.step--active::before {
+  opacity: 1;
 }
 
 .step > * {
@@ -139,48 +130,26 @@
   z-index: 2;
 }
 
-.step:hover::before,
-.step--active::before {
-  animation-duration: 8s;
-  transform: scale(1.15);
-}
-
-.step:hover::after,
-.step--active::after {
-  animation-duration: 10s;
-  transform: scale(1.12);
-}
-
-@keyframes blobOne {
-  0%,
-  100% {
-    transform: translate(-12%, -8%) scale(1);
-  }
-  50% {
-    transform: translate(8%, 6%) scale(1.18);
-  }
-}
-
-@keyframes blobTwo {
-  0%,
-  100% {
-    transform: translate(10%, 12%) scale(1.05);
-  }
-  50% {
-    transform: translate(-8%, -6%) scale(1.2);
-  }
-}
+/* =========================================================
+   STEP TITLE
+========================================================= */
 
 .step-title {
-  font-size: 17px;
-  font-weight: 500;
+  margin: 0 0 10px;
   color: #0f172a;
-  margin-bottom: 15px;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 500;
+  white-space: nowrap;
 }
+
+/* =========================================================
+   STEP DESCRIPTION
+========================================================= */
 
 .step-desc-wrap {
   position: relative;
-  min-height: 48px;
+  height: 60px;
 }
 
 .step-desc,
@@ -188,10 +157,12 @@
   position: absolute;
   inset: 0;
   margin: 0;
-  font-size: 10px;
-  line-height: 1.7;
-  color: #64748be4;
-  transition: 0.3s;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.55;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .step-desc-long {
@@ -199,29 +170,31 @@
   transform: translateY(8px);
 }
 
-.step:hover .step-desc,
 .step--active .step-desc {
   opacity: 0;
 }
 
-.step:hover .step-desc-long,
 .step--active .step-desc-long {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* =========================================================
+   CHECKLIST
+========================================================= */
+
 .step-checklist {
-  margin-top: 24px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-
+  margin-top: 14px;
   opacity: 0;
   transform: translateY(10px);
-  transition: 0.35s 0.12s;
+  transition:
+    opacity 0.35s ease 0.12s,
+    transform 0.35s ease 0.12s;
 }
 
-.step:hover .step-checklist,
 .step--active .step-checklist {
   opacity: 1;
   transform: translateY(0);
@@ -231,270 +204,266 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 11px;
-  font-weight: 500;
   color: #0f172a;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 500;
 }
 
 .check-icon {
   width: 24px;
   height: 24px;
-  border-radius: 50%;
+  min-width: 24px;
   display: grid;
   place-items: center;
-  background: rgba(59, 130, 246, 0.12);
-  color: #2563eb;
+  border-radius: 50%;
+  color: #0f172a;
 }
 
-.step-mark {
-  position: absolute;
-  inset: auto 0 0;
-  height: 44%;
-  opacity: 0.22;
-  transition: 0.35s;
-  pointer-events: none;
+.check-icon svg,
+.mock-avatar svg,
+.mock-email-chip-icon svg,
+.mock-badge svg {
+  display: block;
 }
 
-.step:hover .step-mark,
-.step--active .step-mark {
-  opacity: 0;
-}
+/* =========================================================
+   STEP SCENE
+========================================================= */
 
 .step-scene {
-  margin-top: 85px;
-  border-radius: 22px;
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 16px;
   padding: 10px;
-  background: cadetblue;
-
   opacity: 0;
   transform: translateY(14px) scale(0.98);
-  transition: 0.45s 0.12s;
+  transition:
+    opacity 0.45s ease 0.12s,
+    transform 0.45s ease 0.12s;
 }
 
-.step:hover .step-scene,
 .step--active .step-scene {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
 
 /* =========================================================
-   MOCK CARD — SAME SIZE / SPACING / TYPOGRAPHY
+   MOCK COMMON FRAME
 ========================================================= */
 
-.mock-card {
+.mock-card,
+.mock-search,
+.mock-video,
+.mock-email {
   width: 100%;
-  background: #fff;
-  border-radius: 18px;
-  padding: 18px;
-  margin: 0;
+  min-width: 0;
   box-sizing: border-box;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+  border: 1px solid var(--mock-border);
+  border-radius: var(--mock-radius);
+  background: #fff;
+  text-align: left;
+  box-shadow:
+    0 12px 30px rgba(15, 23, 42, 0.05),
+    0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
-/* Header */
+.mock-card,
+.mock-search,
+.mock-email {
+  padding: var(--mock-pad);
+}
+
+/* =========================================================
+   DEFAULT CARD MOCK (Book)
+========================================================= */
+
 .mock-head {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 0 0 14px;
-  padding: 0;
+  margin-bottom: 14px;
 }
 
-/* Avatar */
 .mock-avatar {
-  width: 34px;
-  height: 34px;
-  min-width: 34px;
-  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
   display: grid;
   place-items: center;
-  color: #31506d;
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 1;
+  border-radius: 12px;
   background: #e8eef4;
+  color: #31506d;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 600;
 }
 
-/* Name */
 .mock-name {
-  margin: 0;
-  padding: 0;
+  color: #0f172a;
   font-size: 13px;
   line-height: 1.3;
   font-weight: 600;
-  color: #0f172a;
 }
 
-/* Meta */
 .mock-meta {
-  margin: 3px 0 0;
-  padding: 0;
+  margin-top: 3px;
+  color: #64748b;
   font-size: 11px;
   line-height: 1.4;
-  font-weight: 400;
-  color: #64748b;
 }
 
-/* Message */
 .mock-msg {
   margin: 0 0 14px;
-  padding: 0;
+  color: #334155;
   font-size: 12px;
   line-height: 1.6;
-  font-weight: 400;
-  color: #334155;
 }
 
-/* Chips */
 .mock-chips {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
+  padding: 10px;
+  border-radius: 12px;
+  background: #eaf2ff;
 }
 
-/* Individual chip */
 .mock-chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 30px;
   padding: 7px 12px;
-  margin: 0;
-  border-radius: 999px;
-  background: #eef2ff;
-  color: #4338ca;
+  border-radius: 8px;
+  background: #bfdbfe;
+  color: #1e3a5f;
   font-size: 11px;
   line-height: 1;
   font-weight: 600;
   white-space: nowrap;
 }
 
-/* Selected chip */
 .mock-chip--selected {
   background: #4338ca;
   color: #fff;
 }
 
-.mock-search {
-  background: #fff;
-  border-radius: 20px;
-  padding: 18px 18px 16px;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
-}
+/* =========================================================
+   SEARCH MOCK (Prep)
+========================================================= */
 
 .mock-search-heading {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #0f172a;
   margin-bottom: 12px;
+  color: #0f172a;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 700;
 }
 
-.mock-heading-spark {
-  color: #a3e635;
-  font-size: 14px;
+.mock-heading-spark,
+.mock-search-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: #84cc16;
 }
 
 .mock-suggested-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: #94a3b8;
   margin-bottom: 10px;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 600;
 }
 
 .mock-suggestions {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 10px;
   margin-bottom: 16px;
 }
 
 .mock-suggestion {
-  background: #eef2ff;
-  color: #1e293b;
-  font-size: 13px;
-  font-weight: 500;
+  max-width: 100%;
   padding: 10px 14px;
   border-radius: 10px;
+  background: #eaf2ff;
+  color: #1e293b;
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 500;
 }
 
 .mock-search-bar {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #fff;
+  min-width: 0;
+  padding: 12px 16px;
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 999px;
-  padding: 12px 16px;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
-}
-
-.mock-search-icon {
-  color: #a3e635;
-  font-size: 14px;
-  flex-shrink: 0;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
 }
 
 .mock-search-placeholder {
   flex: 1;
-  font-size: 13px;
+  min-width: 0;
   color: #64748b;
+  font-size: 13px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .mock-send-icon {
-  color: #94a3b8;
-  font-size: 13px;
+  display: inline-flex;
   flex-shrink: 0;
+  color: #94a3b8;
 }
+
+/* =========================================================
+   VIDEO MOCK (Capture)
+========================================================= */
 
 .mock-video {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
-  background: #fff;
-  border-radius: 22px;
   padding: 10px;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+  border-radius: var(--mock-radius);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(248, 250, 252, 0.96)
+  );
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .mock-video-tile {
   position: relative;
-  flex: 1;
-  aspect-ratio: 4 / 5;
-  border-radius: 16px;
-  background: linear-gradient(160deg, #e2e8f0, #cbd5e1);
+  width: 100%;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  aspect-ratio: 4 / 5;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #dbe5ed 0%, #c9d5df 48%, #b8c6d2 100%);
   overflow: hidden;
-}
-
-.mock-video-name {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: rgba(15, 23, 42, 0.55);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 9px;
-  border-radius: 999px;
-}
-
-.mock-video-avatar {
-  width: 46%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 700;
+  isolation: isolate;
 }
 
 .mock-video-photo {
@@ -502,96 +471,178 @@
   inset: 0;
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.4s ease;
+}
+
+.step--active .mock-video-photo {
+  transform: scale(1.035);
+}
+
+.mock-video-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.08) 0%,
+    rgba(15, 23, 42, 0) 38%,
+    rgba(15, 23, 42, 0.22) 100%
+  );
+}
+
+.mock-video-name {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  z-index: 3;
+  max-width: calc(100% - 18px);
+  padding: 5px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.55);
+  color: #fff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
+}
+
+.mock-video-avatar {
+  position: relative;
+  z-index: 2;
+  width: 42%;
+  max-width: 72px;
+  min-width: 34px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 3px solid rgba(255, 255, 255, 0.72);
+  border-radius: 50%;
+  background: linear-gradient(145deg, #64748b, #334155);
+  color: #fff;
+  font-size: clamp(13px, 1.2vw, 20px);
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.2);
 }
 
 .mock-video-pill {
   position: absolute;
   left: 50%;
-  bottom: 16px;
-  transform: translateX(-50%);
-
+  bottom: 12px;
+  z-index: 4;
+  width: max-content;
+  max-width: calc(100% - 20px);
   display: flex;
   align-items: center;
-  gap: 10px;
-
-  background: #6d28d9;
-  color: #fff;
-  padding: 10px 16px;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 999px;
-  box-shadow: 0 10px 22px rgba(109, 40, 217, 0.35);
+  background: linear-gradient(
+    135deg,
+    rgba(167, 139, 250, 0.96),
+    rgba(124, 58, 237, 0.96)
+  );
+  color: #fff;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: translateX(-50%);
+  white-space: nowrap;
+  box-shadow: 0 10px 24px rgba(109, 40, 217, 0.28);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.step--active .mock-video-pill {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 14px 28px rgba(109, 40, 217, 0.34);
 }
 
 .mock-mute-icon {
-  font-size: 13px;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mock-mute-icon svg {
+  width: 14px;
+  height: 14px;
+  display: block;
 }
 
 .mock-waveform {
-  font-size: 12px;
+  display: block;
+  font-size: 10px;
+  line-height: 1;
   letter-spacing: 1px;
+  opacity: 0.92;
 }
+
+/* =========================================================
+   EMAIL MOCK (Follow up)
+========================================================= */
 
 .mock-email {
   position: relative;
-  background: #fff;
-  border-radius: 24px;
-  padding: 18px 18px 22px;
-  box-shadow: 0 22px 44px rgba(15, 23, 42, 0.14);
+  padding-bottom: 22px;
 }
 
 .mock-email-badges {
   position: absolute;
-  bottom: -18px;
-  right: -14px;
-  display: flex;
-  align-items: flex-end;
+  top: -26px;
+  right: -8px;
   z-index: 3;
+  display: flex;
+  align-items: flex-start;
 }
 
 .mock-badge {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #fff;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
-  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.22);
-  font-size: 17px;
-  font-weight: 800;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
 }
 
 .mock-badge--gmail {
-  margin-right: -16px;
-  margin-bottom: 16px;
-  z-index: 2;
-}
-
-.mock-badge--gmail .mock-badge-glyph {
-  background: linear-gradient(
-    135deg,
-    #ea4335 0%,
-    #fbbc05 40%,
-    #34a853 70%,
-    #4285f4 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  z-index: 1;
+  margin-right: -10px;
 }
 
 .mock-badge--outlook {
-  color: #fff;
-  background: #0a63d4;
-  z-index: 1;
+  z-index: 2;
+  margin-top: 18px;
 }
 
 .mock-email-row {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
   padding: 7px 0;
-  font-size: 13px;
   color: #64748b;
+  font-size: 13px;
+  line-height: 1.3;
 }
 
 .mock-email-label {
@@ -604,316 +655,557 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: #f1f5f9;
+  min-width: 0;
+  max-width: 100%;
+  padding: 5px 12px 5px 5px;
   border: 1px solid rgba(15, 23, 42, 0.06);
   border-radius: 999px;
-  padding: 5px 12px 5px 5px;
+  background: #f1f5f9;
+  color: #0f172a;
   font-size: 13px;
   font-weight: 600;
-  color: #0f172a;
+  overflow: hidden;
 }
 
-.mock-email-chip-avatar {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #fbbf24, #f472b6);
-  display: grid;
-  place-items: center;
-  font-size: 10px;
-  font-weight: 700;
-  color: #fff;
-}
-
+.mock-email-chip-avatar,
 .mock-email-chip-icon {
   width: 22px;
   height: 22px;
-  border-radius: 50%;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
   font-size: 10px;
 }
 
+.mock-email-chip-avatar {
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fbbf24, #f472b6);
+  color: #fff;
+  font-weight: 700;
+}
+
+.mock-email-chip-icon {
+  border-radius: 6px;
+}
+
 .mock-chip-x {
+  margin-left: 2px;
   color: #94a3b8;
   font-size: 13px;
-  margin-left: 2px;
 }
 
 .mock-email-divider {
   height: 1px;
-  background: rgba(15, 23, 42, 0.08);
   margin: 10px 0 12px;
+  background: rgba(15, 23, 42, 0.08);
 }
 
 .mock-email-body p {
   margin: 0 0 12px;
-  font-size: 13px;
-  line-height: 1.7;
   color: #334155;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 .mock-email-body p:last-child {
   margin-bottom: 0;
 }
+
 /* =========================================================
-   TABLET
+   LARGE TABLET (MAX 1100PX)
+========================================================= */
+
+@media (max-width: 1100px) {
+  .steps {
+    gap: 16px;
+  }
+
+  .step {
+    padding: 18px 16px 16px;
+  }
+
+  .step-title {
+    font-size: 18px;
+  }
+
+  .step-scene {
+    left: 10px;
+    right: 10px;
+  }
+}
+
+/* =========================================================
+   TABLET (MAX 992PX)
 ========================================================= */
 
 @media (max-width: 992px) {
+  .hero-2 {
+    padding: 40px 20px;
+  }
+
   .hero-card-2 {
-    padding: 56px 28px;
+    padding: 50px 28px;
     border-radius: 28px;
+  }
+
+  .hero-card-2 h1 {
+    max-width: 560px;
+    font-size: clamp(42px, 6vw, 62px);
   }
 
   .steps {
     flex-wrap: wrap;
     gap: 16px;
+    margin-top: 70px;
   }
 
   .step {
     flex: 1 1 calc(50% - 8px);
-    min-width: 0;
-    min-height: 105px;
+    height: 150px;
+    padding: 18px 16px;
   }
 
   .step--active {
     flex: 1 1 100%;
-    min-height: 200px;
+    height: var(--step-h);
   }
 
-  .step-scene {
-    width: 100%;
+  .mock-video {
+    gap: 7px;
+    padding: 9px;
+    border-radius: 17px;
   }
 
-  .mock-card {
-    width: 100%;
-    padding: 18px;
+  .mock-video-tile {
+    border-radius: 12px;
+  }
+
+  .mock-video-name {
+    top: 8px;
+    left: 8px;
+    padding: 5px 8px;
+    font-size: 9px;
+  }
+
+  .mock-video-pill {
+    bottom: 10px;
+    padding: 7px 10px;
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .mock-waveform {
+    font-size: 9px;
+  }
+
+  .mock-video-avatar {
+    min-width: 32px;
   }
 }
 
 /* =========================================================
-   MOBILE
-   Mock card is ALWAYS visible
-   No touch required
+   SMALL TABLET (MAX 760PX)
 ========================================================= */
 
-@media (max-width: 600px) {
-  .hero-2 {
-    padding: 48px 16px;
-  }
-
+@media (max-width: 760px) {
   .hero-card-2 {
-    width: 100%;
-    padding: 42px 16px;
-    border-radius: 24px;
+    padding: 44px 20px;
   }
 
   .hero-card-2 h1 {
     max-width: 90%;
-    font-size: clamp(25px, 5vw, 44px);
-    letter-spacing: 0px;
+    font-size: clamp(36px, 7vw, 52px);
+    letter-spacing: -2px;
+  }
+}
+
+/* =========================================================
+   MOBILE & RESPONSIVE FIXES (MAX 600PX)
+========================================================= */
+
+@media (max-width: 600px) {
+  .hero-2 {
+    padding: 32px 16px;
+  }
+
+  .hero-card-2 {
+    padding: 36px 14px;
+    border-radius: 24px;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+
+  .hero-card-2 h1 {
+    max-width: 100%;
+    font-size: clamp(28px, 8vw, 42px);
+    line-height: 1.05;
+    letter-spacing: -1.2px;
   }
 
   .lede {
-    max-width: 217px;
-    margin-top: 20px;
-  }
-
-  .cta {
-    margin-top: 28px;
-  }
-
-  /* Cards become one column */
-  .steps {
-    width: 100%;
-    margin-top: 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 41px;
-  }
-
-  /* Normal mobile card */
-  .step {
-    width: 100%;
-    flex: none;
-    height: auto;
-    min-height: 250px;
-    padding: 16px;
-    border-radius: 22px;
-
-    /* Prevent hover-like transform on touch */
-    transform: none !important;
-
-    /* Disable desktop flex expansion */
-    transition:
-      height 0.35s ease,
-      box-shadow 0.35s ease;
-  }
-
-  /*
-    IMPORTANT:
-    Don't let :hover expand the card on mobile.
-  */
-  .step:hover {
-    flex: none;
-    height: auto;
-    min-height: 250px;
-    transform: none !important;
-    box-shadow: none;
-  }
-
-  /*
-    Active/tapped card also stays the same size.
-  */
-  .step--active {
-    flex: none;
-    height: auto;
-    min-height: 250px;
-    transform: none !important;
-    box-shadow: none;
-  }
-
-  /* Title */
-  .step-title {
-    font-size: 18px;
-    line-height: 1.25;
-    margin-bottom: 10px;
-  }
-
-  /* Description */
-  .step-desc-wrap {
-    min-height: 42px;
-  }
-
-  .step-desc,
-  .step-desc-long {
-    font-size: 11px;
+    max-width: 260px;
+    margin-top: 18px;
+    font-size: 12px;
     line-height: 1.55;
   }
 
-  /*
-    Always show the full description on mobile
-  */
+  .steps {
+    --mock-radius: 16px;
+    --mock-pad: 14px;
+
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .step,
+  .step--active {
+    flex: none;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 20px 16px;
+    border-radius: 22px;
+    transform: none !important;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+    overflow: visible;
+  }
+
+  .step::before {
+    opacity: 1;
+  }
+
+  .step-title {
+    margin-bottom: 8px;
+    font-size: 18px;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .step-desc-wrap {
+    height: auto;
+    margin-bottom: 12px;
+  }
+
   .step-desc {
+    position: relative;
     opacity: 1 !important;
     transform: none !important;
+    font-size: 12px;
   }
 
   .step-desc-long {
     display: none;
   }
 
-  /*
-    Always show checklist on mobile
-  */
   .step-checklist {
-    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
     gap: 8px;
+    margin-top: 12px;
     opacity: 1 !important;
     transform: none !important;
   }
 
   .check-item {
-    gap: 8px;
     font-size: 11px;
-    line-height: 1.4;
   }
 
   .check-icon {
     width: 22px;
     height: 22px;
     min-width: 22px;
-    font-size: 9px;
   }
 
-  /*
-    Mock scene always visible on mobile
-  */
   .step-scene,
-  .step:hover .step-scene,
   .step--active .step-scene {
+    position: relative;
+    inset: auto;
     width: 100%;
-    margin-top: 24px;
-    padding: 8px;
-    border-radius: 18px;
-
+    margin-top: 16px;
+    padding: 0;
     opacity: 1 !important;
     transform: none !important;
-
-    background: #eef3f7;
+    visibility: visible !important;
   }
 
-  /* =======================================================
-     MOCK CARD MOBILE
-  ======================================================= */
-
-  .mock-card {
+  .mock-card,
+  .mock-search,
+  .mock-video,
+  .mock-email {
     width: 100%;
-    max-width: 100%;
-    min-width: 0;
-
-    padding: 16px;
-    margin: 0;
-
-    border-radius: 16px;
-
     box-sizing: border-box;
-    overflow: hidden;
+    display: block;
+    padding: var(--mock-pad);
   }
 
   .mock-head {
-    width: 100%;
+    display: flex;
+    align-items: center;
     gap: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .mock-avatar {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    font-size: 9px;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
   }
 
   .mock-name {
     font-size: 12px;
-    line-height: 1.3;
   }
 
   .mock-meta {
     font-size: 10px;
-    line-height: 1.4;
-
-    /* Prevent overflow */
-    white-space: normal;
     overflow-wrap: anywhere;
   }
 
   .mock-msg {
-    width: 100%;
-    margin-bottom: 12px;
-
     font-size: 11px;
     line-height: 1.55;
-
+    margin: 0 0 10px;
     overflow-wrap: anywhere;
   }
 
   .mock-chips {
-    width: 100%;
+    padding: 8px;
     gap: 6px;
   }
 
   .mock-chip {
-    max-width: 100%;
-    min-height: 28px;
-
-    padding: 6px 10px;
-
+    min-height: 26px;
+    padding: 4px 8px;
     font-size: 10px;
-    line-height: 1.2;
+  }
 
-    white-space: normal;
-    text-align: center;
+  .mock-search-heading {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .mock-suggested-label {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .mock-suggestions {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .mock-suggestion {
+    padding: 8px 10px;
+    font-size: 11px;
+    border-radius: 8px;
+  }
+
+  .mock-search-bar {
+    padding: 9px 12px;
+  }
+
+  .mock-search-placeholder {
+    font-size: 11px;
+  }
+
+  .mock-video {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .mock-video-tile {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 11px;
+  }
+
+  .mock-video-name {
+    top: 7px;
+    left: 7px;
+    max-width: calc(100% - 14px);
+    padding: 4px 7px;
+    font-size: 8px;
+  }
+
+  .mock-video-avatar {
+    width: 38%;
+    min-width: 28px;
+    border-width: 2px;
+    font-size: 12px;
+  }
+
+  .mock-video-pill {
+    bottom: 8px;
+    max-width: calc(100% - 12px);
+    padding: 6px 8px;
+    gap: 5px;
+    font-size: 9px;
+  }
+
+  .mock-mute-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .mock-mute-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .mock-waveform {
+    font-size: 8px;
+    letter-spacing: 0.6px;
+  }
+
+  .mock-email {
+    padding-bottom: 16px;
+  }
+
+  .mock-email-badges {
+    top: -22px;
+    right: -4px;
+  }
+
+  .mock-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+
+  .mock-email-row {
+    gap: 8px;
+    font-size: 11px;
+  }
+
+  .mock-email-label {
+    width: 24px;
+  }
+
+  .mock-email-chip {
+    padding: 4px 9px 4px 4px;
+    font-size: 11px;
+  }
+
+  .mock-email-chip-avatar,
+  .mock-email-chip-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mock-email-body p {
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE (MAX 380PX)
+========================================================= */
+
+@media (max-width: 380px) {
+  .hero-2 {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .hero-card-2 {
+    padding: 32px 10px;
+    border-radius: 20px;
+  }
+
+  .hero-card-2 h1 {
+    font-size: 26px;
+    letter-spacing: -0.8px;
+  }
+
+  .lede {
+    max-width: 220px;
+    font-size: 11px;
+  }
+
+  .steps {
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  .step {
+    padding: 16px 12px 14px;
+  }
+
+  .step-title {
+    font-size: 16px;
+  }
+
+  .step-desc {
+    font-size: 11px;
+  }
+
+  .check-item {
+    font-size: 10px;
+  }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+  }
+
+  .mock-video {
+    gap: 5px;
+    padding: 6px;
+    border-radius: 13px;
+  }
+
+  .mock-video-tile {
+    border-radius: 9px;
+  }
+
+  .mock-video-name {
+    top: 5px;
+    left: 5px;
+    padding: 4px 6px;
+    font-size: 7px;
+  }
+
+  .mock-video-pill {
+    bottom: 6px;
+    padding: 5px 7px;
+    gap: 4px;
+    font-size: 8px;
+  }
+
+  .mock-waveform {
+    display: none;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY - REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .step,
+  .step::before,
+  .step-scene,
+  .mock-video-photo,
+  .mock-video-pill,
+  .step-desc,
+  .step-desc-long,
+  .step-checklist {
+    transition: none !important;
+  }
+
+  .step--active .mock-video-photo {
+    transform: none !important;
+  }
+
+  .step--active .mock-video-pill {
+    transform: translateX(-50%) !important;
   }
 }

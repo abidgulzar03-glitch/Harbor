@@ -12,7 +12,6 @@
   text-align: center;
 
   background: #f6f3eb;
-
   padding: 76px 24px 0;
 
   border-radius: 35px;
@@ -39,8 +38,6 @@
   margin: 0 auto 18px;
 
   padding: 7px 12px;
-
-
 
   color: #31506d;
 
@@ -72,11 +69,6 @@
 
   text-wrap: balance;
 }
-
-/* =========================================================
-   TITLE ACCENT
-   Use <strong>...</strong> inside the title
-========================================================= */
 
 .loop-hero-title strong {
   color: #5fa8ff;

@@ -1,133 +1,158 @@
+// `icon` values are keys from Icons.jsx (callie, hourglass, card, contact, notetaker).
 const STEPS = [
   {
-    id: "arrival-notice",
-    title: "Arrival notice in",
-    shortDesc: "Containers pulled, loads raised.",
-    longDesc: "Containers pulled, loads raised.",
+    id: "book",
+    title: "Book",
+    shortDesc: "A client emails asking to meet.",
+    longDesc:
+      "A client emails asking to meet. Share a booking link or ask Callie, your AI assistant, to find times that work for everyone.",
 
     checklist: [
       {
-        icon: "01",
-        color: "#e8eef4",
-        text: "Containers pulled, loads raised.",
+        icon: "callie",
+        color: "#d9f99d",
+        text: "Callie replies with times to meet",
+      },
+      {
+        icon: "hourglass",
+        color: "#93c5fd",
+        text: "Client picks Tuesday at 2 p.m.",
+      },
+      {
+        icon: "card",
+        color: "#5eead4",
+        text: "Client pays $150 deposit upfront",
       },
     ],
 
-    gradient: ["#dce8f2", "#eef3f7", "#d9e5ef"],
+    gradient: ["#bfdbfe", "#99f6e4", "#d9f99d"],
 
     mock: {
-      avatar: {
-        icon: "01",
-        color: "#e8eef4",
-        textColor: "#31506d",
-      },
-      name: "Arrival notice in",
-      meta: "Containers pulled, loads raised.",
-      message: "Containers pulled, loads raised.",
-
+      avatar: { icon: "callie", color: "#d9f99d", textColor: "#0f172a" },
+      name: "Callie",
+      meta: "to me, Dominic Mills ▾",
+      message:
+        "Happy to set up a call for you with Dominic. Here are a few times you're both available.",
       chips: [
-        { label: "Arrival notice" },
-        { label: "Container pulled" },
-        { label: "Load raised" },
+        { label: "10:00 AM" },
+        { label: "2:30 PM" },
+        { label: "3:00 PM" },
       ],
     },
   },
 
   {
-    id: "load-created",
-    title: "Load created",
-    shortDesc: "One box or forty, one booking.",
-    longDesc: "One box or forty, one booking.",
+    id: "prep",
+    title: "Prep",
+    shortDesc: "Get all of the info you need in one place.",
+    longDesc:
+      "Before the meeting, get all of the info you need in one place. Callie reviews your client's contact history and helps you show up prepared.",
 
     checklist: [
       {
-        icon: "02",
-        color: "#e8eef4",
-        text: "One box or forty, one booking.",
+        icon: "contact",
+        color: "#fdba74",
+        text: "Contact details automatically update",
+      },
+      {
+        icon: "contact",
+        color: "#fdba74",
+        text: "Your client interactions are in one place",
+      },
+      { icon: "callie", color: "#d9f99d", text: "Callie helps you prep" },
+    ],
+
+    gradient: ["#fed7aa", "#fef3c7", "#d9f99d"],
+
+    mock: {
+      type: "search",
+      heading: "Get answers instantly",
+      suggestedLabel: "Suggested:",
+      suggestions: [
+        "What's Acme Co.'s budget?",
+        "Who are the main stakeholders for this?",
+      ],
+      placeholder: "Help me prep for my next meeting",
+    },
+  },
+
+  {
+    id: "capture",
+    title: "Capture",
+    shortDesc: "Notetaker captures the conversation.",
+    longDesc:
+      "While you run the meeting, Notetaker captures the conversation. The recap and action items are delivered right after the call.",
+
+    checklist: [
+      {
+        icon: "notetaker",
+        color: "#c4b5fd",
+        text: "Notetaker joins and takes notes",
+      },
+      {
+        icon: "notetaker",
+        color: "#c4b5fd",
+        text: "You get a ready-to-share recap",
+      },
+      {
+        icon: "contact",
+        color: "#fdba74",
+        text: "Recap is stored in contact profile",
       },
     ],
 
-    gradient: ["#e2edf5", "#edf4f8", "#dce9f2"],
+    gradient: ["#ddd6fe", "#fde68a", "#fbcfe8"],
 
     mock: {
-      avatar: {
-        icon: "02",
-        color: "#e8eef4",
-        textColor: "#31506d",
-      },
-      name: "Load created",
-      meta: "One box or forty, one booking.",
-      message: "One box or forty, one booking.",
-
-      chips: [
-        { label: "One box" },
-        { label: "Forty boxes" },
-        { label: "One booking" },
+      type: "video",
+      participants: [
+        {
+          name: "Maria",
+          initial: "M",
+          color: "#94a3b8",
+          img: "/hero-1.jpg",
+        },
+        { name: "Erin", initial: "E", color: "#64748b", img: "/hero-2.jpg" },
       ],
     },
   },
 
   {
-    id: "posted-boards",
-    title: "Posted to the boards",
-    shortDesc: "Posted once, never twice.",
-    longDesc: "Posted once, never twice.",
+    id: "follow-up",
+    title: "Follow up",
+    shortDesc: "Review a pre-drafted email from the recap.",
+    longDesc:
+      "Review a pre-drafted email based on the recap, add an additional invoice link if needed, and add Callie to the email to handle scheduling.",
 
     checklist: [
       {
-        icon: "03",
-        color: "#e8eef4",
-        text: "Posted once, never twice.",
+        icon: "notetaker",
+        color: "#c4b5fd",
+        text: "Notetaker drafts a follow-up email",
       },
-    ],
-
-    gradient: ["#dce8f2", "#edf3f7", "#d8e5ef"],
-
-    mock: {
-      avatar: {
-        icon: "03",
-        color: "#e8eef4",
-        textColor: "#31506d",
-      },
-      name: "Posted to the boards",
-      meta: "Posted once, never twice.",
-      message: "Posted once, never twice.",
-
-      chips: [{ label: "Posted once" }, { label: "Never twice" }],
-    },
-  },
-
-  {
-    id: "rates-return",
-    title: "Rates return",
-    shortDesc: "You pick the carrier.",
-    longDesc: "You pick the carrier.",
-
-    checklist: [
       {
-        icon: "04",
-        color: "#e8eef4",
-        text: "You pick the carrier.",
+        icon: "callie",
+        color: "#d9f99d",
+        text: "Callie finds time for the next call",
+      },
+      {
+        icon: "card",
+        color: "#5eead4",
+        text: "Client pays via custom invoice",
       },
     ],
 
-    gradient: ["#dce8f2", "#eef3f7", "#d9e5ef"],
+    gradient: ["#ddd6fe", "#bfdbfe", "#99f6e4"],
 
     mock: {
-      avatar: {
-        icon: "04",
-        color: "#e8eef4",
-        textColor: "#31506d",
-      },
-      name: "Rates return",
-      meta: "You pick the carrier.",
-      message: "You pick the carrier.",
-
-      chips: [
-        { label: "Rates returned" },
-        { label: "Carrier options" },
-        { label: "Pick carrier" },
-      ],
+      type: "email",
+      toInitial: "D",
+      to: "Dominic Mills",
+      cc: "callie@calendly.com",
+      ccIcon: "callie",
+      ccColor: "#d9f99d",
+      message:
+        "Thanks again for your time today.\n\nCallie, can you help schedule a meeting with Dominic next week?",
     },
   },
 ];

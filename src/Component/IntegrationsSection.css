@@ -16,10 +16,9 @@
 .integrations-section {
   width: 100%;
   overflow: hidden;
-  padding: 120px 0;
+  padding: 100px 0 90px;
   background: #f6f4ee;
   color: #0b2948;
-
   font-family:
     Inter,
     -apple-system,
@@ -31,547 +30,318 @@
     sans-serif;
 }
 
-/* =========================================================
-   CONTAINER
-========================================================= */
-
 .integrations-container {
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 24px;
+  text-align: center;
 }
 
 /* =========================================================
-   EYEBROW
+   TEXT
 ========================================================= */
 
 .integrations-eyebrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   width: fit-content;
   margin: 0 auto;
-
   padding: 8px 14px;
-
   text-transform: uppercase;
-
-  color: #0b2948;
-
-  font-size: 12px;
-  font-weight: 400;
+  color: #0369a1;
+  font-size: 11px;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: 1px;
-  text-align: center;
 }
-
-/* =========================================================
-   REMOVE EYEBROW ICON
-========================================================= */
-
-.integrations-eyebrow-icon {
-  display: none;
-}
-
-/* =========================================================
-   TITLE
-========================================================= */
 
 .integrations-title {
-  width: 100%;
-  max-width: 900px;
-
-  margin: 28px auto 0;
-
+  max-width: 640px;
+  margin: 18px auto 0;
   color: #092746;
-
-  font-size: clamp(50px, 5vw, 80px);
+  font-size: clamp(40px, 4.2vw, 60px);
   font-weight: 500;
-
-  line-height: 0.95;
-  letter-spacing: -4px;
-
-  text-align: center;
+  line-height: 1;
+  letter-spacing: -2.4px;
 }
-
-/* =========================================================
-   SUBTITLE
-========================================================= */
 
 .integrations-subtitle {
-  width: 100%;
-  max-width: 650px;
-
-  margin: 28px auto 0;
-
+  max-width: 470px;
+  margin: 24px auto 0;
   color: #49657f;
-
-  font-size: 12px;
-  font-weight: 400;
-
-  line-height: 1.6;
-
-  text-align: center;
-}
-
-/* =========================================================
-   MARQUEE WRAPPER
-========================================================= */
-
-.integrations-marquee {
-  position: relative;
-
-  width: 100%;
-
-  margin-top: 68px;
-
-  overflow: hidden;
-  isolation: isolate;
-}
-
-/* =========================================================
-   MARQUEE TRACK
-========================================================= */
-
-.integrations-marquee-track {
-  display: flex;
-  flex-wrap: nowrap;
-
-  width: max-content;
-
-  transform: translate3d(0, 0, 0);
-
-  will-change: transform;
-
-  animation: integrations-smooth-scroll 42s linear infinite;
-
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-
-  perspective: 1000px;
-}
-
-/* =========================================================
-   MARQUEE GROUP
-========================================================= */
-
-.integrations-marquee-group {
-  display: flex;
-  align-items: stretch;
-
-  flex-shrink: 0;
-
-  gap: 16px;
-
-  padding-right: 16px;
-}
-
-/* =========================================================
-   INFINITE RIGHT → LEFT ANIMATION
-========================================================= */
-
-@keyframes integrations-smooth-scroll {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-/* =========================================================
-   CARD
-========================================================= */
-
-.integration-card {
-  display: flex;
-  flex-direction: column;
-
-  width: 288px;
-  min-width: 288px;
-  min-height: 220px;
-
-  padding: 22px;
-
-  border: 1px solid #dfe7ed;
-  border-radius: 18px;
-
-  background: #ffffff;
-
-  box-shadow:
-    0 4px 14px rgba(20, 55, 80, 0.045),
-    0 1px 3px rgba(20, 55, 80, 0.035);
-
-  transform: translateZ(0);
-
-  backface-visibility: hidden;
-
-  transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease;
-}
-
-/* =========================================================
-   CARD HOVER
-========================================================= */
-
-.integration-card:hover {
-  transform: translate3d(0, -5px, 0);
-
-  border-color: #ccd9e3;
-
-  box-shadow:
-    0 16px 35px rgba(20, 55, 80, 0.09),
-    0 4px 8px rgba(20, 55, 80, 0.04);
-}
-
-/* =========================================================
-   CARD HEADER
-========================================================= */
-
-.integration-card-header {
-  width: 100%;
-}
-
-.integration-card-info {
-  width: 100%;
-  min-width: 0;
-}
-
-/* =========================================================
-   CARD TITLE
-========================================================= */
-
-.integration-card-title-row {
-  display: flex;
-  align-items: center;
-}
-
-.integration-card-title-row h3 {
-  margin: 0;
-
-  color: #092746;
-
   font-size: 14px;
-  font-weight: 5000;
-
-  line-height: 1.25;
-  letter-spacing: -0.3px;
-}
-
-/* =========================================================
-   CARD DESCRIPTION
-========================================================= */
-
-.integration-card-description {
-  max-width: 250px;
-
-  margin: 10px 0 0;
-
-  color: #60758a;
-
-  font-size: 12px;
   font-weight: 400;
-
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
-/* =========================================================
-   CARD TAGS
-========================================================= */
-
-.integration-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
-  gap: 7px;
-
-  margin-top: auto;
-  padding-top: 25px;
-}
-
-/* =========================================================
-   TAG
-========================================================= */
-
-.integration-card-tag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 29px;
-
-  padding: 6px 8px;
-
-  border: 1px solid #dce5ed;
-  border-radius: 999px;
-
-  background: #edf2f6;
-
-  color: #173a58;
-
-  font-size: 9px;
-  font-weight: 400;
-
-  line-height: 1;
-
-  white-space: nowrap;
-
+.integrations-cta {
+  margin-top: 32px;
+  padding: 13px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #0b2948;
+  color: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
   transition:
-    background 180ms ease,
-    border-color 180ms ease;
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-/* =========================================================
-   TAG HOVER
-========================================================= */
-
-.integration-card-tag:hover {
-  border-color: #ccd9e3;
-  background: #e4ebf1;
+.integrations-cta:hover {
+  transform: translateY(-2px);
 }
 
-/* =========================================================
-   MARQUEE FADE
-========================================================= */
+.integrations-cta:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
 
-.integrations-marquee::before,
-.integrations-marquee::after {
-  content: "";
+.hero-carousel {
+  --slide-w: clamp(300px, 40vw, 560px); /* card width */
+  --card-h: calc(var(--slide-w) / 1.7); /* card height */
+  --head: calc(var(--card-h) * 0.6); /* how far the head sticks out */
+  --gap: 90px;
+  --side-scale: 0.78;
+  position: relative;
+  width: 100%;
+  height: calc(var(--card-h) + var(--head));
+  margin-top: 40px;
+  overflow: hidden;
+}
 
+.hero-slide {
   position: absolute;
+  top: var(--head);
+  left: 50%;
+  width: var(--slide-w);
+  height: var(--card-h);
+  margin: 0 0 0 calc(var(--slide-w) / -2);
+  transform-origin: center bottom;
+  transform: translateX(
+      calc(
+        var(--d) * (var(--slide-w) * (0.5 + var(--side-scale) / 2) + var(--gap))
+      )
+    )
+    scale(var(--side-scale));
+  opacity: 0.65;
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.8s ease;
+  will-change: transform;
+}
 
-  top: 0;
+.hero-slide.is-active {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+/* Right neighbour is clickable: it advances the carousel */
+.hero-slide[style*="--d: 1"] {
+  cursor: pointer;
+}
+
+/* Two steps away: fades out while it slides off */
+.hero-slide.is-far {
+  opacity: 0;
+}
+
+/* Off-screen slots: jump instantly so wrapping is never seen */
+.hero-slide.is-parked {
+  transition: none;
+  opacity: 0;
+}
+
+/* ---------- BACK: the card ---------- */
+
+.hero-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Pattern band across the middle of the card */
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--pat);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 28%,
+    #000 42%,
+    #000 78%,
+    transparent 94%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 28%,
+    #000 42%,
+    #000 78%,
+    transparent 94%
+  );
+}
+
+.hero-slide--payment {
+  --bg: linear-gradient(160deg, #a9c9f7 0%, #f6b6a8 62%, #f7df80 100%);
+  --pat: repeating-linear-gradient(
+    135deg,
+    rgba(167, 243, 224, 0.95) 0 18px,
+    transparent 18px 36px
+  );
+}
+
+.hero-slide--discovery {
+  --bg: linear-gradient(135deg, #f5a3c7 0%, #a9c4f5 50%, #d9f99d 100%);
+  --pat: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.6) 0 3px,
+    transparent 3px 10px
+  );
+}
+
+.hero-slide--meeting {
+  --bg: linear-gradient(180deg, #a8c8f8 0%, #7fb0ee 55%, #1f7fb5 100%);
+  --pat: repeating-linear-gradient(
+    90deg,
+    rgba(200, 170, 250, 0.9) 0 3px,
+    transparent 3px 9px
+  );
+}
+
+.hero-slide--interview {
+  --bg: linear-gradient(180deg, #14325c 0%, #7b9ae0 55%, #c9a9f0 100%);
+  --pat: repeating-linear-gradient(
+    0deg,
+    rgba(106, 168, 255, 0.95) 0 6px,
+    transparent 6px 14px
+  );
+}
+
+/* ---------- FRONT: the person ---------- */
+
+.hero-slide-img {
+  position: absolute;
+  left: 0;
   bottom: 0;
-
-  width: 100px;
-
-  z-index: 20;
-
+  width: 100%;
+  height: calc(100% + var(--head));
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
   pointer-events: none;
 }
 
-/* LEFT FADE */
-
-.integrations-marquee::before {
-  left: 0;
-
-  background: linear-gradient(
-    to right,
-    #f6f4ee 0%,
-    rgba(246, 244, 238, 0.92) 30%,
-    rgba(246, 244, 238, 0) 100%
-  );
-}
-
-/* RIGHT FADE */
-
-.integrations-marquee::after {
-  right: 0;
-
-  background: linear-gradient(
-    to left,
-    #f6f4ee 0%,
-    rgba(246, 244, 238, 0.92) 30%,
-    rgba(246, 244, 238, 0) 100%
-  );
-}
-
 /* =========================================================
-   PAUSE ON HOVER
+   PILLS (only on the active slide, they pop in after the slide lands)
 ========================================================= */
 
-.integrations-marquee:hover .integrations-marquee-track {
-  animation-play-state: paused;
+.hero-pills {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 2;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, calc(-50% + 10px));
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-slide.is-active .hero-pills {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition-delay: 0.35s;
+}
+
+.hero-pill-icon {
+  width: clamp(30px, 3vw, 42px);
+  height: clamp(30px, 3vw, 42px);
+  display: grid;
+  place-items: center;
+  border: 3px solid #fff;
+  border-radius: 12px;
+  background: var(--tint);
+  color: #0b2948;
+  box-shadow: 0 8px 20px rgba(11, 41, 72, 0.2);
+}
+
+.hero-pill-icon svg {
+  display: block;
+  width: 60%;
+  height: 60%;
+}
+
+.hero-pill {
+  padding: clamp(6px, 0.7vw, 9px) clamp(11px, 1.2vw, 16px);
+  border-radius: 12px;
+  background: #fff;
+  color: #0b2948;
+  font-size: clamp(14px, 1.6vw, 22px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  box-shadow: 0 8px 20px rgba(11, 41, 72, 0.18);
+}
+
+.hero-pill--serif {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -0.2px;
 }
 
 /* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 1150px) {
-  .integrations-section {
-    padding: 105px 0;
-  }
-
-  .integrations-container {
-    padding: 0 28px;
-  }
-
-  .integrations-title {
-    font-size: clamp(50px, 7vw, 76px);
-  }
-
-  .integration-card {
-    width: 280px;
-    min-width: 280px;
-  }
-}
-
-/* =========================================================
-   SMALL TABLET
+   TABLET + MOBILE
 ========================================================= */
 
 @media (max-width: 900px) {
   .integrations-section {
-    padding: 90px 0;
+    padding: 80px 0;
   }
 
-  .integrations-container {
-    padding: 0 24px;
+  .hero-carousel {
+    --slide-w: clamp(260px, 62vw, 440px);
+    --gap: 16px;
+    margin-top: 32px;
   }
 
-  .integrations-title {
-    font-size: clamp(48px, 9vw, 70px);
-    letter-spacing: -3px;
-  }
-
-  .integrations-subtitle {
-    font-size: 17px;
-  }
-
-  .integrations-marquee {
-    width: calc(100% + 48px);
-    margin-left: -24px;
-    margin-top: 55px;
-  }
-
-  .integrations-marquee-track {
-    animation-duration: 38s;
-  }
-
-  .integration-card {
-    width: 270px;
-    min-width: 270px;
+  .hero-card {
+    border-radius: 20px;
   }
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
-
 @media (max-width: 600px) {
   .integrations-section {
-    padding: 72px 0;
+    padding: 64px 0;
   }
 
   .integrations-container {
     padding: 0 16px;
   }
 
-  .integrations-eyebrow {
-    padding: 7px 12px;
-    font-size: 12px;
-  }
-
   .integrations-title {
-    margin-top: 22px;
-
-    font-size: clamp(42px, 10vw, 58px);
-
-    line-height: 0.97;
-    letter-spacing: -2.5px;
+    letter-spacing: -1.6px;
   }
 
   .integrations-subtitle {
-    margin-top: 21px;
-
-    font-size: 10px;
-    line-height: 1.55;
+    font-size: 13px;
   }
 
-  .integrations-marquee {
-    width: calc(100% + 32px);
-
-    margin-left: -16px;
-    margin-top: 42px;
+  .hero-carousel {
+    --slide-w: 72vw;
+    --card-h: calc(var(--slide-w) / 1.45);
+    --gap: 12px;
+    margin-top: 28px;
   }
 
-  .integrations-marquee-track {
-    animation-duration: 32s;
-  }
-
-  .integrations-marquee-group {
-    gap: 12px;
-    padding-right: 12px;
-  }
-
-  .integration-card {
-    width: 250px;
-    min-width: 250px;
-    min-height: 210px;
-
-    padding: 17px;
-
-    border-radius: 16px;
-  }
-
-  .integration-card-title-row h3 {
-    font-size: 15px;
-  }
-
-  .integration-card-description {
-    margin-top: 5px;
-
-    font-size: 12px;
-    line-height: 1.45;
-  }
-
-  .integration-card-tags {
-    gap: 6px;
-    padding-top: 18px;
-  }
-
-  .integration-card-tag {
-    min-height: 28px;
-
-    padding: 6px 9px;
-
-    font-size: 10px;
-  }
-
-  .integrations-marquee::before,
-  .integrations-marquee::after {
-    width: 50px;
-  }
-}
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 380px) {
-  .integrations-section {
-    padding: 64px 0;
-  }
-
-  .integrations-container {
-    padding: 0 12px;
-  }
-
-  .integrations-marquee {
-    width: calc(100% + 24px);
-    margin-left: -12px;
-  }
-
-  .integrations-marquee-track {
-    animation-duration: 29s;
-  }
-
-  .integration-card {
-    width: 240px;
-    min-width: 240px;
-    padding: 15px;
-  }
-
-  .integrations-marquee::before,
-  .integrations-marquee::after {
-    width: 35px;
+  .hero-card {
+    border-radius: 18px;
   }
 }
 
@@ -580,16 +350,13 @@
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .integrations-marquee-track {
-    animation: none;
-    transform: none;
-  }
-
-  .integration-card {
+  .hero-slide,
+  .hero-pills,
+  .integrations-cta {
     transition: none;
   }
 
-  .integration-card:hover {
+  .integrations-cta:hover {
     transform: none;
   }
 }

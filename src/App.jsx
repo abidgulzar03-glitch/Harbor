@@ -9,11 +9,10 @@ import NotetakerShowcase from "./Component/NotetakerShowcase";
 import PaymentsShowcase from "./Component/PaymentsShowcase";
 import CustomerStories from "./Component/CustomerStories";
 import IntegrationsSection from "./Component/IntegrationsSection";
-import AutoImageSlider from "./Component/AutoImageSlider";
+
 import FaqAccordion from "./Component/Fsqs";
 import BookDemoNew from "./Component/BoookDemoNew";
 import Footer from "./Component/Footer";
-
 
 import TheLoop from "./Pages/Platform/Platform/TheLoop";
 import Compliance from "./Pages/Platform/Compliance-Page/Compliance";
@@ -33,7 +32,7 @@ function Home() {
       <PaymentsShowcase />
       <CustomerStories />
       <IntegrationsSection />
-      <AutoImageSlider />
+
       <FaqAccordion />
       <BookDemoNew />
     </>

@@ -24,16 +24,14 @@ export default function StepsSection() {
   return (
     <section className="hero-2">
       <div className="hero-card-2">
-        <div className="eyebrow">The closed loop</div>
+        <div className="eyebrow">How it works</div>
 
-        <h1>Keyed once. The rest is the system’s job.</h1>
+        <h1>From first email to final invoice.</h1>
 
         <p className="lede">
-          Most brokerages key the same container four times. Every re-key loses
-          a charge.
+          Callie books the meeting, Notetaker captures it, and follow-up is
+          drafted for you.
         </p>
-
-        {/* <button className="cta">Book a Demo</button> */}
 
         <div className="steps">
           {STEPS.map((step) => (

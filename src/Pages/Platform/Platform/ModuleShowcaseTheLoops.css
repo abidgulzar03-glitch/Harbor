@@ -146,34 +146,6 @@
 }
 
 /* =========================================================
-   SCROLL HINT (previously referenced but undefined)
-========================================================= */
-
-.module-showcase__hint {
-  position: absolute;
-  right: var(--ms-edge);
-  bottom: clamp(18px, 3vw, 32px);
-  z-index: 30;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ms-muted);
-  pointer-events: none;
-}
-
-.module-showcase__hint-line {
-  display: block;
-  width: 36px;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.6;
-}
-
-/* =========================================================
    3D SCENE
 ========================================================= */
 
