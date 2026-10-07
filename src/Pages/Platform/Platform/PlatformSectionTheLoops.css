@@ -62,7 +62,7 @@
   font-weight: 500;
   letter-spacing: -0.025em;
   text-wrap: balance;
-  margin-top: 160px;
+  margin-top: 560px;
   color: var(--loop-ink);
 }
 
@@ -217,17 +217,40 @@
 }
 
 /* =========================================================
-   CARD COLORS
+   CARD COLORS  (gradient per card)
 ========================================================= */
 
+/* Blue to teal glow, closest to the Calendly look */
 .loop__card--arrival {
-  background: #1f464d;
+  background:
+    radial-gradient(
+      ellipse 60% 70% at 100% 85%,
+      rgba(120, 220, 210, 0.85),
+      transparent 70%
+    ),
+    linear-gradient(160deg, #1f4f9c 0%, #2f6db5 35%, #4f90d0 70%, #7fb8e6 100%);
 }
+
+/* Indigo to violet glow */
 .loop__card--credit {
-  background: #0f2fd6;
+  background:
+    radial-gradient(
+      ellipse 60% 70% at 100% 85%,
+      rgba(190, 160, 255, 0.8),
+      transparent 70%
+    ),
+    linear-gradient(160deg, #1a2fb8 0%, #2f46d6 35%, #5b6ee8 70%, #8f9cf2 100%);
 }
+
+/* Coral to peach glow */
 .loop__card--mobile {
-  background: #e8502f;
+  background:
+    radial-gradient(
+      ellipse 60% 70% at 100% 85%,
+      rgba(255, 205, 150, 0.85),
+      transparent 70%
+    ),
+    linear-gradient(160deg, #d6401f 0%, #e8502f 35%, #ef7a4f 70%, #f6a27a 100%);
 }
 
 /* =========================================================
@@ -244,6 +267,7 @@
   border-radius: clamp(14px, 1.6vw, 16px);
   background: #fff;
   color: #14213d;
+  box-shadow: 0 12px 32px rgba(10, 25, 60, 0.18);
 
   font-family: "Instrument Sans", sans-serif;
 }

@@ -1,3 +1,9 @@
+/* Shared layout tokens: same width + equal left/right padding in every section */
+:root {
+  --section-max: 1200px;
+  --section-pad-x: clamp(16px, 4vw, 48px);
+}
+
 /* :where() keeps the reset at zero specificity so class rules still win */
 :where(#callie-section, #callie-section *) {
   margin: 0;
@@ -7,14 +13,14 @@
 
 #callie-section {
   width: 100%;
-  max-width: 1120px;
+  max-width: var(--section-max);
   margin: 0 auto;
-  padding: 72px 8px;
+  padding: 72px var(--section-pad-x);
   display: grid;
   grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
   align-items: center;
   justify-content: center;
-  gap: 190px;
+  gap: clamp(48px, 8vw, 120px);
   /* background: #f6f6f4; */
   border-radius: 32px;
   color: #15181d;
@@ -464,7 +470,7 @@
   #callie-section {
     grid-template-columns: minmax(0, 1fr);
     gap: 48px;
-    padding: 56px 24px;
+    padding-block: 56px;
   }
 
   #callie-copy {
@@ -477,7 +483,7 @@
 
 @media (max-width: 600px) {
   #callie-section {
-    padding: 40px 16px;
+    padding-block: 40px;
     gap: 36px;
     border-radius: 24px;
   }

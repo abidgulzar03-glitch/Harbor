@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap");
 
+/* Shared layout tokens: same width + equal left/right padding in every section */
+:root {
+  --section-max: 1200px;
+  --section-pad-x: clamp(16px, 4vw, 48px);
+}
+
 /* =========================================================
    RESET
 ========================================================= */
@@ -12,9 +18,9 @@
 }
 
 .cfs {
-  max-width: 1200px;
+  max-width: var(--section-max);
   margin: 0 auto;
-  padding: 120px 64px;
+  padding: 120px var(--section-pad-x);
 
   font-family: "Inter", sans-serif;
   color: #0f172a;
@@ -651,7 +657,7 @@
 
 @media (max-width: 1024px) {
   .cfs {
-    padding: 96px 40px;
+    padding-block: 96px;
   }
 
   .cfs-content {
@@ -676,7 +682,7 @@
 
 @media (max-width: 768px) {
   .cfs {
-    padding: 72px 24px;
+    padding-block: 72px;
   }
 
   .sticky-header h1 {
@@ -698,7 +704,7 @@
 
 @media (max-width: 480px) {
   .cfs {
-    padding: 56px 16px;
+    padding-block: 56px;
   }
 
   .cfs-content {

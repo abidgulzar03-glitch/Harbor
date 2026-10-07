@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Component/Navbar";
+
 import NewHero from "./ReadyMadeComponents/NewHero";
 import StepsSection from "./Component/StepsSection";
 import CalendlyFeatureScroll from "./Component/CalendlyFeatureScroll";
@@ -12,6 +13,7 @@ import IntegrationsSection from "./Component/IntegrationsSection";
 
 import FaqAccordion from "./Component/Fsqs";
 import BookDemoNew from "./Component/BoookDemoNew";
+import HomeDemo from "./Component/HomeDemo";
 import Footer from "./Component/Footer";
 
 import TheLoop from "./Pages/Platform/Platform/TheLoop";
@@ -35,6 +37,7 @@ function Home() {
 
       <FaqAccordion />
       <BookDemoNew />
+      <HomeDemo />
     </>
   );
 }

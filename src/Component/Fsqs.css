@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap");
 
+/* Shared layout tokens: same width + equal left/right padding in every section */
+:root {
+  --section-max: 1200px;
+  --section-pad-x: clamp(16px, 4vw, 48px);
+}
+
 /* =========================================================
    FAQ — aligned with CFS / Callie theme
    Fluid and responsive (320px phones to wide desktops)
@@ -27,7 +33,7 @@
   width: 100%;
   overflow: hidden;
 
-  padding: clamp(4rem, 3rem + 5vw, 7.5rem) clamp(0.875rem, 0.4rem + 2.4vw, 4rem);
+  padding: clamp(4rem, 3rem + 5vw, 7.5rem) var(--section-pad-x);
 
   background: var(--faq-bg);
   color: var(--faq-fg);

@@ -1,6 +1,12 @@
 /* Remove this import if your project already loads its own fonts. */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap");
 
+/* Shared layout tokens: same width + equal left/right padding in every section */
+:root {
+  --section-max: 1200px;
+  --section-pad-x: clamp(16px, 4vw, 48px);
+}
+
 .nts {
   --ink: #0c1b30;
   --mute: #9aa3ae;
@@ -10,9 +16,9 @@
   --serif: "Newsreader", "Tiempos Headline", Georgia, serif;
   --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
   width: 100%;
-  max-width: 1300px;
+  max-width: var(--section-max);
   margin: 0 auto;
-  padding: 48px 50px;
+  padding: 48px var(--section-pad-x);
   display: grid;
   grid-template-columns: minmax(0, 540fr) minmax(0, 580fr);
   gap: 80px;
@@ -921,7 +927,7 @@
   .nts {
     grid-template-columns: 1fr;
     gap: 40px;
-    padding: 40px 20px;
+    padding-block: 40px;
   }
   .nts-copy {
     gap: 32px;

@@ -1,3 +1,9 @@
+/* Shared layout tokens: same width + equal left/right padding in every section */
+:root {
+  --section-max: 1200px;
+  --section-pad-x: clamp(16px, 4vw, 48px);
+}
+
 .payments-showcase {
   --ink: #14171a;
   --muted: #6b7280;
@@ -6,11 +12,11 @@
   --teal-dark: #095346;
   display: grid;
   grid-template-columns: minmax(320px, 500px) 1fr;
-  gap: 131px;
+  gap: clamp(48px, 8vw, 131px);
   align-items: center;
-  max-width: 1228px;
+  max-width: var(--section-max);
   margin: 0 auto;
-  padding: 108px 24px;
+  padding: 108px var(--section-pad-x);
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   color: var(--ink);
@@ -528,7 +534,7 @@
   .payments-showcase {
     grid-template-columns: 1fr;
     gap: 32px;
-    padding: 24px 16px;
+    padding-block: 24px;
   }
   .visual-panel {
     max-width: 360px;
